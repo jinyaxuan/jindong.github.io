@@ -1,0 +1,2702 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Machine Learning">
+
+
+    <meta name="description" content="机器学习工程师纳米学位（试学班）项目 0: 预测你的下一道世界料理欢迎来到机器学习的预测烹饪菜系项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能来让项目成功运行。除非有明确要...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>PredictYourCuisine | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 科技让复杂的世界更简单! </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/ML/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DL/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="PredictYourCuisine">
+            
+	            PredictYourCuisine
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/15</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="机器学习工程师纳米学位（试学班）"><a href="#机器学习工程师纳米学位（试学班）" class="headerlink" title="机器学习工程师纳米学位（试学班）"></a>机器学习工程师纳米学位（试学班）</h1><h2 id="项目-0-预测你的下一道世界料理"><a href="#项目-0-预测你的下一道世界料理" class="headerlink" title="项目 0: 预测你的下一道世界料理"></a>项目 0: 预测你的下一道世界料理</h2><p>欢迎来到机器学习的预测烹饪菜系项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能来让项目成功运行。除非有明确要求，你无须修改任何已给出的代码。以<strong>编程练习</strong>开始的标题表示接下来的内容中有需要你必须实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以<strong>TODO</strong>标出。请仔细阅读所有的提示！</p>
+<ul>
+<li><strong>实验任务</strong>：给定佐料名称，预测菜品所属的菜系。</li>
+<li><strong>实验步骤</strong>：菜品数据载入；佐料名称预处理，并预览数据集结构；载入逻辑回归模型，并训练；结果测试并提交，查看实验分数。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong>Code 和 Markdown 区域可通过 <strong>Shift + Enter</strong> 快捷键运行。此外，Markdown可以通过双击进入编辑模式。</p>
+</blockquote>
+<hr>
+<h2 id="第一步-下载并导入数据"><a href="#第一步-下载并导入数据" class="headerlink" title="第一步. 下载并导入数据"></a>第一步. 下载并导入数据</h2><p>在这个项目中，你将利用<a href="https://www.yummly.com/" target="_blank" rel="noopener">Yummly</a>所提供的数据集来训练和测试一个模型，并对模型的性能和预测能力进行测试。通过该数据训练后的好的模型可以被用来对菜系进行预测。</p>
+<p>此项目的数据集来自<a href="https://www.kaggle.com/c/whats-cooking/data" target="_blank" rel="noopener">Kaggle What’s Cooking 竞赛</a>。共 39774/9944 个训练和测试数据点，涵盖了中国菜、越南菜、法国菜等的信息。数据集包含以下特征：</p>
+<ul>
+<li>‘id’：24717, 数据编号</li>
+<li>‘cuisine’：”indian”, 菜系</li>
+<li>‘ingredients’：[“tumeric”, “vegetable stock”, …] 此菜所包含的佐料</li>
+</ul>
+<p>首先你需要前往此 <a href="https://www.kaggle.com/c/whats-cooking/data" target="_blank" rel="noopener">菜系数据集</a> 下载(选择 <strong>Download All</strong> )。如果不能正常下载，请参考教室中的下载教程。然后运行下面区域的代码以载入数据集，以及一些此项目所需的 Python 库。如果成功返回数据集的大小，表示数据集已载入成功。</p>
+<h3 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1 配置环境"></a>1.1 配置环境</h3><p>首先按照本目录中<code>README.md</code>文件中的第一部分内容，配置实验开发环境和所需库函数。</p>
+<h3 id="1-2-加载数据"><a href="#1-2-加载数据" class="headerlink" title="1.2 加载数据"></a>1.2 加载数据</h3><p>其次，在下载完实验数据集后，我们将其解压至当前目录中(即：<code>MLND-cn-trial\</code>目录下面)， 然后依次输入以下代码，加载本次实验的训练集和测试集。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># 导入依赖库</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line">train_filename=<span class="string">'all/train.json'</span></span><br><span class="line">train_content = pd.read_json(codecs.open(train_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line">test_filename = <span class="string">'all/test.json'</span></span><br><span class="line">test_content = pd.read_json(codecs.open(test_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 打印加载的数据集数量</span></span><br><span class="line">print(<span class="string">"菜名数据集一共包含 &#123;&#125; 训练数据 和 &#123;&#125; 测试样例。\n"</span>.format(len(train_content), len(test_content)))</span><br><span class="line"><span class="keyword">if</span> len(train_content)==<span class="number">39774</span> <span class="keyword">and</span> len(test_content)==<span class="number">9944</span>:</span><br><span class="line">    print(<span class="string">"数据成功载入！"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"数据载入有问题，请检查文件路径！"</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>菜名数据集一共包含 39774 训练数据 和 9944 测试样例。
+
+数据成功载入！
+</code></pre><h3 id="1-3-数据预览"><a href="#1-3-数据预览" class="headerlink" title="1.3 数据预览"></a>1.3 数据预览</h3><p>为了查看我们的数据集的分布和菜品总共的种类，我们打印出部分数据样例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">pd.set_option(<span class="string">'display.max_colwidth'</span>,<span class="number">120</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h3><p>你需要通过<code>head()</code>函数来预览训练集<code>train_content</code>数据。（输出前5条）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：打印train_content中前5个数据样例以预览数据</span></span><br><span class="line">train_content[<span class="string">'cuisine'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>0               greek
+1         southern_us
+2            filipino
+3              indian
+4              indian
+5            jamaican
+6             spanish
+7             italian
+8             mexican
+9             italian
+10            italian
+11            chinese
+12            italian
+13            mexican
+14            italian
+15             indian
+16            british
+17            italian
+18               thai
+19         vietnamese
+20               thai
+21            mexican
+22        southern_us
+23            chinese
+24            italian
+25            chinese
+26       cajun_creole
+27            italian
+28            chinese
+29            mexican
+             ...     
+39744           greek
+39745         spanish
+39746          indian
+39747        moroccan
+39748         italian
+39749         mexican
+39750         mexican
+39751        moroccan
+39752     southern_us
+39753         italian
+39754      vietnamese
+39755          indian
+39756         mexican
+39757           greek
+39758           greek
+39759          korean
+39760     southern_us
+39761         chinese
+39762          indian
+39763         italian
+39764         mexican
+39765          indian
+39766           irish
+39767         italian
+39768         mexican
+39769           irish
+39770         italian
+39771           irish
+39772         chinese
+39773         mexican
+Name: cuisine, Length: 39774, dtype: object
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment">## 查看总共菜品分类</span></span><br><span class="line">categories=np.unique(train_content[<span class="string">'cuisine'</span>])</span><br><span class="line">print(<span class="string">"一共包含 &#123;&#125; 种菜品，分别是:\n&#123;&#125;"</span>.format(len(categories),categories))</span><br></pre></td></tr></table></figure>
+<pre><code>一共包含 20 种菜品，分别是:
+[&apos;brazilian&apos; &apos;british&apos; &apos;cajun_creole&apos; &apos;chinese&apos; &apos;filipino&apos; &apos;french&apos;
+ &apos;greek&apos; &apos;indian&apos; &apos;irish&apos; &apos;italian&apos; &apos;jamaican&apos; &apos;japanese&apos; &apos;korean&apos;
+ &apos;mexican&apos; &apos;moroccan&apos; &apos;russian&apos; &apos;southern_us&apos; &apos;spanish&apos; &apos;thai&apos;
+ &apos;vietnamese&apos;]
+</code></pre><hr>
+<h2 id="第二步-分析数据"><a href="#第二步-分析数据" class="headerlink" title="第二步. 分析数据"></a>第二步. 分析数据</h2><p>在项目的第二个部分，你会对菜肴数据进行初步的观察并给出你的分析。通过对数据的探索来熟悉数据可以让你更好地理解和解释你的结果。</p>
+<p>由于这个项目的最终目标是建立一个预测世界菜系的模型，我们需要将数据集分为<strong>特征(Features)</strong>和<strong>目标变量(Target Variables)</strong>。</p>
+<ul>
+<li><strong>特征</strong>: <code>&#39;ingredients&#39;</code>，给我们提供了每个菜品所包含的佐料名称。</li>
+<li><strong>目标变量</strong>：<code>&#39;cuisine&#39;</code>，是我们希望预测的菜系分类。</li>
+</ul>
+<p>他们分别被存在 <code>train_ingredients</code> 和 <code>train_targets</code> 两个变量名中。</p>
+<h3 id="编程练习：数据提取"><a href="#编程练习：数据提取" class="headerlink" title="编程练习：数据提取"></a>编程练习：数据提取</h3><ul>
+<li>将<code>train_content</code>中的<code>ingredients</code>赋值到<code>train_integredients</code></li>
+<li>将<code>train_content</code>中的<code>cuisine</code>赋值到<code>train_targets</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：将特征与目标变量分别赋值</span></span><br><span class="line">train_ingredients = train_content[<span class="string">'ingredients'</span>]</span><br><span class="line">train_targets = train_content[<span class="string">'cuisine'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### <span class="doctag">TODO:</span> 打印结果，检查是否正确赋值</span></span><br><span class="line">display(train_ingredients)</span><br><span class="line">display(train_targets)</span><br></pre></td></tr></table></figure>
+<pre><code>0        [romaine lettuce, black olives, grape tomatoes, garlic, pepper, purple onion, seasoning, garbanzo beans, feta cheese...
+1        [plain flour, ground pepper, salt, tomatoes, ground black pepper, thyme, eggs, green tomatoes, yellow corn meal, mil...
+2        [eggs, pepper, salt, mayonaise, cooking oil, green chilies, grilled chicken breasts, garlic powder, yellow onion, so...
+3                                                                                            [water, vegetable oil, wheat, salt]
+4        [black pepper, shallots, cornflour, cayenne pepper, onions, garlic paste, milk, butter, salt, lemon juice, water, ch...
+5        [plain flour, sugar, butter, eggs, fresh ginger root, salt, ground cinnamon, milk, vanilla extract, ground ginger, p...
+6        [olive oil, salt, medium shrimp, pepper, garlic, chopped cilantro, jalapeno chilies, flat leaf parsley, skirt steak,...
+7        [sugar, pistachio nuts, white almond bark, flour, vanilla extract, olive oil, almond extract, eggs, baking powder, d...
+8        [olive oil, purple onion, fresh pineapple, pork, poblano peppers, corn tortillas, cheddar cheese, ground black peppe...
+9                                [chopped tomatoes, fresh basil, garlic, extra-virgin olive oil, kosher salt, flat leaf parsley]
+10       [pimentos, sweet pepper, dried oregano, olive oil, garlic, sharp cheddar cheese, pepper, swiss cheese, provolone che...
+11       [low sodium soy sauce, fresh ginger, dry mustard, green beans, white pepper, sesame oil, scallions, canola oil, suga...
+12       [Italian parsley leaves, walnuts, hot red pepper flakes, extra-virgin olive oil, fresh lemon juice, trout fillet, ga...
+13       [ground cinnamon, fresh cilantro, chili powder, ground coriander, kosher salt, ground black pepper, garlic, plum tom...
+14       [fresh parmesan cheese, butter, all-purpose flour, fat free less sodium chicken broth, chopped fresh chives, gruyere...
+15       [tumeric, vegetable stock, tomatoes, garam masala, naan, red lentils, red chili peppers, onions, spinach, sweet pota...
+16                                                                  [greek yogurt, lemon curd, confectioners sugar, raspberries]
+17                                                 [italian seasoning, broiler-fryer chicken, mayonaise, zesty italian dressing]
+18                                                                              [sugar, hot chili, asian fish sauce, lime juice]
+19       [soy sauce, vegetable oil, red bell pepper, chicken broth, yellow squash, garlic chili sauce, sliced green onions, b...
+20       [pork loin, roasted peanuts, chopped cilantro fresh, hoisin sauce, creamy peanut butter, chopped fresh mint, thai ba...
+21                                          [roma tomatoes, kosher salt, purple onion, jalapeno chilies, lime, chopped cilantro]
+22                                                [low-fat mayonnaise, pepper, salt, baking potatoes, eggs, spicy brown mustard]
+23       [sesame seeds, red pepper, yellow peppers, water, extra firm tofu, broccoli, soy sauce, orange bell pepper, arrowroo...
+24       [marinara sauce, flat leaf parsley, olive oil, linguine, capers, crushed red pepper flakes, olives, lemon zest, garlic]
+25       [sugar, lo mein noodles, salt, chicken broth, light soy sauce, flank steak, beansprouts, dried black mushrooms, pepp...
+26                     [herbs, lemon juice, fresh tomatoes, paprika, mango, stock, chile pepper, onions, red chili peppers, oil]
+27       [ground black pepper, butter, sliced mushrooms, sherry, salt, grated parmesan cheese, heavy cream, spaghetti, chicke...
+28       [green bell pepper, egg roll wrappers, sweet and sour sauce, corn starch, molasses, vegetable oil, oil, soy sauce, s...
+29                                                                     [flour tortillas, cheese, breakfast sausages, large eggs]
+                                                                  ...                                                           
+39744                [extra-virgin olive oil, oregano, potatoes, garlic cloves, pepper, salt, yellow mustard, fresh lemon juice]
+39745                                                      [quinoa, extra-virgin olive oil, fresh thyme leaves, scallion greens]
+39746    [clove, bay leaves, ginger, chopped cilantro, ground turmeric, white onion, cinnamon, cardamom pods, serrano chile, ...
+39747                                                   [water, sugar, grated lemon zest, butter, pitted date, blanched almonds]
+39748    [sea salt, pizza doughs, all-purpose flour, cornmeal, extra-virgin olive oil, shredded mozzarella cheese, kosher sal...
+39749    [kosher salt, minced onion, tortilla chips, sugar, tomato juice, cilantro leaves, avocado, lime juice, roma tomatoes...
+39750    [ground black pepper, chicken breasts, salsa, cheddar cheese, pepper jack, heavy cream, red enchilada sauce, unsalte...
+39751    [olive oil, cayenne pepper, chopped cilantro fresh, boneless chicken skinless thigh, fine sea salt, low salt chicken...
+39752                                                     [self rising flour, milk, white sugar, butter, peaches in light syrup]
+39753    [rosemary sprigs, lemon zest, garlic cloves, ground black pepper, vegetable broth, fresh basil leaves, minced garlic...
+39754    [jasmine rice, bay leaves, sticky rice, rotisserie chicken, chopped cilantro, large eggs, vegetable oil, yellow onio...
+39755    [mint leaves, cilantro leaves, ghee, tomatoes, cinnamon, oil, basmati rice, garlic paste, salt, coconut milk, clove,...
+39756        [vegetable oil, cinnamon sticks, water, all-purpose flour, piloncillo, salt, orange zest, baking powder, hot water]
+39757                                             [red bell pepper, garlic cloves, extra-virgin olive oil, feta cheese crumbles]
+39758    [milk, salt, ground cayenne pepper, ground lamb, ground cinnamon, ground black pepper, pomegranate, chopped fresh mi...
+39759    [red chili peppers, sea salt, onions, water, chilli bean sauce, caster sugar, garlic, white vinegar, chili oil, cucu...
+39760                                                   [butter, large eggs, cornmeal, baking powder, boiling water, milk, salt]
+39761    [honey, chicken breast halves, cilantro leaves, carrots, soy sauce, Sriracha, wonton wrappers, freshly ground pepper...
+39762    [curry powder, salt, chicken, water, vegetable oil, basmati rice, eggs, finely chopped onion, lemon juice, pepper, m...
+39763    [fettuccine pasta, low-fat cream cheese, garlic, nonfat evaporated milk, grated parmesan cheese, corn starch, nonfat...
+39764    [chili powder, worcestershire sauce, celery, red kidney beans, lean ground beef, stewed tomatoes, dried parsley, pep...
+39765                                                             [coconut, unsweetened coconut milk, mint leaves, plain yogurt]
+39766                    [rutabaga, ham, thick-cut bacon, potatoes, fresh parsley, salt, onions, pepper, carrots, pork sausages]
+39767    [low-fat sour cream, grated parmesan cheese, salt, dried oregano, low-fat cottage cheese, butter, onions, olive oil,...
+39768    [shredded cheddar cheese, crushed cheese crackers, cheddar cheese soup, cream of chicken soup, hot sauce, diced gree...
+39769    [light brown sugar, granulated sugar, butter, warm water, large eggs, all-purpose flour, whole wheat flour, cooking ...
+39770    [KRAFT Zesty Italian Dressing, purple onion, broccoli florets, rotini, pitted black olives, Kraft Grated Parmesan Ch...
+39771    [eggs, citrus fruit, raisins, sourdough starter, flour, hot tea, sugar, ground nutmeg, salt, ground cinnamon, milk, ...
+39772    [boneless chicken skinless thigh, minced garlic, steamed white rice, baking powder, corn starch, dark soy sauce, kos...
+39773    [green chile, jalapeno chilies, onions, ground black pepper, salt, chopped cilantro fresh, green bell pepper, garlic...
+Name: ingredients, Length: 39774, dtype: object
+
+
+
+0               greek
+1         southern_us
+2            filipino
+3              indian
+4              indian
+5            jamaican
+6             spanish
+7             italian
+8             mexican
+9             italian
+10            italian
+11            chinese
+12            italian
+13            mexican
+14            italian
+15             indian
+16            british
+17            italian
+18               thai
+19         vietnamese
+20               thai
+21            mexican
+22        southern_us
+23            chinese
+24            italian
+25            chinese
+26       cajun_creole
+27            italian
+28            chinese
+29            mexican
+             ...     
+39744           greek
+39745         spanish
+39746          indian
+39747        moroccan
+39748         italian
+39749         mexican
+39750         mexican
+39751        moroccan
+39752     southern_us
+39753         italian
+39754      vietnamese
+39755          indian
+39756         mexican
+39757           greek
+39758           greek
+39759          korean
+39760     southern_us
+39761         chinese
+39762          indian
+39763         italian
+39764         mexican
+39765          indian
+39766           irish
+39767         italian
+39768         mexican
+39769           irish
+39770         italian
+39771           irish
+39772         chinese
+39773         mexican
+Name: cuisine, Length: 39774, dtype: object
+</code></pre><h3 id="编程练习：基础统计运算"><a href="#编程练习：基础统计运算" class="headerlink" title="编程练习：基础统计运算"></a>编程练习：基础统计运算</h3><p>你的第一个编程练习是计算有关菜系佐料的统计数据。我们已为你导入了 <code>numpy</code>，你需要使用这个库来执行必要的计算。这些统计数据对于分析模型的预测结果非常重要的。
+在下面的代码中，你要做的是：</p>
+<ul>
+<li>使用最频繁的佐料前10分别有哪些？</li>
+<li>意大利菜中最常见的10个佐料有哪些？</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计佐料出现次数，并赋值到sum_ingredients字典中</span></span><br><span class="line">sum_ingredients = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> train_content[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> i:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] += <span class="number">1</span></span><br><span class="line">sum_ingredients</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;sugar&apos;: 760,
+ &apos;pistachio nuts&apos;: 7,
+ &apos;white almond bark&apos;: 1,
+ &apos;flour&apos;: 142,
+ &apos;vanilla extract&apos;: 219,
+ &apos;olive oil&apos;: 3111,
+ &apos;almond extract&apos;: 56,
+ &apos;eggs&apos;: 627,
+ &apos;baking powder&apos;: 186,
+ &apos;dried cranberries&apos;: 8,
+ &apos;chopped tomatoes&apos;: 37,
+ &apos;fresh basil&apos;: 787,
+ &apos;garlic&apos;: 1471,
+ &apos;extra-virgin olive oil&apos;: 1362,
+ &apos;kosher salt&apos;: 656,
+ &apos;flat leaf parsley&apos;: 588,
+ &apos;pimentos&apos;: 16,
+ &apos;sweet pepper&apos;: 7,
+ &apos;dried oregano&apos;: 626,
+ &apos;sharp cheddar cheese&apos;: 9,
+ &apos;pepper&apos;: 965,
+ &apos;swiss cheese&apos;: 7,
+ &apos;provolone cheese&apos;: 138,
+ &apos;canola oil&apos;: 41,
+ &apos;mushrooms&apos;: 184,
+ &apos;black olives&apos;: 67,
+ &apos;sausages&apos;: 58,
+ &apos;Italian parsley leaves&apos;: 74,
+ &apos;walnuts&apos;: 38,
+ &apos;hot red pepper flakes&apos;: 76,
+ &apos;fresh lemon juice&apos;: 471,
+ &apos;trout fillet&apos;: 3,
+ &apos;garlic cloves&apos;: 1619,
+ &apos;chipotle chile&apos;: 2,
+ &apos;fine sea salt&apos;: 77,
+ &apos;fresh parmesan cheese&apos;: 251,
+ &apos;butter&apos;: 1030,
+ &apos;all-purpose flour&apos;: 918,
+ &apos;fat free less sodium chicken broth&apos;: 158,
+ &apos;chopped fresh chives&apos;: 68,
+ &apos;gruyere cheese&apos;: 18,
+ &apos;ground black pepper&apos;: 1444,
+ &apos;bacon slices&apos;: 48,
+ &apos;gnocchi&apos;: 41,
+ &apos;fat free milk&apos;: 42,
+ &apos;cooking spray&apos;: 491,
+ &apos;salt&apos;: 3454,
+ &apos;italian seasoning&apos;: 347,
+ &apos;broiler-fryer chicken&apos;: 1,
+ &apos;mayonaise&apos;: 63,
+ &apos;zesty italian dressing&apos;: 11,
+ &apos;marinara sauce&apos;: 222,
+ &apos;linguine&apos;: 193,
+ &apos;capers&apos;: 306,
+ &apos;crushed red pepper flakes&apos;: 179,
+ &apos;olives&apos;: 29,
+ &apos;lemon zest&apos;: 98,
+ &apos;sliced mushrooms&apos;: 131,
+ &apos;sherry&apos;: 13,
+ &apos;grated parmesan cheese&apos;: 1580,
+ &apos;heavy cream&apos;: 300,
+ &apos;spaghetti&apos;: 296,
+ &apos;chicken broth&apos;: 245,
+ &apos;cooked chicken&apos;: 33,
+ &apos;yellow corn meal&apos;: 64,
+ &apos;boiling water&apos;: 63,
+ &apos;sea salt&apos;: 202,
+ &apos;onions&apos;: 1240,
+ &apos;crushed garlic&apos;: 20,
+ &apos;green onions&apos;: 144,
+ &apos;white sugar&apos;: 231,
+ &apos;dried basil&apos;: 425,
+ &apos;diced tomatoes&apos;: 429,
+ &apos;bread slices&apos;: 15,
+ &apos;great northern beans&apos;: 21,
+ &apos;shrimp&apos;: 59,
+ &apos;sage leaves&apos;: 89,
+ &apos;Oscar Mayer Deli Fresh Smoked Ham&apos;: 1,
+ &apos;hoagie rolls&apos;: 8,
+ &apos;salami&apos;: 41,
+ &apos;giardiniera&apos;: 5,
+ &apos;mozzarella cheese&apos;: 396,
+ &apos;pepperoni&apos;: 48,
+ &apos;bay leaves&apos;: 107,
+ &apos;crushed red pepper&apos;: 418,
+ &apos;mussels&apos;: 38,
+ &apos;basil&apos;: 174,
+ &apos;black pepper&apos;: 636,
+ &apos;dry white wine&apos;: 658,
+ &apos;tomatoes&apos;: 601,
+ &apos;finely chopped onion&apos;: 145,
+ &apos;lemon&apos;: 236,
+ &apos;pesto&apos;: 113,
+ &apos;salmon fillets&apos;: 11,
+ &apos;white wine&apos;: 176,
+ &apos;pizza crust&apos;: 36,
+ &apos;plum tomatoes&apos;: 340,
+ &apos;part-skim mozzarella cheese&apos;: 201,
+ &apos;crushed tomatoes&apos;: 241,
+ &apos;fresh rosemary&apos;: 292,
+ &apos;boneless pork loin&apos;: 9,
+ &apos;pappardelle&apos;: 11,
+ &apos;red pepper&apos;: 49,
+ &apos;Italian bread&apos;: 89,
+ &apos;balsamic vinegar&apos;: 348,
+ &apos;sausage casings&apos;: 78,
+ &apos;honey&apos;: 126,
+ &apos;shredded mozzarella cheese&apos;: 413,
+ &apos;roasted red peppers&apos;: 114,
+ &apos;penne pasta&apos;: 146,
+ &apos;spinach&apos;: 119,
+ &apos;asiago&apos;: 72,
+ &apos;whole wheat pasta&apos;: 13,
+ &apos;sweet onion&apos;: 69,
+ &apos;grape tomatoes&apos;: 98,
+ &apos;chestnuts&apos;: 9,
+ &apos;granulated sugar&apos;: 82,
+ &apos;whole milk ricotta cheese&apos;: 47,
+ &apos;coffee ice cream&apos;: 3,
+ &apos;large eggs&apos;: 625,
+ &apos;mascarpone&apos;: 124,
+ &apos;rum&apos;: 12,
+ &apos;powdered sugar&apos;: 69,
+ &apos;semisweet chocolate&apos;: 46,
+ &apos;chestnut flour&apos;: 1,
+ &apos;starchy potatoes&apos;: 2,
+ &apos;grated nutmeg&apos;: 64,
+ &apos;blood orange&apos;: 5,
+ &apos;freshly ground pepper&apos;: 316,
+ &apos;fennel bulb&apos;: 103,
+ &apos;low salt chicken broth&apos;: 138,
+ &apos;dijon mustard&apos;: 99,
+ &apos;corn starch&apos;: 83,
+ &apos;white wine vinegar&apos;: 73,
+ &apos;tomato sauce&apos;: 357,
+ &apos;shredded carrots&apos;: 11,
+ &apos;english muffins, split and toasted&apos;: 2,
+ &apos;chopped onion&apos;: 327,
+ &apos;vegetable oil cooking spray&apos;: 73,
+ &apos;chopped green bell pepper&apos;: 39,
+ &apos;cheddar cheese&apos;: 18,
+ &apos;lasagna noodles&apos;: 196,
+ &apos;ranch dressing&apos;: 5,
+ &apos;evaporated milk&apos;: 13,
+ &apos;fresh parsley&apos;: 631,
+ &apos;fresh oregano&apos;: 209,
+ &apos;cold water&apos;: 58,
+ &apos;chocolate morsels&apos;: 4,
+ &apos;cream sweeten whip&apos;: 3,
+ &apos;instant espresso granules&apos;: 4,
+ &apos;whipping cream&apos;: 162,
+ &apos;kahlúa&apos;: 12,
+ &apos;chocolate covered coffee beans&apos;: 1,
+ &apos;unflavored gelatin&apos;: 48,
+ &apos;pound cake&apos;: 7,
+ &apos;pinenuts&apos;: 252,
+ &apos;zucchini&apos;: 326,
+ &apos;baby carrots&apos;: 15,
+ &apos;fresh basil leaves&apos;: 352,
+ &apos;asparagus spears&apos;: 24,
+ &apos;white onion&apos;: 48,
+ &apos;carrots&apos;: 379,
+ &apos;frozen peas&apos;: 67,
+ &apos;arborio rice&apos;: 261,
+ &apos;yellow crookneck squash&apos;: 3,
+ &apos;fresh leav spinach&apos;: 25,
+ &apos;cheese tortellini&apos;: 53,
+ &apos;cherry tomatoes&apos;: 170,
+ &apos;navy beans&apos;: 8,
+ &apos;pecorino romano cheese&apos;: 146,
+ &apos;fresh fava bean&apos;: 12,
+ &apos;italian sausage&apos;: 129,
+ &apos;large garlic cloves&apos;: 293,
+ &apos;pasta sheets&apos;: 9,
+ &apos;water&apos;: 1052,
+ &apos;Turkish bay leaves&apos;: 3,
+ &apos;dried chickpeas&apos;: 1,
+ &apos;celery ribs&apos;: 130,
+ &apos;semolina&apos;: 14,
+ &apos;warm water&apos;: 182,
+ &apos;vine ripened tomatoes&apos;: 12,
+ &apos;bittersweet chocolate&apos;: 42,
+ &apos;fat free yogurt&apos;: 4,
+ &apos;skim milk&apos;: 16,
+ &apos;angel food cake&apos;: 4,
+ &apos;unsweetened cocoa powder&apos;: 84,
+ &apos;instant espresso&apos;: 7,
+ &apos;garlic salt&apos;: 61,
+ &apos;tomato paste&apos;: 376,
+ &apos;veal cutlets&apos;: 18,
+ &apos;broccoli rabe&apos;: 47,
+ &apos;whole milk&apos;: 157,
+ &apos;parmigiano reggiano cheese&apos;: 306,
+ &apos;dry bread crumbs&apos;: 115,
+ &apos;fontina&apos;: 27,
+ &apos;unsalted butter&apos;: 564,
+ &apos;pasta sauce&apos;: 246,
+ &apos;olive oil flavored cooking spray&apos;: 29,
+ &apos;frozen chopped spinach&apos;: 131,
+ &apos;large egg whites&apos;: 138,
+ &apos;part-skim ricotta cheese&apos;: 111,
+ &apos;manicotti shells&apos;: 18,
+ &apos;fettucine&apos;: 136,
+ &apos;parmesan cheese&apos;: 474,
+ &apos;large shrimp&apos;: 77,
+ &apos;chicken bouillon&apos;: 10,
+ &apos;cream of tartar&apos;: 9,
+ &apos;orange liqueur&apos;: 15,
+ &apos;heavy whipping cream&apos;: 73,
+ &apos;semi-sweet chocolate morsels&apos;: 21,
+ &apos;cake flour&apos;: 24,
+ &apos;confectioners sugar&apos;: 94,
+ &apos;ground cinnamon&apos;: 85,
+ &apos;ricotta cheese&apos;: 333,
+ &apos;cream cheese&apos;: 105,
+ &apos;dried porcini mushrooms&apos;: 81,
+ &apos;chopped fresh thyme&apos;: 151,
+ &apos;beef rib short&apos;: 5,
+ &apos;dry red wine&apos;: 131,
+ &apos;hot water&apos;: 85,
+ &apos;fat free less sodium beef broth&apos;: 7,
+ &apos;cremini mushrooms&apos;: 67,
+ &apos;pitted kalamata olives&apos;: 94,
+ &apos;cauliflower&apos;: 34,
+ &apos;whole peeled tomatoes&apos;: 60,
+ &apos;swiss chard&apos;: 63,
+ &apos;banana squash&apos;: 1,
+ &apos;vegetable broth&apos;: 81,
+ &apos;bay leaf&apos;: 130,
+ &apos;cannellini beans&apos;: 161,
+ &apos;boneless skinless chicken breast halves&apos;: 182,
+ &apos;light sour cream&apos;: 5,
+ &apos;fava beans&apos;: 13,
+ &apos;finely chopped fresh parsley&apos;: 33,
+ &apos;fresh tarragon&apos;: 33,
+ &apos;grated lemon zest&apos;: 142,
+ &apos;chopped almonds&apos;: 12,
+ &apos;broccoli&apos;: 64,
+ &apos;potatoes&apos;: 59,
+ &apos;self rising flour&apos;: 1,
+ &apos;eggplant&apos;: 204,
+ &apos;chicken&apos;: 84,
+ &apos;pitas&apos;: 5,
+ &apos;goat cheese&apos;: 92,
+ &apos;reduced fat milk&apos;: 29,
+ &apos;smoked trout&apos;: 1,
+ &apos;fresh dill&apos;: 16,
+ &apos;asparagus&apos;: 123,
+ &apos;oil&apos;: 92,
+ &apos;ricotta salata&apos;: 22,
+ &apos;pecorino cheese&apos;: 52,
+ &apos;grana padano&apos;: 7,
+ &apos;pasta&apos;: 255,
+ &apos;cracked black pepper&apos;: 117,
+ &apos;green bell pepper&apos;: 163,
+ &apos;vidalia onion&apos;: 19,
+ &apos;smoked gouda&apos;: 14,
+ &apos;baby spinach leaves&apos;: 39,
+ &apos;shredded sharp cheddar cheese&apos;: 17,
+ &apos;small red potato&apos;: 13,
+ &apos;Bertolli® Classico Olive Oil&apos;: 16,
+ &apos;bacon, crisp-cooked and crumbled&apos;: 2,
+ &apos;bertolli vineyard premium collect marinara with burgundi wine sauc&apos;: 5,
+ &apos;bread crumb fresh&apos;: 74,
+ &apos;(    oz.) tomato sauce&apos;: 7,
+ &apos;ground veal&apos;: 35,
+ &apos;italian seasoning mix&apos;: 1,
+ &apos;beef&apos;: 22,
+ &apos;fat skimmed chicken broth&apos;: 28,
+ &apos;solid pack pumpkin&apos;: 4,
+ &apos;ground nutmeg&apos;: 127,
+ &apos;white rice&apos;: 11,
+ &apos;ground pepper&apos;: 77,
+ &apos;fresh thyme leaves&apos;: 53,
+ &apos;pistachios&apos;: 10,
+ &apos;dried cherry&apos;: 6,
+ &apos;prosciutto&apos;: 256,
+ &apos;romano cheese&apos;: 89,
+ &apos;parsley leaves&apos;: 23,
+ &apos;shallots&apos;: 316,
+ &apos;fresh raspberries&apos;: 14,
+ &apos;dry vermouth&apos;: 18,
+ &apos;canned low sodium chicken broth&apos;: 46,
+ &apos;chicken livers&apos;: 14,
+ &apos;raisins&apos;: 39,
+ &apos;seasoned bread crumbs&apos;: 71,
+ &apos;minced garlic&apos;: 334,
+ &apos;half &amp; half&apos;: 89,
+ &apos;ground beef&apos;: 237,
+ &apos;jack cheese&apos;: 9,
+ &apos;vegetables&apos;: 29,
+ &apos;lemon juice&apos;: 216,
+ &apos;ricotta&apos;: 95,
+ &apos;yellow onion&apos;: 153,
+ &apos;reduced sodium chicken broth&apos;: 36,
+ &apos;chopped fresh mint&apos;: 54,
+ &apos;purple onion&apos;: 350,
+ &apos;low sodium chicken broth&apos;: 78,
+ &apos;polenta&apos;: 132,
+ &apos;bell pepper&apos;: 38,
+ &apos;olive oil cooking spray&apos;: 13,
+ &apos;bacon&apos;: 124,
+ &apos;egg yolks&apos;: 82,
+ &apos;duck breast halves&apos;: 1,
+ &apos;fennel seeds&apos;: 114,
+ &apos;roma tomatoes&apos;: 44,
+ &apos;pesto sauce&apos;: 26,
+ &apos;arugula&apos;: 125,
+ &apos;summer squash&apos;: 9,
+ &apos;red wine vinegar&apos;: 227,
+ &apos;ciabatta&apos;: 21,
+ &apos;juice&apos;: 72,
+ &apos;fresh herbs&apos;: 14,
+ &apos;grated lemon peel&apos;: 89,
+ &apos;dough&apos;: 46,
+ &apos;coarse sea salt&apos;: 17,
+ &apos;rosemary leaves&apos;: 10,
+ &apos;red pepper flakes&apos;: 206,
+ &apos;brie cheese&apos;: 14,
+ &apos;cheese ravioli&apos;: 18,
+ &apos;Italian seasoned breadcrumbs&apos;: 23,
+ &apos;cheese&apos;: 127,
+ &apos;parsley&apos;: 95,
+ &apos;fat-free cottage cheese&apos;: 11,
+ &apos;oven-ready lasagna noodles&apos;: 43,
+ &apos;margarine&apos;: 38,
+ &apos;radicchio&apos;: 40,
+ &apos;garbanzo beans&apos;: 18,
+ &apos;orzo pasta&apos;: 16,
+ &apos;rubbed sage&apos;: 17,
+ &apos;dried rosemary&apos;: 96,
+ &apos;canned beef broth&apos;: 4,
+ &apos;kale leaves&apos;: 7,
+ &apos;chicken noodle soup&apos;: 1,
+ &apos;italian style rolls&apos;: 1,
+ &apos;genoa salami&apos;: 22,
+ &apos;oregano&apos;: 114,
+ &apos;boiled ham&apos;: 1,
+ &apos;capicola&apos;: 4,
+ &apos;iceberg lettuce&apos;: 6,
+ &apos;jalapeno chilies&apos;: 20,
+ &apos;diced celery&apos;: 15,
+ &apos;italian salad dressing mix&apos;: 7,
+ &apos;chopped cilantro fresh&apos;: 25,
+ &apos;cider vinegar&apos;: 14,
+ &apos;red bell pepper&apos;: 354,
+ &apos;sliced green onions&apos;: 40,
+ &apos;barbecue sauce&apos;: 9,
+ &apos;prepared pizza crust&apos;: 2,
+ &apos;boneless skinless chicken breasts&apos;: 132,
+ &apos;Sargento® Traditional Cut Shredded Mozzarella Cheese&apos;: 1,
+ &apos;vegetable oil&apos;: 253,
+ &apos;basil pesto sauce&apos;: 33,
+ &apos;aioli&apos;: 3,
+ &apos;cooked shrimp&apos;: 11,
+ &apos;mozzarella balls&apos;: 4,
+ &apos;sun-dried tomatoes&apos;: 118,
+ &apos;milk&apos;: 277,
+ &apos;condensed cream of mushroom soup&apos;: 16,
+ &apos;fettuccine pasta&apos;: 24,
+ &apos;frozen spinach&apos;: 24,
+ &apos;lasagne&apos;: 6,
+ &apos;passata&apos;: 3,
+ &apos;fat free cream cheese&apos;: 8,
+ &apos;french bread&apos;: 54,
+ &apos;non-fat sour cream&apos;: 14,
+ &apos;reduced fat swiss cheese&apos;: 3,
+ &apos;fat-free mayonnaise&apos;: 8,
+ &apos;roasted garlic&apos;: 7,
+ &apos;seasoning&apos;: 12,
+ &apos;kale&apos;: 58,
+ &apos;sundried tomato paste&apos;: 4,
+ &apos;dried thyme&apos;: 145,
+ &apos;porcini&apos;: 7,
+ &apos;fresh thyme&apos;: 62,
+ &apos;sourdough loaf&apos;: 4,
+ &apos;crust&apos;: 3,
+ &apos;duck fat&apos;: 1,
+ &apos;squabs&apos;: 1,
+ &apos;confit&apos;: 2,
+ &apos;aged gouda&apos;: 1,
+ &apos;soppressata&apos;: 16,
+ &apos;artichokes&apos;: 44,
+ &apos;anchovy fillets&apos;: 124,
+ &apos;lemon slices&apos;: 12,
+ &apos;chicken cutlets&apos;: 23,
+ &apos;saffron threads&apos;: 28,
+ &apos;orzo&apos;: 51,
+ &apos;veal chops&apos;: 4,
+ &apos;oil cured olives&apos;: 3,
+ &apos;pasta rotel&apos;: 2,
+ &apos;pasta water&apos;: 10,
+ &apos;cooking wine&apos;: 3,
+ &apos;crusty bread&apos;: 10,
+ &apos;fresh tomatoes&apos;: 32,
+ &apos;uncooked rigatoni&apos;: 6,
+ &apos;grating cheese&apos;: 6,
+ &apos;vegetable stock&apos;: 29,
+ &apos;freshly grated parmesan&apos;: 87,
+ &apos;florets&apos;: 15,
+ &apos;sliced almonds&apos;: 37,
+ &apos;thyme sprigs&apos;: 45,
+ &apos;egg whites&apos;: 95,
+ &apos;greek yogurt&apos;: 6,
+ &apos;penne&apos;: 99,
+ &apos;fish fillets&apos;: 10,
+ &apos;russet potatoes&apos;: 40,
+ &apos;crumbled gorgonzola&apos;: 29,
+ &apos;fontina cheese&apos;: 84,
+ &apos;spinach leaves&apos;: 25,
+ &apos;orange&apos;: 38,
+ &apos;lamb shanks&apos;: 11,
+ &apos;clove&apos;: 19,
+ &apos;rosemary sprigs&apos;: 50,
+ &apos;italian eggplant&apos;: 7,
+ &apos;Sicilian olives&apos;: 7,
+ &apos;mint sprigs&apos;: 28,
+ &apos;peasant bread&apos;: 7,
+ &apos;garlic powder&apos;: 252,
+ &apos;Kraft Grated Parmesan Cheese&apos;: 10,
+ &apos;peas&apos;: 42,
+ &apos;Oscar Mayer Bacon&apos;: 1,
+ &apos;Philadelphia Cream Cheese&apos;: 9,
+ &apos;garnish&apos;: 3,
+ &apos;dried navy beans&apos;: 5,
+ &apos;celery&apos;: 155,
+ &apos;diced onions&apos;: 42,
+ &apos;wheat berries&apos;: 4,
+ &apos;parsley sprigs&apos;: 38,
+ &apos;thyme&apos;: 51,
+ &apos;polenta prepar&apos;: 5,
+ &apos;chicken breast halves&apos;: 35,
+ &apos;dry sherry&apos;: 22,
+ &apos;cocoa powder&apos;: 9,
+ &apos;dried parsley&apos;: 90,
+ &apos;chopped garlic&apos;: 69,
+ &apos;baking soda&apos;: 68,
+ &apos;coarse salt&apos;: 128,
+ &apos;rigatoni&apos;: 60,
+ &apos;nutmeg&apos;: 40,
+ &apos;artichoke hearts&apos;: 99,
+ &apos;pancetta&apos;: 153,
+ &apos;parsnips&apos;: 7,
+ &apos;whole wheat fettuccine&apos;: 4,
+ &apos;ground sirloin&apos;: 20,
+ &apos;red wine&apos;: 99,
+ &apos;fresh marjoram&apos;: 29,
+ &apos;castellane&apos;: 2,
+ &apos;hot Italian sausages&apos;: 39,
+ &apos;jumbo pasta shells&apos;: 37,
+ &apos;fresh spinach&apos;: 87,
+ &apos;chicken breasts&apos;: 93,
+ &apos;gluten free blend&apos;: 1,
+ &apos;paprika&apos;: 76,
+ &apos;salt and ground black pepper&apos;: 66,
+ &apos;bone in skinless chicken thigh&apos;: 1,
+ &apos;figs&apos;: 10,
+ &apos;egg substitute&apos;: 26,
+ &apos;hot sauce&apos;: 20,
+ &apos;ham&apos;: 42,
+ &apos;balsamic vinaigrette&apos;: 6,
+ &apos;pitted olives&apos;: 15,
+ &apos;fresh chives&apos;: 24,
+ &apos;white mushrooms&apos;: 20,
+ &apos;haricots verts&apos;: 4,
+ &apos;fresh peas&apos;: 16,
+ &apos;bow-tie pasta&apos;: 86,
+ &apos;asparagus tips&apos;: 3,
+ &apos;green beans&apos;: 70,
+ &apos;low-fat cottage cheese&apos;: 14,
+ &apos;whole wheat lasagna noodles&apos;: 8,
+ &apos;shredded parmesan cheese&apos;: 38,
+ &apos;apricots&apos;: 5,
+ &apos;grappa&apos;: 9,
+ &apos;all purpose unbleached flour&apos;: 68,
+ &apos;dry yeast&apos;: 71,
+ &apos;worcestershire sauce&apos;: 54,
+ &apos;amaretti&apos;: 6,
+ &apos;frozen strawberries&apos;: 1,
+ &apos;strawberries&apos;: 48,
+ &apos;cooked ham&apos;: 9,
+ &apos;Alfredo sauce&apos;: 43,
+ &apos;chopped fresh sage&apos;: 91,
+ &apos;cheese slices&apos;: 11,
+ &apos;bread&apos;: 51,
+ &apos;morel&apos;: 2,
+ &apos;leeks&apos;: 106,
+ &apos;1% low-fat cottage cheese&apos;: 10,
+ &apos;feta cheese crumbles&apos;: 68,
+ &apos;pork belly&apos;: 2,
+ &apos;fresh sage&apos;: 29,
+ &apos;pork loin&apos;: 3,
+ &apos;sliced black olives&apos;: 49,
+ &apos;medium shrimp&apos;: 70,
+ &apos;red chili peppers&apos;: 22,
+ &apos;parmigiano-reggiano cheese&apos;: 53,
+ &apos;fresh mint&apos;: 53,
+ &apos;baguette&apos;: 119,
+ &apos;chicken legs&apos;: 7,
+ &apos;baby spinach&apos;: 117,
+ &apos;white beans&apos;: 38,
+ &apos;ground pork&apos;: 72,
+ &apos;romana&apos;: 1,
+ &apos;fresh mushrooms&apos;: 117,
+ &apos;crimini mushrooms&apos;: 26,
+ &apos;navel oranges&apos;: 10,
+ &apos;kalamata&apos;: 62,
+ &apos;sea scallops&apos;: 31,
+ &apos;ladyfingers&apos;: 40,
+ &apos;reduced fat cream cheese&apos;: 3,
+ &apos;whipped topping&apos;: 12,
+ &apos;wine&apos;: 15,
+ &apos;frozen broccoli&apos;: 5,
+ &apos;nonfat ricotta cheese&apos;: 32,
+ &apos;shells&apos;: 8,
+ &apos;reduced-fat cheese&apos;: 1,
+ &apos;cornflake cereal&apos;: 2,
+ &apos;beef brisket&apos;: 2,
+ &apos;dry pasta&apos;: 8,
+ &apos;white bread&apos;: 35,
+ &apos;pork&apos;: 10,
+ &apos;sweet italian sausage&apos;: 72,
+ &apos;prosecco&apos;: 10,
+ &apos;bread dough&apos;: 16,
+ &apos;baby lima beans&apos;: 3,
+ &apos;whipped cream&apos;: 15,
+ &apos;hot cocoa mix&apos;: 2,
+ &apos;brewed coffee&apos;: 18,
+ &apos;abbamele&apos;: 1,
+ &apos;wild mushrooms&apos;: 30,
+ &apos;chopped walnuts&apos;: 46,
+ &apos;fregola&apos;: 4,
+ &apos;savoy cabbage&apos;: 10,
+ &apos;mushroom caps&apos;: 17,
+ &apos;pinot grigio&apos;: 3,
+ &apos;liquid egg substitute&apos;: 1,
+ &apos;chocolate candy bars&apos;: 5,
+ &apos;cooked rice&apos;: 5,
+ &apos;bread crumbs&apos;: 103,
+ &apos;banana peppers&apos;: 5,
+ &apos;toasted walnuts&apos;: 7,
+ &apos;dark rum&apos;: 22,
+ &apos;dried fig&apos;: 11,
+ &apos;chopped parsley&apos;: 99,
+ &apos;ground white pepper&apos;: 33,
+ &quot;soft goat&apos;s cheese&quot;: 10,
+ &apos;truffle oil&apos;: 17,
+ &apos;hazelnuts&apos;: 53,
+ &apos;veal scallopini&apos;: 2,
+ &apos;elbow macaroni&apos;: 19,
+ &apos;bread flour&apos;: 77,
+ &apos;bread yeast&apos;: 1,
+ &apos;red potato&apos;: 26,
+ &apos;vegan parmesan cheese&apos;: 4,
+ &apos;ahi&apos;: 1,
+ &apos;golden brown sugar&apos;: 14,
+ &apos;anjou pears&apos;: 3,
+ &apos;granny smith apples&apos;: 6,
+ &apos;crystallized ginger&apos;: 10,
+ &apos;ice water&apos;: 7,
+ &apos;vegetable shortening&apos;: 5,
+ &apos;chinese five-spice powder&apos;: 1,
+ &apos;whole wheat flour&apos;: 21,
+ &apos;large egg yolks&apos;: 142,
+ &apos;lean ground beef&apos;: 135,
+ &apos;sausage links&apos;: 32,
+ &apos;pork chops&apos;: 8,
+ &apos;rosemary&apos;: 57,
+ &apos;nectarines&apos;: 5,
+ &apos;sweet cherries&apos;: 12,
+ &apos;orange zest&apos;: 28,
+ &apos;lavender buds&apos;: 1,
+ &apos;apricot halves&apos;: 4,
+ &apos;diced tomatoes in juice&apos;: 7,
+ &apos;scallions&apos;: 61,
+ &apos;italian salad dressing&apos;: 41,
+ &apos;short pasta&apos;: 7,
+ &apos;lemon wedge&apos;: 58,
+ &apos;porterhouse steaks&apos;: 4,
+ &apos;1% low-fat milk&apos;: 68,
+ &apos;golden raisins&apos;: 46,
+ &apos;cinnamon sticks&apos;: 18,
+ &apos;broccolini&apos;: 3,
+ &apos;salted butter&apos;: 11,
+ &apos;chicken stock&apos;: 142,
+ &apos;coffee granules&apos;: 12,
+ &apos;lemon rind&apos;: 34,
+ &apos;baby portobello mushrooms&apos;: 10,
+ &apos;broccoli florets&apos;: 64,
+ &apos;orecchiette&apos;: 41,
+ &apos;melted butter&apos;: 24,
+ &apos;pizza shells&apos;: 3,
+ &apos;frozen mixed thawed vegetables,&apos;: 2,
+ &apos;ragu old world style pasta sauc&apos;: 11,
+ &apos;loosely packed fresh basil leaves&apos;: 21,
+ &apos;whole wheat spaghetti&apos;: 22,
+ &apos;butternut squash&apos;: 62,
+ &apos;wonton wrappers&apos;: 17,
+ &apos;meat&apos;: 15,
+ &apos;pear tomatoes&apos;: 6,
+ &apos;gaeta olives&apos;: 5,
+ &apos;yukon gold potatoes&apos;: 39,
+ &apos;turbot&apos;: 2,
+ &apos;ground lamb&apos;: 6,
+ &apos;refrigerated pizza dough&apos;: 31,
+ &apos;potato gnocchi&apos;: 20,
+ &apos;cream&apos;: 27,
+ &apos;angel hair&apos;: 60,
+ &apos;lime juice&apos;: 6,
+ &apos;gelato&apos;: 4,
+ &apos;cherry preserves&apos;: 2,
+ &apos;amaretto liqueur&apos;: 4,
+ &apos;cherries&apos;: 14,
+ &apos;instant espresso powder&apos;: 22,
+ &apos;nuts&apos;: 3,
+ &apos;brown sugar&apos;: 67,
+ &apos;pie shell&apos;: 2,
+ &apos;marsala wine&apos;: 105,
+ &apos;basil leaves&apos;: 153,
+ &apos;cake&apos;: 7,
+ &apos;crabmeat&apos;: 11,
+ &apos;chopped fresh herbs&apos;: 8,
+ &apos;button mushrooms&apos;: 35,
+ &apos;escarole&apos;: 47,
+ &apos;chopped pecans&apos;: 28,
+ &apos;chocolate bars&apos;: 2,
+ &apos;coffee liqueur&apos;: 11,
+ &apos;flat anchovy&apos;: 5,
+ &apos;italian loaf&apos;: 4,
+ &apos;salad dressing&apos;: 23,
+ &apos;pitted black olives&apos;: 24,
+ &apos;rotini&apos;: 46,
+ &apos;frozen mixed vegetables&apos;: 4,
+ &apos;canned tomatoes&apos;: 26,
+ &apos;feta cheese&apos;: 36,
+ &apos;anise seed&apos;: 13,
+ &apos;top sirloin&apos;: 1,
+ &apos;candy&apos;: 3,
+ &apos;angel food cake mix&apos;: 2,
+ &apos;buttercream frosting&apos;: 1,
+ &apos;sour cream&apos;: 71,
+ &apos;shredded cheddar cheese&apos;: 42,
+ &apos;cottage cheese&apos;: 44,
+ &apos;noodles&apos;: 38,
+ &apos;lime&apos;: 5,
+ &apos;watermelon&apos;: 5,
+ &apos;risotto&apos;: 11,
+ &apos;ice cubes&apos;: 8,
+ &apos;peeled tomatoes&apos;: 32,
+ &apos;cooked vermicelli&apos;: 5,
+ &apos;buns&apos;: 1,
+ &apos;apple cider vinegar&apos;: 7,
+ &apos;ground red pepper&apos;: 34,
+ &apos;yellow bell pepper&apos;: 85,
+ &apos;active dry yeast&apos;: 128,
+ &apos;baking potatoes&apos;: 34,
+ &apos;grated romano cheese&apos;: 19,
+ &apos;quinoa&apos;: 8,
+ &apos;littleneck clams&apos;: 26,
+ &apos;whole wheat bread&apos;: 8,
+ &apos;cream cheese, soften&apos;: 40,
+ &apos;salad seasoning mix&apos;: 4,
+ &apos;cucumber&apos;: 25,
+ &apos;pappardelle pasta&apos;: 6,
+ &apos;fresh mozzarella&apos;: 95,
+ &apos;tuna steaks&apos;: 16,
+ &apos;shredded zucchini&apos;: 4,
+ &apos;dried pasta&apos;: 13,
+ &apos;berries&apos;: 5,
+ &apos;clams&apos;: 50,
+ &apos;ground round&apos;: 25,
+ &apos;fettuccine, cook and drain&apos;: 4,
+ &apos;tomato purée&apos;: 47,
+ &apos;chopped celery&apos;: 103,
+ &apos;ditalini pasta&apos;: 15,
+ &apos;lobster&apos;: 11,
+ &apos;almonds&apos;: 35,
+ &apos;anise&apos;: 13,
+ &apos;anise extract&apos;: 12,
+ &apos;brandy&apos;: 25,
+ &apos;boneless chicken breast&apos;: 19,
+ &apos;buffalo sauce&apos;: 2,
+ &apos;blue cheese dressing&apos;: 3,
+ &apos;cannelloni shells&apos;: 2,
+ &apos;butter cooking spray&apos;: 3,
+ &apos;light alfredo sauce&apos;: 7,
+ &apos;rice&apos;: 12,
+ &apos;cream of chicken soup&apos;: 9,
+ &apos;chees fresh mozzarella&apos;: 72,
+ &apos;shrimp tails&apos;: 2,
+ &apos;bay scallops&apos;: 12,
+ &apos;lump crab meat&apos;: 17,
+ &apos;fish stock&apos;: 11,
+ &apos;capellini&apos;: 8,
+ &apos;veal&apos;: 17,
+ &apos;beef stock&apos;: 24,
+ &apos;chard&apos;: 3,
+ &apos;grated Gruyère cheese&apos;: 5,
+ &apos;panko&apos;: 25,
+ &apos;chickpeas&apos;: 37,
+ &apos;white cornmeal&apos;: 4,
+ &apos;red bell pepper, sliced&apos;: 2,
+ &apos;herbs&apos;: 20,
+ &apos;chicken thighs&apos;: 32,
+ &apos;green bell pepper, slice&apos;: 13,
+ &apos;vanilla&apos;: 28,
+ &apos;liqueur&apos;: 10,
+ &apos;aged balsamic vinegar&apos;: 8,
+ &apos;limoncello&apos;: 6,
+ &apos;golden beets&apos;: 4,
+ &apos;pizza doughs&apos;: 103,
+ &apos;black cod&apos;: 2,
+ &apos;green cabbage&apos;: 12,
+ &apos;cavolo nero&apos;: 4,
+ &apos;winter squash&apos;: 1,
+ &apos;thin pizza crust&apos;: 9,
+ &apos;toasted pine nuts&apos;: 30,
+ &apos;grated parmesan romano&apos;: 2,
+ &apos;cumin seed&apos;: 4,
+ &apos;cilantro leaves&apos;: 7,
+ &apos;seasoning salt&apos;: 15,
+ &apos;mixed greens&apos;: 16,
+ &apos;turkey breast cutlets&apos;: 9,
+ &apos;cod fillets&apos;: 8,
+ &apos;barilla&apos;: 4,
+ &apos;linguini&apos;: 9,
+ &apos;perciatelli&apos;: 7,
+ &apos;crumbled blue cheese&apos;: 16,
+ &apos;black mission figs&apos;: 4,
+ &apos;swordfish steaks&apos;: 11,
+ &apos;anchovy paste&apos;: 47,
+ &apos;chuck&apos;: 8,
+ &apos;tomatoes with juice&apos;: 30,
+ &apos;store bought low sodium chicken stock&apos;: 2,
+ &apos;fresh lavender&apos;: 1,
+ &apos;grated orange&apos;: 31,
+ &apos;vanilla wafers&apos;: 3,
+ &apos;amaretto&apos;: 19,
+ &apos;toasted almonds&apos;: 6,
+ &apos;light corn syrup&apos;: 8,
+ &apos;focaccia&apos;: 10,
+ &apos;oyster mushrooms&apos;: 6,
+ &apos;shiitake mushroom caps&apos;: 16,
+ &apos;onion powder&apos;: 39,
+ &apos;sourdough&apos;: 7,
+ &apos;orange bell pepper&apos;: 27,
+ &apos;nonfat cottage cheese&apos;: 6,
+ &apos;stewed tomatoes&apos;: 37,
+ &apos;raspberries&apos;: 25,
+ &apos;vanilla beans&apos;: 26,
+ &apos;Frangelico&apos;: 9,
+ &apos;vegetable oil spray&apos;: 22,
+ &apos;table salt&apos;: 21,
+ &apos;white peppercorns&apos;: 2,
+ &apos;herb vinegar&apos;: 3,
+ &apos;reduced fat sharp cheddar cheese&apos;: 8,
+ &apos;deli ham&apos;: 4,
+ &apos;ground turkey&apos;: 48,
+ &apos;hot dogs&apos;: 2,
+ &apos;italian style stewed tomatoes&apos;: 15,
+ &apos;veal stock&apos;: 7,
+ &apos;portabello mushroom&apos;: 41,
+ &apos;rocket leaves&apos;: 35,
+ &apos;country bread&apos;: 26,
+ &apos;bottled balsamic vinaigrette&apos;: 1,
+ &apos;scallops&apos;: 12,
+ &apos;italian tomatoes&apos;: 16,
+ &apos;peeled shrimp&apos;: 3,
+ &apos;whole wheat pizza crust&apos;: 3,
+ &apos;dried mixed herbs&apos;: 3,
+ &apos;whole wheat pastry flour&apos;: 6,
+ &apos;nonstick spray&apos;: 7,
+ &apos;low-fat sour cream&apos;: 8,
+ &apos;day old bread&apos;: 2,
+ &apos;champagne vinegar&apos;: 9,
+ &apos;pizza sauce&apos;: 71,
+ &apos;red vermouth&apos;: 5,
+ &apos;low sodium chicken stock&apos;: 6,
+ &apos;peppercorns&apos;: 3,
+ &apos;turkey stock&apos;: 3,
+ &apos;cooked turkey&apos;: 6,
+ &apos;green olives&apos;: 52,
+ &apos;spaghettini&apos;: 23,
+ &apos;minced onion&apos;: 41,
+ &apos;beef broth&apos;: 62,
+ &apos;dried mint flakes&apos;: 3,
+ &apos;ravioli&apos;: 16,
+ &apos;meat loaf mix&apos;: 1,
+ &apos;rub&apos;: 2,
+ &apos;clam juice&apos;: 26,
+ &apos;bottled clam juice&apos;: 15,
+ &apos;cayenne pepper&apos;: 50,
+ &apos;pears&apos;: 19,
+ &apos;gorgonzola&apos;: 27,
+ &apos;duck&apos;: 2,
+ &apos;pure vanilla extract&apos;: 22,
+ &apos;panettone&apos;: 4,
+ &apos;sambuca&apos;: 4,
+ &apos;light brown sugar&apos;: 15,
+ &apos;fat free frozen top whip&apos;: 5,
+ &apos;frozen bread dough&apos;: 9,
+ &apos;whole wheat breadcrumbs&apos;: 10,
+ &apos;ground chuck&apos;: 16,
+ &apos;bows&apos;: 3,
+ &apos;sauce&apos;: 53,
+ &apos;ground oregano&apos;: 4,
+ &apos;lean ground turkey&apos;: 2,
+ &apos;milk chocolate&apos;: 11,
+ &apos;hazelnut butter&apos;: 4,
+ &apos;fig jam&apos;: 2,
+ &apos;crackers&apos;: 7,
+ &apos;sun-dried tomatoes in oil&apos;: 28,
+ &apos;dark chocolate&apos;: 7,
+ &apos;vanilla ice cream&apos;: 17,
+ &apos;chives&apos;: 31,
+ &apos;radishes&apos;: 13,
+ &apos;lettuce&apos;: 6,
+ &apos;grilled chicken&apos;: 2,
+ &apos;flatbread&apos;: 4,
+ &apos;fresh parsley leaves&apos;: 56,
+ &apos;lemon extract&apos;: 7,
+ &apos;salad greens&apos;: 11,
+ &apos;brown rice&apos;: 6,
+ &apos;tortellini&apos;: 19,
+ &apos;reduced fat alfredo sauce&apos;: 4,
+ &apos;fresh asparagus&apos;: 24,
+ &apos;round steaks&apos;: 5,
+ &apos;chili powder&apos;: 26,
+ &apos;ground cumin&apos;: 30,
+ &apos;rolls&apos;: 21,
+ &apos;prego traditional italian sauce&apos;: 4,
+ &apos;brown hash potato&apos;: 5,
+ &apos;nonfat milk&apos;: 7,
+ &apos;frozen cheese ravioli&apos;: 6,
+ &apos;mild Italian sausage&apos;: 17,
+ &apos;sandwich rolls&apos;: 3,
+ &apos;orange juice concentrate&apos;: 5,
+ &apos;rotelle&apos;: 3,
+ &apos;sweet italian sausag links, cut into&apos;: 2,
+ &apos;idaho potatoes&apos;: 4,
+ &apos;popcorn&apos;: 1,
+ &apos;grated orange peel&apos;: 26,
+ &apos;french fried onions&apos;: 1,
+ &apos;turbinado&apos;: 7,
+ &apos;cooked chicken breasts&apos;: 16,
+ &apos;farro&apos;: 14,
+ &apos;flour tortillas&apos;: 11,
+ &apos;english cucumber&apos;: 7,
+ &apos;minced peperoncini&apos;: 2,
+ &apos;teleme&apos;: 2,
+ &apos;brine cured green olives&apos;: 4,
+ &apos;black forest ham&apos;: 1,
+ &apos;frozen whole kernel corn&apos;: 5,
+ &apos;sweet potatoes&apos;: 15,
+ &apos;applewood smoked bacon&apos;: 7,
+ &apos;panko breadcrumbs&apos;: 24,
+ &apos;coarse kosher salt&apos;: 9,
+ &apos;cornmeal&apos;: 72,
+ &apos;dried sage&apos;: 28,
+ &apos;dri leav thyme&apos;: 6,
+ &apos;low sodium beef broth&apos;: 3,
+ &apos;cabbage&apos;: 12,
+ &apos;fresh shiitake mushrooms&apos;: 15,
+ &apos;rabbit&apos;: 8,
+ &apos;herbes de provence&apos;: 12,
+ &apos;dressing&apos;: 7,
+ &apos;chicken fingers&apos;: 3,
+ &apos;reduced-fat sour cream&apos;: 13,
+ &apos;dried fettuccine&apos;: 14,
+ &apos;white pepper&apos;: 22,
+ &apos;albacore tuna in water&apos;: 5,
+ &apos;light mayonnaise&apos;: 7,
+ &apos;turkey tenderloins&apos;: 4,
+ &apos;almond flour&apos;: 8,
+ &apos;raw almond&apos;: 3,
+ &apos;fresh orange juice&apos;: 32,
+ &apos;cranberries&apos;: 3,
+ &apos;orange marmalade&apos;: 6,
+ &apos;fresh lemon&apos;: 4,
+ &apos;condensed chicken broth&apos;: 1,
+ &apos;oil packed anchovy fillets&apos;: 3,
+ &apos;boneless chicken skinless thigh&apos;: 20,
+ &apos;sugar pea&apos;: 16,
+ &apos;nonfat yogurt&apos;: 4,
+ &apos;roast red peppers, drain&apos;: 24,
+ &apos;french baguette&apos;: 25,
+ &apos;ripe olives&apos;: 26,
+ &apos;honey glazed ham&apos;: 2,
+ &apos;chiles&apos;: 9,
+ &apos;spring onions&apos;: 3,
+ &apos;candied orange peel&apos;: 13,
+ &apos;lard&apos;: 5,
+ &apos;cinnamon&apos;: 23,
+ &apos;semolina flour&apos;: 32,
+ &apos;onion salt&apos;: 2,
+ &apos;beef demi-glace&apos;: 1,
+ &apos;veal shanks&apos;: 21,
+ &apos;orange peel&apos;: 7,
+ &apos;lemon peel&apos;: 11,
+ &apos;plain yogurt&apos;: 7,
+ &apos;Quinoa Flour&apos;: 1,
+ &apos;spelt flour&apos;: 2,
+ &apos;plums&apos;: 14,
+ &apos;heirloom tomatoes&apos;: 21,
+ &apos;fresh lime juice&apos;: 25,
+ &apos;artichok heart marin&apos;: 33,
+ &apos;bucatini&apos;: 16,
+ &apos;processed cheese&apos;: 5,
+ &apos;egg noodles, cooked and drained&apos;: 3,
+ &apos;tapioca flour&apos;: 1,
+ &apos;lasagna noodles, cooked and drained&apos;: 26,
+ &apos;firm tofu&apos;: 9,
+ &apos;sherry vinegar&apos;: 27,
+ &apos;country style bread&apos;: 7,
+ &apos;teardrop tomatoes&apos;: 2,
+ &apos;ground sausage&apos;: 5,
+ &apos;pita pockets&apos;: 1,
+ &apos;orange juice&apos;: 19,
+ &apos;chili pepper&apos;: 5,
+ &apos;currant&apos;: 7,
+ &apos;small capers, rins and drain&apos;: 2,
+ &apos;filet&apos;: 4,
+ &apos;lettuce leaves&apos;: 8,
+ &apos;vodka&apos;: 27,
+ &apos;stolichnaya&apos;: 1,
+ &apos;romaine lettuce&apos;: 33,
+ &apos;croutons&apos;: 18,
+ &apos;pepperocini&apos;: 2,
+ &apos;cherry peppers&apos;: 3,
+ &apos;dandelion&apos;: 1,
+ &apos;beans&apos;: 6,
+ &apos;hot pepper sauce&apos;: 7,
+ &apos;shredded Monterey Jack cheese&apos;: 13,
+ &apos;cane sugar&apos;: 1,
+ &apos;mixed nuts&apos;: 1,
+ &apos;meatballs&apos;: 17,
+ &apos;plain dry bread crumb&apos;: 11,
+ &apos;spanish onion&apos;: 9,
+ &apos;cuban peppers&apos;: 3,
+ &apos;green tomatoes&apos;: 2,
+ &apos;sesame seeds&apos;: 13,
+ &apos;boneless beef chuck roast&apos;: 3,
+ &apos;hard-boiled egg&apos;: 6,
+ &apos;pork tenderloin&apos;: 24,
+ &apos;bulk italian sausag&apos;: 21,
+ &apos;beef bouillon granules&apos;: 3,
+ &apos;prebaked pizza crusts&apos;: 13,
+ &apos;buttermilk&apos;: 32,
+ &apos;flaked coconut&apos;: 5,
+ &apos;lower sodium chicken broth&apos;: 20,
+ &apos;carnaroli rice&apos;: 13,
+ &apos;fresh oregano leaves&apos;: 24,
+ &apos;cavatappi&apos;: 9,
+ &apos;cooking oil&apos;: 24,
+ &apos;cayenne&apos;: 8,
+ &apos;ground cloves&apos;: 30,
+ &apos;corn syrup&apos;: 4,
+ &apos;small pasta&apos;: 7,
+ &apos;ground fennel&apos;: 7,
+ &apos;low-fat buttermilk&apos;: 9,
+ &apos;ice&apos;: 7,
+ &apos;chicken bouillon granules&apos;: 6,
+ &apos;poultry seasoning&apos;: 10,
+ &apos;roast&apos;: 3,
+ &apos;fusilli&apos;: 43,
+ &apos;Italian herbs&apos;: 7,
+ &apos;diced yellow onion&apos;: 1,
+ &apos;manicotti pasta&apos;: 4,
+ &apos;parsley flakes&apos;: 17,
+ &apos;vinaigrette&apos;: 7,
+ &apos;bread ciabatta&apos;: 16,
+ &apos;kidney beans&apos;: 12,
+ &apos;creole seasoning&apos;: 4,
+ &apos;prepared pasta sauce&apos;: 5,
+ &apos;small curd cottage cheese&apos;: 14,
+ &apos;white sandwich bread&apos;: 9,
+ &apos;mini chocolate chips&apos;: 5,
+ &apos;lean beef&apos;: 2,
+ &apos;breadstick&apos;: 13,
+ &apos;pickled okra&apos;: 2,
+ &apos;fronds&apos;: 15,
+ &apos;thick-cut bacon&apos;: 11,
+ &apos;boiling potatoes&apos;: 13,
+ &apos;ditalini&apos;: 11,
+ &apos;cranberry beans&apos;: 4,
+ &apos;center cut bacon&apos;: 7,
+ &apos;roasting chickens&apos;: 8,
+ &apos;fleur de sel&apos;: 6,
+ &apos;Margherita Pepperoni&apos;: 1,
+ &apos;soft-shell clams&apos;: 1,
+ &apos;liquid&apos;: 5,
+ &apos;fresh chevre&apos;: 4,
+ &apos;pork sausages&apos;: 14,
+ &apos;dried minced onion&apos;: 5,
+ &apos;msg&apos;: 2,
+ &apos;pork stew meat&apos;: 1,
+ &apos;beef stew meat&apos;: 3,
+ &apos;ziti&apos;: 26,
+ &apos;Balsamico Bianco&apos;: 2,
+ &apos;ground mustard&apos;: 1,
+ ...}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">plt.style.use(<span class="string">u'ggplot'</span>)</span><br><span class="line">fig = pd.DataFrame(sum_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/opt/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:448: UserWarning: Matplotlib is currently using module://ipykernel.pylab.backend_inline, which is a non-GUI backend, so cannot show the figure.
+  % get_backend())
+</code></pre><p><img src="/2019/02/15/PredictYourCuisine/output_15_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计意大利菜系中佐料出现次数，并赋值到italian_ingredients字典中</span></span><br><span class="line">italian_ingredients = &#123;&#125;</span><br><span class="line">train_content_italian = train_content[train_content[<span class="string">'cuisine'</span>] == <span class="string">'italian'</span>]</span><br><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> train_content_italian[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> italian_ingredients:</span><br><span class="line">            italian_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_italian:</span><br><span class="line">            italian_ingredients[a] += <span class="number">1</span></span><br><span class="line">italian_ingredients</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;sugar&apos;: 760,
+ &apos;pistachio nuts&apos;: 7,
+ &apos;white almond bark&apos;: 1,
+ &apos;flour&apos;: 142,
+ &apos;vanilla extract&apos;: 219,
+ &apos;olive oil&apos;: 3111,
+ &apos;almond extract&apos;: 56,
+ &apos;eggs&apos;: 627,
+ &apos;baking powder&apos;: 186,
+ &apos;dried cranberries&apos;: 8,
+ &apos;chopped tomatoes&apos;: 37,
+ &apos;fresh basil&apos;: 787,
+ &apos;garlic&apos;: 1471,
+ &apos;extra-virgin olive oil&apos;: 1362,
+ &apos;kosher salt&apos;: 656,
+ &apos;flat leaf parsley&apos;: 588,
+ &apos;pimentos&apos;: 16,
+ &apos;sweet pepper&apos;: 7,
+ &apos;dried oregano&apos;: 626,
+ &apos;sharp cheddar cheese&apos;: 9,
+ &apos;pepper&apos;: 965,
+ &apos;swiss cheese&apos;: 7,
+ &apos;provolone cheese&apos;: 138,
+ &apos;canola oil&apos;: 41,
+ &apos;mushrooms&apos;: 184,
+ &apos;black olives&apos;: 67,
+ &apos;sausages&apos;: 58,
+ &apos;Italian parsley leaves&apos;: 74,
+ &apos;walnuts&apos;: 38,
+ &apos;hot red pepper flakes&apos;: 76,
+ &apos;fresh lemon juice&apos;: 471,
+ &apos;trout fillet&apos;: 3,
+ &apos;garlic cloves&apos;: 1619,
+ &apos;chipotle chile&apos;: 2,
+ &apos;fine sea salt&apos;: 77,
+ &apos;fresh parmesan cheese&apos;: 251,
+ &apos;butter&apos;: 1030,
+ &apos;all-purpose flour&apos;: 918,
+ &apos;fat free less sodium chicken broth&apos;: 158,
+ &apos;chopped fresh chives&apos;: 68,
+ &apos;gruyere cheese&apos;: 18,
+ &apos;ground black pepper&apos;: 1444,
+ &apos;bacon slices&apos;: 48,
+ &apos;gnocchi&apos;: 41,
+ &apos;fat free milk&apos;: 42,
+ &apos;cooking spray&apos;: 491,
+ &apos;salt&apos;: 3454,
+ &apos;italian seasoning&apos;: 347,
+ &apos;broiler-fryer chicken&apos;: 1,
+ &apos;mayonaise&apos;: 63,
+ &apos;zesty italian dressing&apos;: 11,
+ &apos;marinara sauce&apos;: 222,
+ &apos;linguine&apos;: 193,
+ &apos;capers&apos;: 306,
+ &apos;crushed red pepper flakes&apos;: 179,
+ &apos;olives&apos;: 29,
+ &apos;lemon zest&apos;: 98,
+ &apos;sliced mushrooms&apos;: 131,
+ &apos;sherry&apos;: 13,
+ &apos;grated parmesan cheese&apos;: 1580,
+ &apos;heavy cream&apos;: 300,
+ &apos;spaghetti&apos;: 296,
+ &apos;chicken broth&apos;: 245,
+ &apos;cooked chicken&apos;: 33,
+ &apos;yellow corn meal&apos;: 64,
+ &apos;boiling water&apos;: 63,
+ &apos;sea salt&apos;: 202,
+ &apos;onions&apos;: 1240,
+ &apos;crushed garlic&apos;: 20,
+ &apos;green onions&apos;: 144,
+ &apos;white sugar&apos;: 231,
+ &apos;dried basil&apos;: 425,
+ &apos;diced tomatoes&apos;: 429,
+ &apos;bread slices&apos;: 15,
+ &apos;great northern beans&apos;: 21,
+ &apos;shrimp&apos;: 59,
+ &apos;sage leaves&apos;: 89,
+ &apos;Oscar Mayer Deli Fresh Smoked Ham&apos;: 1,
+ &apos;hoagie rolls&apos;: 8,
+ &apos;salami&apos;: 41,
+ &apos;giardiniera&apos;: 5,
+ &apos;mozzarella cheese&apos;: 396,
+ &apos;pepperoni&apos;: 48,
+ &apos;bay leaves&apos;: 107,
+ &apos;crushed red pepper&apos;: 418,
+ &apos;mussels&apos;: 38,
+ &apos;basil&apos;: 174,
+ &apos;black pepper&apos;: 636,
+ &apos;dry white wine&apos;: 658,
+ &apos;tomatoes&apos;: 601,
+ &apos;finely chopped onion&apos;: 145,
+ &apos;lemon&apos;: 236,
+ &apos;pesto&apos;: 113,
+ &apos;salmon fillets&apos;: 11,
+ &apos;white wine&apos;: 176,
+ &apos;pizza crust&apos;: 36,
+ &apos;plum tomatoes&apos;: 340,
+ &apos;part-skim mozzarella cheese&apos;: 201,
+ &apos;crushed tomatoes&apos;: 241,
+ &apos;fresh rosemary&apos;: 292,
+ &apos;boneless pork loin&apos;: 9,
+ &apos;pappardelle&apos;: 11,
+ &apos;red pepper&apos;: 49,
+ &apos;Italian bread&apos;: 89,
+ &apos;balsamic vinegar&apos;: 348,
+ &apos;sausage casings&apos;: 78,
+ &apos;honey&apos;: 126,
+ &apos;shredded mozzarella cheese&apos;: 413,
+ &apos;roasted red peppers&apos;: 114,
+ &apos;penne pasta&apos;: 146,
+ &apos;spinach&apos;: 119,
+ &apos;asiago&apos;: 72,
+ &apos;whole wheat pasta&apos;: 13,
+ &apos;sweet onion&apos;: 69,
+ &apos;grape tomatoes&apos;: 98,
+ &apos;chestnuts&apos;: 9,
+ &apos;granulated sugar&apos;: 82,
+ &apos;whole milk ricotta cheese&apos;: 47,
+ &apos;coffee ice cream&apos;: 3,
+ &apos;large eggs&apos;: 625,
+ &apos;mascarpone&apos;: 124,
+ &apos;rum&apos;: 12,
+ &apos;powdered sugar&apos;: 69,
+ &apos;semisweet chocolate&apos;: 46,
+ &apos;chestnut flour&apos;: 1,
+ &apos;starchy potatoes&apos;: 2,
+ &apos;grated nutmeg&apos;: 64,
+ &apos;blood orange&apos;: 5,
+ &apos;freshly ground pepper&apos;: 316,
+ &apos;fennel bulb&apos;: 103,
+ &apos;low salt chicken broth&apos;: 138,
+ &apos;dijon mustard&apos;: 99,
+ &apos;corn starch&apos;: 83,
+ &apos;white wine vinegar&apos;: 73,
+ &apos;tomato sauce&apos;: 357,
+ &apos;shredded carrots&apos;: 11,
+ &apos;english muffins, split and toasted&apos;: 2,
+ &apos;chopped onion&apos;: 327,
+ &apos;vegetable oil cooking spray&apos;: 73,
+ &apos;chopped green bell pepper&apos;: 39,
+ &apos;cheddar cheese&apos;: 18,
+ &apos;lasagna noodles&apos;: 196,
+ &apos;ranch dressing&apos;: 5,
+ &apos;evaporated milk&apos;: 13,
+ &apos;fresh parsley&apos;: 631,
+ &apos;fresh oregano&apos;: 209,
+ &apos;cold water&apos;: 58,
+ &apos;chocolate morsels&apos;: 4,
+ &apos;cream sweeten whip&apos;: 3,
+ &apos;instant espresso granules&apos;: 4,
+ &apos;whipping cream&apos;: 162,
+ &apos;kahlúa&apos;: 12,
+ &apos;chocolate covered coffee beans&apos;: 1,
+ &apos;unflavored gelatin&apos;: 48,
+ &apos;pound cake&apos;: 7,
+ &apos;pinenuts&apos;: 252,
+ &apos;zucchini&apos;: 326,
+ &apos;baby carrots&apos;: 15,
+ &apos;fresh basil leaves&apos;: 352,
+ &apos;asparagus spears&apos;: 24,
+ &apos;white onion&apos;: 48,
+ &apos;carrots&apos;: 379,
+ &apos;frozen peas&apos;: 67,
+ &apos;arborio rice&apos;: 261,
+ &apos;yellow crookneck squash&apos;: 3,
+ &apos;fresh leav spinach&apos;: 25,
+ &apos;cheese tortellini&apos;: 53,
+ &apos;cherry tomatoes&apos;: 170,
+ &apos;navy beans&apos;: 8,
+ &apos;pecorino romano cheese&apos;: 146,
+ &apos;fresh fava bean&apos;: 12,
+ &apos;italian sausage&apos;: 129,
+ &apos;large garlic cloves&apos;: 293,
+ &apos;pasta sheets&apos;: 9,
+ &apos;water&apos;: 1052,
+ &apos;Turkish bay leaves&apos;: 3,
+ &apos;dried chickpeas&apos;: 1,
+ &apos;celery ribs&apos;: 130,
+ &apos;semolina&apos;: 14,
+ &apos;warm water&apos;: 182,
+ &apos;vine ripened tomatoes&apos;: 12,
+ &apos;bittersweet chocolate&apos;: 42,
+ &apos;fat free yogurt&apos;: 4,
+ &apos;skim milk&apos;: 16,
+ &apos;angel food cake&apos;: 4,
+ &apos;unsweetened cocoa powder&apos;: 84,
+ &apos;instant espresso&apos;: 7,
+ &apos;garlic salt&apos;: 61,
+ &apos;tomato paste&apos;: 376,
+ &apos;veal cutlets&apos;: 18,
+ &apos;broccoli rabe&apos;: 47,
+ &apos;whole milk&apos;: 157,
+ &apos;parmigiano reggiano cheese&apos;: 306,
+ &apos;dry bread crumbs&apos;: 115,
+ &apos;fontina&apos;: 27,
+ &apos;unsalted butter&apos;: 564,
+ &apos;pasta sauce&apos;: 246,
+ &apos;olive oil flavored cooking spray&apos;: 29,
+ &apos;frozen chopped spinach&apos;: 131,
+ &apos;large egg whites&apos;: 138,
+ &apos;part-skim ricotta cheese&apos;: 111,
+ &apos;manicotti shells&apos;: 18,
+ &apos;fettucine&apos;: 136,
+ &apos;parmesan cheese&apos;: 474,
+ &apos;large shrimp&apos;: 77,
+ &apos;chicken bouillon&apos;: 10,
+ &apos;cream of tartar&apos;: 9,
+ &apos;orange liqueur&apos;: 15,
+ &apos;heavy whipping cream&apos;: 73,
+ &apos;semi-sweet chocolate morsels&apos;: 21,
+ &apos;cake flour&apos;: 24,
+ &apos;confectioners sugar&apos;: 94,
+ &apos;ground cinnamon&apos;: 85,
+ &apos;ricotta cheese&apos;: 333,
+ &apos;cream cheese&apos;: 105,
+ &apos;dried porcini mushrooms&apos;: 81,
+ &apos;chopped fresh thyme&apos;: 151,
+ &apos;beef rib short&apos;: 5,
+ &apos;dry red wine&apos;: 131,
+ &apos;hot water&apos;: 85,
+ &apos;fat free less sodium beef broth&apos;: 7,
+ &apos;cremini mushrooms&apos;: 67,
+ &apos;pitted kalamata olives&apos;: 94,
+ &apos;cauliflower&apos;: 34,
+ &apos;whole peeled tomatoes&apos;: 60,
+ &apos;swiss chard&apos;: 63,
+ &apos;banana squash&apos;: 1,
+ &apos;vegetable broth&apos;: 81,
+ &apos;bay leaf&apos;: 130,
+ &apos;cannellini beans&apos;: 161,
+ &apos;boneless skinless chicken breast halves&apos;: 182,
+ &apos;light sour cream&apos;: 5,
+ &apos;fava beans&apos;: 13,
+ &apos;finely chopped fresh parsley&apos;: 33,
+ &apos;fresh tarragon&apos;: 33,
+ &apos;grated lemon zest&apos;: 142,
+ &apos;chopped almonds&apos;: 12,
+ &apos;broccoli&apos;: 64,
+ &apos;potatoes&apos;: 59,
+ &apos;self rising flour&apos;: 1,
+ &apos;eggplant&apos;: 204,
+ &apos;chicken&apos;: 84,
+ &apos;pitas&apos;: 5,
+ &apos;goat cheese&apos;: 92,
+ &apos;reduced fat milk&apos;: 29,
+ &apos;smoked trout&apos;: 1,
+ &apos;fresh dill&apos;: 16,
+ &apos;asparagus&apos;: 123,
+ &apos;oil&apos;: 92,
+ &apos;ricotta salata&apos;: 22,
+ &apos;pecorino cheese&apos;: 52,
+ &apos;grana padano&apos;: 7,
+ &apos;pasta&apos;: 255,
+ &apos;cracked black pepper&apos;: 117,
+ &apos;green bell pepper&apos;: 163,
+ &apos;vidalia onion&apos;: 19,
+ &apos;smoked gouda&apos;: 14,
+ &apos;baby spinach leaves&apos;: 39,
+ &apos;shredded sharp cheddar cheese&apos;: 17,
+ &apos;small red potato&apos;: 13,
+ &apos;Bertolli® Classico Olive Oil&apos;: 16,
+ &apos;bacon, crisp-cooked and crumbled&apos;: 2,
+ &apos;bertolli vineyard premium collect marinara with burgundi wine sauc&apos;: 5,
+ &apos;bread crumb fresh&apos;: 74,
+ &apos;(    oz.) tomato sauce&apos;: 7,
+ &apos;ground veal&apos;: 35,
+ &apos;italian seasoning mix&apos;: 1,
+ &apos;beef&apos;: 22,
+ &apos;fat skimmed chicken broth&apos;: 28,
+ &apos;solid pack pumpkin&apos;: 4,
+ &apos;ground nutmeg&apos;: 127,
+ &apos;white rice&apos;: 11,
+ &apos;ground pepper&apos;: 77,
+ &apos;fresh thyme leaves&apos;: 53,
+ &apos;pistachios&apos;: 10,
+ &apos;dried cherry&apos;: 6,
+ &apos;prosciutto&apos;: 256,
+ &apos;romano cheese&apos;: 89,
+ &apos;parsley leaves&apos;: 23,
+ &apos;shallots&apos;: 316,
+ &apos;fresh raspberries&apos;: 14,
+ &apos;dry vermouth&apos;: 18,
+ &apos;canned low sodium chicken broth&apos;: 46,
+ &apos;chicken livers&apos;: 14,
+ &apos;raisins&apos;: 39,
+ &apos;seasoned bread crumbs&apos;: 71,
+ &apos;minced garlic&apos;: 334,
+ &apos;half &amp; half&apos;: 89,
+ &apos;ground beef&apos;: 237,
+ &apos;jack cheese&apos;: 9,
+ &apos;vegetables&apos;: 29,
+ &apos;lemon juice&apos;: 216,
+ &apos;ricotta&apos;: 95,
+ &apos;yellow onion&apos;: 153,
+ &apos;reduced sodium chicken broth&apos;: 36,
+ &apos;chopped fresh mint&apos;: 54,
+ &apos;purple onion&apos;: 350,
+ &apos;low sodium chicken broth&apos;: 78,
+ &apos;polenta&apos;: 132,
+ &apos;bell pepper&apos;: 38,
+ &apos;olive oil cooking spray&apos;: 13,
+ &apos;bacon&apos;: 124,
+ &apos;egg yolks&apos;: 82,
+ &apos;duck breast halves&apos;: 1,
+ &apos;fennel seeds&apos;: 114,
+ &apos;roma tomatoes&apos;: 44,
+ &apos;pesto sauce&apos;: 26,
+ &apos;arugula&apos;: 125,
+ &apos;summer squash&apos;: 9,
+ &apos;red wine vinegar&apos;: 227,
+ &apos;ciabatta&apos;: 21,
+ &apos;juice&apos;: 72,
+ &apos;fresh herbs&apos;: 14,
+ &apos;grated lemon peel&apos;: 89,
+ &apos;dough&apos;: 46,
+ &apos;coarse sea salt&apos;: 17,
+ &apos;rosemary leaves&apos;: 10,
+ &apos;red pepper flakes&apos;: 206,
+ &apos;brie cheese&apos;: 14,
+ &apos;cheese ravioli&apos;: 18,
+ &apos;Italian seasoned breadcrumbs&apos;: 23,
+ &apos;cheese&apos;: 127,
+ &apos;parsley&apos;: 95,
+ &apos;fat-free cottage cheese&apos;: 11,
+ &apos;oven-ready lasagna noodles&apos;: 43,
+ &apos;margarine&apos;: 38,
+ &apos;radicchio&apos;: 40,
+ &apos;garbanzo beans&apos;: 18,
+ &apos;orzo pasta&apos;: 16,
+ &apos;rubbed sage&apos;: 17,
+ &apos;dried rosemary&apos;: 96,
+ &apos;canned beef broth&apos;: 4,
+ &apos;kale leaves&apos;: 7,
+ &apos;chicken noodle soup&apos;: 1,
+ &apos;italian style rolls&apos;: 1,
+ &apos;genoa salami&apos;: 22,
+ &apos;oregano&apos;: 114,
+ &apos;boiled ham&apos;: 1,
+ &apos;capicola&apos;: 4,
+ &apos;iceberg lettuce&apos;: 6,
+ &apos;jalapeno chilies&apos;: 20,
+ &apos;diced celery&apos;: 15,
+ &apos;italian salad dressing mix&apos;: 7,
+ &apos;chopped cilantro fresh&apos;: 25,
+ &apos;cider vinegar&apos;: 14,
+ &apos;red bell pepper&apos;: 354,
+ &apos;sliced green onions&apos;: 40,
+ &apos;barbecue sauce&apos;: 9,
+ &apos;prepared pizza crust&apos;: 2,
+ &apos;boneless skinless chicken breasts&apos;: 132,
+ &apos;Sargento® Traditional Cut Shredded Mozzarella Cheese&apos;: 1,
+ &apos;vegetable oil&apos;: 253,
+ &apos;basil pesto sauce&apos;: 33,
+ &apos;aioli&apos;: 3,
+ &apos;cooked shrimp&apos;: 11,
+ &apos;mozzarella balls&apos;: 4,
+ &apos;sun-dried tomatoes&apos;: 118,
+ &apos;milk&apos;: 277,
+ &apos;condensed cream of mushroom soup&apos;: 16,
+ &apos;fettuccine pasta&apos;: 24,
+ &apos;frozen spinach&apos;: 24,
+ &apos;lasagne&apos;: 6,
+ &apos;passata&apos;: 3,
+ &apos;fat free cream cheese&apos;: 8,
+ &apos;french bread&apos;: 54,
+ &apos;non-fat sour cream&apos;: 14,
+ &apos;reduced fat swiss cheese&apos;: 3,
+ &apos;fat-free mayonnaise&apos;: 8,
+ &apos;roasted garlic&apos;: 7,
+ &apos;seasoning&apos;: 12,
+ &apos;kale&apos;: 58,
+ &apos;sundried tomato paste&apos;: 4,
+ &apos;dried thyme&apos;: 145,
+ &apos;porcini&apos;: 7,
+ &apos;fresh thyme&apos;: 62,
+ &apos;sourdough loaf&apos;: 4,
+ &apos;crust&apos;: 3,
+ &apos;duck fat&apos;: 1,
+ &apos;squabs&apos;: 1,
+ &apos;confit&apos;: 2,
+ &apos;aged gouda&apos;: 1,
+ &apos;soppressata&apos;: 16,
+ &apos;artichokes&apos;: 44,
+ &apos;anchovy fillets&apos;: 124,
+ &apos;lemon slices&apos;: 12,
+ &apos;chicken cutlets&apos;: 23,
+ &apos;saffron threads&apos;: 28,
+ &apos;orzo&apos;: 51,
+ &apos;veal chops&apos;: 4,
+ &apos;oil cured olives&apos;: 3,
+ &apos;pasta rotel&apos;: 2,
+ &apos;pasta water&apos;: 10,
+ &apos;cooking wine&apos;: 3,
+ &apos;crusty bread&apos;: 10,
+ &apos;fresh tomatoes&apos;: 32,
+ &apos;uncooked rigatoni&apos;: 6,
+ &apos;grating cheese&apos;: 6,
+ &apos;vegetable stock&apos;: 29,
+ &apos;freshly grated parmesan&apos;: 87,
+ &apos;florets&apos;: 15,
+ &apos;sliced almonds&apos;: 37,
+ &apos;thyme sprigs&apos;: 45,
+ &apos;egg whites&apos;: 95,
+ &apos;greek yogurt&apos;: 6,
+ &apos;penne&apos;: 99,
+ &apos;fish fillets&apos;: 10,
+ &apos;russet potatoes&apos;: 40,
+ &apos;crumbled gorgonzola&apos;: 29,
+ &apos;fontina cheese&apos;: 84,
+ &apos;spinach leaves&apos;: 25,
+ &apos;orange&apos;: 38,
+ &apos;lamb shanks&apos;: 11,
+ &apos;clove&apos;: 19,
+ &apos;rosemary sprigs&apos;: 50,
+ &apos;italian eggplant&apos;: 7,
+ &apos;Sicilian olives&apos;: 7,
+ &apos;mint sprigs&apos;: 28,
+ &apos;peasant bread&apos;: 7,
+ &apos;garlic powder&apos;: 252,
+ &apos;Kraft Grated Parmesan Cheese&apos;: 10,
+ &apos;peas&apos;: 42,
+ &apos;Oscar Mayer Bacon&apos;: 1,
+ &apos;Philadelphia Cream Cheese&apos;: 9,
+ &apos;garnish&apos;: 3,
+ &apos;dried navy beans&apos;: 5,
+ &apos;celery&apos;: 155,
+ &apos;diced onions&apos;: 42,
+ &apos;wheat berries&apos;: 4,
+ &apos;parsley sprigs&apos;: 38,
+ &apos;thyme&apos;: 51,
+ &apos;polenta prepar&apos;: 5,
+ &apos;chicken breast halves&apos;: 35,
+ &apos;dry sherry&apos;: 22,
+ &apos;cocoa powder&apos;: 9,
+ &apos;dried parsley&apos;: 90,
+ &apos;chopped garlic&apos;: 69,
+ &apos;baking soda&apos;: 68,
+ &apos;coarse salt&apos;: 128,
+ &apos;rigatoni&apos;: 60,
+ &apos;nutmeg&apos;: 40,
+ &apos;artichoke hearts&apos;: 99,
+ &apos;pancetta&apos;: 153,
+ &apos;parsnips&apos;: 7,
+ &apos;whole wheat fettuccine&apos;: 4,
+ &apos;ground sirloin&apos;: 20,
+ &apos;red wine&apos;: 99,
+ &apos;fresh marjoram&apos;: 29,
+ &apos;castellane&apos;: 2,
+ &apos;hot Italian sausages&apos;: 39,
+ &apos;jumbo pasta shells&apos;: 37,
+ &apos;fresh spinach&apos;: 87,
+ &apos;chicken breasts&apos;: 93,
+ &apos;gluten free blend&apos;: 1,
+ &apos;paprika&apos;: 76,
+ &apos;salt and ground black pepper&apos;: 66,
+ &apos;bone in skinless chicken thigh&apos;: 1,
+ &apos;figs&apos;: 10,
+ &apos;egg substitute&apos;: 26,
+ &apos;hot sauce&apos;: 20,
+ &apos;ham&apos;: 42,
+ &apos;balsamic vinaigrette&apos;: 6,
+ &apos;pitted olives&apos;: 15,
+ &apos;fresh chives&apos;: 24,
+ &apos;white mushrooms&apos;: 20,
+ &apos;haricots verts&apos;: 4,
+ &apos;fresh peas&apos;: 16,
+ &apos;bow-tie pasta&apos;: 86,
+ &apos;asparagus tips&apos;: 3,
+ &apos;green beans&apos;: 70,
+ &apos;low-fat cottage cheese&apos;: 14,
+ &apos;whole wheat lasagna noodles&apos;: 8,
+ &apos;shredded parmesan cheese&apos;: 38,
+ &apos;apricots&apos;: 5,
+ &apos;grappa&apos;: 9,
+ &apos;all purpose unbleached flour&apos;: 68,
+ &apos;dry yeast&apos;: 71,
+ &apos;worcestershire sauce&apos;: 54,
+ &apos;amaretti&apos;: 6,
+ &apos;frozen strawberries&apos;: 1,
+ &apos;strawberries&apos;: 48,
+ &apos;cooked ham&apos;: 9,
+ &apos;Alfredo sauce&apos;: 43,
+ &apos;chopped fresh sage&apos;: 91,
+ &apos;cheese slices&apos;: 11,
+ &apos;bread&apos;: 51,
+ &apos;morel&apos;: 2,
+ &apos;leeks&apos;: 106,
+ &apos;1% low-fat cottage cheese&apos;: 10,
+ &apos;feta cheese crumbles&apos;: 68,
+ &apos;pork belly&apos;: 2,
+ &apos;fresh sage&apos;: 29,
+ &apos;pork loin&apos;: 3,
+ &apos;sliced black olives&apos;: 49,
+ &apos;medium shrimp&apos;: 70,
+ &apos;red chili peppers&apos;: 22,
+ &apos;parmigiano-reggiano cheese&apos;: 53,
+ &apos;fresh mint&apos;: 53,
+ &apos;baguette&apos;: 119,
+ &apos;chicken legs&apos;: 7,
+ &apos;baby spinach&apos;: 117,
+ &apos;white beans&apos;: 38,
+ &apos;ground pork&apos;: 72,
+ &apos;romana&apos;: 1,
+ &apos;fresh mushrooms&apos;: 117,
+ &apos;crimini mushrooms&apos;: 26,
+ &apos;navel oranges&apos;: 10,
+ &apos;kalamata&apos;: 62,
+ &apos;sea scallops&apos;: 31,
+ &apos;ladyfingers&apos;: 40,
+ &apos;reduced fat cream cheese&apos;: 3,
+ &apos;whipped topping&apos;: 12,
+ &apos;wine&apos;: 15,
+ &apos;frozen broccoli&apos;: 5,
+ &apos;nonfat ricotta cheese&apos;: 32,
+ &apos;shells&apos;: 8,
+ &apos;reduced-fat cheese&apos;: 1,
+ &apos;cornflake cereal&apos;: 2,
+ &apos;beef brisket&apos;: 2,
+ &apos;dry pasta&apos;: 8,
+ &apos;white bread&apos;: 35,
+ &apos;pork&apos;: 10,
+ &apos;sweet italian sausage&apos;: 72,
+ &apos;prosecco&apos;: 10,
+ &apos;bread dough&apos;: 16,
+ &apos;baby lima beans&apos;: 3,
+ &apos;whipped cream&apos;: 15,
+ &apos;hot cocoa mix&apos;: 2,
+ &apos;brewed coffee&apos;: 18,
+ &apos;abbamele&apos;: 1,
+ &apos;wild mushrooms&apos;: 30,
+ &apos;chopped walnuts&apos;: 46,
+ &apos;fregola&apos;: 4,
+ &apos;savoy cabbage&apos;: 10,
+ &apos;mushroom caps&apos;: 17,
+ &apos;pinot grigio&apos;: 3,
+ &apos;liquid egg substitute&apos;: 1,
+ &apos;chocolate candy bars&apos;: 5,
+ &apos;cooked rice&apos;: 5,
+ &apos;bread crumbs&apos;: 103,
+ &apos;banana peppers&apos;: 5,
+ &apos;toasted walnuts&apos;: 7,
+ &apos;dark rum&apos;: 22,
+ &apos;dried fig&apos;: 11,
+ &apos;chopped parsley&apos;: 99,
+ &apos;ground white pepper&apos;: 33,
+ &quot;soft goat&apos;s cheese&quot;: 10,
+ &apos;truffle oil&apos;: 17,
+ &apos;hazelnuts&apos;: 53,
+ &apos;veal scallopini&apos;: 2,
+ &apos;elbow macaroni&apos;: 19,
+ &apos;bread flour&apos;: 77,
+ &apos;bread yeast&apos;: 1,
+ &apos;red potato&apos;: 26,
+ &apos;vegan parmesan cheese&apos;: 4,
+ &apos;ahi&apos;: 1,
+ &apos;golden brown sugar&apos;: 14,
+ &apos;anjou pears&apos;: 3,
+ &apos;granny smith apples&apos;: 6,
+ &apos;crystallized ginger&apos;: 10,
+ &apos;ice water&apos;: 7,
+ &apos;vegetable shortening&apos;: 5,
+ &apos;chinese five-spice powder&apos;: 1,
+ &apos;whole wheat flour&apos;: 21,
+ &apos;large egg yolks&apos;: 142,
+ &apos;lean ground beef&apos;: 135,
+ &apos;sausage links&apos;: 32,
+ &apos;pork chops&apos;: 8,
+ &apos;rosemary&apos;: 57,
+ &apos;nectarines&apos;: 5,
+ &apos;sweet cherries&apos;: 12,
+ &apos;orange zest&apos;: 28,
+ &apos;lavender buds&apos;: 1,
+ &apos;apricot halves&apos;: 4,
+ &apos;diced tomatoes in juice&apos;: 7,
+ &apos;scallions&apos;: 61,
+ &apos;italian salad dressing&apos;: 41,
+ &apos;short pasta&apos;: 7,
+ &apos;lemon wedge&apos;: 58,
+ &apos;porterhouse steaks&apos;: 4,
+ &apos;1% low-fat milk&apos;: 68,
+ &apos;golden raisins&apos;: 46,
+ &apos;cinnamon sticks&apos;: 18,
+ &apos;broccolini&apos;: 3,
+ &apos;salted butter&apos;: 11,
+ &apos;chicken stock&apos;: 142,
+ &apos;coffee granules&apos;: 12,
+ &apos;lemon rind&apos;: 34,
+ &apos;baby portobello mushrooms&apos;: 10,
+ &apos;broccoli florets&apos;: 64,
+ &apos;orecchiette&apos;: 41,
+ &apos;melted butter&apos;: 24,
+ &apos;pizza shells&apos;: 3,
+ &apos;frozen mixed thawed vegetables,&apos;: 2,
+ &apos;ragu old world style pasta sauc&apos;: 11,
+ &apos;loosely packed fresh basil leaves&apos;: 21,
+ &apos;whole wheat spaghetti&apos;: 22,
+ &apos;butternut squash&apos;: 62,
+ &apos;wonton wrappers&apos;: 17,
+ &apos;meat&apos;: 15,
+ &apos;pear tomatoes&apos;: 6,
+ &apos;gaeta olives&apos;: 5,
+ &apos;yukon gold potatoes&apos;: 39,
+ &apos;turbot&apos;: 2,
+ &apos;ground lamb&apos;: 6,
+ &apos;refrigerated pizza dough&apos;: 31,
+ &apos;potato gnocchi&apos;: 20,
+ &apos;cream&apos;: 27,
+ &apos;angel hair&apos;: 60,
+ &apos;lime juice&apos;: 6,
+ &apos;gelato&apos;: 4,
+ &apos;cherry preserves&apos;: 2,
+ &apos;amaretto liqueur&apos;: 4,
+ &apos;cherries&apos;: 14,
+ &apos;instant espresso powder&apos;: 22,
+ &apos;nuts&apos;: 3,
+ &apos;brown sugar&apos;: 67,
+ &apos;pie shell&apos;: 2,
+ &apos;marsala wine&apos;: 105,
+ &apos;basil leaves&apos;: 153,
+ &apos;cake&apos;: 7,
+ &apos;crabmeat&apos;: 11,
+ &apos;chopped fresh herbs&apos;: 8,
+ &apos;button mushrooms&apos;: 35,
+ &apos;escarole&apos;: 47,
+ &apos;chopped pecans&apos;: 28,
+ &apos;chocolate bars&apos;: 2,
+ &apos;coffee liqueur&apos;: 11,
+ &apos;flat anchovy&apos;: 5,
+ &apos;italian loaf&apos;: 4,
+ &apos;salad dressing&apos;: 23,
+ &apos;pitted black olives&apos;: 24,
+ &apos;rotini&apos;: 46,
+ &apos;frozen mixed vegetables&apos;: 4,
+ &apos;canned tomatoes&apos;: 26,
+ &apos;feta cheese&apos;: 36,
+ &apos;anise seed&apos;: 13,
+ &apos;top sirloin&apos;: 1,
+ &apos;candy&apos;: 3,
+ &apos;angel food cake mix&apos;: 2,
+ &apos;buttercream frosting&apos;: 1,
+ &apos;sour cream&apos;: 71,
+ &apos;shredded cheddar cheese&apos;: 42,
+ &apos;cottage cheese&apos;: 44,
+ &apos;noodles&apos;: 38,
+ &apos;lime&apos;: 5,
+ &apos;watermelon&apos;: 5,
+ &apos;risotto&apos;: 11,
+ &apos;ice cubes&apos;: 8,
+ &apos;peeled tomatoes&apos;: 32,
+ &apos;cooked vermicelli&apos;: 5,
+ &apos;buns&apos;: 1,
+ &apos;apple cider vinegar&apos;: 7,
+ &apos;ground red pepper&apos;: 34,
+ &apos;yellow bell pepper&apos;: 85,
+ &apos;active dry yeast&apos;: 128,
+ &apos;baking potatoes&apos;: 34,
+ &apos;grated romano cheese&apos;: 19,
+ &apos;quinoa&apos;: 8,
+ &apos;littleneck clams&apos;: 26,
+ &apos;whole wheat bread&apos;: 8,
+ &apos;cream cheese, soften&apos;: 40,
+ &apos;salad seasoning mix&apos;: 4,
+ &apos;cucumber&apos;: 25,
+ &apos;pappardelle pasta&apos;: 6,
+ &apos;fresh mozzarella&apos;: 95,
+ &apos;tuna steaks&apos;: 16,
+ &apos;shredded zucchini&apos;: 4,
+ &apos;dried pasta&apos;: 13,
+ &apos;berries&apos;: 5,
+ &apos;clams&apos;: 50,
+ &apos;ground round&apos;: 25,
+ &apos;fettuccine, cook and drain&apos;: 4,
+ &apos;tomato purée&apos;: 47,
+ &apos;chopped celery&apos;: 103,
+ &apos;ditalini pasta&apos;: 15,
+ &apos;lobster&apos;: 11,
+ &apos;almonds&apos;: 35,
+ &apos;anise&apos;: 13,
+ &apos;anise extract&apos;: 12,
+ &apos;brandy&apos;: 25,
+ &apos;boneless chicken breast&apos;: 19,
+ &apos;buffalo sauce&apos;: 2,
+ &apos;blue cheese dressing&apos;: 3,
+ &apos;cannelloni shells&apos;: 2,
+ &apos;butter cooking spray&apos;: 3,
+ &apos;light alfredo sauce&apos;: 7,
+ &apos;rice&apos;: 12,
+ &apos;cream of chicken soup&apos;: 9,
+ &apos;chees fresh mozzarella&apos;: 72,
+ &apos;shrimp tails&apos;: 2,
+ &apos;bay scallops&apos;: 12,
+ &apos;lump crab meat&apos;: 17,
+ &apos;fish stock&apos;: 11,
+ &apos;capellini&apos;: 8,
+ &apos;veal&apos;: 17,
+ &apos;beef stock&apos;: 24,
+ &apos;chard&apos;: 3,
+ &apos;grated Gruyère cheese&apos;: 5,
+ &apos;panko&apos;: 25,
+ &apos;chickpeas&apos;: 37,
+ &apos;white cornmeal&apos;: 4,
+ &apos;red bell pepper, sliced&apos;: 2,
+ &apos;herbs&apos;: 20,
+ &apos;chicken thighs&apos;: 32,
+ &apos;green bell pepper, slice&apos;: 13,
+ &apos;vanilla&apos;: 28,
+ &apos;liqueur&apos;: 10,
+ &apos;aged balsamic vinegar&apos;: 8,
+ &apos;limoncello&apos;: 6,
+ &apos;golden beets&apos;: 4,
+ &apos;pizza doughs&apos;: 103,
+ &apos;black cod&apos;: 2,
+ &apos;green cabbage&apos;: 12,
+ &apos;cavolo nero&apos;: 4,
+ &apos;winter squash&apos;: 1,
+ &apos;thin pizza crust&apos;: 9,
+ &apos;toasted pine nuts&apos;: 30,
+ &apos;grated parmesan romano&apos;: 2,
+ &apos;cumin seed&apos;: 4,
+ &apos;cilantro leaves&apos;: 7,
+ &apos;seasoning salt&apos;: 15,
+ &apos;mixed greens&apos;: 16,
+ &apos;turkey breast cutlets&apos;: 9,
+ &apos;cod fillets&apos;: 8,
+ &apos;barilla&apos;: 4,
+ &apos;linguini&apos;: 9,
+ &apos;perciatelli&apos;: 7,
+ &apos;crumbled blue cheese&apos;: 16,
+ &apos;black mission figs&apos;: 4,
+ &apos;swordfish steaks&apos;: 11,
+ &apos;anchovy paste&apos;: 47,
+ &apos;chuck&apos;: 8,
+ &apos;tomatoes with juice&apos;: 30,
+ &apos;store bought low sodium chicken stock&apos;: 2,
+ &apos;fresh lavender&apos;: 1,
+ &apos;grated orange&apos;: 31,
+ &apos;vanilla wafers&apos;: 3,
+ &apos;amaretto&apos;: 19,
+ &apos;toasted almonds&apos;: 6,
+ &apos;light corn syrup&apos;: 8,
+ &apos;focaccia&apos;: 10,
+ &apos;oyster mushrooms&apos;: 6,
+ &apos;shiitake mushroom caps&apos;: 16,
+ &apos;onion powder&apos;: 39,
+ &apos;sourdough&apos;: 7,
+ &apos;orange bell pepper&apos;: 27,
+ &apos;nonfat cottage cheese&apos;: 6,
+ &apos;stewed tomatoes&apos;: 37,
+ &apos;raspberries&apos;: 25,
+ &apos;vanilla beans&apos;: 26,
+ &apos;Frangelico&apos;: 9,
+ &apos;vegetable oil spray&apos;: 22,
+ &apos;table salt&apos;: 21,
+ &apos;white peppercorns&apos;: 2,
+ &apos;herb vinegar&apos;: 3,
+ &apos;reduced fat sharp cheddar cheese&apos;: 8,
+ &apos;deli ham&apos;: 4,
+ &apos;ground turkey&apos;: 48,
+ &apos;hot dogs&apos;: 2,
+ &apos;italian style stewed tomatoes&apos;: 15,
+ &apos;veal stock&apos;: 7,
+ &apos;portabello mushroom&apos;: 41,
+ &apos;rocket leaves&apos;: 35,
+ &apos;country bread&apos;: 26,
+ &apos;bottled balsamic vinaigrette&apos;: 1,
+ &apos;scallops&apos;: 12,
+ &apos;italian tomatoes&apos;: 16,
+ &apos;peeled shrimp&apos;: 3,
+ &apos;whole wheat pizza crust&apos;: 3,
+ &apos;dried mixed herbs&apos;: 3,
+ &apos;whole wheat pastry flour&apos;: 6,
+ &apos;nonstick spray&apos;: 7,
+ &apos;low-fat sour cream&apos;: 8,
+ &apos;day old bread&apos;: 2,
+ &apos;champagne vinegar&apos;: 9,
+ &apos;pizza sauce&apos;: 71,
+ &apos;red vermouth&apos;: 5,
+ &apos;low sodium chicken stock&apos;: 6,
+ &apos;peppercorns&apos;: 3,
+ &apos;turkey stock&apos;: 3,
+ &apos;cooked turkey&apos;: 6,
+ &apos;green olives&apos;: 52,
+ &apos;spaghettini&apos;: 23,
+ &apos;minced onion&apos;: 41,
+ &apos;beef broth&apos;: 62,
+ &apos;dried mint flakes&apos;: 3,
+ &apos;ravioli&apos;: 16,
+ &apos;meat loaf mix&apos;: 1,
+ &apos;rub&apos;: 2,
+ &apos;clam juice&apos;: 26,
+ &apos;bottled clam juice&apos;: 15,
+ &apos;cayenne pepper&apos;: 50,
+ &apos;pears&apos;: 19,
+ &apos;gorgonzola&apos;: 27,
+ &apos;duck&apos;: 2,
+ &apos;pure vanilla extract&apos;: 22,
+ &apos;panettone&apos;: 4,
+ &apos;sambuca&apos;: 4,
+ &apos;light brown sugar&apos;: 15,
+ &apos;fat free frozen top whip&apos;: 5,
+ &apos;frozen bread dough&apos;: 9,
+ &apos;whole wheat breadcrumbs&apos;: 10,
+ &apos;ground chuck&apos;: 16,
+ &apos;bows&apos;: 3,
+ &apos;sauce&apos;: 53,
+ &apos;ground oregano&apos;: 4,
+ &apos;lean ground turkey&apos;: 2,
+ &apos;milk chocolate&apos;: 11,
+ &apos;hazelnut butter&apos;: 4,
+ &apos;fig jam&apos;: 2,
+ &apos;crackers&apos;: 7,
+ &apos;sun-dried tomatoes in oil&apos;: 28,
+ &apos;dark chocolate&apos;: 7,
+ &apos;vanilla ice cream&apos;: 17,
+ &apos;chives&apos;: 31,
+ &apos;radishes&apos;: 13,
+ &apos;lettuce&apos;: 6,
+ &apos;grilled chicken&apos;: 2,
+ &apos;flatbread&apos;: 4,
+ &apos;fresh parsley leaves&apos;: 56,
+ &apos;lemon extract&apos;: 7,
+ &apos;salad greens&apos;: 11,
+ &apos;brown rice&apos;: 6,
+ &apos;tortellini&apos;: 19,
+ &apos;reduced fat alfredo sauce&apos;: 4,
+ &apos;fresh asparagus&apos;: 24,
+ &apos;round steaks&apos;: 5,
+ &apos;chili powder&apos;: 26,
+ &apos;ground cumin&apos;: 30,
+ &apos;rolls&apos;: 21,
+ &apos;prego traditional italian sauce&apos;: 4,
+ &apos;brown hash potato&apos;: 5,
+ &apos;nonfat milk&apos;: 7,
+ &apos;frozen cheese ravioli&apos;: 6,
+ &apos;mild Italian sausage&apos;: 17,
+ &apos;sandwich rolls&apos;: 3,
+ &apos;orange juice concentrate&apos;: 5,
+ &apos;rotelle&apos;: 3,
+ &apos;sweet italian sausag links, cut into&apos;: 2,
+ &apos;idaho potatoes&apos;: 4,
+ &apos;popcorn&apos;: 1,
+ &apos;grated orange peel&apos;: 26,
+ &apos;french fried onions&apos;: 1,
+ &apos;turbinado&apos;: 7,
+ &apos;cooked chicken breasts&apos;: 16,
+ &apos;farro&apos;: 14,
+ &apos;flour tortillas&apos;: 11,
+ &apos;english cucumber&apos;: 7,
+ &apos;minced peperoncini&apos;: 2,
+ &apos;teleme&apos;: 2,
+ &apos;brine cured green olives&apos;: 4,
+ &apos;black forest ham&apos;: 1,
+ &apos;frozen whole kernel corn&apos;: 5,
+ &apos;sweet potatoes&apos;: 15,
+ &apos;applewood smoked bacon&apos;: 7,
+ &apos;panko breadcrumbs&apos;: 24,
+ &apos;coarse kosher salt&apos;: 9,
+ &apos;cornmeal&apos;: 72,
+ &apos;dried sage&apos;: 28,
+ &apos;dri leav thyme&apos;: 6,
+ &apos;low sodium beef broth&apos;: 3,
+ &apos;cabbage&apos;: 12,
+ &apos;fresh shiitake mushrooms&apos;: 15,
+ &apos;rabbit&apos;: 8,
+ &apos;herbes de provence&apos;: 12,
+ &apos;dressing&apos;: 7,
+ &apos;chicken fingers&apos;: 3,
+ &apos;reduced-fat sour cream&apos;: 13,
+ &apos;dried fettuccine&apos;: 14,
+ &apos;white pepper&apos;: 22,
+ &apos;albacore tuna in water&apos;: 5,
+ &apos;light mayonnaise&apos;: 7,
+ &apos;turkey tenderloins&apos;: 4,
+ &apos;almond flour&apos;: 8,
+ &apos;raw almond&apos;: 3,
+ &apos;fresh orange juice&apos;: 32,
+ &apos;cranberries&apos;: 3,
+ &apos;orange marmalade&apos;: 6,
+ &apos;fresh lemon&apos;: 4,
+ &apos;condensed chicken broth&apos;: 1,
+ &apos;oil packed anchovy fillets&apos;: 3,
+ &apos;boneless chicken skinless thigh&apos;: 20,
+ &apos;sugar pea&apos;: 16,
+ &apos;nonfat yogurt&apos;: 4,
+ &apos;roast red peppers, drain&apos;: 24,
+ &apos;french baguette&apos;: 25,
+ &apos;ripe olives&apos;: 26,
+ &apos;honey glazed ham&apos;: 2,
+ &apos;chiles&apos;: 9,
+ &apos;spring onions&apos;: 3,
+ &apos;candied orange peel&apos;: 13,
+ &apos;lard&apos;: 5,
+ &apos;cinnamon&apos;: 23,
+ &apos;semolina flour&apos;: 32,
+ &apos;onion salt&apos;: 2,
+ &apos;beef demi-glace&apos;: 1,
+ &apos;veal shanks&apos;: 21,
+ &apos;orange peel&apos;: 7,
+ &apos;lemon peel&apos;: 11,
+ &apos;plain yogurt&apos;: 7,
+ &apos;Quinoa Flour&apos;: 1,
+ &apos;spelt flour&apos;: 2,
+ &apos;plums&apos;: 14,
+ &apos;heirloom tomatoes&apos;: 21,
+ &apos;fresh lime juice&apos;: 25,
+ &apos;artichok heart marin&apos;: 33,
+ &apos;bucatini&apos;: 16,
+ &apos;processed cheese&apos;: 5,
+ &apos;egg noodles, cooked and drained&apos;: 3,
+ &apos;tapioca flour&apos;: 1,
+ &apos;lasagna noodles, cooked and drained&apos;: 26,
+ &apos;firm tofu&apos;: 9,
+ &apos;sherry vinegar&apos;: 27,
+ &apos;country style bread&apos;: 7,
+ &apos;teardrop tomatoes&apos;: 2,
+ &apos;ground sausage&apos;: 5,
+ &apos;pita pockets&apos;: 1,
+ &apos;orange juice&apos;: 19,
+ &apos;chili pepper&apos;: 5,
+ &apos;currant&apos;: 7,
+ &apos;small capers, rins and drain&apos;: 2,
+ &apos;filet&apos;: 4,
+ &apos;lettuce leaves&apos;: 8,
+ &apos;vodka&apos;: 27,
+ &apos;stolichnaya&apos;: 1,
+ &apos;romaine lettuce&apos;: 33,
+ &apos;croutons&apos;: 18,
+ &apos;pepperocini&apos;: 2,
+ &apos;cherry peppers&apos;: 3,
+ &apos;dandelion&apos;: 1,
+ &apos;beans&apos;: 6,
+ &apos;hot pepper sauce&apos;: 7,
+ &apos;shredded Monterey Jack cheese&apos;: 13,
+ &apos;cane sugar&apos;: 1,
+ &apos;mixed nuts&apos;: 1,
+ &apos;meatballs&apos;: 17,
+ &apos;plain dry bread crumb&apos;: 11,
+ &apos;spanish onion&apos;: 9,
+ &apos;cuban peppers&apos;: 3,
+ &apos;green tomatoes&apos;: 2,
+ &apos;sesame seeds&apos;: 13,
+ &apos;boneless beef chuck roast&apos;: 3,
+ &apos;hard-boiled egg&apos;: 6,
+ &apos;pork tenderloin&apos;: 24,
+ &apos;bulk italian sausag&apos;: 21,
+ &apos;beef bouillon granules&apos;: 3,
+ &apos;prebaked pizza crusts&apos;: 13,
+ &apos;buttermilk&apos;: 32,
+ &apos;flaked coconut&apos;: 5,
+ &apos;lower sodium chicken broth&apos;: 20,
+ &apos;carnaroli rice&apos;: 13,
+ &apos;fresh oregano leaves&apos;: 24,
+ &apos;cavatappi&apos;: 9,
+ &apos;cooking oil&apos;: 24,
+ &apos;cayenne&apos;: 8,
+ &apos;ground cloves&apos;: 30,
+ &apos;corn syrup&apos;: 4,
+ &apos;small pasta&apos;: 7,
+ &apos;ground fennel&apos;: 7,
+ &apos;low-fat buttermilk&apos;: 9,
+ &apos;ice&apos;: 7,
+ &apos;chicken bouillon granules&apos;: 6,
+ &apos;poultry seasoning&apos;: 10,
+ &apos;roast&apos;: 3,
+ &apos;fusilli&apos;: 43,
+ &apos;Italian herbs&apos;: 7,
+ &apos;diced yellow onion&apos;: 1,
+ &apos;manicotti pasta&apos;: 4,
+ &apos;parsley flakes&apos;: 17,
+ &apos;vinaigrette&apos;: 7,
+ &apos;bread ciabatta&apos;: 16,
+ &apos;kidney beans&apos;: 12,
+ &apos;creole seasoning&apos;: 4,
+ &apos;prepared pasta sauce&apos;: 5,
+ &apos;small curd cottage cheese&apos;: 14,
+ &apos;white sandwich bread&apos;: 9,
+ &apos;mini chocolate chips&apos;: 5,
+ &apos;lean beef&apos;: 2,
+ &apos;breadstick&apos;: 13,
+ &apos;pickled okra&apos;: 2,
+ &apos;fronds&apos;: 15,
+ &apos;thick-cut bacon&apos;: 11,
+ &apos;boiling potatoes&apos;: 13,
+ &apos;ditalini&apos;: 11,
+ &apos;cranberry beans&apos;: 4,
+ &apos;center cut bacon&apos;: 7,
+ &apos;roasting chickens&apos;: 8,
+ &apos;fleur de sel&apos;: 6,
+ &apos;Margherita Pepperoni&apos;: 1,
+ &apos;soft-shell clams&apos;: 1,
+ &apos;liquid&apos;: 5,
+ &apos;fresh chevre&apos;: 4,
+ &apos;pork sausages&apos;: 14,
+ &apos;dried minced onion&apos;: 5,
+ &apos;msg&apos;: 2,
+ &apos;pork stew meat&apos;: 1,
+ &apos;beef stew meat&apos;: 3,
+ &apos;ziti&apos;: 26,
+ &apos;Balsamico Bianco&apos;: 2,
+ &apos;ground mustard&apos;: 1,
+ ...}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">fig = pd.DataFrame(italian_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/opt/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:448: UserWarning: Matplotlib is currently using module://ipykernel.pylab.backend_inline, which is a non-GUI backend, so cannot show the figure.
+  % get_backend())
+</code></pre><p><img src="/2019/02/15/PredictYourCuisine/output_17_1.png" alt="png"></p>
+<p>若想要对数据分析做更深入的了解，可以参考<a href="https://cn.udacity.com/dand" target="_blank" rel="noopener">数据分析师入门课程</a>或者<a href="https://www.udacity.com/legal/ai-programming" target="_blank" rel="noopener">基于Python语言的人工智能Nano课程</a>.</p>
+<hr>
+<h2 id="第三步-建立模型"><a href="#第三步-建立模型" class="headerlink" title="第三步. 建立模型"></a>第三步. 建立模型</h2><p>在项目的第三步中，你需要了解必要的工具和技巧来让你的模型进行预测。用这些工具和技巧对每一个模型的表现做精确的衡量可以极大地增强你预测的信心。</p>
+<h3 id="3-1-单词清洗"><a href="#3-1-单词清洗" class="headerlink" title="3.1 单词清洗"></a>3.1 单词清洗</h3><p>由于菜品包含的佐料众多，同一种佐料也可能有单复数、时态等变化，为了去除这类差异，我们考虑将<strong>ingredients</strong> 进行过滤</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> WordNetLemmatizer</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_clean</span><span class="params">(ingredients)</span>:</span></span><br><span class="line">    <span class="comment">#去除单词的标点符号，只保留 a..z A...Z的单词字符</span></span><br><span class="line">    ingredients= np.array(ingredients).tolist()</span><br><span class="line">    print(<span class="string">"菜品佐料：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    ingredients=[[re.sub(<span class="string">'[^A-Za-z]'</span>, <span class="string">' '</span>, word) <span class="keyword">for</span> word <span class="keyword">in</span> component]<span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除标点符号之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 去除单词的单复数，时态，只保留单词的词干</span></span><br><span class="line">    lemma=WordNetLemmatizer()</span><br><span class="line">    ingredients=[<span class="string">" "</span>.join([ <span class="string">" "</span>.join([lemma.lemmatize(w) <span class="keyword">for</span> w <span class="keyword">in</span> words.split(<span class="string">" "</span>)]) <span class="keyword">for</span> words <span class="keyword">in</span> component])  <span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除时态和单复数之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    <span class="keyword">return</span> ingredients</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\n处理训练集..."</span>)</span><br><span class="line">train_ingredients = text_clean(train_content[<span class="string">'ingredients'</span>])</span><br><span class="line">print(<span class="string">"\n处理测试集..."</span>)</span><br><span class="line">test_ingredients = text_clean(test_content[<span class="string">'ingredients'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[nltk_data] Downloading package wordnet to
+[nltk_data]     /Users/jindongwang/nltk_data...
+[nltk_data]   Unzipping corpora/wordnet.zip.
+
+处理训练集...
+菜品佐料：
+[&apos;chopped tomatoes&apos;, &apos;fresh basil&apos;, &apos;garlic&apos;, &apos;extra-virgin olive oil&apos;, &apos;kosher salt&apos;, &apos;flat leaf parsley&apos;]
+去除标点符号之后的结果：
+[&apos;chopped tomatoes&apos;, &apos;fresh basil&apos;, &apos;garlic&apos;, &apos;extra virgin olive oil&apos;, &apos;kosher salt&apos;, &apos;flat leaf parsley&apos;]
+去除时态和单复数之后的结果：
+chopped tomato fresh basil garlic extra virgin olive oil kosher salt flat leaf parsley
+
+处理测试集...
+菜品佐料：
+[&apos;eggs&apos;, &apos;cherries&apos;, &apos;dates&apos;, &apos;dark muscovado sugar&apos;, &apos;ground cinnamon&apos;, &apos;mixed spice&apos;, &apos;cake&apos;, &apos;vanilla extract&apos;, &apos;self raising flour&apos;, &apos;sultana&apos;, &apos;rum&apos;, &apos;raisins&apos;, &apos;prunes&apos;, &apos;glace cherries&apos;, &apos;butter&apos;, &apos;port&apos;]
+去除标点符号之后的结果：
+[&apos;eggs&apos;, &apos;cherries&apos;, &apos;dates&apos;, &apos;dark muscovado sugar&apos;, &apos;ground cinnamon&apos;, &apos;mixed spice&apos;, &apos;cake&apos;, &apos;vanilla extract&apos;, &apos;self raising flour&apos;, &apos;sultana&apos;, &apos;rum&apos;, &apos;raisins&apos;, &apos;prunes&apos;, &apos;glace cherries&apos;, &apos;butter&apos;, &apos;port&apos;]
+去除时态和单复数之后的结果：
+egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla extract self raising flour sultana rum raisin prune glace cherry butter port
+</code></pre><h3 id="3-2-特征提取"><a href="#3-2-特征提取" class="headerlink" title="3.2 特征提取"></a>3.2 特征提取</h3><p>在该步骤中，我们将菜品的佐料转换成数值特征向量。考虑到绝大多数菜中都包含<code>salt, water, sugar, butter</code>等，采用one-hot的方法提取的向量将不能很好的对菜系作出区分。我们将考虑按照佐料出现的次数对佐料做一定的加权，即：佐料出现次数越多，佐料的区分性就越低。我们采用的特征为TF-IDF，相关介绍内容可以参考：<a href="http://www.ruanyifeng.com/blog/2013/03/tf-idf.html" target="_blank" rel="noopener">TF-IDF与余弦相似性的应用（一）：自动提取关键词</a>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="comment"># 将佐料转换成特征向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理 训练集</span></span><br><span class="line">vectorizer = TfidfVectorizer(stop_words=<span class="string">'english'</span>, ngram_range=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">                analyzer=<span class="string">'word'</span>, max_df=<span class="number">.57</span>, binary=<span class="keyword">False</span>,</span><br><span class="line">                token_pattern=<span class="string">r"\w+"</span>,sublinear_tf=<span class="keyword">False</span>)</span><br><span class="line">train_tfidf = vectorizer.fit_transform(train_ingredients).todense()</span><br><span class="line"></span><br><span class="line"><span class="comment">## 处理 测试集</span></span><br><span class="line">test_tfidf = vectorizer.transform(test_ingredients)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">train_targets=np.array(train_content[<span class="string">'cuisine'</span>]).tolist()</span><br><span class="line">train_targets[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;greek&apos;,
+ &apos;southern_us&apos;,
+ &apos;filipino&apos;,
+ &apos;indian&apos;,
+ &apos;indian&apos;,
+ &apos;jamaican&apos;,
+ &apos;spanish&apos;,
+ &apos;italian&apos;,
+ &apos;mexican&apos;,
+ &apos;italian&apos;]
+</code></pre><h3 id="编程练习-1"><a href="#编程练习-1" class="headerlink" title="编程练习"></a>编程练习</h3><p>这里我们为了防止前面步骤中累积的错误，导致以下步骤无法正常运行。我们在此检查处理完的实验数据是否正确，请打印<code>train_tfidf</code>和<code>train_targets</code>中前五个数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你需要预览训练集train_tfidf,train_targets中前5条数据，试试Python的切片语法</span></span><br><span class="line">display(train_tfidf[:<span class="number">5</span>])</span><br><span class="line">display(train_targets[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>matrix([[0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.]])
+
+
+
+[&apos;greek&apos;, &apos;southern_us&apos;, &apos;filipino&apos;, &apos;indian&apos;, &apos;indian&apos;]
+</code></pre><h3 id="3-3-验证集划分"><a href="#3-3-验证集划分" class="headerlink" title="3.3 验证集划分"></a>3.3 验证集划分</h3><p>为了在实验中大致估计模型的精确度我们将从原本的<code>train_ingredients</code> 划分出 <code>20%</code> 的数据用作<code>valid_ingredients</code>。</p>
+<h3 id="编程练习：数据分割与重排"><a href="#编程练习：数据分割与重排" class="headerlink" title="编程练习：数据分割与重排"></a>编程练习：数据分割与重排</h3><p>调用<code>train_test_split</code>函数将训练集划分为新的训练集和验证集，便于之后的模型精度观测。</p>
+<ul>
+<li>从<code>sklearn.model_selection</code>中导入<code>train_test_split</code></li>
+<li>将<code>train_tfidf</code>和<code>train_targets</code>作为<code>train_test_split</code>的输入变量</li>
+<li>设置<code>test_size</code>为0.2，划分出20%的验证集，80%的数据留作新的训练集。</li>
+<li>设置<code>random_state</code>随机种子，以确保每一次运行都可以得到相同划分的结果。（随机种子固定，生成的随机序列就是确定的）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：划分出验证集</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train , X_valid , y_train, y_valid = train_test_split(train_tfidf, train_targets, test_size=<span class="number">0.2</span>, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-建立模型"><a href="#3-2-建立模型" class="headerlink" title="3.2 建立模型"></a>3.2 建立模型</h3><p>调用 <code>sklearn</code> 中的逻辑回归模型（Logistic Regression）。</p>
+<h3 id="编程练习：训练模型"><a href="#编程练习：训练模型" class="headerlink" title="编程练习：训练模型"></a>编程练习：训练模型</h3><ul>
+<li>从<code>sklearn.linear_model</code>导入<code>LogisticRegression</code></li>
+<li>从<code>sklearn.model_selection</code>导入<code>GridSearchCV</code>, 参数自动搜索，只要把参数输进去，就能给出最优的结果和参数，这个方法适合小数据集。</li>
+<li>定义<code>parameters</code>变量：为<code>C</code>参数创造一个字典，它的值是从1至10的数组;</li>
+<li>定义<code>classifier</code>变量: 使用导入的<code>LogisticRegression</code>创建一个分类函数;</li>
+<li>定义<code>grid</code>变量: 使用导入的<code>GridSearchCV</code>创建一个网格搜索对象；将变量’classifier’, ‘parameters’作为参数传至这个对象构造函数中；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 建立逻辑回归模型</span></span><br><span class="line">parameters = &#123;<span class="string">'C'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]&#125;</span><br><span class="line"></span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(classifier, parameters)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<p>模型训练结束之后，我们计算模型在验证集<code>X_valid</code>上预测结果，并计算模型的预测精度（与<code>y_valid</code>逐个比较）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <span class="comment">## 计算模型的准确率</span></span><br><span class="line"></span><br><span class="line">valid_predict = grid.predict(X_valid)</span><br><span class="line">valid_score=accuracy_score(y_valid,valid_predict)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"验证集上的得分为：&#123;&#125;"</span>.format(valid_score))</span><br></pre></td></tr></table></figure>
+<pre><code>验证集上的得分为：0.7912005028284098
+</code></pre><hr>
+<h2 id="第四步-模型预测（可选）"><a href="#第四步-模型预测（可选）" class="headerlink" title="第四步. 模型预测（可选）"></a>第四步. 模型预测（可选）</h2><h3 id="4-1-预测测试集"><a href="#4-1-预测测试集" class="headerlink" title="4.1 预测测试集"></a>4.1 预测测试集</h3><h3 id="编程练习-2"><a href="#编程练习-2" class="headerlink" title="编程练习"></a>编程练习</h3><ul>
+<li>将模型<code>grid</code>对测试集<code>test_tfidf</code>做预测，然后查看预测结果。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：预测测试结果</span></span><br><span class="line">predictions = grid.predict(test_tfidf)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">print(<span class="string">"预测的测试集个数为：&#123;&#125;"</span>.format(len(predictions)))</span><br><span class="line">test_content[<span class="string">'cuisine'</span>]=predictions</span><br><span class="line">test_content.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>预测的测试集个数为：9944
+</code></pre><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>ingredients</th>
+      <th>cuisine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18009</td>
+      <td>[baking powder, eggs, all-purpose flour, raisins, milk, white sugar]</td>
+      <td>british</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>28583</td>
+      <td>[sugar, egg yolks, corn starch, cream of tartar, bananas, vanilla wafers, milk, vanilla extract, toasted pecans, egg…</td>
+      <td>southern_us</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>41580</td>
+      <td>[sausage links, fennel bulb, fronds, olive oil, cuban peppers, onions]</td>
+      <td>italian</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29752</td>
+      <td>[meat cuts, file powder, smoked sausage, okra, shrimp, andouille sausage, water, paprika, hot sauce, garlic cloves, …</td>
+      <td>cajun_creole</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>35687</td>
+      <td>[ground black pepper, salt, sausage casings, leeks, parmigiano reggiano cheese, cornmeal, water, extra-virgin olive …</td>
+      <td>italian</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>38527</td>
+      <td>[baking powder, all-purpose flour, peach slices, corn starch, heavy cream, lemon juice, unsalted butter, salt, white…</td>
+      <td>southern_us</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>19666</td>
+      <td>[grape juice, orange, white zinfandel]</td>
+      <td>french</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>41217</td>
+      <td>[ground ginger, white pepper, green onions, orange juice, sugar, Sriracha, vegetable oil, orange zest, chicken broth…</td>
+      <td>chinese</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>28753</td>
+      <td>[diced onions, taco seasoning mix, all-purpose flour, chopped cilantro fresh, ground cumin, ground cinnamon, vegetab…</td>
+      <td>mexican</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>22659</td>
+      <td>[eggs, cherries, dates, dark muscovado sugar, ground cinnamon, mixed spice, cake, vanilla extract, self raising flou…</td>
+      <td>british</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="4-2-提交结果"><a href="#4-2-提交结果" class="headerlink" title="4.2 提交结果"></a>4.2 提交结果</h3><p>为了更好的测试模型的效果，同时比较与其他人的差距，我们将模型的测试集上的结果提交至 <a href="https://www.kaggle.com/c/whats-cooking/submit" target="_blank" rel="noopener">kaggle What’s Cooking?</a> （需要提前注册kaggle账号）。</p>
+<p><strong>注意</strong>：在提交作业时，请将提交排名得分截图，附在压缩包中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 加载结果格式</span></span><br><span class="line">submit_frame = pd.read_csv(<span class="string">"sample_submission.csv"</span>)</span><br><span class="line"><span class="comment">## 保存结果</span></span><br><span class="line">result = pd.merge(submit_frame, test_content, on=<span class="string">"id"</span>, how=<span class="string">'left'</span>)</span><br><span class="line">result = result.rename(index=str, columns=&#123;<span class="string">"cuisine_y"</span>: <span class="string">"cuisine"</span>&#125;)</span><br><span class="line">test_result_name = <span class="string">"tfidf_cuisine_test.csv"</span></span><br><span class="line">result[[<span class="string">'id'</span>,<span class="string">'cuisine'</span>]].to_csv(test_result_name,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>将生成的 <strong>tfidf_cuisine_test.csv</strong> 提交至 <a href="https://www.kaggle.com/c/whats-cooking/submit" target="_blank" rel="noopener">https://www.kaggle.com/c/whats-cooking/submit</a> 然后选择 <strong>Upload Submission File</strong>, 点击 <strong>Make submission</strong>即可。稍作等待，就可以看到右上角的评分结果（得分大致为：<code>0.78580</code> 左右）。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/02/15/Scorecard/" class="next-post btn btn-default" title="Scorecard">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Scorecard</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习工程师纳米学位（试学班）"><span class="toc-text">机器学习工程师纳米学位（试学班）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目-0-预测你的下一道世界料理"><span class="toc-text">项目 0: 预测你的下一道世界料理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步-下载并导入数据"><span class="toc-text">第一步. 下载并导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-配置环境"><span class="toc-text">1.1 配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-加载数据"><span class="toc-text">1.2 加载数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-数据预览"><span class="toc-text">1.3 数据预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习"><span class="toc-text">编程练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-分析数据"><span class="toc-text">第二步. 分析数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据提取"><span class="toc-text">编程练习：数据提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：基础统计运算"><span class="toc-text">编程练习：基础统计运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步-建立模型"><span class="toc-text">第三步. 建立模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-单词清洗"><span class="toc-text">3.1 单词清洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-特征提取"><span class="toc-text">3.2 特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-1"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-验证集划分"><span class="toc-text">3.3 验证集划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据分割与重排"><span class="toc-text">编程练习：数据分割与重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-建立模型"><span class="toc-text">3.2 建立模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：训练模型"><span class="toc-text">编程练习：训练模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步-模型预测（可选）"><span class="toc-text">第四步. 模型预测（可选）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-预测测试集"><span class="toc-text">4.1 预测测试集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-2"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-提交结果"><span class="toc-text">4.2 提交结果</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

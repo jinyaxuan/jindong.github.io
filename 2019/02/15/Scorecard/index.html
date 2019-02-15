@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Machine Learning">
+
+
+    <meta name="description" content="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Scorecard | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 科技让复杂的世界更简单! </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/ML/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DL/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Scorecard">
+            
+	            Scorecard
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/15</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h4 id="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。"><a href="#信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。" class="headerlink" title="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。"></a>信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。</h4><p>信用评分卡一般可以分为申请评分卡、行为评分卡、催收评分卡等。本文主要讲述申请评分卡模型的建模分析过程。
+主要分以下几个步骤：</p>
+<ol>
+<li>目标定义</li>
+<li>数据获取</li>
+<li>数据预处理</li>
+<li>模型开发</li>
+<li>模型评估</li>
+<li>评分系统建立</li>
+</ol>
+<h3 id="1-目标定义"><a href="#1-目标定义" class="headerlink" title="1. 目标定义"></a>1. 目标定义</h3><p>数据来源kaggle project: ‘give-me-some-credit-dataset’，
+找出关键的特征变量，建立信用评分模型</p>
+<h3 id="2-数据获取"><a href="#2-数据获取" class="headerlink" title="2. 数据获取"></a>2. 数据获取</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入必要的库包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取数据</span></span><br><span class="line">data=pd.read_csv(<span class="string">'cs-training.csv'</span>)</span><br><span class="line">data=data.drop(axis=<span class="number">1</span>, columns=[data.columns[<span class="number">0</span>]])</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SeriousDlqin2yrs</th>
+      <th>RevolvingUtilizationOfUnsecuredLines</th>
+      <th>age</th>
+      <th>NumberOfTime30-59DaysPastDueNotWorse</th>
+      <th>DebtRatio</th>
+      <th>MonthlyIncome</th>
+      <th>NumberOfOpenCreditLinesAndLoans</th>
+      <th>NumberOfTimes90DaysLate</th>
+      <th>NumberRealEstateLoansOrLines</th>
+      <th>NumberOfTime60-89DaysPastDueNotWorse</th>
+      <th>NumberOfDependents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.766127</td>
+      <td>45</td>
+      <td>2</td>
+      <td>0.802982</td>
+      <td>9120.0</td>
+      <td>13</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0.957151</td>
+      <td>40</td>
+      <td>0</td>
+      <td>0.121876</td>
+      <td>2600.0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0.658180</td>
+      <td>38</td>
+      <td>1</td>
+      <td>0.085113</td>
+      <td>3042.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0.233810</td>
+      <td>30</td>
+      <td>0</td>
+      <td>0.036050</td>
+      <td>3300.0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0.907239</td>
+      <td>49</td>
+      <td>1</td>
+      <td>0.024926</td>
+      <td>63588.0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.info()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+RangeIndex: 150000 entries, 0 to 149999
+Data columns (total 11 columns):
+SeriousDlqin2yrs                        150000 non-null int64
+RevolvingUtilizationOfUnsecuredLines    150000 non-null float64
+age                                     150000 non-null int64
+NumberOfTime30-59DaysPastDueNotWorse    150000 non-null int64
+DebtRatio                               150000 non-null float64
+MonthlyIncome                           120269 non-null float64
+NumberOfOpenCreditLinesAndLoans         150000 non-null int64
+NumberOfTimes90DaysLate                 150000 non-null int64
+NumberRealEstateLoansOrLines            150000 non-null int64
+NumberOfTime60-89DaysPastDueNotWorse    150000 non-null int64
+NumberOfDependents                      146076 non-null float64
+dtypes: float64(4), int64(7)
+memory usage: 12.6 MB
+</code></pre><h3 id="3-数据预处理"><a href="#3-数据预处理" class="headerlink" title="3. 数据预处理"></a>3. 数据预处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#缺失值处理 </span></span><br><span class="line"><span class="comment">#随机森林法填补MonthlyIncome</span></span><br><span class="line">MI_df=data.iloc[:,<span class="number">0</span>:<span class="number">10</span>]</span><br><span class="line">MI_known=MI_df.loc[MI_df[<span class="string">'MonthlyIncome'</span>].notnull()]</span><br><span class="line">MI_unknown=MI_df.loc[MI_df[<span class="string">'MonthlyIncome'</span>].isnull()]</span><br><span class="line">X_known=MI_known.drop(<span class="string">'MonthlyIncome'</span>,axis=<span class="number">1</span>)</span><br><span class="line">y_known=MI_known[<span class="string">'MonthlyIncome'</span>]</span><br><span class="line">X_unknown=MI_unknown.drop(<span class="string">'MonthlyIncome'</span>,axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">rfr=RandomForestRegressor(random_state=<span class="number">0</span>, n_estimators=<span class="number">100</span>, max_depth=<span class="number">3</span>, n_jobs=<span class="number">-1</span>)</span><br><span class="line">rfr.fit(X_known, y_known)</span><br><span class="line"></span><br><span class="line">data.loc[MI_df[<span class="string">'MonthlyIncome'</span>].isnull(), <span class="string">'MonthlyIncome'</span>]=rfr.predict(X_unknown).round(<span class="number">0</span>)</span><br><span class="line">print(<span class="string">'Done'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Done
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#NumberOfDependents 缺失值较少，可以直接删除</span></span><br><span class="line">data.dropna(inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment">#去除重复值</span></span><br><span class="line">data.drop_duplicates(inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#异常值处理</span></span><br><span class="line">sns.boxplot(y=<span class="string">'age'</span>, data=data)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10e034cc0&gt;
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183554743.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=data[((data[<span class="string">'age'</span>]&gt;<span class="number">0</span>) &amp; (data[<span class="string">'age'</span>]&lt;<span class="number">100</span>))]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#逾期次数</span></span><br><span class="line">sns.boxplot(data=data[[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>,<span class="string">'NumberOfTimes90DaysLate'</span>,<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>]], palette=<span class="string">'Set2'</span>)</span><br><span class="line">plt.xticks(rotation=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>(array([0, 1, 2]), &lt;a list of 3 Text xticklabel objects&gt;)
+</code></pre><p><img src="https://img-blog.csdnimg.cn/2019021518370423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data=data[data[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>]&lt;<span class="number">80</span>]</span><br><span class="line"><span class="comment">#再次检查异常点</span></span><br><span class="line">sns.boxplot(data=data[[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>,<span class="string">'NumberOfTimes90DaysLate'</span>,<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>]], palette=<span class="string">'Set2'</span>)</span><br><span class="line">plt.xticks(rotation=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>(array([0, 1, 2]), &lt;a list of 3 Text xticklabel objects&gt;)
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183720775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#月收入和年龄变量的分布</span></span><br><span class="line">sns.boxplot(x=<span class="string">'MonthlyIncome'</span>, data=data)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10f596b70&gt;
+</code></pre><p><img src="https://img-blog.csdnimg.cn/2019021518373271.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'%.2f%% of customers monthly income under 40000.'</span> %(data.loc[data[<span class="string">'MonthlyIncome'</span>]&lt;=<span class="number">40000</span>].shape[<span class="number">0</span>]*<span class="number">100</span>/data.shape[<span class="number">0</span>]))</span><br><span class="line"><span class="comment">#月收入绝大部分集中在40000以下，可画出对应的月收入的分布</span></span><br><span class="line">sns.distplot(data.loc[data[<span class="string">'MonthlyIncome'</span>]&lt;=<span class="number">40000</span>,<span class="string">'MonthlyIncome'</span>], bins=<span class="number">80</span>, label=<span class="string">'MonthlyIncome dist'</span>, kde=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>99.69% of customers monthly income under 40000.
+
+
+
+
+
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x107f14048&gt;
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183745111.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.distplot(data[<span class="string">'age'</span>], bins=<span class="number">30</span>, label=<span class="string">'age dist'</span>, kde=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10e075978&gt;
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183754535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<h4 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#训练集与测试集划分</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">y = data[<span class="string">'SeriousDlqin2yrs'</span>]</span><br><span class="line">X = data.iloc[:,<span class="number">1</span>:]</span><br><span class="line">X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=<span class="number">0.3</span>, random_state=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义最优分箱函数</span></span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> stats</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mono_bin</span><span class="params">(Y, X, n = <span class="number">20</span>)</span>:</span></span><br><span class="line">    r = <span class="number">0</span></span><br><span class="line">    total_bad=Y.sum()</span><br><span class="line">    total_good=Y.count()-total_bad</span><br><span class="line">    <span class="comment">#print(total_bad, total_good)</span></span><br><span class="line">    <span class="keyword">while</span> np.abs(r) &lt; <span class="number">1</span>:</span><br><span class="line">        d1 = pd.DataFrame(&#123;<span class="string">"X"</span>: X, <span class="string">"Y"</span>: Y, <span class="string">"Bucket"</span>: pd.qcut(X, n)&#125;)</span><br><span class="line">        d2 = d1.groupby(<span class="string">'Bucket'</span>, as_index = <span class="keyword">True</span>)</span><br><span class="line">        r, p = stats.spearmanr(d2.mean().X, d2.mean().Y)</span><br><span class="line">        n = n - <span class="number">1</span></span><br><span class="line">    d3 = pd.DataFrame(d2.X.min(), columns = [<span class="string">'min'</span>])</span><br><span class="line">    d3[<span class="string">'min'</span>]=d2.min().X</span><br><span class="line">    d3[<span class="string">'max'</span>] = d2.max().X</span><br><span class="line">    d3[<span class="string">'bad'</span>] = d2.sum().Y</span><br><span class="line">    d3[<span class="string">'good'</span>] = d2.count().Y-d3[<span class="string">'bad'</span>]</span><br><span class="line">    d3[<span class="string">'bad_rate'</span>] = d2.mean().Y</span><br><span class="line">    d3[<span class="string">'woe'</span>]=np.log(((d2.count().Y-d2.sum().Y)/total_good)/(d2.sum().Y/total_bad))</span><br><span class="line">    iv = ((d3[<span class="string">'good'</span>]/total_good - d3[<span class="string">'bad'</span>]/total_bad)*d3[<span class="string">'woe'</span>]).sum()</span><br><span class="line">    d4 = (d3.sort_index(by = <span class="string">'min'</span>)).reset_index(drop=<span class="keyword">True</span>)</span><br><span class="line">    woe = list(d4[<span class="string">'woe'</span>].round(<span class="number">3</span>))</span><br><span class="line">    cut=[]</span><br><span class="line">    cut.append(float(<span class="string">'-inf'</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        qua = X.quantile(i / (n+<span class="number">1</span>))</span><br><span class="line">        cut.append(round(qua, <span class="number">4</span>))</span><br><span class="line">    cut.append(float(<span class="string">'inf'</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> d4, iv, cut, woe</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#举例，将‘age’最优分箱</span></span><br><span class="line">mono_bin(y, data[<span class="string">'age'</span>], n=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>(   min  max   bad   good  bad_rate       woe
+ 0   21   33  1816  14471  0.111500 -0.561845
+ 1   34   40  1664  16073  0.093815 -0.369439
+ 2   41   45  1360  14683  0.084772 -0.258150
+ 3   46   49  1209  13619  0.081535 -0.215683
+ 4   50   54  1298  16516  0.072864 -0.093851
+ 5   55   59   913  15757  0.054769  0.210948
+ 6   60   64   690  15923  0.041534  0.501473
+ 7   65   71   414  14194  0.028341  0.897353
+ 8   72   99   341  14403  0.023128  1.105954,
+ 0.2414021266070617,
+ [-inf, 33.0, 40.0, 45.0, 49.0, 54.0, 59.0, 64.0, 71.0, inf],
+ [-0.562, -0.369, -0.258, -0.216, -0.094, 0.211, 0.501, 0.897, 1.106])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每个变量的个数，从而确定连续变量与分类变量</span></span><br><span class="line">var_lst=data.columns[<span class="number">1</span>:]</span><br><span class="line">var_num=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> var_lst:</span><br><span class="line">    var_num[var]=len(data[var].unique())</span><br><span class="line">var_num</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;RevolvingUtilizationOfUnsecuredLines&apos;: 122950,
+ &apos;age&apos;: 79,
+ &apos;NumberOfTime30-59DaysPastDueNotWorse&apos;: 14,
+ &apos;DebtRatio&apos;: 114065,
+ &apos;MonthlyIncome&apos;: 13592,
+ &apos;NumberOfOpenCreditLinesAndLoans&apos;: 58,
+ &apos;NumberOfTimes90DaysLate&apos;: 17,
+ &apos;NumberRealEstateLoansOrLines&apos;: 28,
+ &apos;NumberOfTime60-89DaysPastDueNotWorse&apos;: 11,
+ &apos;NumberOfDependents&apos;: 13}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将四个连续变量最优分箱</span></span><br><span class="line">x1_df, x1_iv, x1_cut, x1_woe = mono_bin( y_train, X_train[<span class="string">'RevolvingUtilizationOfUnsecuredLines'</span>], n=<span class="number">10</span>)</span><br><span class="line">x2_df, x2_iv, x2_cut, x2_woe = mono_bin( y_train, X_train[<span class="string">'age'</span>], n=<span class="number">10</span>)</span><br><span class="line">x4_df, x4_iv, x4_cut, x4_woe = mono_bin( y_train, X_train[<span class="string">'DebtRatio'</span>], n=<span class="number">10</span>)</span><br><span class="line">x5_df, x5_iv, x5_cut, x5_woe = mono_bin( y_train, X_train[<span class="string">'MonthlyIncome'</span>], n=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不能最优分箱的变量则进行手动分箱，WOE计算函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">woe_value</span><span class="params">(Y, X, cut)</span>:</span></span><br><span class="line">    total_bad=Y.sum()</span><br><span class="line">    total_good=Y.count()-total_bad</span><br><span class="line">    d1 = pd.DataFrame(&#123;<span class="string">"X"</span>: X, <span class="string">"Y"</span>: Y, <span class="string">"Bucket"</span>: cut&#125;)</span><br><span class="line">    d2 = d1.groupby(<span class="string">'Bucket'</span>, as_index = <span class="keyword">True</span>)</span><br><span class="line">    d3 = pd.DataFrame(d2.X.min(), columns = [<span class="string">'min'</span>])</span><br><span class="line">    d3[<span class="string">'min'</span>]=d2.min().X</span><br><span class="line">    d3[<span class="string">'max'</span>] = d2.max().X</span><br><span class="line">    d3[<span class="string">'bad'</span>] = d2.sum().Y</span><br><span class="line">    d3[<span class="string">'good'</span>] = d2.count().Y-d3[<span class="string">'bad'</span>]</span><br><span class="line">    d3[<span class="string">'bad_rate'</span>] = d2.mean().Y</span><br><span class="line">    d3[<span class="string">'woe'</span>]=np.log(((d2.count().Y-d2.sum().Y)/total_good)/(d2.sum().Y/total_bad))</span><br><span class="line">    iv = ((d3[<span class="string">'good'</span>]/total_good - d3[<span class="string">'bad'</span>]/total_bad)*d3[<span class="string">'woe'</span>]).sum()</span><br><span class="line">    d4 = (d3.sort_index(by = <span class="string">'min'</span>)).reset_index(drop=<span class="keyword">True</span>)</span><br><span class="line">    woe = list(d4[<span class="string">'woe'</span>].round(<span class="number">3</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> d4, iv, woe</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">x3_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x6_cut = [-np.Inf, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x7_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x8_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, np.Inf]</span><br><span class="line">x9_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, np.Inf]</span><br><span class="line">x10_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line"></span><br><span class="line">x3_bin = pd.cut(X_train[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>], bins= x3_cut)</span><br><span class="line">x6_bin = pd.cut(X_train[<span class="string">'NumberOfOpenCreditLinesAndLoans'</span>], bins= x6_cut)</span><br><span class="line">x7_bin = pd.cut(X_train[<span class="string">'NumberOfTimes90DaysLate'</span>], bins=x7_cut)</span><br><span class="line">x8_bin = pd.cut(X_train[<span class="string">'NumberRealEstateLoansOrLines'</span>], bins=x8_cut)</span><br><span class="line">x9_bin = pd.cut(X_train[<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>], bins=x9_cut)</span><br><span class="line">x10_bin = pd.cut(X_train[<span class="string">'NumberOfDependents'</span>], bins=x10_cut)</span><br><span class="line"></span><br><span class="line">x3_df, x3_iv, x3_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>], x3_bin)</span><br><span class="line">x6_df, x6_iv, x6_woe = woe_value(y_train, X_train[<span class="string">'NumberOfOpenCreditLinesAndLoans'</span>], x6_bin)</span><br><span class="line">x7_df, x7_iv, x7_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTimes90DaysLate'</span>], x7_bin)</span><br><span class="line">x8_df, x8_iv, x8_woe = woe_value(y_train, X_train[<span class="string">'NumberRealEstateLoansOrLines'</span>], x8_bin)</span><br><span class="line">x9_df, x9_iv, x9_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>], x9_bin)</span><br><span class="line">x10_df, x10_iv, x10_woe = woe_value(y_train, X_train[<span class="string">'NumberOfDependents'</span>], x10_bin)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#相关性分析</span></span><br><span class="line">corr = data.corr()</span><br><span class="line">xticks = [<span class="string">'x'</span>+str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>)]</span><br><span class="line">yticks = list(data.columns)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">sns.heatmap(corr, cmap=<span class="string">'GnBu'</span>, annot=<span class="keyword">True</span>, ax= ax1, annot_kws=&#123;<span class="string">'size'</span>:<span class="number">6</span>, <span class="string">'color'</span>:<span class="string">'red'</span>&#125;)</span><br><span class="line">ax1.set_xticklabels(xticks, rotation=<span class="number">0</span>, fontsize=<span class="number">10</span>)</span><br><span class="line">ax1.set_yticklabels(yticks, rotation=<span class="number">0</span>, fontsize=<span class="number">10</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190215183807960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从相关系数热力图可以看出，自变量之间的线性相关性比较弱</span></span><br><span class="line"><span class="comment">#画出每个变量的IV值</span></span><br><span class="line">iv = [eval(<span class="string">'x'</span>+str(i)+<span class="string">'_iv'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">index=[<span class="string">'x'</span>+str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">sns.barplot(x=index, y=iv)</span><br><span class="line">plt.ylabel(<span class="string">'IV'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0,0.5,&apos;IV&apos;)
+</code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183820781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选x1, x2, x3, x7, x9， IV&gt;0.2高预测性</span></span><br><span class="line"><span class="comment">#WOE编码</span></span><br><span class="line">x1= <span class="string">'RevolvingUtilizationOfUnsecuredLines'</span></span><br><span class="line">x2= <span class="string">'age'</span></span><br><span class="line">x3= <span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span></span><br><span class="line">x7= <span class="string">'NumberOfTimes90DaysLate'</span></span><br><span class="line">x9= <span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#定义WOE编码函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">woe_trans</span><span class="params">(data, var, woe, cut)</span>:</span></span><br><span class="line">    woe_name = var+<span class="string">'_woe'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(woe)):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            data.loc[(data[var]&lt;=cut[i+<span class="number">1</span>]), woe_name] = woe[i]</span><br><span class="line">        <span class="keyword">elif</span> ((i&gt;<span class="number">0</span>) <span class="keyword">and</span> (i&lt;=(len(woe)<span class="number">-2</span>))):</span><br><span class="line">            data.loc[((data[var]&lt;=cut[i+<span class="number">1</span>]) &amp; (data[var]&gt;cut[i])), woe_name] = woe[i]</span><br><span class="line">        <span class="keyword">else</span>: </span><br><span class="line">            data.loc[(data[var]&gt;cut[i]), woe_name] = woe[i]</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">9</span>]:</span><br><span class="line">    X_train = woe_trans(X_train, eval(<span class="string">'x'</span>+str(i)), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_woe'</span>), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_cut'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选取WOE编码之后的列作为训练数据集</span></span><br><span class="line">X_train = X_train.iloc[:, <span class="number">-5</span>:]</span><br></pre></td></tr></table></figure>
+<h3 id="4-模型开发"><a href="#4-模型开发" class="headerlink" title="4. 模型开发"></a>4. 模型开发</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#建立逻辑回归模型</span></span><br><span class="line"><span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm</span><br><span class="line">X1=sm.add_constant(X_train)</span><br><span class="line">logit=sm.Logit(y_train, X1)</span><br><span class="line">result=logit.fit()</span><br><span class="line">print(result.summary())</span><br></pre></td></tr></table></figure>
+<pre><code>Optimization terminated successfully.
+         Current function value: 0.185840
+         Iterations 8
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:       SeriousDlqin2yrs   No. Observations:               101740
+Model:                          Logit   Df Residuals:                   101734
+Method:                           MLE   Df Model:                            5
+Date:                Thu, 20 Sep 2018   Pseudo R-squ.:                  0.2382
+Time:                        21:57:47   Log-Likelihood:                -18907.
+converged:                       True   LL-Null:                       -24820.
+                                        LLR p-value:                     0.000
+============================================================================================================
+                                               coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------
+const                                       -2.6195      0.015   -171.961      0.000      -2.649      -2.590
+RevolvingUtilizationOfUnsecuredLines_woe    -0.6441      0.016    -41.387      0.000      -0.675      -0.614
+age_woe                                     -0.4992      0.033    -15.294      0.000      -0.563      -0.435
+NumberOfTime30-59DaysPastDueNotWorse_woe    -0.5455      0.016    -34.470      0.000      -0.577      -0.515
+NumberOfTimes90DaysLate_woe                 -0.5683      0.014    -41.833      0.000      -0.595      -0.542
+NumberOfTime60-89DaysPastDueNotWorse_woe    -0.4019      0.017    -23.032      0.000      -0.436      -0.368
+============================================================================================================
+</code></pre><h3 id="5-模型评估"><a href="#5-模型评估" class="headerlink" title="5. 模型评估"></a>5. 模型评估</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#对测试集进行WOE编码</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">9</span>]:</span><br><span class="line">    X_test = woe_trans(X_test, eval(<span class="string">'x'</span>+str(i)), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_woe'</span>), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_cut'</span>))</span><br><span class="line">X_test = X_test.iloc[:, <span class="number">-5</span>:]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制ROC曲线，计算AUC</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line">X2=sm.add_constant(X_test)</span><br><span class="line">y_pred = result.predict(X2)</span><br><span class="line"></span><br><span class="line">fpr, tpr, threshold = metrics.roc_curve(y_test, y_pred)</span><br><span class="line">auc = metrics.auc(fpr, tpr)</span><br><span class="line">plt.plot(fpr, tpr, <span class="string">'b'</span>, label=<span class="string">'AUC=%.2f'</span> %auc)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>], [<span class="number">0</span>,<span class="number">1</span>], <span class="string">'r--'</span>)</span><br><span class="line">plt.xlim([<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">plt.ylim([<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">plt.xlabel(<span class="string">'FPR'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'TPR'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20190215183838146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
+<h3 id="6-评分系统建立"><a href="#6-评分系统建立" class="headerlink" title="6. 评分系统建立"></a>6. 评分系统建立</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分数计算函数</span></span><br><span class="line">PDO=<span class="number">20</span></span><br><span class="line">base=<span class="number">600</span></span><br><span class="line"><span class="comment">#all_woe是某一个体所有相关变量woe编码值构成的序列</span></span><br><span class="line"><span class="comment">#total_score = base- PDO*(all_woe.dot(coef))/np.log(2)</span></span><br><span class="line">factor= -PDO/np.log(<span class="number">2</span>)</span><br><span class="line">coef = result.params</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_score</span><span class="params">(coef, woe, factor)</span>:</span></span><br><span class="line">    scores=[round(coef*woe[i]*factor, <span class="number">0</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(woe))]</span><br><span class="line">    <span class="keyword">return</span> scores</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算各因子每个区间对应的分数</span></span><br><span class="line">x1_scores=get_score(coef[<span class="number">1</span>], x1_woe, factor)</span><br><span class="line">print(x1_scores)</span><br><span class="line">x2_scores=get_score(coef[<span class="number">2</span>], x2_woe, factor)</span><br><span class="line">x3_scores=get_score(coef[<span class="number">3</span>], x3_woe, factor)</span><br><span class="line">x7_scores=get_score(coef[<span class="number">4</span>], x7_woe, factor)</span><br><span class="line">x9_scores=get_score(coef[<span class="number">5</span>], x9_woe, factor)</span><br></pre></td></tr></table></figure>
+<pre><code>[24.0, 23.0, 5.0, -20.0]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.head()</span><br><span class="line">datacopy=data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=datacopy</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">9</span>]:</span><br><span class="line">    data = woe_trans(data, eval(<span class="string">'x'</span>+str(i)), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_woe'</span>), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_cut'</span>))</span><br><span class="line">data = data.iloc[:, <span class="number">-5</span>:]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#对整个data进行打分计算</span></span><br><span class="line">data_c=sm.add_constant(data)                                         </span><br><span class="line">data[<span class="string">'score'</span>]=<span class="number">500</span> + round(data_c.dot(coef)*factor, <span class="number">0</span>)  </span><br><span class="line">data.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RevolvingUtilizationOfUnsecuredLines_woe</th>
+      <th>age_woe</th>
+      <th>NumberOfTime30-59DaysPastDueNotWorse_woe</th>
+      <th>NumberOfTimes90DaysLate_woe</th>
+      <th>NumberOfTime60-89DaysPastDueNotWorse_woe</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.097</td>
+      <td>-0.264</td>
+      <td>-1.720</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>534.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.097</td>
+      <td>-0.371</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>567.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.097</td>
+      <td>-0.371</td>
+      <td>-0.878</td>
+      <td>-1.969</td>
+      <td>0.267</td>
+      <td>507.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.284</td>
+      <td>-0.564</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>590.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.097</td>
+      <td>-0.184</td>
+      <td>-0.878</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>548.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.284</td>
+      <td>1.094</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>614.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.284</td>
+      <td>0.216</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>601.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-1.097</td>
+      <td>-0.371</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>567.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.284</td>
+      <td>0.216</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>601.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>-1.097</td>
+      <td>-0.564</td>
+      <td>0.515</td>
+      <td>0.373</td>
+      <td>0.267</td>
+      <td>564.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/02/15/PredictYourCuisine/" class="pre-post btn btn-default" title="PredictYourCuisine">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">PredictYourCuisine</span>
+        </a>
+    
+    
+        <a href="/2019/02/15/hello-world/" class="next-post btn btn-default" title="Hello World">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Hello World</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。"><span class="toc-text">信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#1-目标定义"><span class="toc-text">1. 目标定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据获取"><span class="toc-text">2. 数据获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-数据预处理"><span class="toc-text">3. 数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#特征工程"><span class="toc-text">特征工程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-模型开发"><span class="toc-text">4. 模型开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-模型评估"><span class="toc-text">5. 模型评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-评分系统建立"><span class="toc-text">6. 评分系统建立</span></a>
+        
+    </li></div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
