@@ -1,0 +1,2178 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Machine Learning">
+
+
+    <meta name="description" content="探索电影数据集在这个项目中，你将尝试使用所学的知识，使用 NumPy、Pandas、matplotlib、seaborn 库中的函数，来对电影数据集进行探索。
+下载数据集：TMDb电影数据
+数据...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Explore Movie Dataset | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 科技让复杂的世界更简单! </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Explore Movie Dataset">
+            
+	            Explore Movie Dataset
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/16</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="探索电影数据集"><a href="#探索电影数据集" class="headerlink" title="探索电影数据集"></a>探索电影数据集</h2><p>在这个项目中，你将尝试使用所学的知识，使用 <code>NumPy</code>、<code>Pandas</code>、<code>matplotlib</code>、<code>seaborn</code> 库中的函数，来对电影数据集进行探索。</p>
+<p>下载数据集：<br><a href="https://s3.cn-north-1.amazonaws.com.cn/static-documents/nd101/explore+dataset/tmdb-movies.csv" target="_blank" rel="noopener">TMDb电影数据</a></p>
+<p>数据集各列名称的含义：</p>
+<table>
+<thead><tr><th>列名称</th><th>id</th><th>imdb_id</th><th>popularity</th><th>budget</th><th>revenue</th><th>original_title</th><th>cast</th><th>homepage</th><th>director</th><th>tagline</th><th>keywords</th><th>overview</th><th>runtime</th><th>genres</th><th>production_companies</th><th>release_date</th><th>vote_count</th><th>vote_average</th><th>release_year</th><th>budget_adj</th><th>revenue_adj</th></tr></thead><tbody>
+ <tr><td>含义</td><td>编号</td><td>IMDB 编号</td><td>知名度</td><td>预算</td><td>票房</td><td>名称</td><td>主演</td><td>网站</td><td>导演</td><td>宣传词</td><td>关键词</td><td>简介</td><td>时常</td><td>类别</td><td>发行公司</td><td>发行日期</td><td>投票总数</td><td>投票均值</td><td>发行年份</td><td>预算（调整后）</td><td>票房（调整后）</td></tr>
+</tbody></table>
+
+
+<p><strong>请注意，你需要提交该报告导出的 <code>.html</code>、<code>.ipynb</code> 以及 <code>.py</code> 文件。</strong></p>
+<hr>
+<hr>
+<h2 id="第一节-数据的导入与处理"><a href="#第一节-数据的导入与处理" class="headerlink" title="第一节 数据的导入与处理"></a>第一节 数据的导入与处理</h2><p>在这一部分，你需要编写代码，使用 Pandas 读取数据，并进行预处理。</p>
+<p><strong>任务1.1：</strong> 导入库以及数据</p>
+<ol>
+<li>载入需要的库 <code>NumPy</code>、<code>Pandas</code>、<code>matplotlib</code>、<code>seaborn</code>。</li>
+<li>利用 <code>Pandas</code> 库，读取 <code>tmdb-movies.csv</code> 中的数据，保存为 <code>movie_data</code>。</li>
+</ol>
+<p>提示：记得使用 notebook 中的魔法指令 <code>%matplotlib inline</code>，否则会导致你接下来无法打印出图像。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">movie_data = pd.read_csv(<span class="string">'/Users/jindongwang/MachingLearning/AIPND-cn/tmdb-movies.csv'</span>)</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>任务1.2: </strong> 了解数据</p>
+<p>你会接触到各种各样的数据表，因此在读取之后，我们有必要通过一些简单的方法，来了解我们数据表是什么样子的。</p>
+<ol>
+<li>获取数据表的行列，并打印。</li>
+<li>使用 <code>.head()</code>、<code>.tail()</code>、<code>.sample()</code> 方法，观察、了解数据表的情况。</li>
+<li>使用 <code>.dtypes</code> 属性，来查看各列数据的数据类型。</li>
+<li>使用 <code>isnull()</code> 配合 <code>.any()</code> 等方法，来查看各列是否存在空值。</li>
+<li>使用 <code>.describe()</code> 方法，看看数据表中数值型的数据是怎么分布的。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">movie_data.head()</span><br><span class="line">movie_data.tail()</span><br><span class="line">movie_data.sample()</span><br><span class="line"></span><br><span class="line">movie_data.dtypes</span><br><span class="line"></span><br><span class="line">movie_data.isnull().any()</span><br><span class="line">movie_data.describe()</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>popularity</th>
+      <th>budget</th>
+      <th>revenue</th>
+      <th>runtime</th>
+      <th>vote_count</th>
+      <th>vote_average</th>
+      <th>release_year</th>
+      <th>budget_adj</th>
+      <th>revenue_adj</th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10820.000000</td>
+      <td>10820.000000</td>
+      <td>1.082000e+04</td>
+      <td>1.082000e+04</td>
+      <td>10820.000000</td>
+      <td>10820.000000</td>
+      <td>10820.000000</td>
+      <td>10820.000000</td>
+      <td>1.082000e+04</td>
+      <td>1.082000e+04</td>
+      <td>1.082000e+04</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>66274.834381</td>
+      <td>0.647896</td>
+      <td>1.468256e+07</td>
+      <td>3.998479e+07</td>
+      <td>102.050370</td>
+      <td>218.179020</td>
+      <td>5.974270</td>
+      <td>2001.472828</td>
+      <td>1.758992e+07</td>
+      <td>5.153012e+07</td>
+      <td>2.530223e+07</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>92265.282197</td>
+      <td>1.001940</td>
+      <td>3.096573e+07</td>
+      <td>1.172250e+08</td>
+      <td>31.377214</td>
+      <td>576.706535</td>
+      <td>0.935026</td>
+      <td>12.630994</td>
+      <td>3.434136e+07</td>
+      <td>1.448923e+08</td>
+      <td>9.677916e+07</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>5.000000</td>
+      <td>0.000065</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>10.000000</td>
+      <td>1.500000</td>
+      <td>1960.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-4.139124e+08</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>10605.750000</td>
+      <td>0.207988</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>90.000000</td>
+      <td>17.000000</td>
+      <td>5.400000</td>
+      <td>1995.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>20695.500000</td>
+      <td>0.384556</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>99.000000</td>
+      <td>38.000000</td>
+      <td>6.000000</td>
+      <td>2006.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>75789.250000</td>
+      <td>0.715897</td>
+      <td>1.510000e+07</td>
+      <td>2.427926e+07</td>
+      <td>111.000000</td>
+      <td>146.000000</td>
+      <td>6.600000</td>
+      <td>2011.000000</td>
+      <td>2.093530e+07</td>
+      <td>3.388119e+07</td>
+      <td>9.333081e+06</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>417859.000000</td>
+      <td>32.985763</td>
+      <td>4.250000e+08</td>
+      <td>2.781506e+09</td>
+      <td>900.000000</td>
+      <td>9767.000000</td>
+      <td>9.200000</td>
+      <td>2015.000000</td>
+      <td>4.250000e+08</td>
+      <td>2.827124e+09</td>
+      <td>2.544506e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<hr>
+<p><strong>任务1.3: </strong> 清理数据</p>
+<p>在真实的工作场景中，数据处理往往是最为费时费力的环节。但是幸运的是，我们提供给大家的 tmdb 数据集非常的「干净」，不需要大家做特别多的数据清洗以及处理工作。在这一步中，你的核心的工作主要是对数据表中的空值进行处理。你可以使用 <code>.fillna()</code> 来填补空值，当然也可以使用 <code>.dropna()</code> 来丢弃数据表中包含空值的某些行或者列。</p>
+<p>任务：使用适当的方法来清理空值，并将得到的数据保存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># movie_data.fillna(value=movie_data.mean(), inplace=True)</span></span><br><span class="line">movie_data.fillna(method=<span class="string">'bfill'</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">movie_data.dropna(axis=<span class="number">0</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">movie_data.info()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 10820 entries, 0 to 6181
+Data columns (total 22 columns):
+id                      10820 non-null int64
+imdb_id                 10820 non-null object
+popularity              10820 non-null float64
+budget                  10820 non-null int64
+revenue                 10820 non-null int64
+original_title          10820 non-null object
+cast                    10820 non-null object
+homepage                10820 non-null object
+director                10820 non-null object
+tagline                 10820 non-null object
+keywords                10820 non-null object
+overview                10820 non-null object
+runtime                 10820 non-null int64
+genres                  10820 non-null object
+production_companies    10820 non-null object
+release_date            10820 non-null object
+vote_count              10820 non-null int64
+vote_average            10820 non-null float64
+release_year            10820 non-null int64
+budget_adj              10820 non-null float64
+revenue_adj             10820 non-null float64
+profit                  10820 non-null int64
+dtypes: float64(4), int64(7), object(11)
+memory usage: 1.9+ MB
+</code></pre><hr>
+<hr>
+<h2 id="第二节-根据指定要求读取数据"><a href="#第二节-根据指定要求读取数据" class="headerlink" title="第二节 根据指定要求读取数据"></a>第二节 根据指定要求读取数据</h2><p>相比 Excel 等数据分析软件，Pandas 的一大特长在于，能够轻松地基于复杂的逻辑选择合适的数据。因此，如何根据指定的要求，从数据表当获取适当的数据，是使用 Pandas 中非常重要的技能，也是本节重点考察大家的内容。</p>
+<hr>
+<p><strong>任务2.1: </strong> 简单读取</p>
+<ol>
+<li>读取数据表中名为 <code>id</code>、<code>popularity</code>、<code>budget</code>、<code>runtime</code>、<code>vote_average</code> 列的数据。</li>
+<li>读取数据表中前1～20行以及48、49行的数据。</li>
+<li>读取数据表中第50～60行的 <code>popularity</code> 那一列的数据。</li>
+</ol>
+<p>要求：每一个语句只能用一行代码实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title_list = [<span class="string">'id'</span>, <span class="string">'popularity'</span>, <span class="string">'budget'</span>, <span class="string">'runtime'</span>, <span class="string">'vote_average'</span>]</span><br><span class="line">movie_data[title_list]</span><br><span class="line"></span><br><span class="line">movie_data.iloc[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>,<span class="number">47</span>,<span class="number">48</span>]]</span><br><span class="line"><span class="comment">#单个我会 这组合起来就 。。</span></span><br><span class="line"></span><br><span class="line">movie_data[<span class="number">50</span>:<span class="number">61</span>][<span class="string">'popularity'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>1387    6.098027
+6081    6.095293
+643     6.052479
+3912    6.012584
+13      5.984995
+644     5.947136
+14      5.944927
+4364    5.944518
+6190    5.939927
+3373    5.903353
+15      5.898400
+Name: popularity, dtype: float64
+</code></pre><hr>
+<p><strong>任务2.2: </strong>逻辑读取（Logical Indexing）</p>
+<ol>
+<li>读取数据表中 <strong><code>popularity</code> 大于5</strong> 的所有数据。</li>
+<li>读取数据表中 <strong><code>popularity</code> 大于5</strong> 的所有数据且<strong>发行年份在1996年之后</strong>的所有数据。</li>
+</ol>
+<p>提示：Pandas 中的逻辑运算符如 <code>&amp;</code>、<code>|</code>，分别代表<code>且</code>以及<code>或</code>。</p>
+<p>要求：请使用 Logical Indexing实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movie_data[movie_data[<span class="string">'popularity'</span>]&gt;<span class="number">5</span>]</span><br><span class="line">movie_data[(movie_data[<span class="string">'popularity'</span>]&gt;<span class="number">5</span>) &amp; (movie_data[<span class="string">'release_year'</span>]&gt;<span class="number">1996</span>)]</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>imdb_id</th>
+      <th>popularity</th>
+      <th>budget</th>
+      <th>revenue</th>
+      <th>original_title</th>
+      <th>cast</th>
+      <th>homepage</th>
+      <th>director</th>
+      <th>tagline</th>
+      <th>...</th>
+      <th>runtime</th>
+      <th>genres</th>
+      <th>production_companies</th>
+      <th>release_date</th>
+      <th>vote_count</th>
+      <th>vote_average</th>
+      <th>release_year</th>
+      <th>budget_adj</th>
+      <th>revenue_adj</th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>135397</td>
+      <td>tt0369610</td>
+      <td>32.985763</td>
+      <td>150000000</td>
+      <td>1513528810</td>
+      <td>Jurassic World</td>
+      <td>Chris Pratt|Bryce Dallas Howard|Irrfan Khan|Vi...</td>
+      <td>http://www.jurassicworld.com/</td>
+      <td>Colin Trevorrow</td>
+      <td>The park is open.</td>
+      <td>...</td>
+      <td>124</td>
+      <td>Action|Adventure|Science Fiction|Thriller</td>
+      <td>Universal Studios|Amblin Entertainment|Legenda...</td>
+      <td>6/9/15</td>
+      <td>5562</td>
+      <td>6.5</td>
+      <td>2015</td>
+      <td>1.379999e+08</td>
+      <td>1.392446e+09</td>
+      <td>1363528810</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>76341</td>
+      <td>tt1392190</td>
+      <td>28.419936</td>
+      <td>150000000</td>
+      <td>378436354</td>
+      <td>Mad Max: Fury Road</td>
+      <td>Tom Hardy|Charlize Theron|Hugh Keays-Byrne|Nic...</td>
+      <td>http://www.madmaxmovie.com/</td>
+      <td>George Miller</td>
+      <td>What a Lovely Day.</td>
+      <td>...</td>
+      <td>120</td>
+      <td>Action|Adventure|Science Fiction|Thriller</td>
+      <td>Village Roadshow Pictures|Kennedy Miller Produ...</td>
+      <td>5/13/15</td>
+      <td>6185</td>
+      <td>7.1</td>
+      <td>2015</td>
+      <td>1.379999e+08</td>
+      <td>3.481613e+08</td>
+      <td>228436354</td>
+    </tr>
+    <tr>
+      <th>629</th>
+      <td>157336</td>
+      <td>tt0816692</td>
+      <td>24.949134</td>
+      <td>165000000</td>
+      <td>621752480</td>
+      <td>Interstellar</td>
+      <td>Matthew McConaughey|Jessica Chastain|Anne Hath...</td>
+      <td>http://www.interstellarmovie.net/</td>
+      <td>Christopher Nolan</td>
+      <td>Mankind was born on Earth. It was never meant ...</td>
+      <td>...</td>
+      <td>169</td>
+      <td>Adventure|Drama|Science Fiction</td>
+      <td>Paramount Pictures|Legendary Pictures|Warner B...</td>
+      <td>11/5/14</td>
+      <td>6498</td>
+      <td>8.0</td>
+      <td>2014</td>
+      <td>1.519800e+08</td>
+      <td>5.726906e+08</td>
+      <td>456752480</td>
+    </tr>
+    <tr>
+      <th>630</th>
+      <td>118340</td>
+      <td>tt2015381</td>
+      <td>14.311205</td>
+      <td>170000000</td>
+      <td>773312399</td>
+      <td>Guardians of the Galaxy</td>
+      <td>Chris Pratt|Zoe Saldana|Dave Bautista|Vin Dies...</td>
+      <td>http://marvel.com/guardians</td>
+      <td>James Gunn</td>
+      <td>All heroes start somewhere.</td>
+      <td>...</td>
+      <td>121</td>
+      <td>Action|Science Fiction|Adventure</td>
+      <td>Marvel Studios|Moving Picture Company (MPC)|Bu...</td>
+      <td>7/30/14</td>
+      <td>5612</td>
+      <td>7.9</td>
+      <td>2014</td>
+      <td>1.565855e+08</td>
+      <td>7.122911e+08</td>
+      <td>603312399</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>262500</td>
+      <td>tt2908446</td>
+      <td>13.112507</td>
+      <td>110000000</td>
+      <td>295238201</td>
+      <td>Insurgent</td>
+      <td>Shailene Woodley|Theo James|Kate Winslet|Ansel...</td>
+      <td>http://www.thedivergentseries.movie/#insurgent</td>
+      <td>Robert Schwentke</td>
+      <td>One Choice Can Destroy You</td>
+      <td>...</td>
+      <td>119</td>
+      <td>Adventure|Science Fiction|Thriller</td>
+      <td>Summit Entertainment|Mandeville Films|Red Wago...</td>
+      <td>3/18/15</td>
+      <td>2480</td>
+      <td>6.3</td>
+      <td>2015</td>
+      <td>1.012000e+08</td>
+      <td>2.716190e+08</td>
+      <td>185238201</td>
+    </tr>
+    <tr>
+      <th>631</th>
+      <td>100402</td>
+      <td>tt1843866</td>
+      <td>12.971027</td>
+      <td>170000000</td>
+      <td>714766572</td>
+      <td>Captain America: The Winter Soldier</td>
+      <td>Chris Evans|Scarlett Johansson|Sebastian Stan|...</td>
+      <td>http://www.captainamericathewintersoldiermovie...</td>
+      <td>Joe Russo|Anthony Russo</td>
+      <td>In heroes we trust.</td>
+      <td>...</td>
+      <td>136</td>
+      <td>Action|Adventure|Science Fiction</td>
+      <td>Marvel Studios</td>
+      <td>3/20/14</td>
+      <td>3848</td>
+      <td>7.6</td>
+      <td>2014</td>
+      <td>1.565855e+08</td>
+      <td>6.583651e+08</td>
+      <td>544766572</td>
+    </tr>
+    <tr>
+      <th>632</th>
+      <td>245891</td>
+      <td>tt2911666</td>
+      <td>11.422751</td>
+      <td>20000000</td>
+      <td>78739897</td>
+      <td>John Wick</td>
+      <td>Keanu Reeves|Michael Nyqvist|Alfie Allen|Wille...</td>
+      <td>http://www.johnwickthemovie.com/</td>
+      <td>Chad Stahelski|David Leitch</td>
+      <td>Don't set him off.</td>
+      <td>...</td>
+      <td>101</td>
+      <td>Action|Thriller</td>
+      <td>Thunder Road Pictures|Warner Bros.|87Eleven|De...</td>
+      <td>10/22/14</td>
+      <td>2712</td>
+      <td>7.0</td>
+      <td>2014</td>
+      <td>1.842182e+07</td>
+      <td>7.252661e+07</td>
+      <td>58739897</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>140607</td>
+      <td>tt2488496</td>
+      <td>11.173104</td>
+      <td>200000000</td>
+      <td>2068178225</td>
+      <td>Star Wars: The Force Awakens</td>
+      <td>Harrison Ford|Mark Hamill|Carrie Fisher|Adam D...</td>
+      <td>http://www.starwars.com/films/star-wars-episod...</td>
+      <td>J.J. Abrams</td>
+      <td>Every generation has a story.</td>
+      <td>...</td>
+      <td>136</td>
+      <td>Action|Adventure|Science Fiction|Fantasy</td>
+      <td>Lucasfilm|Truenorth Productions|Bad Robot</td>
+      <td>12/15/15</td>
+      <td>5292</td>
+      <td>7.5</td>
+      <td>2015</td>
+      <td>1.839999e+08</td>
+      <td>1.902723e+09</td>
+      <td>1868178225</td>
+    </tr>
+    <tr>
+      <th>633</th>
+      <td>131631</td>
+      <td>tt1951265</td>
+      <td>10.739009</td>
+      <td>125000000</td>
+      <td>752100229</td>
+      <td>The Hunger Games: Mockingjay - Part 1</td>
+      <td>Jennifer Lawrence|Josh Hutcherson|Liam Hemswor...</td>
+      <td>http://www.thehungergames.movie/</td>
+      <td>Francis Lawrence</td>
+      <td>Fire burns brighter in the darkness</td>
+      <td>...</td>
+      <td>123</td>
+      <td>Science Fiction|Adventure|Thriller</td>
+      <td>Lionsgate|Color Force</td>
+      <td>11/18/14</td>
+      <td>3590</td>
+      <td>6.6</td>
+      <td>2014</td>
+      <td>1.151364e+08</td>
+      <td>6.927528e+08</td>
+      <td>627100229</td>
+    </tr>
+    <tr>
+      <th>634</th>
+      <td>122917</td>
+      <td>tt2310332</td>
+      <td>10.174599</td>
+      <td>250000000</td>
+      <td>955119788</td>
+      <td>The Hobbit: The Battle of the Five Armies</td>
+      <td>Martin Freeman|Ian McKellen|Richard Armitage|K...</td>
+      <td>http://www.thehobbit.com/</td>
+      <td>Peter Jackson</td>
+      <td>Witness the defining chapter of the Middle-Ear...</td>
+      <td>...</td>
+      <td>144</td>
+      <td>Adventure|Fantasy</td>
+      <td>WingNut Films|New Line Cinema|3Foot7|Metro-Gol...</td>
+      <td>12/10/14</td>
+      <td>3110</td>
+      <td>7.1</td>
+      <td>2014</td>
+      <td>2.302728e+08</td>
+      <td>8.797523e+08</td>
+      <td>705119788</td>
+    </tr>
+    <tr>
+      <th>1386</th>
+      <td>19995</td>
+      <td>tt0499549</td>
+      <td>9.432768</td>
+      <td>237000000</td>
+      <td>2781505847</td>
+      <td>Avatar</td>
+      <td>Sam Worthington|Zoe Saldana|Sigourney Weaver|S...</td>
+      <td>http://www.avatarmovie.com/</td>
+      <td>James Cameron</td>
+      <td>Enter the World of Pandora.</td>
+      <td>...</td>
+      <td>162</td>
+      <td>Action|Adventure|Fantasy|Science Fiction</td>
+      <td>Ingenious Film Partners|Twentieth Century Fox ...</td>
+      <td>12/10/09</td>
+      <td>8458</td>
+      <td>7.1</td>
+      <td>2009</td>
+      <td>2.408869e+08</td>
+      <td>2.827124e+09</td>
+      <td>2544505847</td>
+    </tr>
+    <tr>
+      <th>1919</th>
+      <td>27205</td>
+      <td>tt1375666</td>
+      <td>9.363643</td>
+      <td>160000000</td>
+      <td>825500000</td>
+      <td>Inception</td>
+      <td>Leonardo DiCaprio|Joseph Gordon-Levitt|Ellen P...</td>
+      <td>http://inceptionmovie.warnerbros.com/</td>
+      <td>Christopher Nolan</td>
+      <td>Your mind is the scene of the crime.</td>
+      <td>...</td>
+      <td>148</td>
+      <td>Action|Thriller|Science Fiction|Mystery|Adventure</td>
+      <td>Legendary Pictures|Warner Bros.|Syncopy</td>
+      <td>7/14/10</td>
+      <td>9767</td>
+      <td>7.9</td>
+      <td>2010</td>
+      <td>1.600000e+08</td>
+      <td>8.255000e+08</td>
+      <td>665500000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>168259</td>
+      <td>tt2820852</td>
+      <td>9.335014</td>
+      <td>190000000</td>
+      <td>1506249360</td>
+      <td>Furious 7</td>
+      <td>Vin Diesel|Paul Walker|Jason Statham|Michelle ...</td>
+      <td>http://www.furious7.com/</td>
+      <td>James Wan</td>
+      <td>Vengeance Hits Home</td>
+      <td>...</td>
+      <td>137</td>
+      <td>Action|Crime|Thriller</td>
+      <td>Universal Pictures|Original Film|Media Rights ...</td>
+      <td>4/1/15</td>
+      <td>2947</td>
+      <td>7.3</td>
+      <td>2015</td>
+      <td>1.747999e+08</td>
+      <td>1.385749e+09</td>
+      <td>1316249360</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>281957</td>
+      <td>tt1663202</td>
+      <td>9.110700</td>
+      <td>135000000</td>
+      <td>532950503</td>
+      <td>The Revenant</td>
+      <td>Leonardo DiCaprio|Tom Hardy|Will Poulter|Domhn...</td>
+      <td>http://www.foxmovies.com/movies/the-revenant</td>
+      <td>Alejandro GonzÃ¡lez IÃ±Ã¡rritu</td>
+      <td>(n. One who has returned, as if from the dead.)</td>
+      <td>...</td>
+      <td>156</td>
+      <td>Western|Drama|Adventure|Thriller</td>
+      <td>Regency Enterprises|Appian Way|CatchPlay|Anony...</td>
+      <td>12/25/15</td>
+      <td>3929</td>
+      <td>7.2</td>
+      <td>2015</td>
+      <td>1.241999e+08</td>
+      <td>4.903142e+08</td>
+      <td>397950503</td>
+    </tr>
+    <tr>
+      <th>2409</th>
+      <td>550</td>
+      <td>tt0137523</td>
+      <td>8.947905</td>
+      <td>63000000</td>
+      <td>100853753</td>
+      <td>Fight Club</td>
+      <td>Edward Norton|Brad Pitt|Meat Loaf|Jared Leto|H...</td>
+      <td>http://www.foxmovies.com/movies/fight-club</td>
+      <td>David Fincher</td>
+      <td>How much can you know about yourself if you've...</td>
+      <td>...</td>
+      <td>139</td>
+      <td>Drama</td>
+      <td>Regency Enterprises|Fox 2000 Pictures|Taurus F...</td>
+      <td>10/14/99</td>
+      <td>5923</td>
+      <td>8.1</td>
+      <td>1999</td>
+      <td>8.247033e+07</td>
+      <td>1.320229e+08</td>
+      <td>37853753</td>
+    </tr>
+    <tr>
+      <th>635</th>
+      <td>177572</td>
+      <td>tt2245084</td>
+      <td>8.691294</td>
+      <td>165000000</td>
+      <td>652105443</td>
+      <td>Big Hero 6</td>
+      <td>Scott Adsit|Ryan Potter|Daniel Henney|T.J. Mil...</td>
+      <td>http://movies.disney.com/big-hero-6</td>
+      <td>Don Hall|Chris Williams</td>
+      <td>From the creators of Wreck-it Ralph and Frozen</td>
+      <td>...</td>
+      <td>102</td>
+      <td>Adventure|Family|Animation|Action|Comedy</td>
+      <td>Walt Disney Pictures|Walt Disney Animation Stu...</td>
+      <td>10/24/14</td>
+      <td>4185</td>
+      <td>7.8</td>
+      <td>2014</td>
+      <td>1.519800e+08</td>
+      <td>6.006485e+08</td>
+      <td>487105443</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>87101</td>
+      <td>tt1340138</td>
+      <td>8.654359</td>
+      <td>155000000</td>
+      <td>440603537</td>
+      <td>Terminator Genisys</td>
+      <td>Arnold Schwarzenegger|Jason Clarke|Emilia Clar...</td>
+      <td>http://www.terminatormovie.com/</td>
+      <td>Alan Taylor</td>
+      <td>Reset the future</td>
+      <td>...</td>
+      <td>125</td>
+      <td>Science Fiction|Action|Thriller|Adventure</td>
+      <td>Paramount Pictures|Skydance Productions</td>
+      <td>6/23/15</td>
+      <td>2598</td>
+      <td>5.8</td>
+      <td>2015</td>
+      <td>1.425999e+08</td>
+      <td>4.053551e+08</td>
+      <td>285603537</td>
+    </tr>
+    <tr>
+      <th>2633</th>
+      <td>120</td>
+      <td>tt0120737</td>
+      <td>8.575419</td>
+      <td>93000000</td>
+      <td>871368364</td>
+      <td>The Lord of the Rings: The Fellowship of the Ring</td>
+      <td>Elijah Wood|Ian McKellen|Viggo Mortensen|Liv T...</td>
+      <td>http://www.lordoftherings.net/</td>
+      <td>Peter Jackson</td>
+      <td>One ring to rule them all</td>
+      <td>...</td>
+      <td>178</td>
+      <td>Adventure|Fantasy|Action</td>
+      <td>WingNut Films|New Line Cinema|The Saul Zaentz ...</td>
+      <td>12/18/01</td>
+      <td>6079</td>
+      <td>7.8</td>
+      <td>2001</td>
+      <td>1.145284e+08</td>
+      <td>1.073080e+09</td>
+      <td>778368364</td>
+    </tr>
+    <tr>
+      <th>2875</th>
+      <td>155</td>
+      <td>tt0468569</td>
+      <td>8.466668</td>
+      <td>185000000</td>
+      <td>1001921825</td>
+      <td>The Dark Knight</td>
+      <td>Christian Bale|Michael Caine|Heath Ledger|Aaro...</td>
+      <td>http://thedarkknight.warnerbros.com/dvdsite/</td>
+      <td>Christopher Nolan</td>
+      <td>Why So Serious?</td>
+      <td>...</td>
+      <td>152</td>
+      <td>Drama|Action|Crime|Thriller</td>
+      <td>DC Comics|Legendary Pictures|Warner Bros.|Syncopy</td>
+      <td>7/16/08</td>
+      <td>8432</td>
+      <td>8.1</td>
+      <td>2008</td>
+      <td>1.873655e+08</td>
+      <td>1.014733e+09</td>
+      <td>816921825</td>
+    </tr>
+    <tr>
+      <th>3371</th>
+      <td>161337</td>
+      <td>tt2381375</td>
+      <td>8.411577</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Underworld: Endless War</td>
+      <td>Trevor Devall|Brian Dobson|Paul Dobson|Laura H...</td>
+      <td>http://captainamerica.marvel.com/</td>
+      <td>Juno John Lee</td>
+      <td>When patriots become heroes</td>
+      <td>...</td>
+      <td>18</td>
+      <td>Action|Animation|Horror</td>
+      <td>Marvel Studios</td>
+      <td>10/19/11</td>
+      <td>21</td>
+      <td>5.9</td>
+      <td>2011</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>636</th>
+      <td>205596</td>
+      <td>tt2084970</td>
+      <td>8.110711</td>
+      <td>14000000</td>
+      <td>233555708</td>
+      <td>The Imitation Game</td>
+      <td>Benedict Cumberbatch|Keira Knightley|Matthew G...</td>
+      <td>http://theimitationgamemovie.com/</td>
+      <td>Morten Tyldum</td>
+      <td>The true enigma was the man who cracked the code.</td>
+      <td>...</td>
+      <td>113</td>
+      <td>History|Drama|Thriller|War</td>
+      <td>Black Bear Pictures|Bristol Automotive</td>
+      <td>11/14/14</td>
+      <td>3478</td>
+      <td>8.0</td>
+      <td>2014</td>
+      <td>1.289527e+07</td>
+      <td>2.151261e+08</td>
+      <td>219555708</td>
+    </tr>
+    <tr>
+      <th>3911</th>
+      <td>121</td>
+      <td>tt0167261</td>
+      <td>8.095275</td>
+      <td>79000000</td>
+      <td>926287400</td>
+      <td>The Lord of the Rings: The Two Towers</td>
+      <td>Elijah Wood|Ian McKellen|Viggo Mortensen|Liv T...</td>
+      <td>http://www.lordoftherings.net/</td>
+      <td>Peter Jackson</td>
+      <td>A New Power Is Rising.</td>
+      <td>...</td>
+      <td>179</td>
+      <td>Adventure|Fantasy|Action</td>
+      <td>WingNut Films|New Line Cinema|The Saul Zaentz ...</td>
+      <td>12/18/02</td>
+      <td>5114</td>
+      <td>7.8</td>
+      <td>2002</td>
+      <td>9.576865e+07</td>
+      <td>1.122902e+09</td>
+      <td>847287400</td>
+    </tr>
+    <tr>
+      <th>2634</th>
+      <td>671</td>
+      <td>tt0241527</td>
+      <td>8.021423</td>
+      <td>125000000</td>
+      <td>976475550</td>
+      <td>Harry Potter and the Philosopher's Stone</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|John...</td>
+      <td>http://harrypotter.warnerbros.com/harrypottera...</td>
+      <td>Chris Columbus</td>
+      <td>Let the Magic Begin.</td>
+      <td>...</td>
+      <td>152</td>
+      <td>Adventure|Fantasy|Family</td>
+      <td>1492 Pictures|Warner Bros.|Heyday Films</td>
+      <td>11/16/01</td>
+      <td>4265</td>
+      <td>7.2</td>
+      <td>2001</td>
+      <td>1.539360e+08</td>
+      <td>1.202518e+09</td>
+      <td>851475550</td>
+    </tr>
+    <tr>
+      <th>3372</th>
+      <td>1771</td>
+      <td>tt0458339</td>
+      <td>7.959228</td>
+      <td>140000000</td>
+      <td>370569774</td>
+      <td>Captain America: The First Avenger</td>
+      <td>Chris Evans|Hugo Weaving|Tommy Lee Jones|Hayle...</td>
+      <td>http://captainamerica.marvel.com/</td>
+      <td>Joe Johnston</td>
+      <td>When patriots become heroes</td>
+      <td>...</td>
+      <td>124</td>
+      <td>Action|Adventure|Science Fiction</td>
+      <td>Marvel Studios</td>
+      <td>7/22/11</td>
+      <td>5025</td>
+      <td>6.5</td>
+      <td>2011</td>
+      <td>1.357157e+08</td>
+      <td>3.592296e+08</td>
+      <td>230569774</td>
+    </tr>
+    <tr>
+      <th>2410</th>
+      <td>603</td>
+      <td>tt0133093</td>
+      <td>7.753899</td>
+      <td>63000000</td>
+      <td>463517383</td>
+      <td>The Matrix</td>
+      <td>Keanu Reeves|Laurence Fishburne|Carrie-Anne Mo...</td>
+      <td>http://www.warnerbros.com/matrix</td>
+      <td>Lilly Wachowski|Lana Wachowski</td>
+      <td>Welcome to the Real World.</td>
+      <td>...</td>
+      <td>136</td>
+      <td>Action|Science Fiction</td>
+      <td>Village Roadshow Pictures|Groucho II Film Part...</td>
+      <td>3/30/99</td>
+      <td>6351</td>
+      <td>7.8</td>
+      <td>1999</td>
+      <td>8.247033e+07</td>
+      <td>6.067687e+08</td>
+      <td>400517383</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>286217</td>
+      <td>tt3659388</td>
+      <td>7.667400</td>
+      <td>108000000</td>
+      <td>595380321</td>
+      <td>The Martian</td>
+      <td>Matt Damon|Jessica Chastain|Kristen Wiig|Jeff ...</td>
+      <td>http://www.foxmovies.com/movies/the-martian</td>
+      <td>Ridley Scott</td>
+      <td>Bring Him Home</td>
+      <td>...</td>
+      <td>141</td>
+      <td>Drama|Adventure|Science Fiction</td>
+      <td>Twentieth Century Fox Film Corporation|Scott F...</td>
+      <td>9/30/15</td>
+      <td>4572</td>
+      <td>7.6</td>
+      <td>2015</td>
+      <td>9.935996e+07</td>
+      <td>5.477497e+08</td>
+      <td>487380321</td>
+    </tr>
+    <tr>
+      <th>4361</th>
+      <td>24428</td>
+      <td>tt0848228</td>
+      <td>7.637767</td>
+      <td>220000000</td>
+      <td>1519557910</td>
+      <td>The Avengers</td>
+      <td>Robert Downey Jr.|Chris Evans|Mark Ruffalo|Chr...</td>
+      <td>http://marvel.com/avengers_movie/</td>
+      <td>Joss Whedon</td>
+      <td>Some assembly required.</td>
+      <td>...</td>
+      <td>143</td>
+      <td>Science Fiction|Action|Adventure</td>
+      <td>Marvel Studios</td>
+      <td>4/25/12</td>
+      <td>8903</td>
+      <td>7.3</td>
+      <td>2012</td>
+      <td>2.089437e+08</td>
+      <td>1.443191e+09</td>
+      <td>1299557910</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>211672</td>
+      <td>tt2293640</td>
+      <td>7.404165</td>
+      <td>74000000</td>
+      <td>1156730962</td>
+      <td>Minions</td>
+      <td>Sandra Bullock|Jon Hamm|Michael Keaton|Allison...</td>
+      <td>http://www.minionsmovie.com/</td>
+      <td>Kyle Balda|Pierre Coffin</td>
+      <td>Before Gru, they had a history of bad bosses</td>
+      <td>...</td>
+      <td>91</td>
+      <td>Family|Animation|Adventure|Comedy</td>
+      <td>Universal Pictures|Illumination Entertainment</td>
+      <td>6/17/15</td>
+      <td>2893</td>
+      <td>6.5</td>
+      <td>2015</td>
+      <td>6.807997e+07</td>
+      <td>1.064192e+09</td>
+      <td>1082730962</td>
+    </tr>
+    <tr>
+      <th>637</th>
+      <td>198663</td>
+      <td>tt1790864</td>
+      <td>7.137273</td>
+      <td>34000000</td>
+      <td>348319861</td>
+      <td>The Maze Runner</td>
+      <td>Dylan O'Brien|Ki Hong Lee|Kaya Scodelario|Aml ...</td>
+      <td>http://themazerunnermovie.com/</td>
+      <td>Wes Ball</td>
+      <td>Run - Remember - Survive</td>
+      <td>...</td>
+      <td>113</td>
+      <td>Action|Mystery|Science Fiction|Thriller</td>
+      <td>Ingenious Media|Twentieth Century Fox Film Cor...</td>
+      <td>9/10/14</td>
+      <td>3425</td>
+      <td>7.0</td>
+      <td>2014</td>
+      <td>3.131710e+07</td>
+      <td>3.208343e+08</td>
+      <td>314319861</td>
+    </tr>
+    <tr>
+      <th>4949</th>
+      <td>122</td>
+      <td>tt0167260</td>
+      <td>7.122455</td>
+      <td>94000000</td>
+      <td>1118888979</td>
+      <td>The Lord of the Rings: The Return of the King</td>
+      <td>Elijah Wood|Ian McKellen|Viggo Mortensen|Liv T...</td>
+      <td>http://www.lordoftherings.net</td>
+      <td>Peter Jackson</td>
+      <td>The eye of the enemy is moving.</td>
+      <td>...</td>
+      <td>201</td>
+      <td>Adventure|Fantasy|Action</td>
+      <td>WingNut Films|New Line Cinema</td>
+      <td>12/1/03</td>
+      <td>5636</td>
+      <td>7.9</td>
+      <td>2003</td>
+      <td>1.114231e+08</td>
+      <td>1.326278e+09</td>
+      <td>1024888979</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3912</th>
+      <td>672</td>
+      <td>tt0295297</td>
+      <td>6.012584</td>
+      <td>100000000</td>
+      <td>876688482</td>
+      <td>Harry Potter and the Chamber of Secrets</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Kenn...</td>
+      <td>http://www.iceagemovies.com/films/ice-age</td>
+      <td>Chris Columbus</td>
+      <td>Hogwarts is back in session.</td>
+      <td>...</td>
+      <td>161</td>
+      <td>Adventure|Fantasy|Family</td>
+      <td>1492 Pictures|Warner Bros.|Heyday Films|MIRACL...</td>
+      <td>11/13/02</td>
+      <td>3458</td>
+      <td>7.2</td>
+      <td>2002</td>
+      <td>1.212261e+08</td>
+      <td>1.062776e+09</td>
+      <td>776688482</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>257344</td>
+      <td>tt2120120</td>
+      <td>5.984995</td>
+      <td>88000000</td>
+      <td>243637091</td>
+      <td>Pixels</td>
+      <td>Adam Sandler|Michelle Monaghan|Peter Dinklage|...</td>
+      <td>http://www.pixels-movie.com/</td>
+      <td>Chris Columbus</td>
+      <td>Game On.</td>
+      <td>...</td>
+      <td>105</td>
+      <td>Action|Comedy|Science Fiction</td>
+      <td>Columbia Pictures|Happy Madison Productions</td>
+      <td>7/16/15</td>
+      <td>1575</td>
+      <td>5.8</td>
+      <td>2015</td>
+      <td>8.095996e+07</td>
+      <td>2.241460e+08</td>
+      <td>155637091</td>
+    </tr>
+    <tr>
+      <th>644</th>
+      <td>240832</td>
+      <td>tt2872732</td>
+      <td>5.947136</td>
+      <td>40000000</td>
+      <td>463360063</td>
+      <td>Lucy</td>
+      <td>Scarlett Johansson|Morgan Freeman|Choi Min-sik...</td>
+      <td>http://lucymovie.com/</td>
+      <td>Luc Besson</td>
+      <td>The average person uses 10% of their brain cap...</td>
+      <td>...</td>
+      <td>89</td>
+      <td>Action|Science Fiction</td>
+      <td>Universal Pictures|TF1 Films Production|Canal+...</td>
+      <td>7/14/14</td>
+      <td>3699</td>
+      <td>6.3</td>
+      <td>2014</td>
+      <td>3.684364e+07</td>
+      <td>4.267968e+08</td>
+      <td>423360063</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>99861</td>
+      <td>tt2395427</td>
+      <td>5.944927</td>
+      <td>280000000</td>
+      <td>1405035767</td>
+      <td>Avengers: Age of Ultron</td>
+      <td>Robert Downey Jr.|Chris Hemsworth|Mark Ruffalo...</td>
+      <td>http://marvel.com/movies/movie/193/avengers_ag...</td>
+      <td>Joss Whedon</td>
+      <td>A New Age Has Come.</td>
+      <td>...</td>
+      <td>141</td>
+      <td>Action|Adventure|Science Fiction</td>
+      <td>Marvel Studios|Prime Focus|Revolution Sun Studios</td>
+      <td>4/22/15</td>
+      <td>4304</td>
+      <td>7.4</td>
+      <td>2015</td>
+      <td>2.575999e+08</td>
+      <td>1.292632e+09</td>
+      <td>1125035767</td>
+    </tr>
+    <tr>
+      <th>4364</th>
+      <td>68718</td>
+      <td>tt1853728</td>
+      <td>5.944518</td>
+      <td>100000000</td>
+      <td>425368238</td>
+      <td>Django Unchained</td>
+      <td>Jamie Foxx|Christoph Waltz|Leonardo DiCaprio|K...</td>
+      <td>http://unchainedmovie.com/</td>
+      <td>Quentin Tarantino</td>
+      <td>Life, liberty and the pursuit of vengeance.</td>
+      <td>...</td>
+      <td>165</td>
+      <td>Drama|Western</td>
+      <td>Columbia Pictures|The Weinstein Company</td>
+      <td>12/25/12</td>
+      <td>7375</td>
+      <td>7.7</td>
+      <td>2012</td>
+      <td>9.497443e+07</td>
+      <td>4.039911e+08</td>
+      <td>325368238</td>
+    </tr>
+    <tr>
+      <th>6190</th>
+      <td>674</td>
+      <td>tt0330373</td>
+      <td>5.939927</td>
+      <td>150000000</td>
+      <td>895921036</td>
+      <td>Harry Potter and the Goblet of Fire</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Ralp...</td>
+      <td>http://harrypotter.warnerbros.com/</td>
+      <td>Mike Newell</td>
+      <td>Dark And Difficult Times Lie Ahead.</td>
+      <td>...</td>
+      <td>157</td>
+      <td>Adventure|Fantasy|Family</td>
+      <td>Patalex IV Productions Limited|Warner Bros.|He...</td>
+      <td>11/5/05</td>
+      <td>3406</td>
+      <td>7.3</td>
+      <td>2005</td>
+      <td>1.674845e+08</td>
+      <td>1.000353e+09</td>
+      <td>745921036</td>
+    </tr>
+    <tr>
+      <th>3373</th>
+      <td>64690</td>
+      <td>tt0780504</td>
+      <td>5.903353</td>
+      <td>15000000</td>
+      <td>76175166</td>
+      <td>Drive</td>
+      <td>Ryan Gosling|Carey Mulligan|Christina Hendrick...</td>
+      <td>http://www.harrypotter.com</td>
+      <td>Nicolas Winding Refn</td>
+      <td>There are no clean getaways.</td>
+      <td>...</td>
+      <td>100</td>
+      <td>Drama|Action|Thriller|Crime</td>
+      <td>Bold Films|Marc Platt Productions|Odd Lot Ente...</td>
+      <td>1/10/11</td>
+      <td>2347</td>
+      <td>7.3</td>
+      <td>2011</td>
+      <td>1.454097e+07</td>
+      <td>7.384406e+07</td>
+      <td>61175166</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>273248</td>
+      <td>tt3460252</td>
+      <td>5.898400</td>
+      <td>44000000</td>
+      <td>155760117</td>
+      <td>The Hateful Eight</td>
+      <td>Samuel L. Jackson|Kurt Russell|Jennifer Jason ...</td>
+      <td>http://thehatefuleight.com/</td>
+      <td>Quentin Tarantino</td>
+      <td>No one comes up here without a damn good reason.</td>
+      <td>...</td>
+      <td>167</td>
+      <td>Crime|Drama|Mystery|Western</td>
+      <td>Double Feature Films|The Weinstein Company|Fil...</td>
+      <td>12/25/15</td>
+      <td>2389</td>
+      <td>7.4</td>
+      <td>2015</td>
+      <td>4.047998e+07</td>
+      <td>1.432992e+08</td>
+      <td>111760117</td>
+    </tr>
+    <tr>
+      <th>6554</th>
+      <td>834</td>
+      <td>tt0401855</td>
+      <td>5.838503</td>
+      <td>50000000</td>
+      <td>111340801</td>
+      <td>Underworld: Evolution</td>
+      <td>Kate Beckinsale|Scott Speedman|Tony Curran|Sha...</td>
+      <td>http://www.sonypictures.com/movies/underworlda...</td>
+      <td>Len Wiseman</td>
+      <td>My God. Brother, what have you done?</td>
+      <td>...</td>
+      <td>106</td>
+      <td>Fantasy|Action|Science Fiction|Thriller</td>
+      <td>Lakeshore Entertainment|Screen Gems</td>
+      <td>1/12/06</td>
+      <td>1015</td>
+      <td>6.3</td>
+      <td>2006</td>
+      <td>5.408346e+07</td>
+      <td>1.204339e+08</td>
+      <td>61340801</td>
+    </tr>
+    <tr>
+      <th>6962</th>
+      <td>673</td>
+      <td>tt0304141</td>
+      <td>5.827781</td>
+      <td>130000000</td>
+      <td>789804554</td>
+      <td>Harry Potter and the Prisoner of Azkaban</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Gary...</td>
+      <td>http://www.eternalsunshine.com</td>
+      <td>Alfonso CuarÃ³n</td>
+      <td>Something wicked this way comes.</td>
+      <td>...</td>
+      <td>141</td>
+      <td>Adventure|Fantasy|Family</td>
+      <td>1492 Pictures|Warner Bros.|Heyday Films|P of A...</td>
+      <td>5/31/04</td>
+      <td>3550</td>
+      <td>7.4</td>
+      <td>2004</td>
+      <td>1.500779e+08</td>
+      <td>9.117862e+08</td>
+      <td>659804554</td>
+    </tr>
+    <tr>
+      <th>1388</th>
+      <td>12437</td>
+      <td>tt0834001</td>
+      <td>5.806897</td>
+      <td>35000000</td>
+      <td>91327197</td>
+      <td>Underworld: Rise of the Lycans</td>
+      <td>Bill Nighy|Michael Sheen|Rhona Mitra|Shane Bro...</td>
+      <td>http://harrypotter.warnerbros.com/harrypottera...</td>
+      <td>Patrick Tatopoulos</td>
+      <td>Every war has a beginning.</td>
+      <td>...</td>
+      <td>92</td>
+      <td>Fantasy|Action|Adventure|Science Fiction|Thriller</td>
+      <td>Lakeshore Entertainment|Screen Gems|Sketch Fil...</td>
+      <td>1/22/09</td>
+      <td>979</td>
+      <td>6.2</td>
+      <td>2009</td>
+      <td>3.557402e+07</td>
+      <td>9.282500e+07</td>
+      <td>56327197</td>
+    </tr>
+    <tr>
+      <th>645</th>
+      <td>98566</td>
+      <td>tt1291150</td>
+      <td>5.787396</td>
+      <td>125000000</td>
+      <td>477200000</td>
+      <td>Teenage Mutant Ninja Turtles</td>
+      <td>Megan Fox|Will Arnett|William Fichtner|Alan Ri...</td>
+      <td>http://www.teenagemutantninjaturtlesmovie.com</td>
+      <td>Jonathan Liebesman</td>
+      <td>Mysterious. Dangerous. Reptilious. You've neve...</td>
+      <td>...</td>
+      <td>101</td>
+      <td>Science Fiction|Action|Adventure|Fantasy|Comedy</td>
+      <td>Paramount Pictures|Nickelodeon Movies|Platinum...</td>
+      <td>8/7/14</td>
+      <td>1836</td>
+      <td>5.8</td>
+      <td>2014</td>
+      <td>1.151364e+08</td>
+      <td>4.395446e+08</td>
+      <td>352200000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>260346</td>
+      <td>tt2446042</td>
+      <td>5.749758</td>
+      <td>48000000</td>
+      <td>325771424</td>
+      <td>Taken 3</td>
+      <td>Liam Neeson|Forest Whitaker|Maggie Grace|Famke...</td>
+      <td>http://www.taken3movie.com/</td>
+      <td>Olivier Megaton</td>
+      <td>It Ends Here</td>
+      <td>...</td>
+      <td>109</td>
+      <td>Crime|Action|Thriller</td>
+      <td>Twentieth Century Fox Film Corporation|M6 Film...</td>
+      <td>1/1/15</td>
+      <td>1578</td>
+      <td>6.1</td>
+      <td>2015</td>
+      <td>4.415998e+07</td>
+      <td>2.997096e+08</td>
+      <td>277771424</td>
+    </tr>
+    <tr>
+      <th>3374</th>
+      <td>12445</td>
+      <td>tt1201607</td>
+      <td>5.711315</td>
+      <td>125000000</td>
+      <td>1327817822</td>
+      <td>Harry Potter and the Deathly Hallows: Part 2</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Alan...</td>
+      <td>http://www.harrypotter.com</td>
+      <td>David Yates</td>
+      <td>It all ends here.</td>
+      <td>...</td>
+      <td>130</td>
+      <td>Adventure|Family|Fantasy</td>
+      <td>Warner Bros.|Heyday Films|Moving Picture Compa...</td>
+      <td>7/7/11</td>
+      <td>3750</td>
+      <td>7.7</td>
+      <td>2011</td>
+      <td>1.211748e+08</td>
+      <td>1.287184e+09</td>
+      <td>1202817822</td>
+    </tr>
+    <tr>
+      <th>1920</th>
+      <td>10138</td>
+      <td>tt1228705</td>
+      <td>5.704860</td>
+      <td>200000000</td>
+      <td>623933331</td>
+      <td>Iron Man 2</td>
+      <td>Robert Downey Jr.|Gwyneth Paltrow|Don Cheadle|...</td>
+      <td>http://www.ironmanmovie.com/</td>
+      <td>Jon Favreau</td>
+      <td>It's not the armor that makes the hero, but th...</td>
+      <td>...</td>
+      <td>124</td>
+      <td>Adventure|Action|Science Fiction</td>
+      <td>Marvel Studios</td>
+      <td>4/28/10</td>
+      <td>4920</td>
+      <td>6.6</td>
+      <td>2010</td>
+      <td>2.000000e+08</td>
+      <td>6.239333e+08</td>
+      <td>423933331</td>
+    </tr>
+    <tr>
+      <th>646</th>
+      <td>225886</td>
+      <td>tt1956620</td>
+      <td>5.701683</td>
+      <td>40000000</td>
+      <td>126069509</td>
+      <td>Sex Tape</td>
+      <td>Cameron Diaz|Jason Segel|Rob Corddry|Ellie Kem...</td>
+      <td>http://nightcrawlerfilm.com/</td>
+      <td>Jake Kasdan</td>
+      <td>A movie about a movie they don't want you to see.</td>
+      <td>...</td>
+      <td>97</td>
+      <td>Comedy</td>
+      <td>Escape Artists|Media Rights Capital|Sony Pictu...</td>
+      <td>7/17/14</td>
+      <td>1150</td>
+      <td>5.3</td>
+      <td>2014</td>
+      <td>3.684364e+07</td>
+      <td>1.161215e+08</td>
+      <td>86069509</td>
+    </tr>
+    <tr>
+      <th>2876</th>
+      <td>10681</td>
+      <td>tt0910970</td>
+      <td>5.678119</td>
+      <td>180000000</td>
+      <td>521311860</td>
+      <td>WALLÂ·E</td>
+      <td>Ben Burtt|Elissa Knight|Jeff Garlin|Fred Willa...</td>
+      <td>http://disney.go.com/disneypictures/wall-e/</td>
+      <td>Andrew Stanton</td>
+      <td>An adventure beyond the ordinar-E.</td>
+      <td>...</td>
+      <td>98</td>
+      <td>Animation|Family</td>
+      <td>Walt Disney Pictures|Pixar Animation Studios</td>
+      <td>6/22/08</td>
+      <td>4209</td>
+      <td>7.6</td>
+      <td>2008</td>
+      <td>1.823016e+08</td>
+      <td>5.279777e+08</td>
+      <td>341311860</td>
+    </tr>
+    <tr>
+      <th>4365</th>
+      <td>37724</td>
+      <td>tt1074638</td>
+      <td>5.603587</td>
+      <td>200000000</td>
+      <td>1108561013</td>
+      <td>Skyfall</td>
+      <td>Daniel Craig|Judi Dench|Javier Bardem|Ralph Fi...</td>
+      <td>http://www.skyfall-movie.com</td>
+      <td>Sam Mendes</td>
+      <td>Think on your sins.</td>
+      <td>...</td>
+      <td>143</td>
+      <td>Action|Adventure|Thriller</td>
+      <td>Columbia Pictures</td>
+      <td>10/25/12</td>
+      <td>6137</td>
+      <td>6.8</td>
+      <td>2012</td>
+      <td>1.899489e+08</td>
+      <td>1.052849e+09</td>
+      <td>908561013</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>102899</td>
+      <td>tt0478970</td>
+      <td>5.573184</td>
+      <td>130000000</td>
+      <td>518602163</td>
+      <td>Ant-Man</td>
+      <td>Paul Rudd|Michael Douglas|Evangeline Lilly|Cor...</td>
+      <td>http://marvel.com/movies/movie/180/ant-man</td>
+      <td>Peyton Reed</td>
+      <td>Heroes Don't Get Any Bigger</td>
+      <td>...</td>
+      <td>115</td>
+      <td>Science Fiction|Action|Adventure</td>
+      <td>Marvel Studios</td>
+      <td>7/14/15</td>
+      <td>3779</td>
+      <td>7.0</td>
+      <td>2015</td>
+      <td>1.195999e+08</td>
+      <td>4.771138e+08</td>
+      <td>388602163</td>
+    </tr>
+    <tr>
+      <th>1921</th>
+      <td>12155</td>
+      <td>tt1014759</td>
+      <td>5.572950</td>
+      <td>200000000</td>
+      <td>1025467110</td>
+      <td>Alice in Wonderland</td>
+      <td>Mia Wasikowska|Johnny Depp|Anne Hathaway|Helen...</td>
+      <td>http://disney.go.com/wonderland/</td>
+      <td>Tim Burton</td>
+      <td>You're invited to a very important date.</td>
+      <td>...</td>
+      <td>108</td>
+      <td>Family|Fantasy|Adventure</td>
+      <td>Walt Disney Pictures|Team Todd|Tim Burton Prod...</td>
+      <td>3/3/10</td>
+      <td>2853</td>
+      <td>6.3</td>
+      <td>2010</td>
+      <td>2.000000e+08</td>
+      <td>1.025467e+09</td>
+      <td>825467110</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>150689</td>
+      <td>tt1661199</td>
+      <td>5.556818</td>
+      <td>95000000</td>
+      <td>542351353</td>
+      <td>Cinderella</td>
+      <td>Lily James|Cate Blanchett|Richard Madden|Helen...</td>
+      <td>http://www.thehungergames.movie/</td>
+      <td>Kenneth Branagh</td>
+      <td>Midnight is just the beginning.</td>
+      <td>...</td>
+      <td>112</td>
+      <td>Romance|Fantasy|Family|Drama</td>
+      <td>Walt Disney Pictures|Genre Films|Beagle Pug Fi...</td>
+      <td>3/12/15</td>
+      <td>1495</td>
+      <td>6.8</td>
+      <td>2015</td>
+      <td>8.739996e+07</td>
+      <td>4.989630e+08</td>
+      <td>447351353</td>
+    </tr>
+    <tr>
+      <th>647</th>
+      <td>242582</td>
+      <td>tt2872718</td>
+      <td>5.522641</td>
+      <td>8500000</td>
+      <td>38697217</td>
+      <td>Nightcrawler</td>
+      <td>Jake Gyllenhaal|Rene Russo|Riz Ahmed|Bill Paxt...</td>
+      <td>http://nightcrawlerfilm.com/</td>
+      <td>Dan Gilroy</td>
+      <td>The city shines brightest at night</td>
+      <td>...</td>
+      <td>117</td>
+      <td>Crime|Drama|Thriller</td>
+      <td>Bold Films|Sierra / Affinity</td>
+      <td>10/23/14</td>
+      <td>2087</td>
+      <td>7.6</td>
+      <td>2014</td>
+      <td>7.829274e+06</td>
+      <td>3.564366e+07</td>
+      <td>30197217</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>131634</td>
+      <td>tt1951266</td>
+      <td>5.476958</td>
+      <td>160000000</td>
+      <td>650523427</td>
+      <td>The Hunger Games: Mockingjay - Part 2</td>
+      <td>Jennifer Lawrence|Josh Hutcherson|Liam Hemswor...</td>
+      <td>http://www.thehungergames.movie/</td>
+      <td>Francis Lawrence</td>
+      <td>The fire will burn forever.</td>
+      <td>...</td>
+      <td>136</td>
+      <td>War|Adventure|Science Fiction</td>
+      <td>Studio Babelsberg|StudioCanal|Lionsgate|Walt D...</td>
+      <td>11/18/15</td>
+      <td>2380</td>
+      <td>6.5</td>
+      <td>2015</td>
+      <td>1.471999e+08</td>
+      <td>5.984813e+08</td>
+      <td>490523427</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>158852</td>
+      <td>tt1964418</td>
+      <td>5.462138</td>
+      <td>190000000</td>
+      <td>209035668</td>
+      <td>Tomorrowland</td>
+      <td>Britt Robertson|George Clooney|Raffey Cassidy|...</td>
+      <td>http://movies.disney.com/tomorrowland</td>
+      <td>Brad Bird</td>
+      <td>Imagine a world where nothing is impossible.</td>
+      <td>...</td>
+      <td>130</td>
+      <td>Action|Family|Science Fiction|Adventure|Mystery</td>
+      <td>Walt Disney Pictures|Babieka|A113</td>
+      <td>5/19/15</td>
+      <td>1899</td>
+      <td>6.2</td>
+      <td>2015</td>
+      <td>1.747999e+08</td>
+      <td>1.923127e+08</td>
+      <td>19035668</td>
+    </tr>
+    <tr>
+      <th>6191</th>
+      <td>272</td>
+      <td>tt0372784</td>
+      <td>5.400826</td>
+      <td>150000000</td>
+      <td>374218673</td>
+      <td>Batman Begins</td>
+      <td>Christian Bale|Michael Caine|Liam Neeson|Katie...</td>
+      <td>http://www2.warnerbros.com/batmanbegins/index....</td>
+      <td>Christopher Nolan</td>
+      <td>Evil fears the knight.</td>
+      <td>...</td>
+      <td>140</td>
+      <td>Action|Crime|Drama</td>
+      <td>DC Comics|Legendary Pictures|Warner Bros.|DC E...</td>
+      <td>6/14/05</td>
+      <td>4914</td>
+      <td>7.3</td>
+      <td>2005</td>
+      <td>1.674845e+08</td>
+      <td>4.178388e+08</td>
+      <td>224218673</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>307081</td>
+      <td>tt1798684</td>
+      <td>5.337064</td>
+      <td>30000000</td>
+      <td>91709827</td>
+      <td>Southpaw</td>
+      <td>Jake Gyllenhaal|Rachel McAdams|Forest Whitaker...</td>
+      <td>http://www.sanandreasmovie.com/</td>
+      <td>Antoine Fuqua</td>
+      <td>Believe in Hope.</td>
+      <td>...</td>
+      <td>123</td>
+      <td>Action|Drama</td>
+      <td>Escape Artists|Riche-Ludwig Productions</td>
+      <td>6/15/15</td>
+      <td>1386</td>
+      <td>7.3</td>
+      <td>2015</td>
+      <td>2.759999e+07</td>
+      <td>8.437300e+07</td>
+      <td>61709827</td>
+    </tr>
+    <tr>
+      <th>1922</th>
+      <td>44214</td>
+      <td>tt0947798</td>
+      <td>5.293180</td>
+      <td>13000000</td>
+      <td>327803731</td>
+      <td>Black Swan</td>
+      <td>Natalie Portman|Mila Kunis|Vincent Cassel|Barb...</td>
+      <td>http://www.foxsearchlight.com/blackswan/</td>
+      <td>Darren Aronofsky</td>
+      <td>In the era of personal branding, the scariest ...</td>
+      <td>...</td>
+      <td>108</td>
+      <td>Drama|Mystery|Thriller</td>
+      <td>Fox Searchlight Pictures|Dune Entertainment|Pr...</td>
+      <td>12/2/10</td>
+      <td>2597</td>
+      <td>7.1</td>
+      <td>2010</td>
+      <td>1.300000e+07</td>
+      <td>3.278037e+08</td>
+      <td>314803731</td>
+    </tr>
+    <tr>
+      <th>5423</th>
+      <td>49047</td>
+      <td>tt1454468</td>
+      <td>5.242753</td>
+      <td>105000000</td>
+      <td>716392705</td>
+      <td>Gravity</td>
+      <td>Sandra Bullock|George Clooney|Ed Harris|Orto I...</td>
+      <td>http://gravitymovie.warnerbros.com/</td>
+      <td>Alfonso CuarÃ³n</td>
+      <td>Don't Let Go</td>
+      <td>...</td>
+      <td>91</td>
+      <td>Science Fiction|Thriller|Drama</td>
+      <td>Warner Bros.|Heyday Films|Esperanto Filmoj</td>
+      <td>9/27/13</td>
+      <td>3775</td>
+      <td>7.4</td>
+      <td>2013</td>
+      <td>9.828350e+07</td>
+      <td>6.705675e+08</td>
+      <td>611392705</td>
+    </tr>
+    <tr>
+      <th>5424</th>
+      <td>76338</td>
+      <td>tt1981115</td>
+      <td>5.111900</td>
+      <td>170000000</td>
+      <td>479765000</td>
+      <td>Thor: The Dark World</td>
+      <td>Chris Hemsworth|Natalie Portman|Tom Hiddleston...</td>
+      <td>http://marvel.com/thor</td>
+      <td>Alan Taylor</td>
+      <td>Delve into the darkness</td>
+      <td>...</td>
+      <td>112</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>Marvel Studios</td>
+      <td>10/29/13</td>
+      <td>3025</td>
+      <td>6.8</td>
+      <td>2013</td>
+      <td>1.591257e+08</td>
+      <td>4.490760e+08</td>
+      <td>309765000</td>
+    </tr>
+    <tr>
+      <th>1389</th>
+      <td>767</td>
+      <td>tt0417741</td>
+      <td>5.076472</td>
+      <td>250000000</td>
+      <td>933959197</td>
+      <td>Harry Potter and the Half-Blood Prince</td>
+      <td>Daniel Radcliffe|Rupert Grint|Emma Watson|Tom ...</td>
+      <td>http://harrypotter.warnerbros.com/harrypottera...</td>
+      <td>David Yates</td>
+      <td>Dark Secrets Revealed</td>
+      <td>...</td>
+      <td>153</td>
+      <td>Adventure|Fantasy|Family</td>
+      <td>Warner Bros.|Heyday Films</td>
+      <td>7/7/09</td>
+      <td>3220</td>
+      <td>7.3</td>
+      <td>2009</td>
+      <td>2.541001e+08</td>
+      <td>9.492765e+08</td>
+      <td>683959197</td>
+    </tr>
+  </tbody>
+</table>
+<p>78 rows × 22 columns</p>
+</div>
+
+
+
+<hr>
+<p><strong>任务2.3: </strong>分组读取</p>
+<ol>
+<li>对 <code>release_year</code> 进行分组，使用 <a href="http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.core.groupby.DataFrameGroupBy.agg.html" target="_blank" rel="noopener"><code>.agg</code></a> 获得 <code>revenue</code> 的均值。</li>
+<li>对 <code>director</code> 进行分组，使用 <a href="http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.core.groupby.DataFrameGroupBy.agg.html" target="_blank" rel="noopener"><code>.agg</code></a> 获得 <code>popularity</code> 的均值，从高到低排列。</li>
+</ol>
+<p>要求：使用 <code>Groupby</code> 命令实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movie_data.groupby(<span class="string">'release_year'</span>)[<span class="string">'revenue'</span>].agg(np.mean)</span><br><span class="line">movie_data.groupby(<span class="string">'director'</span>)[<span class="string">'popularity'</span>].agg(np.mean).sort_values(ascending=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>director
+Colin Trevorrow                     16.696886
+Joe Russo|Anthony Russo             12.971027
+Chad Stahelski|David Leitch         11.422751
+Don Hall|Chris Williams              8.691294
+Juno John Lee                        8.411577
+Kyle Balda|Pierre Coffin             7.404165
+Alan Taylor                          6.883129
+Peter Richardson                     6.668990
+Pete Docter                          6.326804
+Christopher Nolan                    6.195521
+Alex Garland                         6.118847
+Patrick Tatopoulos                   5.806897
+Wes Ball                             5.553082
+Dan Gilroy                           5.522641
+Lilly Wachowski|Lana Wachowski       5.331930
+James Gunn                           5.225378
+Bob Peterson|Pete Docter             4.908902
+J.J. Abrams                          4.800957
+Alejandro GonzÃ¡lez IÃ±Ã¡rritu       4.793536
+Roger Allers|Rob Minkoff             4.782688
+Damien Chazelle                      4.780419
+Morten Tyldum                        4.485181
+George Miller                        4.450001
+Francis Lawrence                     4.437604
+Len Wiseman                          4.380968
+Quentin Tarantino                    4.187272
+David Yates                          4.163195
+Evan Goldberg|Seth Rogen             3.989231
+John Lasseter|Joe Ranft              3.941265
+Chris Buck|Jennifer Lee              3.918739
+                                      ...    
+Venus Keung Kwok-Man|Wong Jing       0.004433
+Connor McGuire|Colin McGuire         0.004323
+Shashank Khaitan                     0.004282
+Alex Holdridge                       0.004196
+Karen Disher|Guy Moore               0.004010
+Kristopher Belman                    0.003933
+Eldar Ryazanov                       0.003659
+Laurent Malaquais                    0.003611
+James Erskine                        0.003504
+Walter Carvalho|Sandra Werneck       0.003461
+Katie Graham|Andrew Matthews         0.003066
+Nicolas Castro                       0.002922
+David Higby                          0.002838
+Marv Newland                         0.002757
+David Thorpe                         0.002599
+Oliver Irving                        0.002514
+Barbara Schroeder                    0.002460
+Charles B. Pierce                    0.002381
+Norman Buckley                       0.002262
+Beth McCarthy-Miller|Rob Ashford     0.002165
+Amol Palekar                         0.001983
+Sarah Burns|Ken Burns                0.001783
+Enrico Oldoini                       0.001567
+Russ Malkin|David Alexanian          0.001531
+Nacho G. Velilla                     0.001499
+Stephen Cragg                        0.001423
+Jean-Xavier de Lestrade              0.001315
+Zana Briski|Ross Kauffman            0.001117
+Dibakar Banerjee                     0.001115
+Pascal Thomas                        0.000973
+Name: popularity, Length: 5056, dtype: float64
+</code></pre><hr>
+<hr>
+<h2 id="第三节-绘图与可视化"><a href="#第三节-绘图与可视化" class="headerlink" title="第三节 绘图与可视化"></a>第三节 绘图与可视化</h2><p>接着你要尝试对你的数据进行图像的绘制以及可视化。这一节最重要的是，你能够选择合适的图像，对特定的可视化目标进行可视化。所谓可视化的目标，是你希望从可视化的过程中，观察到怎样的信息以及变化。例如，观察票房随着时间的变化、哪个导演最受欢迎等。</p>
+<table>
+<thead><tr><th>可视化的目标</th><th>可以使用的图像</th></tr></thead><tbody>
+ <tr><td>表示某一属性数据的分布</td><td>饼图、直方图、散点图</td></tr>
+ <tr><td>表示某一属性数据随着某一个变量变化</td><td>条形图、折线图、热力图</td></tr>
+ <tr><td>比较多个属性的数据之间的关系</td><td>散点图、小提琴图、堆积条形图、堆积折线图</td></tr>
+</tbody></table>
+
+<p>在这个部分，你需要根据题目中问题，选择适当的可视化图像进行绘制，并进行相应的分析。对于选做题，他们具有一定的难度，你可以尝试挑战一下～</p>
+<p><strong>任务3.1：</strong>对 <code>popularity</code> 最高的20名电影绘制其 <code>popularity</code> 值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">movie_data.sort_values(by=<span class="string">'popularity'</span>, ascending=<span class="keyword">False</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">plt.xlabel(<span class="string">'popularity'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'original_title'</span>)</span><br><span class="line">plt.barh(movie_data[<span class="string">'original_title'</span>][:<span class="number">20</span>], width=movie_data[<span class="string">'popularity'</span>][:<span class="number">20</span>], align=<span class="string">'center'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;BarContainer object of 20 artists&gt;
+</code></pre><p><img src="/2019/02/16/Explore-Movie-Dataset/output_19_1.png" alt="png"></p>
+<hr>
+<p><strong>任务3.2：</strong>分析电影净利润（票房-成本）随着年份变化的情况，并简单进行分析。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">movie_data[<span class="string">'profit'</span>] = movie_data[<span class="string">'revenue'</span>] - movie_data[<span class="string">'budget'</span>]</span><br><span class="line">pd.Series.value_counts(movie_data[<span class="string">'release_year'</span>])</span><br><span class="line">data = movie_data.groupby(by=<span class="string">'release_year'</span>)[<span class="string">'profit'</span>].agg([np.mean,np.std])</span><br><span class="line">x = list(data.index)</span><br><span class="line">y = data[<span class="string">'mean'</span>]</span><br><span class="line">plt.xlabel(<span class="string">'release_year'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'profit'</span>)</span><br><span class="line">plt.errorbar(x, y)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;ErrorbarContainer object of 3 artists&gt;
+</code></pre><p><img src="/2019/02/16/Explore-Movie-Dataset/output_21_1.png" alt="png"></p>
+<hr>
+<p><strong>[选做]任务3.3：</strong>选择最多产的10位导演（电影数量最多的），绘制他们排行前3的三部电影的票房情况，并简要进行分析。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tmp = movie_data[<span class="string">'director'</span>].str.split(<span class="string">'|'</span>, expand=<span class="keyword">True</span>).stack().reset_index(level=<span class="number">1</span>, drop=<span class="keyword">True</span>).rename(<span class="string">'director'</span>)</span><br><span class="line">movie_data_split = movie_data[[<span class="string">'original_title'</span>, <span class="string">'revenue'</span>]].join(tmp)</span><br><span class="line"></span><br><span class="line">movie_data_split_direction = list(movie_data_split[<span class="string">'director'</span>].value_counts().isin([<span class="number">45</span>,<span class="number">34</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">23</span>,<span class="number">22</span>,<span class="number">21</span>,<span class="number">20</span>]))</span><br><span class="line">movie_data_split_direction</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-74-a6f6663f8cbb&gt; in &lt;module&gt;()
+      2 movie_data_split = movie_data[[&#39;original_title&#39;, &#39;revenue&#39;]].join(tmp)
+      3 
+----&gt; 4 movie_data_split_direction = list(movie_data_split[&#39;director&#39;].value_counts().isin([45,34,31,30,23,22,21,20]).index())
+      5 movie_data_split_direction
+
+
+TypeError: &#39;Index&#39; object is not callable
+</code></pre><hr>
+<p><strong>[选做]任务3.4：</strong>分析1968年~2015年六月电影的数量的变化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>[选做]任务3.5：</strong>分析1968年~2015年六月电影 <code>Comedy</code> 和 <code>Drama</code> 两类电影的数量的变化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: 当你写完了所有的代码，并且回答了所有的问题。你就可以把你的 iPython Notebook 导出成 HTML 文件。你可以在菜单栏，这样导出<strong>File -&gt; Download as -&gt; HTML (.html)、Python (.py)</strong> 把导出的 HTML、python文件 和这个 iPython notebook 一起提交给审阅者。</p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/02/17/robot-maze/" class="pre-post btn btn-default" title="robot maze">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">robot maze</span>
+        </a>
+    
+    
+        <a href="/2019/02/16/Linear-Algebra/" class="next-post btn btn-default" title="Linear Algebra">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Linear Algebra</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#探索电影数据集"><span class="toc-text">探索电影数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一节-数据的导入与处理"><span class="toc-text">第一节 数据的导入与处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二节-根据指定要求读取数据"><span class="toc-text">第二节 根据指定要求读取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三节-绘图与可视化"><span class="toc-text">第三节 绘图与可视化</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
