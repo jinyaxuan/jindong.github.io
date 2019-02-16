@@ -1,181 +1,180 @@
-<!DOCTYPE HTML>
-<html lang="null">
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="http://yoursite.com">
-    <!--SEO-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="博客">
+    <meta name="keyword" content="null">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Jindong" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        PredictYourCuisine｜Jindong&#39;s blog
+        
+    </title>
 
-    <meta name="keywords" content="Machine Learning">
+    <link rel="canonical" href="http://jinyaxuan.github.io/2019/02/15/PredictYourCuisine/">
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <meta name="description" content="机器学习工程师纳米学位项目 0: 预测你的下一道世界料理欢迎来到机器学习的预测烹饪菜系项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能来让项目成功运行。除非有明确要求，你无须...">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
 
-
-
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
-
-    <!--Title-->
-
-
-<title>PredictYourCuisine | 单身程序员的小窝</title>
-
-
-    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
-
-    
-
-
-
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
-
-
-
-
-    
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
-
-
-
-
-
-
-    
-
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
 </head>
 
-
-</html>
-<!--[if lte IE 8]>
 <style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
 
-<body>
-    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title="Jindong">
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-                <h2> 科技让复杂的世界更简单! </h2>
-            
-    	</div>
+    header.intro-header {
+        background-image: url('/home/wangjindong/Desktop/jindong.github.io/themes/hexo-theme-snippet/source/img/avatar.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Jindong
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
     </div>
-</header>
-    <nav class="main-navigation">
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>PredictYourCuisine</h1>
+                    
+                    <span class="meta">
+                         作者 Jindong Wang
+                        <span>
+                          日期 2019-02-15
+                         </span>
                     </span>
-                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
+                    <div class="tags text-center">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>Home</a>
-                            </li>
+                        <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>History</a>
-                            </li>
-                        
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</nav>
-    <section class="content-wrap">
-        <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="PredictYourCuisine">
-            
-	            PredictYourCuisine
-            
-        </h1>
-        <div class="post-meta">
-    
-        <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+    <div class="post-title-haojen">
+        <span>
+            PredictYourCuisine
         </span>
-    
-
-    
-        <span class="fa-wrap">
-            <i class="fa fa-tags"></i>
-            <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
-                
-            </span>
-        </span>
-    
-
-    
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/02/15</span>
-        </span>
-        
-    
-</div>
-            
-            
     </div>
-    
-    <div class="post-body post-content">
-        <h1 id="机器学习工程师纳米学位"><a href="#机器学习工程师纳米学位" class="headerlink" title="机器学习工程师纳米学位"></a>机器学习工程师纳米学位</h1><h2 id="项目-0-预测你的下一道世界料理"><a href="#项目-0-预测你的下一道世界料理" class="headerlink" title="项目 0: 预测你的下一道世界料理"></a>项目 0: 预测你的下一道世界料理</h2><p>欢迎来到机器学习的预测烹饪菜系项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能来让项目成功运行。除非有明确要求，你无须修改任何已给出的代码。以<strong>编程练习</strong>开始的标题表示接下来的内容中有需要你必须实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以<strong>TODO</strong>标出。请仔细阅读所有的提示！</p>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="机器学习工程师纳米学位"><a href="#机器学习工程师纳米学位" class="headerlink" title="机器学习工程师纳米学位"></a>机器学习工程师纳米学位</h1><h2 id="项目-0-预测你的下一道世界料理"><a href="#项目-0-预测你的下一道世界料理" class="headerlink" title="项目 0: 预测你的下一道世界料理"></a>项目 0: 预测你的下一道世界料理</h2><p>欢迎来到机器学习的预测烹饪菜系项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能来让项目成功运行。除非有明确要求，你无须修改任何已给出的代码。以<strong>编程练习</strong>开始的标题表示接下来的内容中有需要你必须实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以<strong>TODO</strong>标出。请仔细阅读所有的提示！</p>
 <ul>
 <li><strong>实验任务</strong>：给定佐料名称，预测菜品所属的菜系。</li>
 <li><strong>实验步骤</strong>：菜品数据载入；佐料名称预处理，并预览数据集结构；载入逻辑回归模型，并训练；结果测试并提交，查看实验分数。</li>
@@ -194,14 +193,14 @@
 <p>首先你需要前往此 <a href="https://www.kaggle.com/c/whats-cooking/data" target="_blank" rel="noopener">菜系数据集</a> 下载(选择 <strong>Download All</strong> )。如果不能正常下载，请参考教室中的下载教程。然后运行下面区域的代码以载入数据集，以及一些此项目所需的 Python 库。如果成功返回数据集的大小，表示数据集已载入成功。</p>
 <h3 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1 配置环境"></a>1.1 配置环境</h3><p>首先按照本目录中<code>README.md</code>文件中的第一部分内容，配置实验开发环境和所需库函数。</p>
 <h3 id="1-2-加载数据"><a href="#1-2-加载数据" class="headerlink" title="1.2 加载数据"></a>1.2 加载数据</h3><p>其次，在下载完实验数据集后，我们将其解压至当前目录中(即：<code>MLND-cn-trial\</code>目录下面)， 然后依次输入以下代码，加载本次实验的训练集和测试集。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># 导入依赖库</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line">train_filename=<span class="string">'all/train.json'</span></span><br><span class="line">train_content = pd.read_json(codecs.open(train_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line">test_filename = <span class="string">'all/test.json'</span></span><br><span class="line">test_content = pd.read_json(codecs.open(test_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 打印加载的数据集数量</span></span><br><span class="line">print(<span class="string">"菜名数据集一共包含 &#123;&#125; 训练数据 和 &#123;&#125; 测试样例。\n"</span>.format(len(train_content), len(test_content)))</span><br><span class="line"><span class="keyword">if</span> len(train_content)==<span class="number">39774</span> <span class="keyword">and</span> len(test_content)==<span class="number">9944</span>:</span><br><span class="line">    print(<span class="string">"数据成功载入！"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"数据载入有问题，请检查文件路径！"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># 导入依赖库</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line">train_filename=<span class="string">'all/train.json'</span></span><br><span class="line">train_content = pd.read_json(codecs.open(train_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line">test_filename = <span class="string">'all/test.json'</span></span><br><span class="line">test_content = pd.read_json(codecs.open(test_filename, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 打印加载的数据集数量</span></span><br><span class="line">print(<span class="string">"菜名数据集一共包含 &#123;&#125; 训练数据 和 &#123;&#125; 测试样例。\n"</span>.format(len(train_content), len(test_content)))</span><br><span class="line"><span class="keyword">if</span> len(train_content)==<span class="number">39774</span> <span class="keyword">and</span> len(test_content)==<span class="number">9944</span>:</span><br><span class="line">    print(<span class="string">"数据成功载入！"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"数据载入有问题，请检查文件路径！"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>菜名数据集一共包含 39774 训练数据 和 9944 测试样例。
 
 数据成功载入！
 </code></pre><h3 id="1-3-数据预览"><a href="#1-3-数据预览" class="headerlink" title="1.3 数据预览"></a>1.3 数据预览</h3><p>为了查看我们的数据集的分布和菜品总共的种类，我们打印出部分数据样例。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">pd.set_option(<span class="string">'display.max_colwidth'</span>,<span class="number">120</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">pd.set_option(<span class="string">'display.max_colwidth'</span>,<span class="number">120</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h3><p>你需要通过<code>head()</code>函数来预览训练集<code>train_content</code>数据。（输出前5条）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：打印train_content中前5个数据样例以预览数据</span></span><br><span class="line">train_content[<span class="string">'cuisine'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">### TODO：打印train_content中前5个数据样例以预览数据</span></span><br><span class="line">train_content[<span class="string">'cuisine'</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>0               greek
 1         southern_us
 2            filipino
@@ -264,7 +263,7 @@
 39772         chinese
 39773         mexican
 Name: cuisine, Length: 39774, dtype: object
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment">## 查看总共菜品分类</span></span><br><span class="line">categories=np.unique(train_content[<span class="string">'cuisine'</span>])</span><br><span class="line">print(<span class="string">"一共包含 &#123;&#125; 种菜品，分别是:\n&#123;&#125;"</span>.format(len(categories),categories))</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment">## 查看总共菜品分类</span></span><br><span class="line">categories=np.unique(train_content[<span class="string">'cuisine'</span>])</span><br><span class="line">print(<span class="string">"一共包含 &#123;&#125; 种菜品，分别是:\n&#123;&#125;"</span>.format(len(categories),categories))</span><br></pre></td></tr></table></figure>
 <pre><code>一共包含 20 种菜品，分别是:
 [&#39;brazilian&#39; &#39;british&#39; &#39;cajun_creole&#39; &#39;chinese&#39; &#39;filipino&#39; &#39;french&#39;
  &#39;greek&#39; &#39;indian&#39; &#39;irish&#39; &#39;italian&#39; &#39;jamaican&#39; &#39;japanese&#39; &#39;korean&#39;
@@ -282,7 +281,7 @@ Name: cuisine, Length: 39774, dtype: object
 <li>将<code>train_content</code>中的<code>ingredients</code>赋值到<code>train_integredients</code></li>
 <li>将<code>train_content</code>中的<code>cuisine</code>赋值到<code>train_targets</code></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：将特征与目标变量分别赋值</span></span><br><span class="line">train_ingredients = train_content[<span class="string">'ingredients'</span>]</span><br><span class="line">train_targets = train_content[<span class="string">'cuisine'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### <span class="doctag">TODO:</span> 打印结果，检查是否正确赋值</span></span><br><span class="line">display(train_ingredients)</span><br><span class="line">display(train_targets)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">### TODO：将特征与目标变量分别赋值</span></span><br><span class="line">train_ingredients = train_content[<span class="string">'ingredients'</span>]</span><br><span class="line">train_targets = train_content[<span class="string">'cuisine'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### <span class="doctag">TODO:</span> 打印结果，检查是否正确赋值</span></span><br><span class="line">display(train_ingredients)</span><br><span class="line">display(train_targets)</span><br></pre></td></tr></table></figure>
 <pre><code>0        [romaine lettuce, black olives, grape tomatoes, garlic, pepper, purple onion, seasoning, garbanzo beans, feta cheese...
 1        [plain flour, ground pepper, salt, tomatoes, ground black pepper, thyme, eggs, green tomatoes, yellow corn meal, mil...
 2        [eggs, pepper, salt, mayonaise, cooking oil, green chilies, grilled chicken breasts, garlic powder, yellow onion, so...
@@ -415,7 +414,7 @@ Name: cuisine, Length: 39774, dtype: object
 <li>使用最频繁的佐料前10分别有哪些？</li>
 <li>意大利菜中最常见的10个佐料有哪些？</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计佐料出现次数，并赋值到sum_ingredients字典中</span></span><br><span class="line">sum_ingredients = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> train_content[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> i:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] += <span class="number">1</span></span><br><span class="line">sum_ingredients</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计佐料出现次数，并赋值到sum_ingredients字典中</span></span><br><span class="line">sum_ingredients = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> train_content[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> i:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_ingredients:</span><br><span class="line">            sum_ingredients[a] += <span class="number">1</span></span><br><span class="line">sum_ingredients</span><br></pre></td></tr></table></figure>
 <pre><code>{&#39;sugar&#39;: 760,
  &#39;pistachio nuts&#39;: 7,
  &#39;white almond bark&#39;: 1,
@@ -1417,11 +1416,11 @@ Name: cuisine, Length: 39774, dtype: object
  &#39;Balsamico Bianco&#39;: 2,
  &#39;ground mustard&#39;: 1,
  ...}
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">plt.style.use(<span class="string">u'ggplot'</span>)</span><br><span class="line">fig = pd.DataFrame(sum_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">plt.style.use(<span class="string">u'ggplot'</span>)</span><br><span class="line">fig = pd.DataFrame(sum_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
 <pre><code>/opt/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:448: UserWarning: Matplotlib is currently using module://ipykernel.pylab.backend_inline, which is a non-GUI backend, so cannot show the figure.
   % get_backend())
 </code></pre><p><img src="/2019/02/15/PredictYourCuisine/output_15_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计意大利菜系中佐料出现次数，并赋值到italian_ingredients字典中</span></span><br><span class="line">italian_ingredients = &#123;&#125;</span><br><span class="line">train_content_italian = train_content[train_content[<span class="string">'cuisine'</span>] == <span class="string">'italian'</span>]</span><br><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> train_content_italian[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> italian_ingredients:</span><br><span class="line">            italian_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_italian:</span><br><span class="line">            italian_ingredients[a] += <span class="number">1</span></span><br><span class="line">italian_ingredients</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 统计意大利菜系中佐料出现次数，并赋值到italian_ingredients字典中</span></span><br><span class="line">italian_ingredients = &#123;&#125;</span><br><span class="line">train_content_italian = train_content[train_content[<span class="string">'cuisine'</span>] == <span class="string">'italian'</span>]</span><br><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> train_content_italian[<span class="string">'ingredients'</span>]:</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">if</span> a <span class="keyword">not</span> <span class="keyword">in</span> italian_ingredients:</span><br><span class="line">            italian_ingredients[a] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a <span class="keyword">in</span> sum_italian:</span><br><span class="line">            italian_ingredients[a] += <span class="number">1</span></span><br><span class="line">italian_ingredients</span><br></pre></td></tr></table></figure>
 <pre><code>{&#39;sugar&#39;: 760,
  &#39;pistachio nuts&#39;: 7,
  &#39;white almond bark&#39;: 1,
@@ -2423,7 +2422,7 @@ Name: cuisine, Length: 39774, dtype: object
  &#39;Balsamico Bianco&#39;: 2,
  &#39;ground mustard&#39;: 1,
  ...}
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">fig = pd.DataFrame(italian_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="comment"># Finally, plot the 10 most used ingredients</span></span><br><span class="line">fig = pd.DataFrame(italian_ingredients, index=[<span class="number">0</span>]).transpose()[<span class="number">0</span>].sort_values(ascending=<span class="keyword">False</span>, inplace=<span class="keyword">False</span>)[:<span class="number">10</span>].plot(kind=<span class="string">'barh'</span>)</span><br><span class="line">fig.invert_yaxis()</span><br><span class="line">fig = fig.get_figure()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
 <pre><code>/opt/anaconda3/lib/python3.6/site-packages/matplotlib/figure.py:448: UserWarning: Matplotlib is currently using module://ipykernel.pylab.backend_inline, which is a non-GUI backend, so cannot show the figure.
   % get_backend())
 </code></pre><p><img src="/2019/02/15/PredictYourCuisine/output_17_1.png" alt="png"></p>
@@ -2431,7 +2430,7 @@ Name: cuisine, Length: 39774, dtype: object
 <hr>
 <h2 id="第三步-建立模型"><a href="#第三步-建立模型" class="headerlink" title="第三步. 建立模型"></a>第三步. 建立模型</h2><p>在项目的第三步中，你需要了解必要的工具和技巧来让你的模型进行预测。用这些工具和技巧对每一个模型的表现做精确的衡量可以极大地增强你预测的信心。</p>
 <h3 id="3-1-单词清洗"><a href="#3-1-单词清洗" class="headerlink" title="3.1 单词清洗"></a>3.1 单词清洗</h3><p>由于菜品包含的佐料众多，同一种佐料也可能有单复数、时态等变化，为了去除这类差异，我们考虑将<strong>ingredients</strong> 进行过滤</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> WordNetLemmatizer</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_clean</span><span class="params">(ingredients)</span>:</span></span><br><span class="line">    <span class="comment">#去除单词的标点符号，只保留 a..z A...Z的单词字符</span></span><br><span class="line">    ingredients= np.array(ingredients).tolist()</span><br><span class="line">    print(<span class="string">"菜品佐料：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    ingredients=[[re.sub(<span class="string">'[^A-Za-z]'</span>, <span class="string">' '</span>, word) <span class="keyword">for</span> word <span class="keyword">in</span> component]<span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除标点符号之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 去除单词的单复数，时态，只保留单词的词干</span></span><br><span class="line">    lemma=WordNetLemmatizer()</span><br><span class="line">    ingredients=[<span class="string">" "</span>.join([ <span class="string">" "</span>.join([lemma.lemmatize(w) <span class="keyword">for</span> w <span class="keyword">in</span> words.split(<span class="string">" "</span>)]) <span class="keyword">for</span> words <span class="keyword">in</span> component])  <span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除时态和单复数之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    <span class="keyword">return</span> ingredients</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\n处理训练集..."</span>)</span><br><span class="line">train_ingredients = text_clean(train_content[<span class="string">'ingredients'</span>])</span><br><span class="line">print(<span class="string">"\n处理测试集..."</span>)</span><br><span class="line">test_ingredients = text_clean(test_content[<span class="string">'ingredients'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> WordNetLemmatizer</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_clean</span><span class="params">(ingredients)</span>:</span></span><br><span class="line">    <span class="comment">#去除单词的标点符号，只保留 a..z A...Z的单词字符</span></span><br><span class="line">    ingredients= np.array(ingredients).tolist()</span><br><span class="line">    print(<span class="string">"菜品佐料：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    ingredients=[[re.sub(<span class="string">'[^A-Za-z]'</span>, <span class="string">' '</span>, word) <span class="keyword">for</span> word <span class="keyword">in</span> component]<span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除标点符号之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 去除单词的单复数，时态，只保留单词的词干</span></span><br><span class="line">    lemma=WordNetLemmatizer()</span><br><span class="line">    ingredients=[<span class="string">" "</span>.join([ <span class="string">" "</span>.join([lemma.lemmatize(w) <span class="keyword">for</span> w <span class="keyword">in</span> words.split(<span class="string">" "</span>)]) <span class="keyword">for</span> words <span class="keyword">in</span> component])  <span class="keyword">for</span> component <span class="keyword">in</span> ingredients]</span><br><span class="line">    print(<span class="string">"去除时态和单复数之后的结果：\n&#123;&#125;"</span>.format(ingredients[<span class="number">9</span>]))</span><br><span class="line">    <span class="keyword">return</span> ingredients</span><br><span class="line"></span><br><span class="line">print(<span class="string">"\n处理训练集..."</span>)</span><br><span class="line">train_ingredients = text_clean(train_content[<span class="string">'ingredients'</span>])</span><br><span class="line">print(<span class="string">"\n处理测试集..."</span>)</span><br><span class="line">test_ingredients = text_clean(test_content[<span class="string">'ingredients'</span>])</span><br></pre></td></tr></table></figure>
 <pre><code>[nltk_data] Downloading package wordnet to
 [nltk_data]     /Users/jindongwang/nltk_data...
 [nltk_data]   Unzipping corpora/wordnet.zip.
@@ -2452,8 +2451,8 @@ chopped tomato fresh basil garlic extra virgin olive oil kosher salt flat leaf p
 去除时态和单复数之后的结果：
 egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla extract self raising flour sultana rum raisin prune glace cherry butter port
 </code></pre><h3 id="3-2-特征提取"><a href="#3-2-特征提取" class="headerlink" title="3.2 特征提取"></a>3.2 特征提取</h3><p>在该步骤中，我们将菜品的佐料转换成数值特征向量。考虑到绝大多数菜中都包含<code>salt, water, sugar, butter</code>等，采用one-hot的方法提取的向量将不能很好的对菜系作出区分。我们将考虑按照佐料出现的次数对佐料做一定的加权，即：佐料出现次数越多，佐料的区分性就越低。我们采用的特征为TF-IDF，相关介绍内容可以参考：<a href="http://www.ruanyifeng.com/blog/2013/03/tf-idf.html" target="_blank" rel="noopener">TF-IDF与余弦相似性的应用（一）：自动提取关键词</a>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="comment"># 将佐料转换成特征向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理 训练集</span></span><br><span class="line">vectorizer = TfidfVectorizer(stop_words=<span class="string">'english'</span>, ngram_range=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">                analyzer=<span class="string">'word'</span>, max_df=<span class="number">.57</span>, binary=<span class="keyword">False</span>,</span><br><span class="line">                token_pattern=<span class="string">r"\w+"</span>,sublinear_tf=<span class="keyword">False</span>)</span><br><span class="line">train_tfidf = vectorizer.fit_transform(train_ingredients).todense()</span><br><span class="line"></span><br><span class="line"><span class="comment">## 处理 测试集</span></span><br><span class="line">test_tfidf = vectorizer.transform(test_ingredients)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">train_targets=np.array(train_content[<span class="string">'cuisine'</span>]).tolist()</span><br><span class="line">train_targets[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="comment"># 将佐料转换成特征向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理 训练集</span></span><br><span class="line">vectorizer = TfidfVectorizer(stop_words=<span class="string">'english'</span>, ngram_range=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">                analyzer=<span class="string">'word'</span>, max_df=<span class="number">.57</span>, binary=<span class="keyword">False</span>,</span><br><span class="line">                token_pattern=<span class="string">r"\w+"</span>,sublinear_tf=<span class="keyword">False</span>)</span><br><span class="line">train_tfidf = vectorizer.fit_transform(train_ingredients).todense()</span><br><span class="line"></span><br><span class="line"><span class="comment">## 处理 测试集</span></span><br><span class="line">test_tfidf = vectorizer.transform(test_ingredients)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">train_targets=np.array(train_content[<span class="string">'cuisine'</span>]).tolist()</span><br><span class="line">train_targets[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>[&#39;greek&#39;,
  &#39;southern_us&#39;,
  &#39;filipino&#39;,
@@ -2465,7 +2464,7 @@ egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla ex
  &#39;mexican&#39;,
  &#39;italian&#39;]
 </code></pre><h3 id="编程练习-1"><a href="#编程练习-1" class="headerlink" title="编程练习"></a>编程练习</h3><p>这里我们为了防止前面步骤中累积的错误，导致以下步骤无法正常运行。我们在此检查处理完的实验数据是否正确，请打印<code>train_tfidf</code>和<code>train_targets</code>中前五个数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你需要预览训练集train_tfidf,train_targets中前5条数据，试试Python的切片语法</span></span><br><span class="line">display(train_tfidf[:<span class="number">5</span>])</span><br><span class="line">display(train_targets[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 你需要预览训练集train_tfidf,train_targets中前5条数据，试试Python的切片语法</span></span><br><span class="line">display(train_tfidf[:<span class="number">5</span>])</span><br><span class="line">display(train_targets[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
 <pre><code>matrix([[0., 0., 0., ..., 0., 0., 0.],
         [0., 0., 0., ..., 0., 0., 0.],
         [0., 0., 0., ..., 0., 0., 0.],
@@ -2483,7 +2482,7 @@ egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla ex
 <li>设置<code>test_size</code>为0.2，划分出20%的验证集，80%的数据留作新的训练集。</li>
 <li>设置<code>random_state</code>随机种子，以确保每一次运行都可以得到相同划分的结果。（随机种子固定，生成的随机序列就是确定的）</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：划分出验证集</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train , X_valid , y_train, y_valid = train_test_split(train_tfidf, train_targets, test_size=<span class="number">0.2</span>, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">### TODO：划分出验证集</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train , X_valid , y_train, y_valid = train_test_split(train_tfidf, train_targets, test_size=<span class="number">0.2</span>, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-建立模型"><a href="#3-2-建立模型" class="headerlink" title="3.2 建立模型"></a>3.2 建立模型</h3><p>调用 <code>sklearn</code> 中的逻辑回归模型（Logistic Regression）。</p>
 <h3 id="编程练习：训练模型"><a href="#编程练习：训练模型" class="headerlink" title="编程练习：训练模型"></a>编程练习：训练模型</h3><ul>
 <li>从<code>sklearn.linear_model</code>导入<code>LogisticRegression</code></li>
@@ -2492,15 +2491,15 @@ egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla ex
 <li>定义<code>classifier</code>变量: 使用导入的<code>LogisticRegression</code>创建一个分类函数;</li>
 <li>定义<code>grid</code>变量: 使用导入的<code>GridSearchCV</code>创建一个网格搜索对象；将变量’classifier’, ‘parameters’作为参数传至这个对象构造函数中；</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 建立逻辑回归模型</span></span><br><span class="line">parameters = &#123;<span class="string">'C'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]&#125;</span><br><span class="line"></span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(classifier, parameters)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line"><span class="comment">## <span class="doctag">TODO:</span> 建立逻辑回归模型</span></span><br><span class="line">parameters = &#123;<span class="string">'C'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]&#125;</span><br><span class="line"></span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(classifier, parameters)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
 <p>模型训练结束之后，我们计算模型在验证集<code>X_valid</code>上预测结果，并计算模型的预测精度（与<code>y_valid</code>逐个比较）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <span class="comment">## 计算模型的准确率</span></span><br><span class="line"></span><br><span class="line">valid_predict = grid.predict(X_valid)</span><br><span class="line">valid_score=accuracy_score(y_valid,valid_predict)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"验证集上的得分为：&#123;&#125;"</span>.format(valid_score))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <span class="comment">## 计算模型的准确率</span></span><br><span class="line"></span><br><span class="line">valid_predict = grid.predict(X_valid)</span><br><span class="line">valid_score=accuracy_score(y_valid,valid_predict)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"验证集上的得分为：&#123;&#125;"</span>.format(valid_score))</span><br></pre></td></tr></table></figure>
 <pre><code>验证集上的得分为：0.7912005028284098
 </code></pre><hr>
 <h2 id="第四步-模型预测（可选）"><a href="#第四步-模型预测（可选）" class="headerlink" title="第四步. 模型预测（可选）"></a>第四步. 模型预测（可选）</h2><h3 id="4-1-预测测试集"><a href="#4-1-预测测试集" class="headerlink" title="4.1 预测测试集"></a>4.1 预测测试集</h3><h3 id="编程练习-2"><a href="#编程练习-2" class="headerlink" title="编程练习"></a>编程练习</h3><ul>
 <li>将模型<code>grid</code>对测试集<code>test_tfidf</code>做预测，然后查看预测结果。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### TODO：预测测试结果</span></span><br><span class="line">predictions = grid.predict(test_tfidf)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">print(<span class="string">"预测的测试集个数为：&#123;&#125;"</span>.format(len(predictions)))</span><br><span class="line">test_content[<span class="string">'cuisine'</span>]=predictions</span><br><span class="line">test_content.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">### TODO：预测测试结果</span></span><br><span class="line">predictions = grid.predict(test_tfidf)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 请不要修改下方代码</span></span><br><span class="line">print(<span class="string">"预测的测试集个数为：&#123;&#125;"</span>.format(len(predictions)))</span><br><span class="line">test_content[<span class="string">'cuisine'</span>]=predictions</span><br><span class="line">test_content.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>预测的测试集个数为：9944
 </code></pre><div>
 <style scoped>
@@ -2594,115 +2593,199 @@ egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla ex
 
 <h3 id="4-2-提交结果"><a href="#4-2-提交结果" class="headerlink" title="4.2 提交结果"></a>4.2 提交结果</h3><p>为了更好的测试模型的效果，同时比较与其他人的差距，我们将模型的测试集上的结果提交至 <a href="https://www.kaggle.com/c/whats-cooking/submit" target="_blank" rel="noopener">kaggle What’s Cooking?</a> （需要提前注册kaggle账号）。</p>
 <p><strong>注意</strong>：在提交作业时，请将提交排名得分截图，附在压缩包中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 加载结果格式</span></span><br><span class="line">submit_frame = pd.read_csv(<span class="string">"sample_submission.csv"</span>)</span><br><span class="line"><span class="comment">## 保存结果</span></span><br><span class="line">result = pd.merge(submit_frame, test_content, on=<span class="string">"id"</span>, how=<span class="string">'left'</span>)</span><br><span class="line">result = result.rename(index=str, columns=&#123;<span class="string">"cuisine_y"</span>: <span class="string">"cuisine"</span>&#125;)</span><br><span class="line">test_result_name = <span class="string">"tfidf_cuisine_test.csv"</span></span><br><span class="line">result[[<span class="string">'id'</span>,<span class="string">'cuisine'</span>]].to_csv(test_result_name,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 加载结果格式</span></span><br><span class="line">submit_frame = pd.read_csv(<span class="string">"sample_submission.csv"</span>)</span><br><span class="line"><span class="comment">## 保存结果</span></span><br><span class="line">result = pd.merge(submit_frame, test_content, on=<span class="string">"id"</span>, how=<span class="string">'left'</span>)</span><br><span class="line">result = result.rename(index=str, columns=&#123;<span class="string">"cuisine_y"</span>: <span class="string">"cuisine"</span>&#125;)</span><br><span class="line">test_result_name = <span class="string">"tfidf_cuisine_test.csv"</span></span><br><span class="line">result[[<span class="string">'id'</span>,<span class="string">'cuisine'</span>]].to_csv(test_result_name,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
 <p>将生成的 <strong>tfidf_cuisine_test.csv</strong> 提交至 <a href="https://www.kaggle.com/c/whats-cooking/submit" target="_blank" rel="noopener">https://www.kaggle.com/c/whats-cooking/submit</a> 然后选择 <strong>Upload Submission File</strong>, 点击 <strong>Make submission</strong>即可。稍作等待，就可以看到右上角的评分结果（得分大致为：<code>0.78580</code> 左右）。</p>
 
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2019/02/15/dog-app-for-CNN/" class="pre-post btn btn-default" title="dog_app by CNN">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">dog_app by CNN</span>
-        </a>
-    
-    
-        <a href="/2019/02/15/Scorecard/" class="next-post btn btn-default" title="Scorecard">
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Scorecard</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
-</div>
-
-
-
-
-
-
-                </main>
+                <hr>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">Table of Contents</h3>
-        
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习工程师纳米学位"><span class="toc-text">机器学习工程师纳米学位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目-0-预测你的下一道世界料理"><span class="toc-text">项目 0: 预测你的下一道世界料理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步-下载并导入数据"><span class="toc-text">第一步. 下载并导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-配置环境"><span class="toc-text">1.1 配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-加载数据"><span class="toc-text">1.2 加载数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-数据预览"><span class="toc-text">1.3 数据预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习"><span class="toc-text">编程练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-分析数据"><span class="toc-text">第二步. 分析数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据提取"><span class="toc-text">编程练习：数据提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：基础统计运算"><span class="toc-text">编程练习：基础统计运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步-建立模型"><span class="toc-text">第三步. 建立模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-单词清洗"><span class="toc-text">3.1 单词清洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-特征提取"><span class="toc-text">3.2 特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-1"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-验证集划分"><span class="toc-text">3.3 验证集划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据分割与重排"><span class="toc-text">编程练习：数据分割与重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-建立模型"><span class="toc-text">3.2 建立模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：训练模型"><span class="toc-text">编程练习：训练模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步-模型预测（可选）"><span class="toc-text">第四步. 模型预测（可选）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-预测测试集"><span class="toc-text">4.1 预测测试集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-2"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-提交结果"><span class="toc-text">4.2 提交结果</span></a></li></ol></li></ol></li></ol>
-        
-    </div>
-</aside>
 
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/02/15/dog-app-for-CNN/" data-toggle="tooltip" data-placement="top" title="dog_app by CNN">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/02/15/Scorecard/" data-toggle="tooltip" data-placement="top" title="Scorecard">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习工程师纳米学位"><span class="toc-text">机器学习工程师纳米学位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目-0-预测你的下一道世界料理"><span class="toc-text">项目 0: 预测你的下一道世界料理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步-下载并导入数据"><span class="toc-text">第一步. 下载并导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-配置环境"><span class="toc-text">1.1 配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-加载数据"><span class="toc-text">1.2 加载数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-数据预览"><span class="toc-text">1.3 数据预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习"><span class="toc-text">编程练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-分析数据"><span class="toc-text">第二步. 分析数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据提取"><span class="toc-text">编程练习：数据提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：基础统计运算"><span class="toc-text">编程练习：基础统计运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步-建立模型"><span class="toc-text">第三步. 建立模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-单词清洗"><span class="toc-text">3.1 单词清洗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-特征提取"><span class="toc-text">3.2 特征提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-1"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-验证集划分"><span class="toc-text">3.3 验证集划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：数据分割与重排"><span class="toc-text">编程练习：数据分割与重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-建立模型"><span class="toc-text">3.2 建立模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习：训练模型"><span class="toc-text">编程练习：训练模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步-模型预测（可选）"><span class="toc-text">第四步. 模型预测（可选）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-预测测试集"><span class="toc-text">4.1 预测测试集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程练习-2"><span class="toc-text">编程练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-提交结果"><span class="toc-text">4.2 提交结果</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
                 
             </div>
         </div>
-    </section>
-    <footer class="main-footer">
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
     <div class="container">
         <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/jindong_wang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/jinyaxuan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jindong 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
         </div>
     </div>
 </footer>
 
-<a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
-</a>
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jinyaxuan.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
 
 
 
-
-    <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
-    
-        Total:
-        <strong id="busuanzi_value_site_pv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-        &nbsp; | &nbsp;
-        Visitors:
-        <strong id="busuanzi_value_site_uv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-    
-</div>
-
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy; 2017
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Google Analytics -->
 
 
 
+<!-- Baidu Tongji -->
 
 
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  _st('install','null','2.0.0');
+</script>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script src="/js/app.js?rev=@@hash"></script>
-
+<!--wechat title img-->
+<img class="wechat-title-img" src="null">
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
@@ -2720,4 +2803,5 @@ egg cherry date dark muscovado sugar ground cinnamon mixed spice cake vanilla ex
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
+
 </html>

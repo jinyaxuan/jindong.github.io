@@ -1,186 +1,183 @@
-<!DOCTYPE HTML>
-<html lang="null">
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="http://yoursite.com">
-    <!--SEO-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="博客">
+    <meta name="keyword" content="null">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Jindong" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        强化学习(二) 蒙特卡洛｜Jindong&#39;s blog
+        
+    </title>
 
-    <meta name="keywords" content="Reinforcement learning">
+    <link rel="canonical" href="http://jinyaxuan.github.io/2019/02/16/蒙特卡洛/">
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <meta name="description" content="迷你项目：蒙特卡洛方法在此 notebook 中，你将自己编写很多蒙特卡洛 (MC) 算法的实现。
-虽然我们提供了一些起始代码，但是你可以删掉这些提示并从头编写代码。
-第 0 部分：探索 Bla...">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
 
-
-
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
-
-    <!--Title-->
-
-
-<title>强化学习(二) 蒙特卡洛 | 单身程序员的小窝</title>
-
-
-    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
-
-    
-
-
-
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
-
-
-
-
-    
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
-
-
-
-
-
-
-    
-
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
 </head>
 
-
-</html>
-<!--[if lte IE 8]>
 <style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
 
-<body>
-    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title="Jindong">
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-                <h2> 科技让复杂的世界更简单! </h2>
-            
-    	</div>
+    header.intro-header {
+        background-image: url('/home/wangjindong/Desktop/jindong.github.io/themes/hexo-theme-snippet/source/img/avatar.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Jindong
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
     </div>
-</header>
-    <nav class="main-navigation">
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>强化学习(二) 蒙特卡洛</h1>
+                    
+                    <span class="meta">
+                         作者 Jindong Wang
+                        <span>
+                          日期 2019-02-16
+                         </span>
                     </span>
-                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
+                    <div class="tags text-center">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>Home</a>
-                            </li>
+                        <a class="tag" href="/tags/#Reinforcement learning" title="Reinforcement learning">Reinforcement learning</a>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>History</a>
-                            </li>
-                        
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</nav>
-    <section class="content-wrap">
-        <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="强化学习(二) 蒙特卡洛">
-            
-	            强化学习(二) 蒙特卡洛
-            
-        </h1>
-        <div class="post-meta">
-    
-        <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/强化学习/">强化学习</a>
+    <div class="post-title-haojen">
+        <span>
+            强化学习(二) 蒙特卡洛
         </span>
-    
-
-    
-        <span class="fa-wrap">
-            <i class="fa fa-tags"></i>
-            <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/Reinforcement-learning/">Reinforcement learning</a>
-                
-            </span>
-        </span>
-    
-
-    
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/02/16</span>
-        </span>
-        
-    
-</div>
-            
-            
     </div>
-    
-    <div class="post-body post-content">
-        <h1 id="迷你项目：蒙特卡洛方法"><a href="#迷你项目：蒙特卡洛方法" class="headerlink" title="迷你项目：蒙特卡洛方法"></a>迷你项目：蒙特卡洛方法</h1><p>在此 notebook 中，你将自己编写很多蒙特卡洛 (MC) 算法的实现。</p>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="迷你项目：蒙特卡洛方法"><a href="#迷你项目：蒙特卡洛方法" class="headerlink" title="迷你项目：蒙特卡洛方法"></a>迷你项目：蒙特卡洛方法</h1><p>在此 notebook 中，你将自己编写很多蒙特卡洛 (MC) 算法的实现。</p>
 <p>虽然我们提供了一些起始代码，但是你可以删掉这些提示并从头编写代码。</p>
 <h3 id="第-0-部分：探索-BlackjackEnv"><a href="#第-0-部分：探索-BlackjackEnv" class="headerlink" title="第 0 部分：探索 BlackjackEnv"></a>第 0 部分：探索 BlackjackEnv</h3><p>请使用以下代码单元格创建 <a href="https://github.com/openai/gym/blob/master/gym/envs/toy_text/blackjack.py" target="_blank" rel="noopener">Blackjack</a> 环境的实例。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gym</span><br><span class="line">env = gym.make(<span class="string">'Blackjack-v0'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gym</span><br><span class="line">env = gym.make(<span class="string">'Blackjack-v0'</span>)</span><br></pre></td></tr></table></figure>
 <p>每个状态都是包含以下三个元素的 3 元组：</p>
 <ul>
 <li>玩家的当前点数之和 $\in {0, 1, \ldots, 31}$，</li>
@@ -188,14 +185,14 @@
 <li>玩家是否有能使用的王牌（<code>no</code> $=0$、<code>yes</code> $=1$）。</li>
 </ul>
 <p>智能体可以执行两个潜在动作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STICK = <span class="number">0</span></span><br><span class="line">HIT = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">STICK = <span class="number">0</span></span><br><span class="line">HIT = <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>通过运行以下代码单元格进行验证。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(env.observation_space)</span><br><span class="line">print(env.action_space)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(env.observation_space)</span><br><span class="line">print(env.action_space)</span><br></pre></td></tr></table></figure>
 <pre><code>Tuple(Discrete(32), Discrete(11), Discrete(2))
 Discrete(2)
 </code></pre><p>执行以下代码单元格以按照随机策略玩二十一点。</p>
 <p>（<em>代码当前会玩三次二十一点——你可以随意修改该数字，或者多次运行该单元格。该单元格旨在让你体验当智能体与环境互动时返回的输出结果。</em>）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        print(state)</span><br><span class="line">        action = env.action_space.sample()</span><br><span class="line">        state, reward, done, info = env.step(action)</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            print(<span class="string">'End game! Reward: '</span>, reward)</span><br><span class="line">            print(<span class="string">'You won :)\n'</span>) <span class="keyword">if</span> reward &gt; <span class="number">0</span> <span class="keyword">else</span> print(<span class="string">'You lost :(\n'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        print(state)</span><br><span class="line">        action = env.action_space.sample()</span><br><span class="line">        state, reward, done, info = env.step(action)</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            print(<span class="string">'End game! Reward: '</span>, reward)</span><br><span class="line">            print(<span class="string">'You won :)\n'</span>) <span class="keyword">if</span> reward &gt; <span class="number">0</span> <span class="keyword">else</span> print(<span class="string">'You lost :(\n'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <pre><code>(12, 8, False)
 End game! Reward:  -1.0
 You lost :(
@@ -231,10 +228,10 @@ You lost :(
 <ul>
 <li><code>episode</code>：这是一个（状态、动作、奖励）元组列表，对应的是 $(S<em>0, A_0, R_1, \ldots, S</em>{T-1}, A<em>{T-1}, R</em>{T})$， 其中 $T$ 是最终时间步。具体而言，<code>episode[i]</code> 返回 $(S<em>i, A_i, R</em>{i+1})$， <code>episode[i][0]</code>、<code>episode[i][1]</code>和 <code>episode[i][2]</code> 分别返回 $S<em>i$, $A_i$和 $R</em>{i+1}$。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_limit</span><span class="params">(bj_env)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = bj_env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        action = <span class="number">0</span> <span class="keyword">if</span> state[<span class="number">0</span>] &gt; <span class="number">18</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">        next_state, reward, done, info = bj_env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_limit</span><span class="params">(bj_env)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = bj_env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        action = <span class="number">0</span> <span class="keyword">if</span> state[<span class="number">0</span>] &gt; <span class="number">18</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">        next_state, reward, done, info = bj_env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br></pre></td></tr></table></figure>
 <p>执行以下代码单元格以按照该策略玩二十一点。 </p>
 <p>（<em>代码当前会玩三次二十一点——你可以随意修改该数字，或者多次运行该单元格。该单元格旨在让你熟悉  <code>generate_episode_from_limit</code> 函数的输出结果。</em>）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    print(generate_episode_from_limit(env))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    print(generate_episode_from_limit(env))</span><br></pre></td></tr></table></figure>
 <pre><code>[((21, 6, True), 0, 1.0)]
 [((20, 10, False), 0, 1.0)]
 [((12, 10, False), 1, -1)]
@@ -251,10 +248,10 @@ You lost :(
 <li><code>V</code>：这是一个字典，其中 <code>V[s]</code> 是状态 <code>s</code> 的估算值。例如，如果代码返回以下输出结果：<br>{(4, 7, False): -0.38775510204081631, (18, 6, False): -0.58434296365330851, (13, 2, False): -0.43409090909090908, (6, 7, False): -0.3783783783783784, …<br>则状态 <code>(4, 7, False)</code> 的值估算为  <code>-0.38775510204081631</code>。</li>
 </ul>
 <p>如果你不知道如何在 Python 中使用 <code>defaultdict</code>，建议查看<a href="https://www.accelebrate.com/blog/using-defaultdict-python/" target="_blank" rel="noopener">此源代码</a>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_prediction_v</span><span class="params">(env, num_episodes, generate_episode, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    <span class="comment"># initialize empty dictionary of lists</span></span><br><span class="line">    returns = defaultdict(list)</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        episode = generate_episode(env)</span><br><span class="line">        states, action, rewards = zip(*episode)</span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            returns[state].append(sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]))</span><br><span class="line">    V = &#123;k: np.mean(v) <span class="keyword">for</span> k, v <span class="keyword">in</span> returns.items()&#125;</span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_prediction_v</span><span class="params">(env, num_episodes, generate_episode, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    <span class="comment"># initialize empty dictionary of lists</span></span><br><span class="line">    returns = defaultdict(list)</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        episode = generate_episode(env)</span><br><span class="line">        states, action, rewards = zip(*episode)</span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            returns[state].append(sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]))</span><br><span class="line">    V = &#123;k: np.mean(v) <span class="keyword">for</span> k, v <span class="keyword">in</span> returns.items()&#125;</span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
 <p>使用以下单元格计算并绘制状态值函数估算值。 (<em>用于绘制值函数的代码来自<a href="https://github.com/dennybritz/reinforcement-learning/blob/master/lib/plotting.py" target="_blank" rel="noopener">此源代码</a>，并且稍作了修改。</em>）</p>
 <p>要检查你的实现是否正确，应将以下图与解决方案 notebook <strong>Monte_Carlo_Solution.ipynb</strong> 中的对应图进行比较。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_blackjack_values</span><br><span class="line"></span><br><span class="line"><span class="comment"># obtain the value function</span></span><br><span class="line">V = mc_prediction_v(env, <span class="number">500000</span>, generate_episode_from_limit)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the value function</span></span><br><span class="line">plot_blackjack_values(V)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_blackjack_values</span><br><span class="line"></span><br><span class="line"><span class="comment"># obtain the value function</span></span><br><span class="line">V = mc_prediction_v(env, <span class="number">500000</span>, generate_episode_from_limit)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the value function</span></span><br><span class="line">plot_blackjack_values(V)</span><br></pre></td></tr></table></figure>
 <pre><code>Episode 500000/500000.
 
 
@@ -269,7 +266,7 @@ You lost :(
 <ul>
 <li><code>episode</code>: 这是一个（状态、动作、奖励）元组列表，对应的是 $(S<em>0, A_0, R_1, \ldots, S</em>{T-1}, A<em>{T-1}, R</em>{T})$， 其中 $T$ 是最终时间步。具体而言，<code>episode[i]</code> 返回 $(S<em>i, A_i, R</em>{i+1})$， <code>episode[i][0]</code>、<code>episode[i][1]</code>和 <code>episode[i][2]</code> 分别返回 $S<em>i$, $A_i$和 $R</em>{i+1}$。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_limit_stochastic</span><span class="params">(bj_env)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = bj_env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        probs = [<span class="number">0.8</span>, <span class="number">0.2</span>] <span class="keyword">if</span> state[<span class="number">0</span>] &gt; <span class="number">18</span> <span class="keyword">else</span> [<span class="number">0.2</span>, <span class="number">0.8</span>]</span><br><span class="line">        action = np.random.choice(np.arange(<span class="number">2</span>), p=probs)</span><br><span class="line">        next_state, reward, done, info = bj_env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_limit_stochastic</span><span class="params">(bj_env)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = bj_env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        probs = [<span class="number">0.8</span>, <span class="number">0.2</span>] <span class="keyword">if</span> state[<span class="number">0</span>] &gt; <span class="number">18</span> <span class="keyword">else</span> [<span class="number">0.2</span>, <span class="number">0.8</span>]</span><br><span class="line">        action = np.random.choice(np.arange(<span class="number">2</span>), p=probs)</span><br><span class="line">        next_state, reward, done, info = bj_env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br></pre></td></tr></table></figure>
 <p>现在你已经准备好自己编写 MC 预测的实现了。你可以选择实现首次经历或所有经历 MC 预测；对于 Blackjack 环境，这两种技巧是对等的。</p>
 <p>你的算法将有四个参数：</p>
 <ul>
@@ -282,10 +279,10 @@ You lost :(
 <ul>
 <li><code>Q</code>：这是一个字典（一维数组），其中 <code>Q[s][a]</code> 是状态 <code>s</code> 和动作 <code>a</code> 对应的估算动作值。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_prediction_q</span><span class="params">(env, num_episodes, generate_episode, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    <span class="comment"># initialize empty dictionaries of arrays</span></span><br><span class="line">    returns_sum = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    N = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        episode = generate_episode(env)</span><br><span class="line">        states, actions, rewards = zip(*episode)</span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            returns_sum[state][actions[i]] += sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)])</span><br><span class="line">            N[state][actions[i]] += <span class="number">1</span></span><br><span class="line">            Q[state][actions[i]] = returns_sum[state][actions[i]] / N[state][actions[i]]</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> Q</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_prediction_q</span><span class="params">(env, num_episodes, generate_episode, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    <span class="comment"># initialize empty dictionaries of arrays</span></span><br><span class="line">    returns_sum = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    N = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(env.action_space.n))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        episode = generate_episode(env)</span><br><span class="line">        states, actions, rewards = zip(*episode)</span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            returns_sum[state][actions[i]] += sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)])</span><br><span class="line">            N[state][actions[i]] += <span class="number">1</span></span><br><span class="line">            Q[state][actions[i]] = returns_sum[state][actions[i]] / N[state][actions[i]]</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> Q</span><br></pre></td></tr></table></figure>
 <p>请使用以下单元格获取动作值函数估值 $Q$。我们还绘制了相应的状态值函数。</p>
 <p>要检查你的实现是否正确，应将以下图与解决方案 notebook <strong>Monte_Carlo_Solution.ipynb</strong> 中的对应图进行比较。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the action-value function</span></span><br><span class="line">Q = mc_prediction_q(env, <span class="number">500000</span>, generate_episode_from_limit_stochastic)</span><br><span class="line"></span><br><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_to_plot = dict((k,(k[<span class="number">0</span>]&gt;<span class="number">18</span>)*(np.dot([<span class="number">0.8</span>, <span class="number">0.2</span>],v)) + (k[<span class="number">0</span>]&lt;=<span class="number">18</span>)*(np.dot([<span class="number">0.2</span>, <span class="number">0.8</span>],v))) \</span><br><span class="line">         <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_to_plot)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the action-value function</span></span><br><span class="line">Q = mc_prediction_q(env, <span class="number">500000</span>, generate_episode_from_limit_stochastic)</span><br><span class="line"></span><br><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_to_plot = dict((k,(k[<span class="number">0</span>]&gt;<span class="number">18</span>)*(np.dot([<span class="number">0.8</span>, <span class="number">0.2</span>],v)) + (k[<span class="number">0</span>]&lt;=<span class="number">18</span>)*(np.dot([<span class="number">0.2</span>, <span class="number">0.8</span>],v))) \</span><br><span class="line">         <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_to_plot)</span><br></pre></td></tr></table></figure>
 <pre><code>Episode 500000/500000.
 </code></pre><p><img src="/2019/02/16/蒙特卡洛/output_23_1.png" alt="png"></p>
 <h3 id="第-3-部分：MC-控制-GLIE"><a href="#第-3-部分：MC-控制-GLIE" class="headerlink" title="第 3 部分：MC 控制 - GLIE"></a>第 3 部分：MC 控制 - GLIE</h3><p>在此部分，你将自己编写常量-$\alpha$ MC 控制的实现。</p>
@@ -304,16 +301,16 @@ You lost :(
 </li>
 </ul>
 <p>（<em>你可以随意定义其他函数，以帮助你整理代码。</em>）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_Q</span><span class="params">(env, Q, epsilon, nA)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        action = np.random.choice(np.arange(nA), p=get_probs(Q[state], epsilon, nA)) \</span><br><span class="line">                                    <span class="keyword">if</span> state <span class="keyword">in</span> Q <span class="keyword">else</span> env.action_space.sample()</span><br><span class="line">        next_state, reward, done, info = env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_probs</span><span class="params">(Q_s, epsilon, nA)</span>:</span></span><br><span class="line">    <span class="string">""" obtains the action probabilities corresponding to epsilon-greedy policy """</span></span><br><span class="line">    policy_s = np.ones(nA) * epsilon / nA</span><br><span class="line">    best_a = np.argmax(Q_s)</span><br><span class="line">    policy_s[best_a] = <span class="number">1</span> - epsilon + (epsilon / nA)</span><br><span class="line">    <span class="keyword">return</span> policy_s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_Q_GLIE</span><span class="params">(env, episode, Q, N, gamma)</span>:</span></span><br><span class="line">    <span class="string">""" updates the action-value function estimate using the most recent episode """</span></span><br><span class="line">    states, actions, rewards = zip(*episode)</span><br><span class="line">    <span class="comment"># prepare for discounting</span></span><br><span class="line">    discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">    <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">        old_Q = Q[state][actions[i]] </span><br><span class="line">        old_N = N[state][actions[i]]</span><br><span class="line">        Q[state][actions[i]] = old_Q + (sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]) - old_Q)/(old_N+<span class="number">1</span>)</span><br><span class="line">        N[state][actions[i]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> Q, N</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_control_GLIE</span><span class="params">(env, num_episodes, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    nA = env.action_space.n</span><br><span class="line">    <span class="comment"># initialize empty dictionaries of arrays</span></span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    N = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        epsilon = <span class="number">1.0</span>/((i_episode/<span class="number">8000</span>)+<span class="number">1</span>)</span><br><span class="line">        episode = generate_episode_from_Q(env, Q, epsilon, nA)</span><br><span class="line">        Q, N = update_Q_GLIE(env, episode, Q, N, gamma)</span><br><span class="line">    <span class="comment"># determine the policy corresponding to the final action-value function estimate</span></span><br><span class="line">    policy = dict((k,np.argmax(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy, Q</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_episode_from_Q</span><span class="params">(env, Q, epsilon, nA)</span>:</span></span><br><span class="line">    episode = []</span><br><span class="line">    state = env.reset()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        action = np.random.choice(np.arange(nA), p=get_probs(Q[state], epsilon, nA)) \</span><br><span class="line">                                    <span class="keyword">if</span> state <span class="keyword">in</span> Q <span class="keyword">else</span> env.action_space.sample()</span><br><span class="line">        next_state, reward, done, info = env.step(action)</span><br><span class="line">        episode.append((state, action, reward))</span><br><span class="line">        state = next_state</span><br><span class="line">        <span class="keyword">if</span> done:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> episode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_probs</span><span class="params">(Q_s, epsilon, nA)</span>:</span></span><br><span class="line">    <span class="string">""" obtains the action probabilities corresponding to epsilon-greedy policy """</span></span><br><span class="line">    policy_s = np.ones(nA) * epsilon / nA</span><br><span class="line">    best_a = np.argmax(Q_s)</span><br><span class="line">    policy_s[best_a] = <span class="number">1</span> - epsilon + (epsilon / nA)</span><br><span class="line">    <span class="keyword">return</span> policy_s</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_Q_GLIE</span><span class="params">(env, episode, Q, N, gamma)</span>:</span></span><br><span class="line">    <span class="string">""" updates the action-value function estimate using the most recent episode """</span></span><br><span class="line">    states, actions, rewards = zip(*episode)</span><br><span class="line">    <span class="comment"># prepare for discounting</span></span><br><span class="line">    discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">    <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">        old_Q = Q[state][actions[i]] </span><br><span class="line">        old_N = N[state][actions[i]]</span><br><span class="line">        Q[state][actions[i]] = old_Q + (sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]) - old_Q)/(old_N+<span class="number">1</span>)</span><br><span class="line">        N[state][actions[i]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> Q, N</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_control_GLIE</span><span class="params">(env, num_episodes, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    nA = env.action_space.n</span><br><span class="line">    <span class="comment"># initialize empty dictionaries of arrays</span></span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    N = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        epsilon = <span class="number">1.0</span>/((i_episode/<span class="number">8000</span>)+<span class="number">1</span>)</span><br><span class="line">        episode = generate_episode_from_Q(env, Q, epsilon, nA)</span><br><span class="line">        Q, N = update_Q_GLIE(env, episode, Q, N, gamma)</span><br><span class="line">    <span class="comment"># determine the policy corresponding to the final action-value function estimate</span></span><br><span class="line">    policy = dict((k,np.argmax(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy, Q</span><br></pre></td></tr></table></figure>
 <p>通过以下单元格获取估算的最优策略和动作值函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the estimated optimal policy and action-value function</span></span><br><span class="line">policy_glie, Q_glie = mc_control_GLIE(env, <span class="number">500000</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the estimated optimal policy and action-value function</span></span><br><span class="line">policy_glie, Q_glie = mc_control_GLIE(env, <span class="number">500000</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>Episode 500000/500000.
 </code></pre><p>接着，我们将绘制相应的状态值函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_glie = dict((k,np.max(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q_glie.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_glie)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_glie = dict((k,np.max(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q_glie.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_glie)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/蒙特卡洛/output_30_0.png" alt="png"></p>
 <p>最后，我们将可视化估算为最优策略的策略。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_policy</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the policy</span></span><br><span class="line">plot_policy(policy_glie)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_policy</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the policy</span></span><br><span class="line">plot_policy(policy_glie)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/蒙特卡洛/output_32_0.png" alt="png"></p>
 <p><strong>真</strong>最优策略 $\pi_*$ 可以在该<a href="http://go.udacity.com/rl-textbook" target="_blank" rel="noopener">教科书</a>的第 82 页找到（下文也提供了）。请将你的最终估算值与最优策略进行比较——它们能够有多接近？如果你对算法的效果不满意，请花时间调整 $\epsilon$ 的衰减率和/或使该算法运行更多个阶段，以获得更好的结果。</p>
 <p><img src="/2019/02/16/蒙特卡洛/optimal.png" alt="True Optimal Policy"></p>
@@ -334,125 +331,237 @@ You lost :(
 <li><code>policy</code>：这是一个字典，其中 <code>policy[s]</code> 会返回智能体在观察状态 <code>s</code> 之后选择的动作。</li>
 </ul>
 <p>（<em>你可以随意定义其他函数，以帮助你整理代码。</em>）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_control_alpha</span><span class="params">(env, num_episodes, alpha, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    nA = env.action_space.n</span><br><span class="line">    <span class="comment"># initialize empty dictionary of arrays</span></span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        epsilon = <span class="number">1.0</span>/((i_episode/<span class="number">8000</span>)+<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># generate an episode by following epsilon-greedy policy</span></span><br><span class="line">        episode = generate_episode_from_Q(env, Q, epsilon, nA)</span><br><span class="line">        states, actions, rewards = zip(*episode)</span><br><span class="line">        <span class="comment"># prepare for discounting</span></span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            old_Q = Q[state][actions[i]] </span><br><span class="line">            Q[state][actions[i]] = old_Q + alpha*(sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]) - old_Q)</span><br><span class="line">    policy = dict((k,np.argmax(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy, Q</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mc_control_alpha</span><span class="params">(env, num_episodes, alpha, gamma=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    nA = env.action_space.n</span><br><span class="line">    <span class="comment"># initialize empty dictionary of arrays</span></span><br><span class="line">    Q = defaultdict(<span class="keyword">lambda</span>: np.zeros(nA))</span><br><span class="line">    <span class="comment"># loop over episodes</span></span><br><span class="line">    <span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">1</span>, num_episodes+<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># monitor progress</span></span><br><span class="line">        <span class="keyword">if</span> i_episode % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"\rEpisode &#123;&#125;/&#123;&#125;."</span>.format(i_episode, num_episodes), end=<span class="string">""</span>)</span><br><span class="line">            sys.stdout.flush()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        epsilon = <span class="number">1.0</span>/((i_episode/<span class="number">8000</span>)+<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># generate an episode by following epsilon-greedy policy</span></span><br><span class="line">        episode = generate_episode_from_Q(env, Q, epsilon, nA)</span><br><span class="line">        states, actions, rewards = zip(*episode)</span><br><span class="line">        <span class="comment"># prepare for discounting</span></span><br><span class="line">        discounts = np.array([gamma**i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rewards)+<span class="number">1</span>)])</span><br><span class="line">        <span class="keyword">for</span> i, state <span class="keyword">in</span> enumerate(states):</span><br><span class="line">            old_Q = Q[state][actions[i]] </span><br><span class="line">            Q[state][actions[i]] = old_Q + alpha*(sum(rewards[i:]*discounts[:-(<span class="number">1</span>+i)]) - old_Q)</span><br><span class="line">    policy = dict((k,np.argmax(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q.items())</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy, Q</span><br></pre></td></tr></table></figure>
 <p>通过以下单元格获得估算的最优策略和动作值函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the estimated optimal policy and action-value function</span></span><br><span class="line">policy_alpha, Q_alpha = mc_control_alpha(env, <span class="number">500000</span>, <span class="number">0.008</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the estimated optimal policy and action-value function</span></span><br><span class="line">policy_alpha, Q_alpha = mc_control_alpha(env, <span class="number">500000</span>, <span class="number">0.008</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>Episode 500000/500000.
 </code></pre><p>接着，我们将绘制相应的状态值函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_alpha = dict((k,np.max(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q_alpha.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_alpha)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the state-value function</span></span><br><span class="line">V_alpha = dict((k,np.max(v)) <span class="keyword">for</span> k, v <span class="keyword">in</span> Q_alpha.items())</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the state-value function</span></span><br><span class="line">plot_blackjack_values(V_alpha)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/蒙特卡洛/output_38_0.png" alt="png"></p>
 <p>最后，我们将可视化估算为最优策略的策略。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># plot the policy</span></span><br><span class="line">plot_policy(policy_alpha)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># plot the policy</span></span><br><span class="line">plot_policy(policy_alpha)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/蒙特卡洛/output_40_0.png" alt="png"></p>
 <p><strong>真</strong>最优策略 $\pi_*$ 可以在该<a href="http://go.udacity.com/rl-textbook" target="_blank" rel="noopener">教科书</a>的第 82 页找到（下文也提供了）。请将你的最终估算值与最优策略进行比较——它们能够有多接近？如果你对算法的效果不满意，请花时间调整 $\epsilon$ 的衰减率和/或使该算法运行更多个阶段，以获得更好的结果。</p>
 <p><img src="/2019/02/16/蒙特卡洛/optimal.png" alt="True Optimal Policy"></p>
 
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2019/02/16/image-classifier-project/" class="pre-post btn btn-default" title="image classifier project">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">image classifier project</span>
-        </a>
-    
-    
-        <a href="/2019/02/16/动态规划/" class="next-post btn btn-default" title="强化学习(一) 动态规划">
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">强化学习(一) 动态规划</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
-</div>
-
-
-
-
-
-
-                </main>
+                <hr>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">Table of Contents</h3>
-        
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迷你项目：蒙特卡洛方法"><span class="toc-text">迷你项目：蒙特卡洛方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第-0-部分：探索-BlackjackEnv"><span class="toc-text">第 0 部分：探索 BlackjackEnv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-1-部分：MC-预测-状态值"><span class="toc-text">第 1 部分：MC 预测 - 状态值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-2-部分：MC-预测-动作值"><span class="toc-text">第 2 部分：MC 预测 - 动作值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-3-部分：MC-控制-GLIE"><span class="toc-text">第 3 部分：MC 控制 - GLIE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-4-部分：MC-控制-常量-alpha"><span class="toc-text">第 4 部分：MC 控制 - 常量-$\alpha$</span></a></li></ol></li></ol>
-        
-    </div>
-</aside>
 
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/02/16/image-classifier-project/" data-toggle="tooltip" data-placement="top" title="image classifier project">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/02/16/动态规划/" data-toggle="tooltip" data-placement="top" title="强化学习(一) 动态规划">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迷你项目：蒙特卡洛方法"><span class="toc-text">迷你项目：蒙特卡洛方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第-0-部分：探索-BlackjackEnv"><span class="toc-text">第 0 部分：探索 BlackjackEnv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-1-部分：MC-预测-状态值"><span class="toc-text">第 1 部分：MC 预测 - 状态值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-2-部分：MC-预测-动作值"><span class="toc-text">第 2 部分：MC 预测 - 动作值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-3-部分：MC-控制-GLIE"><span class="toc-text">第 3 部分：MC 控制 - GLIE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-4-部分：MC-控制-常量-alpha"><span class="toc-text">第 4 部分：MC 控制 - 常量-$\alpha$</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Reinforcement learning" title="Reinforcement learning">Reinforcement learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
                 
             </div>
         </div>
-    </section>
-    <footer class="main-footer">
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
     <div class="container">
         <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/jindong_wang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/jinyaxuan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jindong 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
         </div>
     </div>
 </footer>
 
-<a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
-</a>
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jinyaxuan.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        processEscapes: true
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    }});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Google Analytics -->
 
 
 
-
-    <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
-    
-        Total:
-        <strong id="busuanzi_value_site_pv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-        &nbsp; | &nbsp;
-        Visitors:
-        <strong id="busuanzi_value_site_uv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-    
-</div>
-
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy; 2017
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Baidu Tongji -->
 
 
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
+  _st('install','null','2.0.0');
+</script>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-<script src="/js/app.js?rev=@@hash"></script>
-
+<!--wechat title img-->
+<img class="wechat-title-img" src="null">
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
@@ -470,4 +579,5 @@ You lost :(
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
+
 </html>

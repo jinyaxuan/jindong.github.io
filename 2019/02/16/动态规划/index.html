@@ -1,199 +1,196 @@
-<!DOCTYPE HTML>
-<html lang="null">
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="http://yoursite.com">
-    <!--SEO-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="博客">
+    <meta name="keyword" content="null">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Jindong" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        强化学习(一) 动态规划｜Jindong&#39;s blog
+        
+    </title>
 
-    <meta name="keywords" content="Reinforcement learning">
+    <link rel="canonical" href="http://jinyaxuan.github.io/2019/02/16/动态规划/">
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <meta name="description" content="迷你项目：动态规划在此 notebook 中，你将自己编写很多经典动态规划算法的实现。
-虽然我们提供了一些起始代码，但是你可以删掉这些提示并从头编写代码。
-第 0 部分：探索 FrozenLak...">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
 
-
-
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
-
-    <!--Title-->
-
-
-<title>强化学习(一) 动态规划 | 单身程序员的小窝</title>
-
-
-    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
-
-    
-
-
-
-<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/style.css?rev=@@hash">
-
-
-
-
-    
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
-
-
-
-
-
-
-    
-
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
 </head>
 
-
-</html>
-<!--[if lte IE 8]>
 <style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
 
-<body>
-    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner2.jpg)">
-    <div class="main-header-box">
-        <a class="header-avatar" href="/" title="Jindong">
-            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
-        </a>
-        <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
-            
-                <h2> 科技让复杂的世界更简单! </h2>
-            
-    	</div>
+    header.intro-header {
+        background-image: url('/home/wangjindong/Desktop/jindong.github.io/themes/hexo-theme-snippet/source/img/avatar.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
+" data-ishome="false">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Jindong
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
     </div>
-</header>
-    <nav class="main-navigation">
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img" src>
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
-                        <i class="fa fa-bars"></i>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>强化学习(一) 动态规划</h1>
+                    
+                    <span class="meta">
+                         作者 Jindong Wang
+                        <span>
+                          日期 2019-02-16
+                         </span>
                     </span>
-                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
-                </div>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="menu">
+                    <div class="tags text-center">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>Home</a>
-                            </li>
+                        <a class="tag" href="/tags/#Reinforcement learning" title="Reinforcement learning">Reinforcement learning</a>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
-                            </li>
-                        
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>History</a>
-                            </li>
-                        
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</nav>
-    <section class="content-wrap">
-        <div class="container">
-            <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="强化学习(一) 动态规划">
-            
-	            强化学习(一) 动态规划
-            
-        </h1>
-        <div class="post-meta">
-    
-        <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/强化学习/">强化学习</a>
+    <div class="post-title-haojen">
+        <span>
+            强化学习(一) 动态规划
         </span>
-    
-
-    
-        <span class="fa-wrap">
-            <i class="fa fa-tags"></i>
-            <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/Reinforcement-learning/">Reinforcement learning</a>
-                
-            </span>
-        </span>
-    
-
-    
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/02/16</span>
-        </span>
-        
-    
-</div>
-            
-            
     </div>
-    
-    <div class="post-body post-content">
-        <h1 id="迷你项目：动态规划"><a href="#迷你项目：动态规划" class="headerlink" title="迷你项目：动态规划"></a>迷你项目：动态规划</h1><p>在此 notebook 中，你将自己编写很多经典动态规划算法的实现。</p>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="迷你项目：动态规划"><a href="#迷你项目：动态规划" class="headerlink" title="迷你项目：动态规划"></a>迷你项目：动态规划</h1><p>在此 notebook 中，你将自己编写很多经典动态规划算法的实现。</p>
 <p>虽然我们提供了一些起始代码，但是你可以删掉这些提示并从头编写代码。</p>
 <h3 id="第-0-部分：探索-FrozenLakeEnv"><a href="#第-0-部分：探索-FrozenLakeEnv" class="headerlink" title="第 0 部分：探索 FrozenLakeEnv"></a>第 0 部分：探索 FrozenLakeEnv</h3><p>请使用以下代码单元格创建 <a href="https://github.com/openai/gym/blob/master/gym/envs/toy_text/frozen_lake.py" target="_blank" rel="noopener">FrozenLake</a> 环境的实例。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> frozenlake <span class="keyword">import</span> FrozenLakeEnv</span><br><span class="line"></span><br><span class="line">env = FrozenLakeEnv()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> frozenlake <span class="keyword">import</span> FrozenLakeEnv</span><br><span class="line"></span><br><span class="line">env = FrozenLakeEnv()</span><br></pre></td></tr></table></figure>
 <p>智能体将会在 $4 \times 4$ 网格世界中移动，状态编号如下所示：</p>
 <p>[[ 0  1  2  3]<br> [ 4  5  6  7]<br> [ 8  9 10 11]<br> [12 13 14 15]]</p>
 <p>智能体可以执行 4 个潜在动作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LEFT = <span class="number">0</span></span><br><span class="line">DOWN = <span class="number">1</span></span><br><span class="line">RIGHT = <span class="number">2</span></span><br><span class="line">UP = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">LEFT = <span class="number">0</span></span><br><span class="line">DOWN = <span class="number">1</span></span><br><span class="line">RIGHT = <span class="number">2</span></span><br><span class="line">UP = <span class="number">3</span></span><br></pre></td></tr></table></figure>
 <p>因此，$\mathcal{S}^+ = {0, 1, \ldots, 15}$ 以及 $\mathcal{A} = {0, 1, 2, 3}$。请通过运行以下代码单元格验证这一点。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print the state space and action space</span></span><br><span class="line">print(env.observation_space)</span><br><span class="line">print(env.action_space)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the total number of states and actions</span></span><br><span class="line">print(env.nS)</span><br><span class="line">print(env.nA)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># print the state space and action space</span></span><br><span class="line">print(env.observation_space)</span><br><span class="line">print(env.action_space)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the total number of states and actions</span></span><br><span class="line">print(env.nS)</span><br><span class="line">print(env.nA)</span><br></pre></td></tr></table></figure>
 <pre><code>Discrete(16)
 Discrete(4)
 16
 4
 </code></pre><p>动态规划假设智能体完全了解 MDP。我们已经修改了 <code>frozenlake.py</code> 文件以使智能体能够访问一步动态特性。 </p>
 <p>请执行以下代码单元格以返回特定状态和动作对应的一步动态特性。具体而言，当智能体在网格世界中以状态 1 向左移动时，<code>env.P[1][0]</code> 会返回每个潜在奖励的概率和下一个状态。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env.P[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">env.P[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>[(0.3333333333333333, 0, 0.0, False),
  (0.3333333333333333, 0, 0.0, False),
  (0.3333333333333333, 4, 0.0, False)]
@@ -225,16 +222,16 @@ Discrete(4)
 <li><code>V</code>：这是一个一维numpy数组，其中 <code>V.shape[0]</code> 等于状态数量 (<code>env.nS</code>)。<code>V[s]</code> 包含状态 <code>s</code> 在输入策略下的估算值。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_evaluation</span><span class="params">(env, policy, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        delta = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            Vs = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> a, action_prob <span class="keyword">in</span> enumerate(policy[s]):</span><br><span class="line">                <span class="keyword">for</span> prob, next_state, reward, done <span class="keyword">in</span> env.P[s][a]:</span><br><span class="line">                    Vs += action_prob * prob  * (reward + gamma * V[next_state])</span><br><span class="line">            delta = max(delta, np.abs(V[s]-Vs))</span><br><span class="line">            V[s] = Vs</span><br><span class="line">        <span class="keyword">if</span> delta &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_evaluation</span><span class="params">(env, policy, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        delta = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            Vs = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> a, action_prob <span class="keyword">in</span> enumerate(policy[s]):</span><br><span class="line">                <span class="keyword">for</span> prob, next_state, reward, done <span class="keyword">in</span> env.P[s][a]:</span><br><span class="line">                    Vs += action_prob * prob  * (reward + gamma * V[next_state])</span><br><span class="line">            delta = max(delta, np.abs(V[s]-Vs))</span><br><span class="line">            V[s] = Vs</span><br><span class="line">        <span class="keyword">if</span> delta &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
 <p>我们将评估等概率随机策略  $\pi$，其中对于所有 $s\in\mathcal{S}$ 和 $a\in\mathcal{A}(s)$ ，$\pi(a|s) = \frac{1}{|\mathcal{A}(s)|}$。  </p>
 <p>请使用以下代码单元格在变量 <code>random_policy</code>中指定该策略。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random_policy = np.ones([env.nS, env.nA]) / env.nA</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_policy = np.ones([env.nS, env.nA]) / env.nA</span><br></pre></td></tr></table></figure>
 <p>运行下个代码单元格以评估等概率随机策略并可视化输出结果。状态值函数已调整形状，以匹配网格世界的形状。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_values</span><br><span class="line"></span><br><span class="line"><span class="comment"># evaluate the policy </span></span><br><span class="line">V = policy_evaluation(env, random_policy)</span><br><span class="line"></span><br><span class="line">plot_values(V)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> plot_utils <span class="keyword">import</span> plot_values</span><br><span class="line"></span><br><span class="line"><span class="comment"># evaluate the policy </span></span><br><span class="line">V = policy_evaluation(env, random_policy)</span><br><span class="line"></span><br><span class="line">plot_values(V)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/动态规划/output_17_0.png" alt="png"></p>
 <p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保你的 <code>policy_evaluation</code> 函数满足上文列出的要求（具有四个输入、一个输出，并且没有更改输入参数的默认值）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> check_test</span><br><span class="line"></span><br><span class="line">check_test.run_check(<span class="string">'policy_evaluation_check'</span>, policy_evaluation)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> check_test</span><br><span class="line"></span><br><span class="line">check_test.run_check(<span class="string">'policy_evaluation_check'</span>, policy_evaluation)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
 <h3 id="第-2-部分：通过-v-pi-获取-q-pi"><a href="#第-2-部分：通过-v-pi-获取-q-pi" class="headerlink" title="第 2 部分：通过 $v\pi$ 获取 $q\pi$"></a>第 2 部分：通过 $v<em>\pi$ 获取 $q</em>\pi$</h3><p>在此部分，你将编写一个函数，该函数的输入是状态值函数估值以及一些状态 $s\in\mathcal{S}$。它会返回输入状态 $s\in\mathcal{S}$ 对应的<strong>动作值函数中的行</strong>。即你的函数应同时接受输入 $v<em>\pi$ 和 $s$，并针对所有 $a\in\mathcal{A}(s)$ 返回 $q</em>\pi(s,a)$。</p>
 <p>你的算法应该有四个<strong>输入</strong>参数：</p>
@@ -249,9 +246,9 @@ Discrete(4)
 <li><code>q</code>：这是一个一维 numpy 数组，其中 <code>q.shape[0]</code> 等于动作数量 (<code>env.nA</code>)。<code>q[a]</code> 包含状态 <code>s</code> 和动作 <code>a</code> 的（估算）值。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">q_from_v</span><span class="params">(env, V, s, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    q = np.zeros(env.nA)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> range(env.nA):</span><br><span class="line">        <span class="keyword">for</span> prob, next_state, reward, done <span class="keyword">in</span>  env.P[s][a]:</span><br><span class="line">            q[a] += prob * (reward + gamma * V[next_state])</span><br><span class="line">    <span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">q_from_v</span><span class="params">(env, V, s, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    q = np.zeros(env.nA)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> range(env.nA):</span><br><span class="line">        <span class="keyword">for</span> prob, next_state, reward, done <span class="keyword">in</span>  env.P[s][a]:</span><br><span class="line">            q[a] += prob * (reward + gamma * V[next_state])</span><br><span class="line">    <span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
 <p>请运行以下代码单元格以输出上述状态值函数对应的动作值函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Q = np.zeros([env.nS, env.nA])</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">    Q[s] = q_from_v(env, V, s)</span><br><span class="line">print(<span class="string">"Action-Value Function:"</span>)</span><br><span class="line">print(Q)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Q = np.zeros([env.nS, env.nA])</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">    Q[s] = q_from_v(env, V, s)</span><br><span class="line">print(<span class="string">"Action-Value Function:"</span>)</span><br><span class="line">print(Q)</span><br></pre></td></tr></table></figure>
 <pre><code>Action-Value Function:
 [[ 0.0147094   0.01393978  0.01393978  0.01317015]
  [ 0.00852356  0.01163091  0.0108613   0.01550788]
@@ -271,7 +268,7 @@ Discrete(4)
  [ 0.          0.          0.          0.        ]]
 </code></pre><p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保 <code>q_from_v</code> 函数满足上文列出的要求（具有四个输入、一个输出，并且没有更改输入参数的默认值）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'q_from_v_check'</span>, q_from_v)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'q_from_v_check'</span>, q_from_v)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
 <h3 id="第-3-部分：策略改进"><a href="#第-3-部分：策略改进" class="headerlink" title="第 3 部分：策略改进"></a>第 3 部分：策略改进</h3><p>在此部分，你将自己编写策略改进实现。 </p>
 <p>你的算法应该有三个<strong>输入</strong>参数：</p>
@@ -285,11 +282,11 @@ Discrete(4)
 <li><code>policy</code>：这是一个二维 numpy 数组，其中 <code>policy.shape[0]</code> 等于状态数量 (<code>env.nS</code>) ， <code>policy.shape[1]</code> 等于动作数量 (<code>env.nA</code>) 。<code>policy[s][a]</code>  返回智能体在状态 <code>s</code> 时根据该策略选择动作 <code>a</code> 的概率。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。建议你使用你在上文实现的 <code>q_from_v</code> 函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_improvement</span><span class="params">(env, V, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    policy = np.zeros([env.nS, env.nA]) / env.nA</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">        q = q_from_v(env, V, s, gamma)</span><br><span class="line">        </span><br><span class="line"><span class="comment">#         best_a = np.argwhere(q==np.max(q)).flatten()</span></span><br><span class="line"><span class="comment">#         policy[s] = np.sum([np.eye(env.nA)[i] for i in best_a], axis=0)/len(best_a)</span></span><br><span class="line">        policy[s][np.argmax(q)] = <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_improvement</span><span class="params">(env, V, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    policy = np.zeros([env.nS, env.nA]) / env.nA</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">        q = q_from_v(env, V, s, gamma)</span><br><span class="line">        </span><br><span class="line"><span class="comment">#         best_a = np.argwhere(q==np.max(q)).flatten()</span></span><br><span class="line"><span class="comment">#         policy[s] = np.sum([np.eye(env.nA)[i] for i in best_a], axis=0)/len(best_a)</span></span><br><span class="line">        policy[s][np.argmax(q)] = <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> policy</span><br></pre></td></tr></table></figure>
 <p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保 <code>policy_improvement</code> 函数满足上文列出的要求（具有三个输入、一个输出，并且没有更改输入参数的默认值）。</p>
 <p>在继续转到该 notebook 的下个部分之前，强烈建议你参阅 <strong>Dynamic_Programming_Solution.ipynb</strong> 中的解决方案。该函数有很多正确的实现方式！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'policy_improvement_check'</span>, policy_improvement)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'policy_improvement_check'</span>, policy_improvement)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
 <h3 id="第-4-部分：策略迭代"><a href="#第-4-部分：策略迭代" class="headerlink" title="第 4 部分：策略迭代"></a>第 4 部分：策略迭代</h3><p>在此部分，你将自己编写策略迭代的实现。该算法会返回最优策略，以及相应的状态值函数。</p>
 <p>你的算法应该有三个<strong>输入</strong>参数：</p>
@@ -304,10 +301,10 @@ Discrete(4)
 <li><code>V</code>：这是一个一维 numpy 数组，其中 <code>V.shape[0]</code> 等于状态数量 (<code>env.nS</code>)。<code>V[s]</code> 包含状态 <code>s</code> 的估值。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。强烈建议你使用你在上文实现的 <code>policy_evaluation</code> 和 <code>policy_improvement</code> 函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_iteration</span><span class="params">(env, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    policy = np.ones([env.nS, env.nA]) / env.nA</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        V = policy_evaluation(env, policy, gamma, theta)</span><br><span class="line">        new_policy = policy_improvement(env, V)</span><br><span class="line">    </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        <span class="keyword">if</span> np.max(abs(policy_evaluation(env, policy) - policy_evaluation(env, new_policy))) &lt; theta*<span class="number">1e2</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        policy = copy.copy(new_policy)</span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">policy_iteration</span><span class="params">(env, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    policy = np.ones([env.nS, env.nA]) / env.nA</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        V = policy_evaluation(env, policy, gamma, theta)</span><br><span class="line">        new_policy = policy_improvement(env, V)</span><br><span class="line">    </span><br><span class="line">        <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">        <span class="keyword">if</span> np.max(abs(policy_evaluation(env, policy) - policy_evaluation(env, new_policy))) &lt; theta*<span class="number">1e2</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        policy = copy.copy(new_policy)</span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
 <p>运行下个代码单元格以解决该 MDP 并可视化输出结果。最优状态值函数已调整形状，以匹配网格世界的形状。</p>
 <p><strong>将该最优状态值函数与此 notebook 第 1 部分的状态值函数进行比较</strong>。<em>最优状态值函数一直都大于或等于等概率随机策略的状态值函数吗？</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># obtain the optimal policy and optimal state-value function</span></span><br><span class="line">policy_pi, V_pi = policy_iteration(env)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_pi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">plot_values(V_pi)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># obtain the optimal policy and optimal state-value function</span></span><br><span class="line">policy_pi, V_pi = policy_iteration(env)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_pi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">plot_values(V_pi)</span><br></pre></td></tr></table></figure>
 <pre><code>Optimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):
 [[ 1.  0.  0.  0.]
  [ 0.  0.  0.  1.]
@@ -328,7 +325,7 @@ Discrete(4)
 </code></pre><p><img src="/2019/02/16/动态规划/output_33_1.png" alt="png"></p>
 <p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保 <code>policy_iteratio</code> 函数满足上文列出的要求（具有三个输入、两个输出，并且没有更改输入参数的默认值）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'policy_iteration_check'</span>, policy_iteration)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'policy_iteration_check'</span>, policy_iteration)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
 <h3 id="第-5-部分：截断策略迭代"><a href="#第-5-部分：截断策略迭代" class="headerlink" title="第 5 部分：截断策略迭代"></a>第 5 部分：截断策略迭代</h3><p>在此部分，你将自己编写截断策略迭代的实现。  </p>
 <p>首先，你将实现截断策略评估。你的算法应该有五个<strong>输入</strong>参数：</p>
@@ -344,7 +341,7 @@ Discrete(4)
 <li><code>V</code>：这是一个一维 numpy 数组，其中 <code>V.shape[0]</code> 等于状态数量 (<code>env.nS</code>)。<code>V[s]</code> 包含状态 <code>s</code> 的估值。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">truncated_policy_evaluation</span><span class="params">(env, policy, V, max_it=<span class="number">1</span>, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> counter &lt; max_it:</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            v = <span class="number">0</span></span><br><span class="line">            q = q_from_v(env, V, s, gamma)</span><br><span class="line">            <span class="keyword">for</span> a, action_prob <span class="keyword">in</span> enumerate(policy[s]):</span><br><span class="line">                v += action_prob * q[a]</span><br><span class="line">            V[s] = v</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">truncated_policy_evaluation</span><span class="params">(env, policy, V, max_it=<span class="number">1</span>, gamma=<span class="number">1</span>)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> counter &lt; max_it:</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            v = <span class="number">0</span></span><br><span class="line">            q = q_from_v(env, V, s, gamma)</span><br><span class="line">            <span class="keyword">for</span> a, action_prob <span class="keyword">in</span> enumerate(policy[s]):</span><br><span class="line">                v += action_prob * q[a]</span><br><span class="line">            V[s] = v</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> V</span><br></pre></td></tr></table></figure>
 <p>接着，你将实现截断策略迭代。你的算法应该接受四个<strong>输入</strong>参数：</p>
 <ul>
 <li><code>env</code>：这是 OpenAI Gym 环境的实例，其中 <code>env.P</code> 会返回一步动态特性。</li>
@@ -358,10 +355,10 @@ Discrete(4)
 <li><code>V</code>：这是一个一维 numpy 数组，其中 <code>V.shape[0]</code> 等于状态数量 (<code>env.nS</code>)。<code>V[s]</code> 包含状态 <code>s</code> 的估值。</li>
 </ul>
 <p>请完成以下代码单元格中的函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">truncated_policy_iteration</span><span class="params">(env, max_it=<span class="number">1</span>, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    policy = np.zeros([env.nS, env.nA]) / env.nA</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        policy = policy_improvement(env, V)</span><br><span class="line">        old_V = copy.copy(V)</span><br><span class="line">        V = policy_evaluation(env, policy, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span><br><span class="line">        <span class="keyword">if</span> max(abs(V - old_V)) &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">truncated_policy_iteration</span><span class="params">(env, max_it=<span class="number">1</span>, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    policy = np.zeros([env.nS, env.nA]) / env.nA</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        policy = policy_improvement(env, V)</span><br><span class="line">        old_V = copy.copy(V)</span><br><span class="line">        V = policy_evaluation(env, policy, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span><br><span class="line">        <span class="keyword">if</span> max(abs(V - old_V)) &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
 <p>运行下个代码单元格以解决该 MDP 并可视化输出结果。状态值函数已调整形状，以匹配网格世界的形状。</p>
 <p>请实验不同的 <code>max_it</code> 参数值。始终都能获得最优状态值函数吗？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">policy_tpi, V_tpi = truncated_policy_iteration(env, max_it=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_tpi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the optimal state-value function</span></span><br><span class="line">plot_values(V_tpi)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">policy_tpi, V_tpi = truncated_policy_iteration(env, max_it=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_tpi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the optimal state-value function</span></span><br><span class="line">plot_values(V_tpi)</span><br></pre></td></tr></table></figure>
 <pre><code>Optimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):
 [[ 1.  0.  0.  0.]
  [ 0.  0.  0.  1.]
@@ -382,7 +379,7 @@ Discrete(4)
 </code></pre><p><img src="/2019/02/16/动态规划/output_41_1.png" alt="png"></p>
 <p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保 <code>truncated_policy_iteration</code> 函数满足上文列出的要求（具有四个输入、两个输出，并且没有更改输入参数的默认值）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'truncated_policy_iteration_check'</span>, truncated_policy_iteration)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'truncated_policy_iteration_check'</span>, truncated_policy_iteration)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
 <h3 id="第-6-部分：值迭代"><a href="#第-6-部分：值迭代" class="headerlink" title="第 6 部分：值迭代"></a>第 6 部分：值迭代</h3><p>在此部分，你将自己编写值迭代的实现。</p>
 <p>你的算法应该接受三个输入参数：</p>
@@ -396,9 +393,9 @@ Discrete(4)
 <li><code>policy</code>：这是一个二维 numpy 数组，其中 <code>policy.shape[0]</code> 等于状态数量 (<code>env.nS</code>) ， <code>policy.shape[1]</code> 等于动作数量 (<code>env.nA</code>) 。<code>policy[s][a]</code>  返回智能体在状态 <code>s</code> 时根据该策略选择动作 <code>a</code> 的概率。</li>
 <li><code>V</code>：这是一个一维 numpy 数组，其中 <code>V.shape[0]</code> 等于状态数量 (<code>env.nS</code>)。<code>V[s]</code> 包含状态 <code>s</code> 的估值。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">value_iteration</span><span class="params">(env, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        delta = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            v = copy.copy(V[s])</span><br><span class="line">            V[s] = max(q_from_v(env, V, s, gamma))</span><br><span class="line">            delta = max(delta, abs(v-V[s]))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> delta &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    policy = policy_improvement(env, V, gamma)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">value_iteration</span><span class="params">(env, gamma=<span class="number">1</span>, theta=<span class="number">1e-8</span>)</span>:</span></span><br><span class="line">    V = np.zeros(env.nS)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">## <span class="doctag">TODO:</span> complete the function</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        delta = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(env.nS):</span><br><span class="line">            v = copy.copy(V[s])</span><br><span class="line">            V[s] = max(q_from_v(env, V, s, gamma))</span><br><span class="line">            delta = max(delta, abs(v-V[s]))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> delta &lt; theta:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    policy = policy_improvement(env, V, gamma)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> policy, V</span><br></pre></td></tr></table></figure>
 <p>运行下个代码单元格以解决该 MDP 并可视化输出结果。状态值函数已调整形状，以匹配网格世界的形状。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">policy_vi, V_vi = value_iteration(env)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_vi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the optimal state-value function</span></span><br><span class="line">plot_values(V_vi)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">policy_vi, V_vi = value_iteration(env)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print the optimal policy</span></span><br><span class="line">print(<span class="string">"\nOptimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):"</span>)</span><br><span class="line">print(policy_vi,<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># plot the optimal state-value function</span></span><br><span class="line">plot_values(V_vi)</span><br></pre></td></tr></table></figure>
 <pre><code>Optimal Policy (LEFT = 0, DOWN = 1, RIGHT = 2, UP = 3):
 [[ 1.  0.  0.  0.]
  [ 0.  0.  0.  1.]
@@ -419,116 +416,228 @@ Discrete(4)
 </code></pre><p><img src="/2019/02/16/动态规划/output_47_1.png" alt="png"></p>
 <p>运行以下代码单元格以测试你的函数。如果代码单元格返回 <strong>PASSED</strong>，则表明你正确地实现了该函数！ </p>
 <p><strong>注意：</strong>为了确保结果准确，确保 <code>truncated_policy_iteration</code> 函数满足上文列出的要求（具有三个输入、两个输出，并且没有更改输入参数的默认值）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'value_iteration_check'</span>, value_iteration)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">check_test.run_check(<span class="string">'value_iteration_check'</span>, value_iteration)</span><br></pre></td></tr></table></figure>
 <p><strong><span style="color: green;">PASSED</span></strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    </div>
-    
-    <div class="post-footer">
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2019/02/16/蒙特卡洛/" class="pre-post btn btn-default" title="强化学习(二) 蒙特卡洛">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">强化学习(二) 蒙特卡洛</span>
-        </a>
-    
-    
-        <a href="/2019/02/16/Customer-Setments/" class="next-post btn btn-default" title="Customer Setments">
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Customer Setments</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
-    
-</div>
-
-
-
-
-
-
-                </main>
+                <hr>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">Table of Contents</h3>
-        
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迷你项目：动态规划"><span class="toc-text">迷你项目：动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第-0-部分：探索-FrozenLakeEnv"><span class="toc-text">第 0 部分：探索 FrozenLakeEnv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-1-部分：迭代策略评估"><span class="toc-text">第 1 部分：迭代策略评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-2-部分：通过-v-pi-获取-q-pi"><span class="toc-text">第 2 部分：通过 $v\pi$ 获取 $q\pi$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-3-部分：策略改进"><span class="toc-text">第 3 部分：策略改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-4-部分：策略迭代"><span class="toc-text">第 4 部分：策略迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-5-部分：截断策略迭代"><span class="toc-text">第 5 部分：截断策略迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-6-部分：值迭代"><span class="toc-text">第 6 部分：值迭代</span></a></li></ol></li></ol>
-        
-    </div>
-</aside>
 
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/02/16/蒙特卡洛/" data-toggle="tooltip" data-placement="top" title="强化学习(二) 蒙特卡洛">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/02/16/Customer-Setments/" data-toggle="tooltip" data-placement="top" title="Customer Setments">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迷你项目：动态规划"><span class="toc-text">迷你项目：动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第-0-部分：探索-FrozenLakeEnv"><span class="toc-text">第 0 部分：探索 FrozenLakeEnv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-1-部分：迭代策略评估"><span class="toc-text">第 1 部分：迭代策略评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-2-部分：通过-v-pi-获取-q-pi"><span class="toc-text">第 2 部分：通过 $v\pi$ 获取 $q\pi$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-3-部分：策略改进"><span class="toc-text">第 3 部分：策略改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-4-部分：策略迭代"><span class="toc-text">第 4 部分：策略迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-5-部分：截断策略迭代"><span class="toc-text">第 5 部分：截断策略迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第-6-部分：值迭代"><span class="toc-text">第 6 部分：值迭代</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Reinforcement learning" title="Reinforcement learning">Reinforcement learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
                 
             </div>
         </div>
-    </section>
-    <footer class="main-footer">
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
     <div class="container">
         <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/jindong_wang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/jinyaxuan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Jindong 2019
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
         </div>
     </div>
 </footer>
 
-<a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
-</a>
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jinyaxuan.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        processEscapes: true
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    }});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Google Analytics -->
 
 
 
-
-    <div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="busuanzi">
-    
-        Total:
-        <strong id="busuanzi_value_site_pv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-        &nbsp; | &nbsp;
-        Visitors:
-        <strong id="busuanzi_value_site_uv">
-            <i class="fa fa-spinner fa-spin"></i>
-        </strong>
-    
-</div>
-
-            </div>
-            <div class="col-sm-12">
-                <span>Copyright &copy; 2017
-                </span> |
-                <span>
-                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
-                </span> |
-                <span>
-                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Baidu Tongji -->
 
 
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
+  _st('install','null','2.0.0');
+</script>
 
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-<script src="/js/app.js?rev=@@hash"></script>
-
+<!--wechat title img-->
+<img class="wechat-title-img" src="null">
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
@@ -546,4 +655,5 @@ Discrete(4)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
+
 </html>
