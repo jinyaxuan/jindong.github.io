@@ -66,6 +66,7 @@
 
 </head>
 
+
 </html>
 <!--[if lte IE 8]>
 <style>
@@ -108,11 +109,11 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/ML/"><i class="fa "></i>MachineLearning</a>
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/DL/"><i class="fa "></i>DeepLearning</a>
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
@@ -306,6 +307,22 @@
 
 
 <script src="/js/app.js?rev=@@hash"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>

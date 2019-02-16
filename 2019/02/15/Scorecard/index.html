@@ -66,6 +66,7 @@
 
 </head>
 
+
 </html>
 <!--[if lte IE 8]>
 <style>
@@ -108,11 +109,11 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/ML/"><i class="fa "></i>MachineLearning</a>
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/DL/"><i class="fa "></i>DeepLearning</a>
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
@@ -174,8 +175,7 @@
     </div>
     
     <div class="post-body post-content">
-        <h4 id="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。"><a href="#信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。" class="headerlink" title="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。"></a>信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。</h4><p>信用评分卡一般可以分为申请评分卡、行为评分卡、催收评分卡等。本文主要讲述申请评分卡模型的建模分析过程。
-主要分以下几个步骤：</p>
+        <h4 id="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。"><a href="#信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用-logistic-回归模型进行二分类变量的拟合及预测。" class="headerlink" title="信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。"></a>信用评分卡模型是一种比较成熟的预测方法，广泛应用于信用风险评估以及金融风险控制等领域，其基本原理是：将模型变量以WOE编码方式离散化之后运用 logistic 回归模型进行二分类变量的拟合及预测。</h4><p>信用评分卡一般可以分为申请评分卡、行为评分卡、催收评分卡等。本文主要讲述申请评分卡模型的建模分析过程。<br>主要分以下几个步骤：</p>
 <ol>
 <li>目标定义</li>
 <li>数据获取</li>
@@ -184,8 +184,7 @@
 <li>模型评估</li>
 <li>评分系统建立</li>
 </ol>
-<h3 id="1-目标定义"><a href="#1-目标定义" class="headerlink" title="1. 目标定义"></a>1. 目标定义</h3><p>数据来源kaggle project: ‘give-me-some-credit-dataset’，
-找出关键的特征变量，建立信用评分模型</p>
+<h3 id="1-目标定义"><a href="#1-目标定义" class="headerlink" title="1. 目标定义"></a>1. 目标定义</h3><p>数据来源kaggle project: ‘give-me-some-credit-dataset’，<br>找出关键的特征变量，建立信用评分模型</p>
 <h3 id="2-数据获取"><a href="#2-数据获取" class="headerlink" title="2. 数据获取"></a>2. 数据获取</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入必要的库包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取数据</span></span><br><span class="line">data=pd.read_csv(<span class="string">'cs-training.csv'</span>)</span><br><span class="line">data=data.drop(axis=<span class="number">1</span>, columns=[data.columns[<span class="number">0</span>]])</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
 <div>
@@ -298,7 +297,7 @@
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.info()</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 150000 entries, 0 to 149999
 Data columns (total 11 columns):
 SeriousDlqin2yrs                        150000 non-null int64
@@ -359,23 +358,23 @@ memory usage: 12.6 MB
  [-inf, 33.0, 40.0, 45.0, 49.0, 54.0, 59.0, 64.0, 71.0, inf],
  [-0.562, -0.369, -0.258, -0.216, -0.094, 0.211, 0.501, 0.897, 1.106])
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每个变量的个数，从而确定连续变量与分类变量</span></span><br><span class="line">var_lst=data.columns[<span class="number">1</span>:]</span><br><span class="line">var_num=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> var_lst:</span><br><span class="line">    var_num[var]=len(data[var].unique())</span><br><span class="line">var_num</span><br></pre></td></tr></table></figure>
-<pre><code>{&apos;RevolvingUtilizationOfUnsecuredLines&apos;: 122950,
- &apos;age&apos;: 79,
- &apos;NumberOfTime30-59DaysPastDueNotWorse&apos;: 14,
- &apos;DebtRatio&apos;: 114065,
- &apos;MonthlyIncome&apos;: 13592,
- &apos;NumberOfOpenCreditLinesAndLoans&apos;: 58,
- &apos;NumberOfTimes90DaysLate&apos;: 17,
- &apos;NumberRealEstateLoansOrLines&apos;: 28,
- &apos;NumberOfTime60-89DaysPastDueNotWorse&apos;: 11,
- &apos;NumberOfDependents&apos;: 13}
+<pre><code>{&#39;RevolvingUtilizationOfUnsecuredLines&#39;: 122950,
+ &#39;age&#39;: 79,
+ &#39;NumberOfTime30-59DaysPastDueNotWorse&#39;: 14,
+ &#39;DebtRatio&#39;: 114065,
+ &#39;MonthlyIncome&#39;: 13592,
+ &#39;NumberOfOpenCreditLinesAndLoans&#39;: 58,
+ &#39;NumberOfTimes90DaysLate&#39;: 17,
+ &#39;NumberRealEstateLoansOrLines&#39;: 28,
+ &#39;NumberOfTime60-89DaysPastDueNotWorse&#39;: 11,
+ &#39;NumberOfDependents&#39;: 13}
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将四个连续变量最优分箱</span></span><br><span class="line">x1_df, x1_iv, x1_cut, x1_woe = mono_bin( y_train, X_train[<span class="string">'RevolvingUtilizationOfUnsecuredLines'</span>], n=<span class="number">10</span>)</span><br><span class="line">x2_df, x2_iv, x2_cut, x2_woe = mono_bin( y_train, X_train[<span class="string">'age'</span>], n=<span class="number">10</span>)</span><br><span class="line">x4_df, x4_iv, x4_cut, x4_woe = mono_bin( y_train, X_train[<span class="string">'DebtRatio'</span>], n=<span class="number">10</span>)</span><br><span class="line">x5_df, x5_iv, x5_cut, x5_woe = mono_bin( y_train, X_train[<span class="string">'MonthlyIncome'</span>], n=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不能最优分箱的变量则进行手动分箱，WOE计算函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">woe_value</span><span class="params">(Y, X, cut)</span>:</span></span><br><span class="line">    total_bad=Y.sum()</span><br><span class="line">    total_good=Y.count()-total_bad</span><br><span class="line">    d1 = pd.DataFrame(&#123;<span class="string">"X"</span>: X, <span class="string">"Y"</span>: Y, <span class="string">"Bucket"</span>: cut&#125;)</span><br><span class="line">    d2 = d1.groupby(<span class="string">'Bucket'</span>, as_index = <span class="keyword">True</span>)</span><br><span class="line">    d3 = pd.DataFrame(d2.X.min(), columns = [<span class="string">'min'</span>])</span><br><span class="line">    d3[<span class="string">'min'</span>]=d2.min().X</span><br><span class="line">    d3[<span class="string">'max'</span>] = d2.max().X</span><br><span class="line">    d3[<span class="string">'bad'</span>] = d2.sum().Y</span><br><span class="line">    d3[<span class="string">'good'</span>] = d2.count().Y-d3[<span class="string">'bad'</span>]</span><br><span class="line">    d3[<span class="string">'bad_rate'</span>] = d2.mean().Y</span><br><span class="line">    d3[<span class="string">'woe'</span>]=np.log(((d2.count().Y-d2.sum().Y)/total_good)/(d2.sum().Y/total_bad))</span><br><span class="line">    iv = ((d3[<span class="string">'good'</span>]/total_good - d3[<span class="string">'bad'</span>]/total_bad)*d3[<span class="string">'woe'</span>]).sum()</span><br><span class="line">    d4 = (d3.sort_index(by = <span class="string">'min'</span>)).reset_index(drop=<span class="keyword">True</span>)</span><br><span class="line">    woe = list(d4[<span class="string">'woe'</span>].round(<span class="number">3</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> d4, iv, woe</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">x3_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x6_cut = [-np.Inf, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x7_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line">x8_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, np.Inf]</span><br><span class="line">x9_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, np.Inf]</span><br><span class="line">x10_cut = [-np.Inf, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, np.Inf]</span><br><span class="line"></span><br><span class="line">x3_bin = pd.cut(X_train[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>], bins= x3_cut)</span><br><span class="line">x6_bin = pd.cut(X_train[<span class="string">'NumberOfOpenCreditLinesAndLoans'</span>], bins= x6_cut)</span><br><span class="line">x7_bin = pd.cut(X_train[<span class="string">'NumberOfTimes90DaysLate'</span>], bins=x7_cut)</span><br><span class="line">x8_bin = pd.cut(X_train[<span class="string">'NumberRealEstateLoansOrLines'</span>], bins=x8_cut)</span><br><span class="line">x9_bin = pd.cut(X_train[<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>], bins=x9_cut)</span><br><span class="line">x10_bin = pd.cut(X_train[<span class="string">'NumberOfDependents'</span>], bins=x10_cut)</span><br><span class="line"></span><br><span class="line">x3_df, x3_iv, x3_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span>], x3_bin)</span><br><span class="line">x6_df, x6_iv, x6_woe = woe_value(y_train, X_train[<span class="string">'NumberOfOpenCreditLinesAndLoans'</span>], x6_bin)</span><br><span class="line">x7_df, x7_iv, x7_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTimes90DaysLate'</span>], x7_bin)</span><br><span class="line">x8_df, x8_iv, x8_woe = woe_value(y_train, X_train[<span class="string">'NumberRealEstateLoansOrLines'</span>], x8_bin)</span><br><span class="line">x9_df, x9_iv, x9_woe = woe_value(y_train, X_train[<span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span>], x9_bin)</span><br><span class="line">x10_df, x10_iv, x10_woe = woe_value(y_train, X_train[<span class="string">'NumberOfDependents'</span>], x10_bin)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#相关性分析</span></span><br><span class="line">corr = data.corr()</span><br><span class="line">xticks = [<span class="string">'x'</span>+str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">12</span>)]</span><br><span class="line">yticks = list(data.columns)</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">sns.heatmap(corr, cmap=<span class="string">'GnBu'</span>, annot=<span class="keyword">True</span>, ax= ax1, annot_kws=&#123;<span class="string">'size'</span>:<span class="number">6</span>, <span class="string">'color'</span>:<span class="string">'red'</span>&#125;)</span><br><span class="line">ax1.set_xticklabels(xticks, rotation=<span class="number">0</span>, fontsize=<span class="number">10</span>)</span><br><span class="line">ax1.set_yticklabels(yticks, rotation=<span class="number">0</span>, fontsize=<span class="number">10</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="https://img-blog.csdnimg.cn/20190215183807960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从相关系数热力图可以看出，自变量之间的线性相关性比较弱</span></span><br><span class="line"><span class="comment">#画出每个变量的IV值</span></span><br><span class="line">iv = [eval(<span class="string">'x'</span>+str(i)+<span class="string">'_iv'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">index=[<span class="string">'x'</span>+str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">sns.barplot(x=index, y=iv)</span><br><span class="line">plt.ylabel(<span class="string">'IV'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0,0.5,&apos;IV&apos;)
+<pre><code>Text(0,0.5,&#39;IV&#39;)
 </code></pre><p><img src="https://img-blog.csdnimg.cn/20190215183820781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTM0OTQw,size_16,color_FFFFFF,t_70" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选x1, x2, x3, x7, x9， IV&gt;0.2高预测性</span></span><br><span class="line"><span class="comment">#WOE编码</span></span><br><span class="line">x1= <span class="string">'RevolvingUtilizationOfUnsecuredLines'</span></span><br><span class="line">x2= <span class="string">'age'</span></span><br><span class="line">x3= <span class="string">'NumberOfTime30-59DaysPastDueNotWorse'</span></span><br><span class="line">x7= <span class="string">'NumberOfTimes90DaysLate'</span></span><br><span class="line">x9= <span class="string">'NumberOfTime60-89DaysPastDueNotWorse'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#定义WOE编码函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">woe_trans</span><span class="params">(data, var, woe, cut)</span>:</span></span><br><span class="line">    woe_name = var+<span class="string">'_woe'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(woe)):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            data.loc[(data[var]&lt;=cut[i+<span class="number">1</span>]), woe_name] = woe[i]</span><br><span class="line">        <span class="keyword">elif</span> ((i&gt;<span class="number">0</span>) <span class="keyword">and</span> (i&lt;=(len(woe)<span class="number">-2</span>))):</span><br><span class="line">            data.loc[((data[var]&lt;=cut[i+<span class="number">1</span>]) &amp; (data[var]&gt;cut[i])), woe_name] = woe[i]</span><br><span class="line">        <span class="keyword">else</span>: </span><br><span class="line">            data.loc[(data[var]&gt;cut[i]), woe_name] = woe[i]</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">9</span>]:</span><br><span class="line">    X_train = woe_trans(X_train, eval(<span class="string">'x'</span>+str(i)), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_woe'</span>), eval(<span class="string">'x'</span>+str(i)+<span class="string">'_cut'</span>))</span><br></pre></td></tr></table></figure>
@@ -641,6 +640,22 @@ NumberOfTime60-89DaysPastDueNotWorse_woe    -0.4019      0.017    -23.032      0
 
 
 <script src="/js/app.js?rev=@@hash"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>

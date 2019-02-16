@@ -66,6 +66,7 @@
 
 </head>
 
+
 </html>
 <!--[if lte IE 8]>
 <style>
@@ -108,11 +109,11 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/ML/"><i class="fa "></i>MachineLearning</a>
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
-                                <a href="/categories/DL/"><i class="fa "></i>DeepLearning</a>
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
                             </li>
                         
                             <li role="presentation" class="text-center">
@@ -142,6 +143,33 @@
 
     <article class="post">
         
+            <div class="post-media">
+                <a href="/2019/02/15/dog-app-for-CNN/">
+                    <img class="img-ajax" src="/img/loading.gif" data-src="/2019/02/15/dog-app-for-CNN/Labrador_retriever_06449.jpg" alt="dog_app by CNN">
+                </a>
+            </div>
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title">
+                    <a href="/2019/02/15/dog-app-for-CNN/">dog_app by CNN</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime title>
+                        2019年02月15日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    卷积神经网络（Convolutional Neural Network, CNN）项目：实现一个狗品种识别算法App在这个notebook文件中，有些模板代码已经提供给你，但你还需要实现更多的功能来完成这个项目。除非有明确要求，你无须...
+                
+            </p>
+        </div>
+    </article>
+ 
+    <article class="post">
+        
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title">
@@ -155,7 +183,7 @@
             </div>
             <p class="brief">
                 
-                    简介本文使用keras(2.1.4)—-其他版本有坑. 网络框架搭建CNN网络，对cifar10数据集进行图像识别，cifar10是一种自带label的图像数据集，数据集种类十分丰富可以很好的检验网络性能，话不多说直接进入正题 
+                    简介本文使用keras(2.1.4)——其他版本有坑. 网络框架搭建CNN网络，对cifar10数据集进行图像识别，cifar10是一种自带label的图像数据集，数据集种类十分丰富可以很好的检验网络性能，话不多说直接进入正题 
 第一...
                 
             </p>
@@ -239,7 +267,7 @@
         
     <div class="widget">
         <h3 class="title">Categories</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/"><i class="fa" aria-hidden="true">机器学习</i></a><span class="category-list-count">2</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/强化学习/"><i class="fa" aria-hidden="true">强化学习</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/"><i class="fa" aria-hidden="true">机器学习</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/"><i class="fa" aria-hidden="true">深度学习</i></a><span class="category-list-count">1</span></li></ul>
     </div>
 
 
@@ -247,7 +275,7 @@
         
     <div class="widget">
         <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">2019年02月</i></a><span class="archive-list-count">5</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">2019年02月</i></a><span class="archive-list-count">9</span></li></ul>
     </div>
 
 
@@ -257,7 +285,7 @@
     <h3 class="title">Tag Cloud</h3>
     <div class="content tag-cloud">
         
-            <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a>
+            <a href="/tags/Deep-Learning/" style="font-size: 15px;">Deep Learning</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Reinforcement-learning/" style="font-size: 10px;">Reinforcement learning</a>
         
     </div>
   </div>
@@ -340,6 +368,22 @@
 
 
 <script src="/js/app.js?rev=@@hash"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 </body>
 </html>
