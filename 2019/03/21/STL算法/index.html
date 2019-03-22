@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Machine Learning">
+
+
+    <meta name="description" content=" 时间序列分解-STL分解法时间序列的组成
+经济时间序列的变化受到长期趋势、季节变动和不规则变动这四个因素的影响。其中：
+（1） 长期趋势因素（T）
+长期趋势因素（T）反映了经济现象在一个较长时...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>STL算法 | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4cc1f2d8f3067386cc5cdb626a202900";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+
+</head>
+
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 活成了一个快乐的小×× </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/强化学习/"><i class="fa "></i>Reinforcement learning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="STL算法">
+            
+	            STL算法
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="时间序列分解-STL分解法"><a href="#时间序列分解-STL分解法" class="headerlink" title=" 时间序列分解-STL分解法"></a> 时间序列分解-STL分解法</h1><p>时间序列的组成</p>
+<p>经济时间序列的变化受到长期趋势、季节变动和不规则变动这四个因素的影响。其中：</p>
+<p>（1） 长期趋势因素（T）</p>
+<p>长期趋势因素（T）反映了经济现象在一个较长时间内的发展方向，它可以在一个相当长的时间内表现为一种近似直线的持续向上或持续向下或平稳的趋势。</p>
+<p>（2） 季节变动因素（S）</p>
+<p>季节变动因素（S）是经济现象受季节变动影响所形成的一种长度和幅度固定的周期波动。</p>
+<p>（3） 周期变动因素（C）</p>
+<p>周期变动因素也称循环变动因素，它是受各种经济因素影响形成的上下起伏不定的波动。</p>
+<p>（4） 不规则变动因素（I）</p>
+<p>不规则变动又称随机变动，它是受各种偶然因素影响所形成的不规则变动。</p>
+<p>这里值得注意的值得注意的包括以下两点：</p>
+<p>季节变动因素和周期变动因素的区别：周期变动因素的变动不具有固定周期，但季节变动的具有固定周期同时与特定日期相关。</p>
+<p>很多时候，我们没必要区分长期趋势因素和周期变动因素，统称为趋势-周期因素（T`tT`t)</p>
+<p>STL分解法是一个兼具通用性和鲁棒性的时间序列分解法。STL是”Seasonal and Trend<br>decomposition using Loess”的简写。</p>
+<p>可以处理任何类型的季节变动因素的数据，而不仅仅是季度或是月份的数据</p>
+<p>季度成分可以被允许随着时间变化而变化，并且用户可以自行控制变化率</p>
+<p>用户可以自行控制趋势-周期成分的平滑度</p>
+<p>对异常值有更好的鲁棒性</p>
+<p>加法方式：原始数据 = 平均季节数据 + 趋势数据 + 残差</p>
+<p><img src="/2019/03/21/STL算法/3f12200cbe93ce803f7220993915f17d.png" alt></p>
+<p>乘法方式：原始数据 = 季节数据 <em>趋势数据 </em>残差</p>
+<p><img src="/2019/03/21/STL算法/d3576436834e350392d9e5d788284ab3.png" alt></p>
+<p><img src="/2019/03/21/STL算法/c6b06a44c04b6c29c4104d87f250267f.png" alt></p>
+<p>上图是分解后形成了：趋势数据 +　其他数据。<br>下图是去到其他数据最终的趋势数据。</p>
+<p><img src="/2019/03/21/STL算法/a34fc1421e2975aa4712198f3f026706.png" alt></p>
+<p>原始数据 - 趋势数据 = 季节数据 + 残差数据 = S</p>
+<p><img src="/2019/03/21/STL算法/db68e7a5ca71cf77e83cfb15bc5005df.png" alt></p>
+<p>数据集S中对不同时期的相同时间点数据进行相加得到数据集SP，然后除以原始数据的周期数c，得到一个平均季节数据集H，然后复制c次数据集H，将得到平均季节数据，如下图：</p>
+<p><img src="/2019/03/21/STL算法/a3b1396b2b04e62821f36d31f7434a1f.png" alt></p>
+<h2 id="获取残差数据"><a href="#获取残差数据" class="headerlink" title="获取残差数据"></a>获取残差数据</h2><p>原始数据 - 趋势数据 - 平均季节数据 = 残差<br>如下图：</p>
+<p><img src="/2019/03/21/STL算法/df6ad2c7d03fe2d26ec6384c44f559ca.png" alt></p>
+<p>最终每一步分解的数据合成一个图，如下：</p>
+<p><img src="/2019/03/21/STL算法/e03f6add45b62d4426dbb47db860eb09.png" alt></p>
+<p>数据如果有异常，都会体现在残差数据集中。我们怎么从残差数据中早出有问题的数据时间点呢？我理解的会有下面几种方式：</p>
+<ul>
+<li>确认残差数据满足正太分布，或者近似正太分布，可以计算出残差数据集的标准差，常规方式是数据点与均值的差值绝对值在3倍标准差外，则认为是异常点，也就是3sigma方案。也有例外，下图的残差数据集可能不能被上述方法将异常检测出来，这段数据连续几分钟都是在3倍标准差内，但是出现这种的可能性（1-99.7%）\^n，这种情况出现的概率相当低，如果出现也应该被识别为异常点。</li>
+</ul>
+<p><img src="/2019/03/21/STL算法/b68d4c0b93a4638919fdc617e9e8aca2.jpg" alt></p>
+<p>使用历史数据分段平均的方式，对我们的原始数据进行未来数据点补全，对得到的新数据集使用STL方法去除残差数据，得到业务数据的基线，通过基线与真实值的比对判断是否是异常点。</p>
+<h1 id="问题思考"><a href="#问题思考" class="headerlink" title="问题思考"></a>问题思考</h1><ul>
+<li><p>业务运行过程中会经历很多突发事件，比如触发型时间，场景变换，这些事件大部分没有规律性，怎样可以降低它们对基线拟合的影响。</p>
+</li>
+<li><p>在不同业务时段，判断异常点的n倍sigma指标也可能不一样，需要分段执行不同的判断标准（在流量高峰可能需要有更多的容忍区间）。</p>
+</li>
+<li><p>人为对异常检测结果进行标记，如何将这些标记及时反馈到算法中，让其自动化调整判断标准。</p>
+</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/03/21/思科学习赛/" class="pre-post btn btn-default" title="思科学习赛">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">思科学习赛</span>
+        </a>
+    
+    
+        <a href="/2019/03/21/ARIMA模型/" class="next-post btn btn-default" title="ARIMA模型">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">ARIMA模型</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#时间序列分解-STL分解法"><span class="toc-text"> 时间序列分解-STL分解法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取残差数据"><span class="toc-text">获取残差数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题思考"><span class="toc-text">问题思考</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

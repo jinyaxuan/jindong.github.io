@@ -1,180 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<!DOCTYPE HTML>
+<html lang="null">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="博客">
-    <meta name="keyword" content="null">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
-    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
-    <link rel="alternate" type="application/atom+xml" title="Jindong" href="/atom.xml">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
-    <title>
-        
-        finding donors｜Jindong&#39;s blog
-        
-    </title>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
 
-    <link rel="canonical" href="http://jinyaxuan.github.io/2019/02/16/finding-donors/">
+    <meta name="keywords" content="Machine Learning">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/blog-style.css">
+    <meta name="description" content="机器学习纳米学位监督学习项目2: 为CharityML寻找捐献者欢迎来到机器学习工程师纳米学位的第二个项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能让项目成功运行。除非有明...">
 
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>finding donors | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4cc1f2d8f3067386cc5cdb626a202900";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+
 </head>
 
+
+</html>
+<!--[if lte IE 8]>
 <style>
-
-    header.intro-header {
-        background-image: url('/home/wangjindong/Desktop/jindong.github.io/themes/hexo-theme-snippet/source/img/avatar.jpg')
-    }
+    html{ font-size: 1em }
 </style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
-" data-ishome="false">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated pulse" href="/">
-                <span class="brand-logo">
-                    Jindong
-                </span>
-                's Blog
-            </a>
-        </div>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-					
-                    
-                        
-							
-                        <li>
-                            <a href="/Tags/">Tags</a>
-                        </li>
-							
-						
-                    
-					
-					
-                </ul>
-            </div>
-        </div>
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 活成了一个快乐的小×× </h2>
+            
+    	</div>
     </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-//    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-<!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img" src>
-
-
-<style>
-    
-    header.intro-header {
-        background-image: url('')
-    }
-
-    
-</style>
-
-<header class="intro-header">
+</header>
+    <nav class="main-navigation">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>finding donors</h1>
-                    
-                    <span class="meta">
-                         作者 Jindong Wang
-                        <span>
-                          日期 2019-02-16
-                         </span>
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
                     </span>
-                    <div class="tags text-center">
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
                         
-                        <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
                         
-                    </div>
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/强化学习/"><i class="fa "></i>Reinforcement learning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="post-title-haojen">
-        <span>
-            finding donors
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="finding donors">
+            
+	            finding donors
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
         </span>
-    </div>
-</header>
+    
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h1 id="机器学习纳米学位"><a href="#机器学习纳米学位" class="headerlink" title="机器学习纳米学位"></a>机器学习纳米学位</h1><h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h2 id="项目2-为CharityML寻找捐献者"><a href="#项目2-为CharityML寻找捐献者" class="headerlink" title="项目2: 为CharityML寻找捐献者"></a>项目2: 为<em>CharityML</em>寻找捐献者</h2><p>欢迎来到机器学习工程师纳米学位的第二个项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能让项目成功运行。除非有明确要求，你无须修改任何已给出的代码。以<strong>‘练习’</strong>开始的标题表示接下来的代码部分中有你必须要实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以’TODO’标出。请仔细阅读所有的提示！</p>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/16</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="机器学习纳米学位"><a href="#机器学习纳米学位" class="headerlink" title="机器学习纳米学位"></a>机器学习纳米学位</h1><h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><h2 id="项目2-为CharityML寻找捐献者"><a href="#项目2-为CharityML寻找捐献者" class="headerlink" title="项目2: 为CharityML寻找捐献者"></a>项目2: 为<em>CharityML</em>寻找捐献者</h2><p>欢迎来到机器学习工程师纳米学位的第二个项目！在此文件中，有些示例代码已经提供给你，但你还需要实现更多的功能让项目成功运行。除非有明确要求，你无须修改任何已给出的代码。以<strong>‘练习’</strong>开始的标题表示接下来的代码部分中有你必须要实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以’TODO’标出。请仔细阅读所有的提示！</p>
 <p>除了实现代码外，你还必须回答一些与项目和你的实现有关的问题。每一个需要你回答的问题都会以<strong>‘问题 X’</strong>为标题。请仔细阅读每个问题，并且在问题后的<strong>‘回答’</strong>文字框中写出完整的答案。我们将根据你对问题的回答和撰写代码所实现的功能来对你提交的项目进行评分。</p>
 <blockquote>
 <p><strong>提示：</strong>Code 和 Markdown 区域可通过<strong>Shift + Enter</strong>快捷键运行。此外，Markdown可以通过双击进入编辑模式。</p>
@@ -183,7 +198,7 @@
 <p>这个项目的数据集来自<a href="https://archive.ics.uci.edu/ml/datasets/Census+Income" target="_blank" rel="noopener">UCI机器学习知识库</a>。这个数据集是由Ron Kohavi和Barry Becker在发表文章<em>“Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid”</em>之后捐赠的，你可以在Ron Kohavi提供的<a href="https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf" target="_blank" rel="noopener">在线版本</a>中找到这个文章。我们在这里探索的数据集相比于原有的数据集有一些小小的改变，比如说移除了特征<code>&#39;fnlwgt&#39;</code> 以及一些遗失的或者是格式不正确的记录。</p>
 <hr>
 <h2 id="探索数据"><a href="#探索数据" class="headerlink" title="探索数据"></a>探索数据</h2><p>运行下面的代码单元以载入需要的Python库并导入人口普查数据。注意数据集的最后一列<code>&#39;income&#39;</code>将是我们需要预测的列（表示被调查者的年收入会大于或者是最多50,000美元），人口普查数据中的每一列都将是关于被调查者的特征。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为这个项目导入需要的库</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display <span class="comment"># 允许为DataFrame使用display()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入附加的可视化代码visuals.py</span></span><br><span class="line"><span class="keyword">import</span> visuals <span class="keyword">as</span> vs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为notebook提供更加漂亮的可视化</span></span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入人口普查数据</span></span><br><span class="line">data = pd.read_csv(<span class="string">"census.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成功 - 显示第一条记录</span></span><br><span class="line">display(data.head(n=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为这个项目导入需要的库</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display <span class="comment"># 允许为DataFrame使用display()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入附加的可视化代码visuals.py</span></span><br><span class="line"><span class="keyword">import</span> visuals <span class="keyword">as</span> vs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为notebook提供更加漂亮的可视化</span></span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入人口普查数据</span></span><br><span class="line">data = pd.read_csv(<span class="string">"census.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 成功 - 显示第一条记录</span></span><br><span class="line">display(data.head(n=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -236,7 +251,7 @@
 <li>年收入大于50,000美元的人所占的比例， <code>&#39;greater_percent&#39;</code>.</li>
 </ul>
 <p><strong>提示：</strong> 您可能需要查看上面的生成的表，以了解<code>&#39;income&#39;</code>条目的格式是什么样的。 </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：总的记录数</span></span><br><span class="line">n_records = data.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者的收入大于$50,000的人数</span></span><br><span class="line">n_greater_50k = len(data[data.income == <span class="string">'&gt;50K'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者的收入最多为$50,000的人数</span></span><br><span class="line">n_at_most_50k = len(data[data.income == <span class="string">'&lt;=50K'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者收入大于$50,000所占的比例</span></span><br><span class="line">greater_percent = float(n_greater_50k) / n_records * <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Total number of records: &#123;&#125;"</span>.format(n_records))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Individuals making more than $50,000: &#123;&#125;"</span>.format(n_greater_50k))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Individuals making at most $50,000: &#123;&#125;"</span>.format(n_at_most_50k))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Percentage of individuals making more than $50,000: &#123;:.2f&#125;%"</span>.format(greater_percent))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：总的记录数</span></span><br><span class="line">n_records = data.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者的收入大于$50,000的人数</span></span><br><span class="line">n_greater_50k = len(data[data.income == <span class="string">'&gt;50K'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者的收入最多为$50,000的人数</span></span><br><span class="line">n_at_most_50k = len(data[data.income == <span class="string">'&lt;=50K'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：被调查者收入大于$50,000所占的比例</span></span><br><span class="line">greater_percent = float(n_greater_50k) / n_records * <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Total number of records: &#123;&#125;"</span>.format(n_records))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Individuals making more than $50,000: &#123;&#125;"</span>.format(n_greater_50k))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Individuals making at most $50,000: &#123;&#125;"</span>.format(n_at_most_50k))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Percentage of individuals making more than $50,000: &#123;:.2f&#125;%"</span>.format(greater_percent))</span><br></pre></td></tr></table></figure>
 <pre><code>Total number of records: 45222
 Individuals making more than $50,000: 11208
 Individuals making at most $50,000: 34014
@@ -244,18 +259,18 @@ Percentage of individuals making more than $50,000: 24.78%
 </code></pre><hr>
 <h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><p>在数据能够被作为输入提供给机器学习算法之前，它经常需要被清洗，格式化，和重新组织 - 这通常被叫做<strong>预处理</strong>。幸运的是，对于这个数据集，没有我们必须处理的无效或丢失的条目，然而，由于某一些特征存在的特性我们必须进行一定的调整。这个预处理都可以极大地帮助我们提升几乎所有的学习算法的结果和预测能力。</p>
 <h3 id="获得特征和标签"><a href="#获得特征和标签" class="headerlink" title="获得特征和标签"></a>获得特征和标签</h3><p><code>income</code> 列是我们需要的标签，记录一个人的年收入是否高于50K。 因此我们应该把他从数据中剥离出来，单独存放。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将数据切分成特征和对应的标签</span></span><br><span class="line">income_raw = data[<span class="string">'income'</span>]</span><br><span class="line">features_raw = data.drop(<span class="string">'income'</span>, axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将数据切分成特征和对应的标签</span></span><br><span class="line">income_raw = data[<span class="string">'income'</span>]</span><br><span class="line">features_raw = data.drop(<span class="string">'income'</span>, axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="转换倾斜的连续特征"><a href="#转换倾斜的连续特征" class="headerlink" title="转换倾斜的连续特征"></a>转换倾斜的连续特征</h3><p>一个数据集有时可能包含至少一个靠近某个数字的特征，但有时也会有一些相对来说存在极大值或者极小值的不平凡分布的的特征。算法对这种分布的数据会十分敏感，并且如果这种数据没有能够很好地规一化处理会使得算法表现不佳。在人口普查数据集的两个特征符合这个描述：’<code>capital-gain&#39;</code>和<code>&#39;capital-loss&#39;</code>。</p>
 <p>运行下面的代码单元以创建一个关于这两个特征的条形图。请注意当前的值的范围和它们是如何分布的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可视化 'capital-gain'和'capital-loss' 两个特征</span></span><br><span class="line">vs.distribution(features_raw)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可视化 'capital-gain'和'capital-loss' 两个特征</span></span><br><span class="line">vs.distribution(features_raw)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/finding-donors/output_10_0.png" alt="png"></p>
 <p>对于高度倾斜分布的特征如<code>&#39;capital-gain&#39;</code>和<code>&#39;capital-loss&#39;</code>，常见的做法是对数据施加一个<a href="https://en.wikipedia.org/wiki/Data_transformation_(statistics)" target="_blank" rel="noopener">对数转换</a>，将数据转换成对数，这样非常大和非常小的值不会对学习算法产生负面的影响。并且使用对数变换显著降低了由于异常值所造成的数据范围异常。但是在应用这个变换时必须小心：因为0的对数是没有定义的，所以我们必须先将数据处理成一个比0稍微大一点的数以成功完成对数转换。</p>
 <p>运行下面的代码单元来执行数据的转换和可视化结果。再次，注意值的范围和它们是如何分布的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对于倾斜的数据使用Log转换</span></span><br><span class="line">skewed = [<span class="string">'capital-gain'</span>, <span class="string">'capital-loss'</span>]</span><br><span class="line">features_raw[skewed] = data[skewed].apply(<span class="keyword">lambda</span> x: np.log(x + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可视化对数转换后 'capital-gain'和'capital-loss' 两个特征</span></span><br><span class="line">vs.distribution(features_raw, transformed = <span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对于倾斜的数据使用Log转换</span></span><br><span class="line">skewed = [<span class="string">'capital-gain'</span>, <span class="string">'capital-loss'</span>]</span><br><span class="line">features_raw[skewed] = data[skewed].apply(<span class="keyword">lambda</span> x: np.log(x + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可视化对数转换后 'capital-gain'和'capital-loss' 两个特征</span></span><br><span class="line">vs.distribution(features_raw, transformed = <span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/finding-donors/output_12_0.png" alt="png"></p>
 <h3 id="规一化数字特征"><a href="#规一化数字特征" class="headerlink" title="规一化数字特征"></a>规一化数字特征</h3><p>除了对于高度倾斜的特征施加转换，对数值特征施加一些形式的缩放通常会是一个好的习惯。在数据上面施加一个缩放并不会改变数据分布的形式（比如上面说的’capital-gain’ or ‘capital-loss’）；但是，规一化保证了每一个特征在使用监督学习器的时候能够被平等的对待。注意一旦使用了缩放，观察数据的原始形式不再具有它本来的意义了，就像下面的例子展示的。</p>
 <p>运行下面的代码单元来规一化每一个数字特征。我们将使用<a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html" target="_blank" rel="noopener"><code>sklearn.preprocessing.MinMaxScaler</code></a>来完成这个任务。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化一个 scaler，并将它施加到特征上</span></span><br><span class="line">scaler = MinMaxScaler()</span><br><span class="line">numerical = [<span class="string">'age'</span>, <span class="string">'education-num'</span>, <span class="string">'capital-gain'</span>, <span class="string">'capital-loss'</span>, <span class="string">'hours-per-week'</span>]</span><br><span class="line">features_raw[numerical] = scaler.fit_transform(data[numerical])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示一个经过缩放的样例记录</span></span><br><span class="line">display(features_raw.head(n = <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化一个 scaler，并将它施加到特征上</span></span><br><span class="line">scaler = MinMaxScaler()</span><br><span class="line">numerical = [<span class="string">'age'</span>, <span class="string">'education-num'</span>, <span class="string">'capital-gain'</span>, <span class="string">'capital-loss'</span>, <span class="string">'hours-per-week'</span>]</span><br><span class="line">features_raw[numerical] = scaler.fit_transform(data[numerical])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示一个经过缩放的样例记录</span></span><br><span class="line">display(features_raw.head(n = <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -407,12 +422,12 @@ Percentage of individuals making more than $50,000: 24.78%
 </ul>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：使用pandas.get_dummies()对'features_raw'数据进行独热编码</span></span><br><span class="line">features = pd.get_dummies(features_raw)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：将'income_raw'编码成数字值</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line">income = pd.Series(preprocessing.LabelEncoder().fit_transform(income_raw))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印经过独热编码之后的特征数量</span></span><br><span class="line">encoded = list(features.columns)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"&#123;&#125; total features after one-hot encoding."</span>.format(len(encoded)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除下面一行的注释以观察编码的特征名字</span></span><br><span class="line"><span class="keyword">print</span> (encoded)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：使用pandas.get_dummies()对'features_raw'数据进行独热编码</span></span><br><span class="line">features = pd.get_dummies(features_raw)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：将'income_raw'编码成数字值</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line">income = pd.Series(preprocessing.LabelEncoder().fit_transform(income_raw))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印经过独热编码之后的特征数量</span></span><br><span class="line">encoded = list(features.columns)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"&#123;&#125; total features after one-hot encoding."</span>.format(len(encoded)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除下面一行的注释以观察编码的特征名字</span></span><br><span class="line"><span class="keyword">print</span> (encoded)</span><br></pre></td></tr></table></figure>
 <pre><code>103 total features after one-hot encoding.
 [&#39;age&#39;, &#39;education-num&#39;, &#39;capital-gain&#39;, &#39;capital-loss&#39;, &#39;hours-per-week&#39;, &#39;workclass_ Federal-gov&#39;, &#39;workclass_ Local-gov&#39;, &#39;workclass_ Private&#39;, &#39;workclass_ Self-emp-inc&#39;, &#39;workclass_ Self-emp-not-inc&#39;, &#39;workclass_ State-gov&#39;, &#39;workclass_ Without-pay&#39;, &#39;education_level_ 10th&#39;, &#39;education_level_ 11th&#39;, &#39;education_level_ 12th&#39;, &#39;education_level_ 1st-4th&#39;, &#39;education_level_ 5th-6th&#39;, &#39;education_level_ 7th-8th&#39;, &#39;education_level_ 9th&#39;, &#39;education_level_ Assoc-acdm&#39;, &#39;education_level_ Assoc-voc&#39;, &#39;education_level_ Bachelors&#39;, &#39;education_level_ Doctorate&#39;, &#39;education_level_ HS-grad&#39;, &#39;education_level_ Masters&#39;, &#39;education_level_ Preschool&#39;, &#39;education_level_ Prof-school&#39;, &#39;education_level_ Some-college&#39;, &#39;marital-status_ Divorced&#39;, &#39;marital-status_ Married-AF-spouse&#39;, &#39;marital-status_ Married-civ-spouse&#39;, &#39;marital-status_ Married-spouse-absent&#39;, &#39;marital-status_ Never-married&#39;, &#39;marital-status_ Separated&#39;, &#39;marital-status_ Widowed&#39;, &#39;occupation_ Adm-clerical&#39;, &#39;occupation_ Armed-Forces&#39;, &#39;occupation_ Craft-repair&#39;, &#39;occupation_ Exec-managerial&#39;, &#39;occupation_ Farming-fishing&#39;, &#39;occupation_ Handlers-cleaners&#39;, &#39;occupation_ Machine-op-inspct&#39;, &#39;occupation_ Other-service&#39;, &#39;occupation_ Priv-house-serv&#39;, &#39;occupation_ Prof-specialty&#39;, &#39;occupation_ Protective-serv&#39;, &#39;occupation_ Sales&#39;, &#39;occupation_ Tech-support&#39;, &#39;occupation_ Transport-moving&#39;, &#39;relationship_ Husband&#39;, &#39;relationship_ Not-in-family&#39;, &#39;relationship_ Other-relative&#39;, &#39;relationship_ Own-child&#39;, &#39;relationship_ Unmarried&#39;, &#39;relationship_ Wife&#39;, &#39;race_ Amer-Indian-Eskimo&#39;, &#39;race_ Asian-Pac-Islander&#39;, &#39;race_ Black&#39;, &#39;race_ Other&#39;, &#39;race_ White&#39;, &#39;sex_ Female&#39;, &#39;sex_ Male&#39;, &#39;native-country_ Cambodia&#39;, &#39;native-country_ Canada&#39;, &#39;native-country_ China&#39;, &#39;native-country_ Columbia&#39;, &#39;native-country_ Cuba&#39;, &#39;native-country_ Dominican-Republic&#39;, &#39;native-country_ Ecuador&#39;, &#39;native-country_ El-Salvador&#39;, &#39;native-country_ England&#39;, &#39;native-country_ France&#39;, &#39;native-country_ Germany&#39;, &#39;native-country_ Greece&#39;, &#39;native-country_ Guatemala&#39;, &#39;native-country_ Haiti&#39;, &#39;native-country_ Holand-Netherlands&#39;, &#39;native-country_ Honduras&#39;, &#39;native-country_ Hong&#39;, &#39;native-country_ Hungary&#39;, &#39;native-country_ India&#39;, &#39;native-country_ Iran&#39;, &#39;native-country_ Ireland&#39;, &#39;native-country_ Italy&#39;, &#39;native-country_ Jamaica&#39;, &#39;native-country_ Japan&#39;, &#39;native-country_ Laos&#39;, &#39;native-country_ Mexico&#39;, &#39;native-country_ Nicaragua&#39;, &#39;native-country_ Outlying-US(Guam-USVI-etc)&#39;, &#39;native-country_ Peru&#39;, &#39;native-country_ Philippines&#39;, &#39;native-country_ Poland&#39;, &#39;native-country_ Portugal&#39;, &#39;native-country_ Puerto-Rico&#39;, &#39;native-country_ Scotland&#39;, &#39;native-country_ South&#39;, &#39;native-country_ Taiwan&#39;, &#39;native-country_ Thailand&#39;, &#39;native-country_ Trinadad&amp;Tobago&#39;, &#39;native-country_ United-States&#39;, &#39;native-country_ Vietnam&#39;, &#39;native-country_ Yugoslavia&#39;]
 </code></pre><h3 id="混洗和切分数据"><a href="#混洗和切分数据" class="headerlink" title="混洗和切分数据"></a>混洗和切分数据</h3><p>现在所有的 <em>类别变量</em> 已被转换成数值特征，而且所有的数值特征已被规一化。和我们一般情况下做的一样，我们现在将数据（包括特征和它们的标签）切分成训练和测试集。其中80%的数据将用于训练和20%的数据用于测试。然后再进一步把训练数据分为训练集和验证集，用来选择和优化模型。</p>
 <p>运行下面的代码单元来完成切分。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入 train_test_split</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将'features'和'income'数据切分成训练集和测试集</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(features, income, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>,</span><br><span class="line">                                                    stratify = income)</span><br><span class="line"><span class="comment"># 将'X_train'和'y_train'进一步切分为训练集和验证集</span></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>,</span><br><span class="line">                                                    stratify = y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示切分的结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Training set has &#123;&#125; samples."</span>.format(X_train.shape[<span class="number">0</span>]))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Validation set has &#123;&#125; samples."</span>.format(X_val.shape[<span class="number">0</span>]))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Testing set has &#123;&#125; samples."</span>.format(X_test.shape[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入 train_test_split</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将'features'和'income'数据切分成训练集和测试集</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(features, income, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>,</span><br><span class="line">                                                    stratify = income)</span><br><span class="line"><span class="comment"># 将'X_train'和'y_train'进一步切分为训练集和验证集</span></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>,</span><br><span class="line">                                                    stratify = y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示切分的结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Training set has &#123;&#125; samples."</span>.format(X_train.shape[<span class="number">0</span>]))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Validation set has &#123;&#125; samples."</span>.format(X_val.shape[<span class="number">0</span>]))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Testing set has &#123;&#125; samples."</span>.format(X_test.shape[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
 <pre><code>Training set has 28941 samples.
 Validation set has 7236 samples.
 Testing set has 9045 samples.
@@ -422,7 +437,7 @@ Testing set has 9045 samples.
 <script type="math/tex; mode=display">F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 \cdot precision \right) + recall}</script><p>尤其是，当 $\beta = 0.5$ 的时候更多的强调查准率，这叫做<strong>F$_{0.5}$ score</strong> （或者为了简单叫做F-score）。</p>
 <h3 id="问题-1-天真的预测器的性能"><a href="#问题-1-天真的预测器的性能" class="headerlink" title="问题 1 - 天真的预测器的性能"></a>问题 1 - 天真的预测器的性能</h3><p>通过查看收入超过和不超过 $50,000 的人数，我们能发现多数被调查者年收入没有超过 $50,000。如果我们简单地预测说<em>“这个人的收入没有超过 $50,000”</em>，我们就可以得到一个 准确率超过 50% 的预测。这样我们甚至不用看数据就能做到一个准确率超过 50%。这样一个预测被称作是天真的。通常对数据使用一个<em>天真的预测器</em>是十分重要的，这样能够帮助建立一个模型表现是否好的基准。 使用下面的代码单元计算天真的预测器的相关性能。将你的计算结果赋值给<code>&#39;accuracy&#39;</code>, <code>‘precision’</code>, <code>‘recall’</code> 和 <code>&#39;fscore&#39;</code>，这些值会在后面被使用，请注意这里不能使用scikit-learn，你需要根据公式自己实现相关计算。</p>
 <p><em>如果我们选择一个无论什么情况都预测被调查者年收入大于 $50,000 的模型，那么这个模型在<strong>验证集上</strong>的准确率，查准率，查全率和 F-score是多少？</em>  </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#不能使用scikit-learn，你需要根据公式自己实现相关计算。</span></span><br><span class="line">TP = float(len(y_val[y_val == <span class="number">1</span>]))</span><br><span class="line">FP = float(len(y_val[y_val == <span class="number">0</span>]))</span><br><span class="line">FN = <span class="number">0</span></span><br><span class="line"><span class="comment">#TODO： 计算准确率</span></span><br><span class="line">accuracy = float(TP)/len(y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 计算查准率 Precision</span></span><br><span class="line">precision = TP/(TP+FP)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 计算查全率 Recall</span></span><br><span class="line">recall = TP/(TP+FN)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 使用上面的公式，设置beta=0.5，计算F-score</span></span><br><span class="line">fscore = (<span class="number">1</span>+<span class="number">0.5</span>**<span class="number">2</span>)*((precision*recall)) / (<span class="number">0.5</span>**<span class="number">2</span>*precision+recall)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Naive Predictor on validation data: \n \</span></span><br><span class="line"><span class="string">    Accuracy score: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    Precision: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    Recall: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    F-score: &#123;:.4f&#125;"</span>.format(accuracy, precision, recall, fscore))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不能使用scikit-learn，你需要根据公式自己实现相关计算。</span></span><br><span class="line">TP = float(len(y_val[y_val == <span class="number">1</span>]))</span><br><span class="line">FP = float(len(y_val[y_val == <span class="number">0</span>]))</span><br><span class="line">FN = <span class="number">0</span></span><br><span class="line"><span class="comment">#TODO： 计算准确率</span></span><br><span class="line">accuracy = float(TP)/len(y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 计算查准率 Precision</span></span><br><span class="line">precision = TP/(TP+FP)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 计算查全率 Recall</span></span><br><span class="line">recall = TP/(TP+FN)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 使用上面的公式，设置beta=0.5，计算F-score</span></span><br><span class="line">fscore = (<span class="number">1</span>+<span class="number">0.5</span>**<span class="number">2</span>)*((precision*recall)) / (<span class="number">0.5</span>**<span class="number">2</span>*precision+recall)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Naive Predictor on validation data: \n \</span></span><br><span class="line"><span class="string">    Accuracy score: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    Precision: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    Recall: &#123;:.4f&#125; \n \</span></span><br><span class="line"><span class="string">    F-score: &#123;:.4f&#125;"</span>.format(accuracy, precision, recall, fscore))</span><br></pre></td></tr></table></figure>
 <pre><code>Naive Predictor on validation data: 
      Accuracy score: 0.2478 
      Precision: 0.2478 
@@ -477,7 +492,7 @@ Testing set has 9045 samples.
 <li>计算预测训练集的前300个数据点的准确率和F-score。</li>
 <li>计算预测验证集的准确率和F-score。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：从sklearn中导入两个评价指标 - fbeta_score和accuracy_score</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> fbeta_score, accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_predict</span><span class="params">(learner, sample_size, X_train, y_train, X_val, y_val)</span>:</span> </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    inputs:</span></span><br><span class="line"><span class="string">       - learner: the learning algorithm to be trained and predicted on</span></span><br><span class="line"><span class="string">       - sample_size: the size of samples (number) to be drawn from training set</span></span><br><span class="line"><span class="string">       - X_train: features training set</span></span><br><span class="line"><span class="string">       - y_train: income training set</span></span><br><span class="line"><span class="string">       - X_val: features validation set</span></span><br><span class="line"><span class="string">       - y_val: income validation set</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    </span><br><span class="line">    results = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：使用sample_size大小的训练数据来拟合学习器</span></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Fit the learner to the training data using slicing with 'sample_size'</span></span><br><span class="line">    start = time() <span class="comment"># 获得程序开始时间</span></span><br><span class="line">    learner = learner.fit(X_train[:sample_size], y_train[:sample_size])</span><br><span class="line">    end = time() <span class="comment"># 获得程序结束时间</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算训练时间</span></span><br><span class="line">    results[<span class="string">'train_time'</span>] = end - start</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 得到在验证集上的预测值</span></span><br><span class="line">    <span class="comment">#       然后得到对前300个训练数据的预测结果</span></span><br><span class="line">    start = time() <span class="comment"># 获得程序开始时间</span></span><br><span class="line">    predictions_val = learner.predict(X_val)</span><br><span class="line">    predictions_train = learner.predict(X_train[:<span class="number">300</span>])</span><br><span class="line">    end = time() <span class="comment"># 获得程序结束时间</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算预测用时</span></span><br><span class="line">    results[<span class="string">'pred_time'</span>] = end - start</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># TODO：计算在最前面的300个训练数据的准确率</span></span><br><span class="line">    results[<span class="string">'acc_train'</span>] = accuracy_score(y_test[:<span class="number">300</span>], predictions_train)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># TODO：计算在验证上的准确率</span></span><br><span class="line">    results[<span class="string">'acc_val'</span>] = accuracy_score(y_val, predictions_val)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算在最前面300个训练数据上的F-score</span></span><br><span class="line">    results[<span class="string">'f_train'</span>] = fbeta_score(y_train[:<span class="number">300</span>], predictions_train, beta=<span class="number">0.5</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># TODO：计算验证集上的F-score</span></span><br><span class="line">    results[<span class="string">'f_val'</span>] = fbeta_score(y_val, predictions_val, beta=<span class="number">0.5</span>)</span><br><span class="line">       </span><br><span class="line">    <span class="comment"># 成功</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"&#123;&#125; trained on &#123;&#125; samples."</span>.format(learner.__class__.__name__, sample_size))</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> results</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：从sklearn中导入两个评价指标 - fbeta_score和accuracy_score</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> fbeta_score, accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_predict</span><span class="params">(learner, sample_size, X_train, y_train, X_val, y_val)</span>:</span> </span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    inputs:</span></span><br><span class="line"><span class="string">       - learner: the learning algorithm to be trained and predicted on</span></span><br><span class="line"><span class="string">       - sample_size: the size of samples (number) to be drawn from training set</span></span><br><span class="line"><span class="string">       - X_train: features training set</span></span><br><span class="line"><span class="string">       - y_train: income training set</span></span><br><span class="line"><span class="string">       - X_val: features validation set</span></span><br><span class="line"><span class="string">       - y_val: income validation set</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    </span><br><span class="line">    results = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：使用sample_size大小的训练数据来拟合学习器</span></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Fit the learner to the training data using slicing with 'sample_size'</span></span><br><span class="line">    start = time() <span class="comment"># 获得程序开始时间</span></span><br><span class="line">    learner = learner.fit(X_train[:sample_size], y_train[:sample_size])</span><br><span class="line">    end = time() <span class="comment"># 获得程序结束时间</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算训练时间</span></span><br><span class="line">    results[<span class="string">'train_time'</span>] = end - start</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 得到在验证集上的预测值</span></span><br><span class="line">    <span class="comment">#       然后得到对前300个训练数据的预测结果</span></span><br><span class="line">    start = time() <span class="comment"># 获得程序开始时间</span></span><br><span class="line">    predictions_val = learner.predict(X_val)</span><br><span class="line">    predictions_train = learner.predict(X_train[:<span class="number">300</span>])</span><br><span class="line">    end = time() <span class="comment"># 获得程序结束时间</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算预测用时</span></span><br><span class="line">    results[<span class="string">'pred_time'</span>] = end - start</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># TODO：计算在最前面的300个训练数据的准确率</span></span><br><span class="line">    results[<span class="string">'acc_train'</span>] = accuracy_score(y_test[:<span class="number">300</span>], predictions_train)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># TODO：计算在验证上的准确率</span></span><br><span class="line">    results[<span class="string">'acc_val'</span>] = accuracy_score(y_val, predictions_val)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># TODO：计算在最前面300个训练数据上的F-score</span></span><br><span class="line">    results[<span class="string">'f_train'</span>] = fbeta_score(y_train[:<span class="number">300</span>], predictions_train, beta=<span class="number">0.5</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># TODO：计算验证集上的F-score</span></span><br><span class="line">    results[<span class="string">'f_val'</span>] = fbeta_score(y_val, predictions_val, beta=<span class="number">0.5</span>)</span><br><span class="line">       </span><br><span class="line">    <span class="comment"># 成功</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"&#123;&#125; trained on &#123;&#125; samples."</span>.format(learner.__class__.__name__, sample_size))</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> results</span><br></pre></td></tr></table></figure>
 <h3 id="练习：初始模型的评估"><a href="#练习：初始模型的评估" class="headerlink" title="练习：初始模型的评估"></a>练习：初始模型的评估</h3><p>在下面的代码单元中，您将需要实现以下功能：             </p>
 <ul>
 <li>导入你在前面讨论的三个监督学习模型。             </li>
@@ -489,7 +504,7 @@ Testing set has 9045 samples.
 <li>计算1%， 10%， 100%的训练数据分别对应多少个数据点，并将这些值存储在<code>&#39;samples_1&#39;</code>, <code>&#39;samples_10&#39;</code>, <code>&#39;samples_100&#39;</code>中</li>
 </ul>
 <p><strong>注意：</strong>取决于你选择的算法，下面实现的代码可能需要一些时间来运行！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：从sklearn中导入三个监督学习模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="comment"># TODO：初始化三个模型</span></span><br><span class="line">clf_A = KNeighborsClassifier(n_neighbors=<span class="number">2</span>)</span><br><span class="line">clf_B = SVC(kernel=<span class="string">'linear'</span>)</span><br><span class="line">clf_C = RandomForestClassifier(random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：计算1%， 10%， 100%的训练数据分别对应多少点</span></span><br><span class="line">samples_1 = int(len(X_train) * <span class="number">0.01</span>)</span><br><span class="line">samples_10 = int(len(X_train) * <span class="number">0.10</span>)</span><br><span class="line">samples_100 = len(X_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 收集学习器的结果</span></span><br><span class="line">results = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> clf <span class="keyword">in</span> [clf_A, clf_B, clf_C]:</span><br><span class="line">    clf_name = clf.__class__.__name__</span><br><span class="line">    results[clf_name] = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i, samples <span class="keyword">in</span> enumerate([samples_1, samples_10, samples_100]):</span><br><span class="line">        results[clf_name][i] = train_predict(clf, samples, X_train, y_train, X_val, y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对选择的三个模型得到的评价结果进行可视化</span></span><br><span class="line">vs.evaluate(results, accuracy, fscore)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：从sklearn中导入三个监督学习模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="comment"># TODO：初始化三个模型</span></span><br><span class="line">clf_A = KNeighborsClassifier(n_neighbors=<span class="number">2</span>)</span><br><span class="line">clf_B = SVC(kernel=<span class="string">'linear'</span>)</span><br><span class="line">clf_C = RandomForestClassifier(random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：计算1%， 10%， 100%的训练数据分别对应多少点</span></span><br><span class="line">samples_1 = int(len(X_train) * <span class="number">0.01</span>)</span><br><span class="line">samples_10 = int(len(X_train) * <span class="number">0.10</span>)</span><br><span class="line">samples_100 = len(X_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 收集学习器的结果</span></span><br><span class="line">results = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> clf <span class="keyword">in</span> [clf_A, clf_B, clf_C]:</span><br><span class="line">    clf_name = clf.__class__.__name__</span><br><span class="line">    results[clf_name] = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i, samples <span class="keyword">in</span> enumerate([samples_1, samples_10, samples_100]):</span><br><span class="line">        results[clf_name][i] = train_predict(clf, samples, X_train, y_train, X_val, y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对选择的三个模型得到的评价结果进行可视化</span></span><br><span class="line">vs.evaluate(results, accuracy, fscore)</span><br></pre></td></tr></table></figure>
 <pre><code>KNeighborsClassifier trained on 289 samples.
 KNeighborsClassifier trained on 2894 samples.
 KNeighborsClassifier trained on 28941 samples.
@@ -529,7 +544,7 @@ RandomForestClassifier trained on 28941 samples.
 <li>用训练集（X_train, y_train）训练grid search object,并将结果存储在<code>grid_fit</code>中。</li>
 </ul>
 <p><strong>注意：</strong> 取决于你选择的参数列表，下面实现的代码可能需要花一些时间运行！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：导入'GridSearchCV', 'make_scorer'和其他一些需要的库</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer</span><br><span class="line"><span class="comment"># TODO：初始化分类器</span></span><br><span class="line">clf = RandomForestClassifier(random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：创建你希望调节的参数列表</span></span><br><span class="line">parameters = &#123;<span class="string">'n_estimators'</span>:[<span class="number">10</span>,<span class="number">50</span>,<span class="number">100</span>,<span class="number">150</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：创建一个fbeta_score打分对象</span></span><br><span class="line">scorer = make_scorer(fbeta_score, beta=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：在分类器上使用网格搜索，使用'scorer'作为评价函数</span></span><br><span class="line">grid_obj = GridSearchCV(clf, parameters, scorer)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：用训练数据拟合网格搜索对象并找到最佳参数</span></span><br><span class="line">grid_obj.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># 得到estimator</span></span><br><span class="line">best_clf = grid_obj.best_estimator_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用没有调优的模型做预测</span></span><br><span class="line">predictions = (clf.fit(X_train, y_train)).predict(X_val)</span><br><span class="line">best_predictions = best_clf.predict(X_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇报调优后的模型</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"best_clf\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (best_clf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇报调参前和调参后的分数</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nUnoptimized model\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy score on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, predictions, beta = <span class="number">0.5</span>)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nOptimized Model\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final accuracy score on the validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, best_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final F-score on the validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, best_predictions, beta = <span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：导入'GridSearchCV', 'make_scorer'和其他一些需要的库</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer</span><br><span class="line"><span class="comment"># TODO：初始化分类器</span></span><br><span class="line">clf = RandomForestClassifier(random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：创建你希望调节的参数列表</span></span><br><span class="line">parameters = &#123;<span class="string">'n_estimators'</span>:[<span class="number">10</span>,<span class="number">50</span>,<span class="number">100</span>,<span class="number">150</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：创建一个fbeta_score打分对象</span></span><br><span class="line">scorer = make_scorer(fbeta_score, beta=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：在分类器上使用网格搜索，使用'scorer'作为评价函数</span></span><br><span class="line">grid_obj = GridSearchCV(clf, parameters, scorer)</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：用训练数据拟合网格搜索对象并找到最佳参数</span></span><br><span class="line">grid_obj.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># 得到estimator</span></span><br><span class="line">best_clf = grid_obj.best_estimator_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用没有调优的模型做预测</span></span><br><span class="line">predictions = (clf.fit(X_train, y_train)).predict(X_val)</span><br><span class="line">best_predictions = best_clf.predict(X_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇报调优后的模型</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"best_clf\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (best_clf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇报调参前和调参后的分数</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nUnoptimized model\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy score on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, predictions, beta = <span class="number">0.5</span>)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nOptimized Model\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final accuracy score on the validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, best_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final F-score on the validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, best_predictions, beta = <span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
 <pre><code>best_clf
 ------
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion=&#39;gini&#39;,
@@ -592,13 +607,13 @@ Final F-score on the validation data: 0.6940
 <li>在整个训练集上训练一个监督学习模型。</li>
 <li>使用模型中的 <code>&#39;feature_importances_&#39;</code>提取特征的重要性。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># TODO：导入一个有'feature_importances_'的监督学习模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：在训练集上训练一个监督学习模型</span></span><br><span class="line">model = best_clf</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 提取特征重要性</span></span><br><span class="line">importances = model.feature_importances_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图best_clf</span></span><br><span class="line">vs.feature_plot(importances, X_train, y_train)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO：导入一个有'feature_importances_'的监督学习模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO：在训练集上训练一个监督学习模型</span></span><br><span class="line">model = best_clf</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO： 提取特征重要性</span></span><br><span class="line">importances = model.feature_importances_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图best_clf</span></span><br><span class="line">vs.feature_plot(importances, X_train, y_train)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/02/16/finding-donors/output_45_0.png" alt="png"></p>
 <h3 id="问题-7-提取特征重要性"><a href="#问题-7-提取特征重要性" class="headerlink" title="问题 7 - 提取特征重要性"></a>问题 7 - 提取特征重要性</h3><p>观察上面创建的展示五个用于预测被调查者年收入是否大于$50,000最相关的特征的可视化图像。</p>
 <p><em>这五个特征的权重加起来是否超过了0.5?</em><br><br><em>这五个特征和你在<strong>问题 6</strong>中讨论的特征比较怎么样？</em><br><br><em>如果说你的答案和这里的相近，那么这个可视化怎样佐证了你的想法？</em><br><br><em>如果你的选择不相近，那么为什么你觉得这些特征更加相关？</em></p>
 <p><strong>回答：0.24+0.12+0.10+0.07+0.06&gt;0.5  基本一致。权重越高说明重要性越高</strong></p>
 <h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>如果我们只是用可用特征的一个子集的话模型表现会怎么样？通过使用更少的特征来训练，在评价指标的角度来看我们的期望是训练和预测的时间会更少。从上面的可视化来看，我们可以看到前五个最重要的特征贡献了数据中<strong>所有</strong>特征中超过一半的重要性。这提示我们可以尝试去<strong>减小特征空间</strong>，简化模型需要学习的信息。下面代码单元将使用你前面发现的优化模型，并<strong>只使用五个最重要的特征</strong>在相同的训练集上训练模型。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入克隆模型的功能</span></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> clone</span><br><span class="line"></span><br><span class="line"><span class="comment"># 减小特征空间</span></span><br><span class="line">X_train_reduced = X_train[X_train.columns.values[(np.argsort(importances)[::<span class="number">-1</span>])[:<span class="number">5</span>]]]</span><br><span class="line">X_val_reduced = X_val[X_val.columns.values[(np.argsort(importances)[::<span class="number">-1</span>])[:<span class="number">5</span>]]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在前面的网格搜索的基础上训练一个“最好的”模型</span></span><br><span class="line">clf_on_reduced = (clone(best_clf)).fit(X_train_reduced, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 做一个新的预测</span></span><br><span class="line">reduced_predictions = clf_on_reduced.predict(X_val_reduced)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对于每一个版本的数据汇报最终模型的分数</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final Model trained on full data\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, best_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, best_predictions, beta = <span class="number">0.5</span>)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nFinal Model trained on reduced data\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, reduced_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, reduced_predictions, beta = <span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入克隆模型的功能</span></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> clone</span><br><span class="line"></span><br><span class="line"><span class="comment"># 减小特征空间</span></span><br><span class="line">X_train_reduced = X_train[X_train.columns.values[(np.argsort(importances)[::<span class="number">-1</span>])[:<span class="number">5</span>]]]</span><br><span class="line">X_val_reduced = X_val[X_val.columns.values[(np.argsort(importances)[::<span class="number">-1</span>])[:<span class="number">5</span>]]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在前面的网格搜索的基础上训练一个“最好的”模型</span></span><br><span class="line">clf_on_reduced = (clone(best_clf)).fit(X_train_reduced, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 做一个新的预测</span></span><br><span class="line">reduced_predictions = clf_on_reduced.predict(X_val_reduced)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对于每一个版本的数据汇报最终模型的分数</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Final Model trained on full data\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, best_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, best_predictions, beta = <span class="number">0.5</span>)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"\nFinal Model trained on reduced data\n------"</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"Accuracy on validation data: &#123;:.4f&#125;"</span>.format(accuracy_score(y_val, reduced_predictions)))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"F-score on validation data: &#123;:.4f&#125;"</span>.format(fbeta_score(y_val, reduced_predictions, beta = <span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
 <pre><code>Final Model trained on full data
 ------
 Accuracy on validation data: 0.8456
@@ -636,219 +651,140 @@ F-score on validation data: 0.6678
 <p>使用部分特征和所有特征相比准确率和F1值出现了下降现象 如果考虑时间问题我会考虑使用部分特征 会缩短大量训练时间</p>
 <h3 id="问题-9-在测试集上测试你的模型"><a href="#问题-9-在测试集上测试你的模型" class="headerlink" title="问题 9 - 在测试集上测试你的模型"></a>问题 9 - 在测试集上测试你的模型</h3><p>终于到了测试的时候，记住，测试集只能用一次。</p>
 <p><em>使用你最有信心的模型，在测试集上测试，计算出准确率和 F-score。</em><br><em>简述你选择这个模型的原因，并分析测试结果</em></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#TODO test your model on testing data and report accuracy and F score</span></span><br><span class="line">res = best_clf.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> fbeta_score,accuracy_score</span><br><span class="line">print(<span class="string">'accuracy score:&#123;&#125;'</span>.format(accuracy_score(y_test, res)))</span><br><span class="line">print(<span class="string">'fbeta score:&#123;&#125;'</span>.format(fbeta_score(y_test, res, beta=<span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#TODO test your model on testing data and report accuracy and F score</span></span><br><span class="line">res = best_clf.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> fbeta_score,accuracy_score</span><br><span class="line">print(<span class="string">'accuracy score:&#123;&#125;'</span>.format(accuracy_score(y_test, res)))</span><br><span class="line">print(<span class="string">'fbeta score:&#123;&#125;'</span>.format(fbeta_score(y_test, res, beta=<span class="number">0.5</span>)))</span><br></pre></td></tr></table></figure>
 <pre><code>accuracy score:0.8383637368711996
 fbeta score:0.6780398221534892
 </code></pre><blockquote>
 <p><strong>注意：</strong> 当你写完了所有的代码，并且回答了所有的问题。你就可以把你的 iPython Notebook 导出成 HTML 文件。你可以在菜单栏，这样导出<strong>File -&gt; Download as -&gt; HTML (.html)</strong>把这个 HTML 和这个 iPython notebook 一起做为你的作业提交。</p>
 </blockquote>
 
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2019/02/16/Customer-Setments/" data-toggle="tooltip" data-placement="top" title="Customer Setments">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2019/02/15/dog-app-for-CNN/" data-toggle="tooltip" data-placement="top" title="dog_app by CNN">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-
-
-                <!--加入新的评论系统-->
-                
-
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习纳米学位"><span class="toc-text">机器学习纳米学位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#监督学习"><span class="toc-text">监督学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目2-为CharityML寻找捐献者"><span class="toc-text">项目2: 为CharityML寻找捐献者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探索数据"><span class="toc-text">探索数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：数据探索"><span class="toc-text">练习：数据探索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据"><span class="toc-text">准备数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获得特征和标签"><span class="toc-text">获得特征和标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换倾斜的连续特征"><span class="toc-text">转换倾斜的连续特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规一化数字特征"><span class="toc-text">规一化数字特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：数据预处理"><span class="toc-text">练习：数据预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#混洗和切分数据"><span class="toc-text">混洗和切分数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评价模型性能"><span class="toc-text">评价模型性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#评价方法和朴素的预测器"><span class="toc-text">评价方法和朴素的预测器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-1-天真的预测器的性能"><span class="toc-text">问题 1 - 天真的预测器的性能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监督学习模型"><span class="toc-text">监督学习模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-2-模型应用"><span class="toc-text">问题 2 - 模型应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型1"><span class="toc-text">模型1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型2"><span class="toc-text">模型2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型3"><span class="toc-text">模型3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习-创建一个训练和预测的流水线"><span class="toc-text">练习 - 创建一个训练和预测的流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：初始模型的评估"><span class="toc-text">练习：初始模型的评估</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提高效果"><span class="toc-text">提高效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-3-选择最佳的模型"><span class="toc-text">问题 3 - 选择最佳的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-4-用通俗的话解释模型"><span class="toc-text">问题 4 - 用通俗的话解释模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：模型调优"><span class="toc-text">练习：模型调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-5-最终模型评估"><span class="toc-text">问题 5 - 最终模型评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结果"><span class="toc-text">结果:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特征的重要性"><span class="toc-text">特征的重要性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-6-观察特征相关性"><span class="toc-text">问题 6 - 观察特征相关性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习-提取特征重要性"><span class="toc-text">练习 - 提取特征重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-7-提取特征重要性"><span class="toc-text">问题 7 - 提取特征重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征选择"><span class="toc-text">特征选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-8-特征选择的影响"><span class="toc-text">问题 8 - 特征选择的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-9-在测试集上测试你的模型"><span class="toc-text">问题 9 - 在测试集上测试你的模型</span></a></li></ol></li></ol></li></ol>
-                </div>
-            </div>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
         </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5 class="text-center">
-                        <a href="/tags/">FEATURED TAGS</a>
-                    </h5>
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
+        <div>
+            
         </div>
-
     </div>
 </article>
 
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/02/16/Customer-Setments/" class="pre-post btn btn-default" title="Customer Setments">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Customer Setments</span>
+        </a>
+    
+    
+        <a href="/2019/02/15/dog-app-for-CNN/" class="next-post btn btn-default" title="dog_app by CNN">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">dog_app by CNN</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
 
 
 
 
 
 
-<!-- Footer -->
-<!-- Footer -->
-<footer>
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#机器学习纳米学位"><span class="toc-text">机器学习纳米学位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#监督学习"><span class="toc-text">监督学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目2-为CharityML寻找捐献者"><span class="toc-text">项目2: 为CharityML寻找捐献者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探索数据"><span class="toc-text">探索数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：数据探索"><span class="toc-text">练习：数据探索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据"><span class="toc-text">准备数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获得特征和标签"><span class="toc-text">获得特征和标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换倾斜的连续特征"><span class="toc-text">转换倾斜的连续特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规一化数字特征"><span class="toc-text">规一化数字特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：数据预处理"><span class="toc-text">练习：数据预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#混洗和切分数据"><span class="toc-text">混洗和切分数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评价模型性能"><span class="toc-text">评价模型性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#评价方法和朴素的预测器"><span class="toc-text">评价方法和朴素的预测器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-1-天真的预测器的性能"><span class="toc-text">问题 1 - 天真的预测器的性能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监督学习模型"><span class="toc-text">监督学习模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-2-模型应用"><span class="toc-text">问题 2 - 模型应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型1"><span class="toc-text">模型1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型2"><span class="toc-text">模型2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型3"><span class="toc-text">模型3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习-创建一个训练和预测的流水线"><span class="toc-text">练习 - 创建一个训练和预测的流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：初始模型的评估"><span class="toc-text">练习：初始模型的评估</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提高效果"><span class="toc-text">提高效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-3-选择最佳的模型"><span class="toc-text">问题 3 - 选择最佳的模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-4-用通俗的话解释模型"><span class="toc-text">问题 4 - 用通俗的话解释模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习：模型调优"><span class="toc-text">练习：模型调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-5-最终模型评估"><span class="toc-text">问题 5 - 最终模型评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结果"><span class="toc-text">结果:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特征的重要性"><span class="toc-text">特征的重要性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-6-观察特征相关性"><span class="toc-text">问题 6 - 观察特征相关性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#练习-提取特征重要性"><span class="toc-text">练习 - 提取特征重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-7-提取特征重要性"><span class="toc-text">问题 7 - 提取特征重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征选择"><span class="toc-text">特征选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-8-特征选择的影响"><span class="toc-text">问题 8 - 特征选择的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-9-在测试集上测试你的模型"><span class="toc-text">问题 9 - 在测试集上测试你的模型</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <br>
-                <ul class="list-inline text-center">
-                
-                
-                
-
-                
-                    <li>
-                        <a target="_blank" href="http://weibo.com/jindong_wang">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-
-                
-                    <li>
-                        <a target="_blank" href="https://github.com/jinyaxuan">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Jindong 2019
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
-                </p>
-
-            </div>
         </div>
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/blog.js"></script>
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://jinyaxuan.github.io/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
 
 
 
-<!-- Google Analytics -->
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-<!-- Baidu Tongji -->
 
-
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install','null','2.0.0');
-</script>
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<!--wechat title img-->
-<img class="wechat-title-img" src="null">
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
         }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
 
 </body>
-
 </html>

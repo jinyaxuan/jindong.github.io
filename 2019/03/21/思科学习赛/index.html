@@ -1,0 +1,1091 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="单身程序员的小窝">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Machine Learning">
+
+
+    <meta name="description" content="没得注释对付看吧12345678import pandas as pdimport tensorflow as tfimport numpy as npimport lightgbm as lg...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>思科学习赛 | 单身程序员的小窝</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="单身程序员的小窝" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4cc1f2d8f3067386cc5cdb626a202900";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+
+</head>
+
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Jindong">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 活成了一个快乐的小×× </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">单身程序员的小窝</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/机器学习/"><i class="fa "></i>MachineLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/深度学习/"><i class="fa "></i>DeepLearning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/强化学习/"><i class="fa "></i>Reinforcement learning</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/tools/"><i class="fa "></i>Tools</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>History</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="思科学习赛">
+            
+	            思科学习赛
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/机器学习/">机器学习</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Machine-Learning/">Machine Learning</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="没得注释对付看吧"><a href="#没得注释对付看吧" class="headerlink" title="没得注释对付看吧"></a>没得注释对付看吧</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder, OneHotEncoder, StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score, accuracy_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file1 = <span class="string">'train_set.csv'</span></span><br><span class="line">file2 = <span class="string">'test_set.csv'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data_train = pd.read_csv(file1)</span><br><span class="line">data_test = pd.read_csv(file2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># del data_train['poutcome']</span></span><br><span class="line"><span class="comment"># del data_test['poutcome']</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_train.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>43</td>
+      <td>management</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>291</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>9</td>
+      <td>may</td>
+      <td>150</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>42</td>
+      <td>technician</td>
+      <td>divorced</td>
+      <td>primary</td>
+      <td>no</td>
+      <td>5076</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>7</td>
+      <td>apr</td>
+      <td>99</td>
+      <td>1</td>
+      <td>251</td>
+      <td>2</td>
+      <td>other</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>47</td>
+      <td>admin.</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>104</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>cellular</td>
+      <td>14</td>
+      <td>jul</td>
+      <td>77</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>28</td>
+      <td>management</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>-994</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>cellular</td>
+      <td>18</td>
+      <td>jul</td>
+      <td>174</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>42</td>
+      <td>technician</td>
+      <td>divorced</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2974</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>21</td>
+      <td>may</td>
+      <td>187</td>
+      <td>5</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_train.describe()</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>age</th>
+      <th>balance</th>
+      <th>day</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>12659.000000</td>
+      <td>40.935379</td>
+      <td>1357.555082</td>
+      <td>15.835289</td>
+      <td>257.732393</td>
+      <td>2.772050</td>
+      <td>40.248766</td>
+      <td>0.591737</td>
+      <td>0.116957</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>7308.532719</td>
+      <td>10.634289</td>
+      <td>2999.822811</td>
+      <td>8.319480</td>
+      <td>256.975151</td>
+      <td>3.136097</td>
+      <td>100.213541</td>
+      <td>2.568313</td>
+      <td>0.321375</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>18.000000</td>
+      <td>-8019.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>6330.000000</td>
+      <td>33.000000</td>
+      <td>73.000000</td>
+      <td>8.000000</td>
+      <td>103.000000</td>
+      <td>1.000000</td>
+      <td>-1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>12659.000000</td>
+      <td>39.000000</td>
+      <td>448.000000</td>
+      <td>16.000000</td>
+      <td>181.000000</td>
+      <td>2.000000</td>
+      <td>-1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>18988.000000</td>
+      <td>48.000000</td>
+      <td>1435.000000</td>
+      <td>21.000000</td>
+      <td>317.000000</td>
+      <td>3.000000</td>
+      <td>-1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>25317.000000</td>
+      <td>95.000000</td>
+      <td>102127.000000</td>
+      <td>31.000000</td>
+      <td>3881.000000</td>
+      <td>55.000000</td>
+      <td>854.000000</td>
+      <td>275.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bins = [<span class="number">1</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">31</span>]</span><br><span class="line">score_bat = pd.cut(data_train[<span class="string">'day'</span>], bins)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data_train[<span class="string">'new_days'</span>] = pd.cut(data_train[<span class="string">'day'</span>], bins, labels=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">data_test[<span class="string">'new_days'</span>] = pd.cut(data_test[<span class="string">'day'</span>], bins, labels=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> data_train.columns[data_train.dtypes == <span class="string">'object'</span>]:</span><br><span class="line">    le = LabelEncoder()</span><br><span class="line">    le.fit(data_train[col])</span><br><span class="line">    </span><br><span class="line">    data_train[col] = le.transform(data_train[col])</span><br><span class="line">    data_test[col] = le.transform(data_test[col])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># data_train = data_train.groupby(['month', 'day']).agg(&#123;'poutcome':['max', 'min', 'mean', 'std']&#125;).reset_index()</span></span><br><span class="line"><span class="comment"># data_test = data_test.groupby(['month', 'day']).agg(&#123;'poutcome':['max', 'min', 'mean', 'std']&#125;).reset_index()</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(set(data_train[<span class="string">'month'</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scale = StandardScaler()</span><br><span class="line">scale.fit(data_train[[<span class="string">'age'</span>, <span class="string">'balance'</span>, <span class="string">'duration'</span>, <span class="string">'campaign'</span>, <span class="string">'pdays'</span>, <span class="string">'previous'</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>StandardScaler(copy=True, with_mean=True, with_std=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data_train[[<span class="string">'age'</span>, <span class="string">'balance'</span>, <span class="string">'duration'</span>, <span class="string">'campaign'</span>, <span class="string">'pdays'</span>, <span class="string">'previous'</span>]] = scale.transform(data_train[[<span class="string">'age'</span>, <span class="string">'balance'</span>, <span class="string">'duration'</span>, <span class="string">'campaign'</span>, <span class="string">'pdays'</span>, <span class="string">'previous'</span>]])</span><br><span class="line">data_test[[<span class="string">'age'</span>, <span class="string">'balance'</span>, <span class="string">'duration'</span>, <span class="string">'campaign'</span>, <span class="string">'pdays'</span>, <span class="string">'previous'</span>]] = scale.transform(data_test[[<span class="string">'age'</span>, <span class="string">'balance'</span>, <span class="string">'duration'</span>, <span class="string">'campaign'</span>, <span class="string">'pdays'</span>, <span class="string">'previous'</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_train.head(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+      <th>new_days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.194151</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>-0.355546</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0.822870</td>
+      <td>-0.419241</td>
+      <td>-0.246187</td>
+      <td>-0.411617</td>
+      <td>-0.230404</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.100114</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.239579</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>-1.834943</td>
+      <td>-0.617708</td>
+      <td>-0.565061</td>
+      <td>2.103063</td>
+      <td>0.548333</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.570301</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-0.417885</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14</td>
+      <td>-0.173810</td>
+      <td>-0.703321</td>
+      <td>-0.246187</td>
+      <td>-0.411617</td>
+      <td>-0.230404</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>-1.216408</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-0.783913</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>18</td>
+      <td>-0.173810</td>
+      <td>-0.325845</td>
+      <td>-0.246187</td>
+      <td>-0.411617</td>
+      <td>-0.230404</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.100114</td>
+      <td>9</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.538857</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>21</td>
+      <td>0.822870</td>
+      <td>-0.275255</td>
+      <td>0.710435</td>
+      <td>-0.411617</td>
+      <td>-0.230404</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_train.describe()</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>25317.000000</td>
+      <td>2.531700e+04</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>2.531700e+04</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+      <td>2.531700e+04</td>
+      <td>2.531700e+04</td>
+      <td>2.531700e+04</td>
+      <td>2.531700e+04</td>
+      <td>2.531700e+04</td>
+      <td>25317.000000</td>
+      <td>25317.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>12659.000000</td>
+      <td>8.473251e-17</td>
+      <td>4.330687</td>
+      <td>1.167555</td>
+      <td>1.226291</td>
+      <td>0.017696</td>
+      <td>2.776610e-16</td>
+      <td>0.553778</td>
+      <td>0.160327</td>
+      <td>0.640163</td>
+      <td>15.835289</td>
+      <td>9.577291e-16</td>
+      <td>1.294028e-15</td>
+      <td>-1.658746e-15</td>
+      <td>1.038629e-14</td>
+      <td>1.988947e-17</td>
+      <td>2.558399</td>
+      <td>0.116957</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>7308.532719</td>
+      <td>1.000020e+00</td>
+      <td>3.269565</td>
+      <td>0.608091</td>
+      <td>0.750483</td>
+      <td>0.131845</td>
+      <td>1.000020e+00</td>
+      <td>0.497109</td>
+      <td>0.366916</td>
+      <td>0.897537</td>
+      <td>8.319480</td>
+      <td>1.000020e+00</td>
+      <td>1.000020e+00</td>
+      <td>1.000020e+00</td>
+      <td>1.000020e+00</td>
+      <td>1.000020e+00</td>
+      <td>0.989615</td>
+      <td>0.321375</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>-2.156781e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-3.125765e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>-1.834943e+00</td>
+      <td>-1.002967e+00</td>
+      <td>-5.650608e-01</td>
+      <td>-4.116168e-01</td>
+      <td>-2.304036e-01</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>6330.000000</td>
+      <td>-7.462216e-01</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>-4.282188e-01</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>8.000000</td>
+      <td>-8.382628e-01</td>
+      <td>-6.021417e-01</td>
+      <td>-5.650608e-01</td>
+      <td>-4.116168e-01</td>
+      <td>-2.304036e-01</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>12659.000000</td>
+      <td>-1.819978e-01</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>-3.032089e-01</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>16.000000</td>
+      <td>1.584168e-01</td>
+      <td>-2.986044e-01</td>
+      <td>-2.461868e-01</td>
+      <td>-4.116168e-01</td>
+      <td>-2.304036e-01</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>18988.000000</td>
+      <td>6.643378e-01</td>
+      <td>7.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>2.581701e-02</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>21.000000</td>
+      <td>8.228699e-01</td>
+      <td>2.306401e-01</td>
+      <td>7.268720e-02</td>
+      <td>-4.116168e-01</td>
+      <td>-2.304036e-01</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>25317.000000</td>
+      <td>5.084091e+00</td>
+      <td>11.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+      <td>3.359246e+01</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>31.000000</td>
+      <td>1.819550e+00</td>
+      <td>1.409996e+01</td>
+      <td>1.665413e+01</td>
+      <td>8.120333e+00</td>
+      <td>1.068459e+02</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_use_col = list(set(data_train.columns) - set([<span class="string">'ID'</span>, <span class="string">'y'</span>, <span class="string">'day'</span>]))   </span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(data_train[train_use_col], data_train[<span class="string">'y'</span>], test_size=<span class="number">0.20</span>, random_state=<span class="number">43</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data = lgb.Dataset(X_train, label=y_train)</span><br><span class="line">val_data = lgb.Dataset(X_val, label=y_val, reference=train_data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">'task'</span>: <span class="string">'train'</span>,</span><br><span class="line">    <span class="string">'boosting_type'</span>: <span class="string">'gbdt'</span>,</span><br><span class="line">    <span class="string">'objective'</span>: <span class="string">'binary'</span>,</span><br><span class="line">    <span class="string">'metric'</span>: &#123;<span class="string">'auc'</span>&#125;,</span><br><span class="line">    <span class="string">'verbose'</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">'learning_rate'</span>: <span class="number">0.01</span>,</span><br><span class="line">    <span class="string">'is_unbalance'</span>: <span class="keyword">True</span>,</span><br><span class="line">    &#125;</span><br><span class="line">model = lgb.train(params, train_data, num_boost_round=<span class="number">1000</span>, valid_sets=val_data, early_stopping_rounds=<span class="number">10</span>, categorical_feature=[<span class="string">'job'</span>, <span class="string">'marital'</span>, <span class="string">'education'</span>, <span class="string">'default'</span>, <span class="string">'housing'</span>, <span class="string">'loan'</span>, <span class="string">'contact'</span>, <span class="string">'poutcome'</span>, <span class="string">'new_days'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[1]    valid_0&#39;s auc: 0.87652
+[2]    valid_0&#39;s auc: 0.877057
+[3]    valid_0&#39;s auc: 0.878384
+[4]    valid_0&#39;s auc: 0.880008
+[5]    valid_0&#39;s auc: 0.880789
+[6]    valid_0&#39;s auc: 0.881273
+[7]    valid_0&#39;s auc: 0.881754
+[8]    valid_0&#39;s auc: 0.882854
+[9]    valid_0&#39;s auc: 0.883802
+[10]    valid_0&#39;s auc: 0.886457
+[11]    valid_0&#39;s auc: 0.88655
+[12]    valid_0&#39;s auc: 0.889137
+[13]    valid_0&#39;s auc: 0.889702
+[14]    valid_0&#39;s auc: 0.890395
+[15]    valid_0&#39;s auc: 0.891316
+[16]    valid_0&#39;s auc: 0.892136
+[17]    valid_0&#39;s auc: 0.892685
+...
+[986]    valid_0&#39;s auc: 0.922846
+[987]    valid_0&#39;s auc: 0.922848
+[988]    valid_0&#39;s auc: 0.922825
+[989]    valid_0&#39;s auc: 0.922809
+[990]    valid_0&#39;s auc: 0.922813
+[991]    valid_0&#39;s auc: 0.922835
+[992]    valid_0&#39;s auc: 0.922826
+[993]    valid_0&#39;s auc: 0.922805
+[994]    valid_0&#39;s auc: 0.92279
+[995]    valid_0&#39;s auc: 0.922786
+[996]    valid_0&#39;s auc: 0.922789
+[997]    valid_0&#39;s auc: 0.922795
+[998]    valid_0&#39;s auc: 0.922803
+[999]    valid_0&#39;s auc: 0.922796
+[1000]    valid_0&#39;s auc: 0.922788
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pred = model.predict(data_test[train_use_col])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result_pd = pd.DataFrame(data=data_test.ID, columns=[<span class="string">'ID'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result_pd[<span class="string">'pred'</span>] = pred</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result_pd.to_csv(<span class="string">'result.csv'</span>, index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result_pd.head()</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>pred</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25318</td>
+      <td>0.180460</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25319</td>
+      <td>0.053978</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25320</td>
+      <td>0.040957</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25321</td>
+      <td>0.877173</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>25322</td>
+      <td>0.141571</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lgb.plot_importance(model)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/21/思科学习赛/output_22_0.png" alt="png"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Lucifer</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/03/22/Report/" class="pre-post btn btn-default" title="Report">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Report</span>
+        </a>
+    
+    
+        <a href="/2019/03/21/STL算法/" class="next-post btn btn-default" title="STL算法">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">STL算法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#没得注释对付看吧"><span class="toc-text">没得注释对付看吧</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+        Total:
+        <strong id="busuanzi_value_site_pv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+        &nbsp; | &nbsp;
+        Visitors:
+        <strong id="busuanzi_value_site_uv">
+            <i class="fa fa-spinner fa-spin"></i>
+        </strong>
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2018
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
+    <script>
+        var tagOption = {
+            textColour: '#444', // 字体颜色
+            outlineMethod: 'block', // 选中模式
+            outlineColour: '#FFDAB9', // 选中模式的颜色
+            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
+            textHeight: 13,
+            outlineRadius: 3,
+            freezeActive: true || '', // 选中的标签是否继续滚动
+            frontSelect: true || '', // 不选标签云后部的标签
+            initial: [0.1, -0.1],
+            depth: 0.5,
+            decel: 0.95,
+            maxSpeed: 0.03,
+            reverse: true || '', // 是否反向触发
+            fadeIn: 500, // 进入动画时间
+            wheelZoom: false || '' // 是否启用鼠标滚轮
+        }
+        TagCanvas.Start('tag-cloud-3d','',tagOption);
+    </script>
+
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
